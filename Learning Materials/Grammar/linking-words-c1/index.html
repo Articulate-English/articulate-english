@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#1a0f0a">
+<title>Linking Words C1 — Eloquenta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cs-accent:#fb923c;--cs-bg:#1a0f0a;--cs-text:#fed7aa;--cs-bg-card:#2d1a10;
+  --cs-border:#4a2a1a;--cs-text-muted:#b8845a;--cs-accent-glow:rgba(251,146,60,.2);
+  --cs-accent-dim:rgba(251,146,60,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px}
+body{font-family:'Inter',system-ui,sans-serif;background:color-mix(in srgb,var(--cs-bg) 85%,transparent);color:var(--cs-text);line-height:1.6;min-height:100vh;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
+.bg{position:fixed;inset:0;z-index:-1;background:color-mix(in srgb,var(--cs-bg) 85%,transparent);overflow:hidden}
+.bg::before{content:;position:absolute;inset:-50%;background:radial-gradient(ellipse at 20% 20%,var(--cs-accent-glow) 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,var(--cs-accent-dim) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.02) 0%,transparent 70%);filter:blur(40px);opacity:.5;animation:bg-drift 20s ease-in-out infinite alternate}
+.bg::after{content:;position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 2px,rgba(255,255,255,.015) 2px,rgba(255,255,255,.015) 4px),repeating-linear-gradient(-45deg,transparent,transparent 2px,rgba(255,255,255,.01) 2px,rgba(255,255,255,.01) 4px);opacity:.8}
+@keyframes bg-drift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-3%,2%) scale(1.05)}100%{transform:translate(2,-3%) scale(1.02)}}
+.slide{position:relative}
+.glass{background:rgba(45,26,16,.75);border:1px solid var(--cs-border);border-radius:18px;backdrop-filter:blur(14px);box-shadow:0 0 30px rgba(0,0,0,.3)}
+.glow-text{text-shadow:0 0 12px var(--cs-accent-glow),0 0 24px var(--cs-accent-dim)}
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--cs-bg) 85%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--cs-border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Space Grotesk';font-size:1.1rem;font-weight:700;color:#fff;text-decoration:none;letter-spacing:1px}
+.nav-logo span{color:var(--cs-accent)}
+.theme-cycle-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--cs-border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.theme-dot{width:10px;height:10px;border-radius:50%;background:var(--cs-accent)}
+.loading{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--cs-bg) 85%,transparent);color:var(--cs-accent);font-family:'Space Grotesk';font-size:1rem;letter-spacing:1px}
+.loading.hidden{display:none}
+#slides{max-width:900px;margin:0 auto;padding:30px 16px 100px;min-height:100vh}
+#slides.hidden{display:none}
+.slide{display:none}
+.slide.active{display:block}
+.slide h2{font-size:1.5rem;margin-bottom:16px;color:var(--cs-accent)}
+.card{padding:22px;margin-bottom:18px;background:color-mix(in srgb,var(--cs-card) 80%,transparent);border:1px solid var(--cs-border);border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08),0 0 1px rgba(0,0,0,.04);backdrop-filter:blur(8px)}
+.part-badge{display:inline-block;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:4px 10px;border-radius:6px;background:var(--cs-accent-dim);color:var(--cs-accent);border:1px solid var(--cs-border);margin-bottom:12px}
+.level-badge{display:inline-block;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:4px 10px;border-radius:6px;background:rgba(251,146,60,.15);border:1px solid rgba(251,146,60,.3);color:#fb923c;margin-left:6px}
+.question{font-size:1.05rem;font-weight:600;margin-bottom:12px}
+.reveal-btn{font-family:'Space Grotesk';font-size:.75rem;font-weight:700;padding:8px 14px;border-radius:8px;border:1px solid var(--cs-accent);background:transparent;color:var(--cs-accent);cursor:pointer;transition:all .15s}
+.reveal-btn:hover{background:var(--cs-accent);color:var(--cs-bg)}
+.hidden-answer{display:none;margin-top:12px;padding:14px;border-left:3px solid var(--cs-accent);background:rgba(251,146,60,.06);border-radius:0 10px 10px 0}
+.hidden-answer.open{display:block}
+.phrase-chip{display:inline-block;font-size:.7rem;padding:3px 8px;border-radius:6px;background:var(--cs-bg-card);border:1px solid var(--cs-border);color:var(--cs-text-muted);margin:2px}
+.tooltip{position:relative;border-bottom:1px dotted var(--cs-accent);cursor:help}
+.tooltip::after{content:attr(data-def);position:absolute;bottom:120%;left:50%;transform:translateX(-50%);width:220px;padding:8px 10px;border-radius:8px;background:var(--cs-bg-card);border:1px solid var(--cs-accent);color:var(--cs-text);font-size:.75rem;line-height:1.4;opacity:0;pointer-events:none;transition:opacity .2s;z-index:10}
+.tooltip:hover::after{opacity:1}
+.levelup-badge{display:inline-block;font-size:.6rem;font-weight:800;padding:2px 6px;border-radius:4px;background:rgba(251,191,36,.2);color:#fbbf24;margin-left:4px}
+.nav-btns{display:flex;justify-content:space-between;align-items:center;max-width:900px;margin:0 auto;padding:16px;position:fixed;bottom:0;left:0;right:0;background:color-mix(in srgb,var(--cs-bg) 85%,transparent);border-top:1px solid var(--cs-border)}
+.nav-btns button{font-family:'Space Grotesk';font-size:.8rem;font-weight:700;padding:10px 18px;border-radius:10px;border:1px solid var(--cs-border);background:var(--cs-bg-card);color:var(--cs-text);cursor:pointer}
+.nav-btns button:hover{border-color:var(--cs-accent);color:var(--cs-accent)}
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:rgba(255,255,255,.06);z-index:40}
+.progress-fill{height:100%;width:0;background:var(--cs-accent);transition:width .3s;box-shadow:0 0 10px var(--cs-accent-glow)}
+.timer{font-family:'Space Grotesk';font-size:.85rem;color:var(--cs-text-muted)}
+.grammar-box{padding:16px;margin:14px 0;border-radius:12px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.2)}
+.grammar-box h4{color:#fb923c;font-size:.8rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.use-case{display:inline-block;font-size:.65rem;font-weight:700;padding:2px 7px;border-radius:4px;margin:3px 3px 3px 0;color:#fff}
+.use-addition{background:rgba(74,222,128,.25);color:#4ade80}
+.use-contrast{background:rgba(251,146,60,.25);color:#fb923c}
+.use-cause{background:rgba(248,113,113,.25);color:#f87171}
+.use-sequence{background:rgba(96,165,250,.25);color:#60a5fa}
+.use-example{background:rgba(192,132,252,.25);color:#c084fc}
+.use-summary{background:rgba(251,191,36,.25);color:#fbbf24}
+.use-concession{background:rgba(244,114,182,.25);color:#f472b6}
+.use-condition{background:rgba(96,165,250,.25);color:#60a5fa}
+.use-purpose{background:rgba(168,85,247,.25);color:#a855f7}
+.example-line{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.9rem}
+.example-line:last-child{border-bottom:none}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<div class="loading" id="loadingScreen">Loading C1 deck…</div>
+<nav class="nav">
+  <a href="../../../web-apps/VocabForge/index.html" class="nav-logo">◆ <span>Eloquenta</span> Linking Words</a>
+  <button class="theme-cycle-btn" id="themeCycleBtn" title="Cycle theme"><span class="theme-dot" id="themeDot"></span></button>
+</nav>
+
+<main id="slides" class="hidden">
+
+<!-- SLIDE 0: COVER -->
+<section class="slide active" data-slide="0">
+  <div class="card glass" style="text-align:center;margin-top:10vh">
+    <div class="part-badge">Linking Words <span class="level-badge">C1</span></div>
+    <h1 class="glow-text" style="font-size:2.4rem;margin-bottom:12px">Cause, Effect &amp; Complex Argumentation</h1>
+    <p style="color:var(--cs-text-muted);font-size:1rem;max-width:500px;margin:0 auto 24px">Express consequence, condition, and purpose with precision. Build arguments that show cause-and-effect chains and handle complex ideas fluently.</p>
+    <button class="reveal-btn" onclick="goTo(1)">Start Deck</button>
+  </div>
+</section>
+
+<!-- SLIDE 1: GRAMMAR EXPLANATION -->
+<section class="slide" data-slide="1">
+  <div class="card glass">
+    <div class="part-badge">Grammar <span class="level-badge">C1</span></div>
+    <h2 class="glow-text">Cause, Effect &amp; Complex Relations</h2>
+    <p style="margin-bottom:14px">At C1, you move beyond simple cause-and-effect (<em>"because / so"</em>) into more sophisticated territory: consequence, condition, purpose, and the ability to chain multiple causes together.</p>
+    
+    <div class="grammar-box">
+      <h4>Why this = C1-level English</h4>
+      <p style="font-size:.9rem;color:var(--cs-text-muted)">B2: <em>"I was tired, <strong>so</strong> I went to bed."</em><br>C1: <em>"<strong>Given that</strong> I hadn't slept properly in days, I decided to prioritise rest <strong>in order to</strong> be productive the following morning."</em></p>
+      <p style="font-size:.9rem;color:var(--cs-text-muted);margin-top:8px">C1 speakers don't just state cause-and-effect — they <strong>frame the context, show the mechanism, and indicate intention</strong>. This is what separates competent speech from truly fluent speech.</p>
+    </div>
+
+    <h3 style="margin:16px 0 10px;font-size:.95rem">C1 Linking Words</h3>
+    <div class="example-line"><strong style="color:#f87171">as a result / consequently / therefore</strong> <span class="use-case use-cause">formal result</span> <span class="use-case use-summary">essay writing</span> — "The policy was poorly planned. <strong>Consequently</strong>, it failed."</div>
+    <div class="example-line"><strong style="color:#f87171">owing to / due to</strong> <span class="use-case use-cause">formal cause</span> — "<strong>Owing to</strong> the weather, flights were cancelled."</div>
+    <div class="example-line"><strong style="color:#60a5fa">provided that / unless</strong> <span class="use-case use-condition">condition</span> — "We'll proceed, <strong>provided that</strong> everyone agrees."</div>
+    <div class="example-line"><strong style="color:#a855f7">in order to / so as to</strong> <span class="use-case use-purpose">purpose</span> — "She moved to Spain <strong>in order to</strong> study art."</div>
+    <div class="example-line"><strong style="color:#fbbf24">as a result of which / thereby</strong> <span class="use-case use-cause">chain effect</span> <span class="use-case use-example">formal/academic</span> — "Investment increased, <strong>as a result of which</strong> employment rose."</div>
+    <div class="example-line"><strong style="color:#60a5fa">given that / seeing that</strong> <span class="use-case use-condition">context/assumption</span> — "<strong>Given that</strong> the deadline is tomorrow, we need to act now."</div>
+    <div class="example-line"><strong style="color:#c084fc">in that case / under those circumstances</strong> <span class="use-case use-condition">responding to situation</span> — "If that's true, <strong>in that case</strong> we should reconsider."</div>
+  </div>
+</section>
+
+<!-- SLIDE 2: PHRASES WITH MULTIPLE USE CASES -->
+<section class="slide" data-slide="2">
+  <div class="card glass">
+    <div class="part-badge">Key Phrases <span class="level-badge">C1</span></div>
+    <h2 class="glow-text">Phrases That Do More Than One Job</h2>
+    
+    <p style="font-size:.9rem;margin-bottom:12px"><strong>provided that / unless</strong> <span class="use-case use-condition">condition</span> <span class="use-case use-example">negotiation</span></p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:6px">"I'll accept the offer, <strong>provided that</strong> there's flexible working." — setting a condition</p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:16px">"<strong>Unless</strong> we hear from you by Friday, we'll assume you're not interested." — warning/signaling urgency</p>
+
+    <p style="font-size:.9rem;margin-bottom:12px"><strong>therefore / consequently</strong> <span class="use-case use-cause">formal result</span> <span class="use-case use-example">essay structure</span></p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:6px">"The data was incomplete. <strong>Therefore</strong>, no firm conclusions could be drawn." — academic writing</p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:16px">"He had no experience. <strong>Consequently</strong>, he was rejected." — formal cause-effect</p>
+
+    <p style="font-size:.9rem;margin-bottom:12px"><strong>given that / seeing that</strong> <span class="use-case use-condition">setting context</span> <span class="use-case use-concession">acknowledging reality</span></p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:6px">"<strong>Given that</strong> the economy is struggling, spending more seems unwise." — context-driven argument</p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:16px">"<strong>Seeing that</strong> you've already finished, perhaps you could help me?" — acknowledging what's already true</p>
+
+    <p style="font-size:.9rem;margin-bottom:12px"><strong>thereby / as a result of which</strong> <span class="use-case use-cause">chain of effects</span> <span class="use-case use-example">formal/academic only</span></p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:6px">"The company cut costs, <strong>thereby</strong> increasing profits." — direct consequence</p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:16px">"Technology improved, <strong>as a result of which</strong> productivity soared." — formal cause-effect chain</p>
+  </div>
+</section>
+
+<!-- SLIDE 3: SPEAKING PRACTICE - DISCUSSING A COMPLEX ISSUE -->
+<section class="slide" data-slide="3">
+  <div class="card glass">
+    <div class="part-badge">Speaking Practice <span class="level-badge">C1</span></div>
+    <h2 class="glow-text">Scene 1: Panel Discussion — Climate Policy</h2>
+    <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">You're part of a panel discussing environmental policy. Use cause-effect and condition language to build a sophisticated argument with multiple layers.</p>
+    
+    <div class="question">• What do you think is the single biggest cause of climate change, and what should be done about it?</div>
+    <button class="reveal-btn">Show model answer</button>
+    <div class="hidden-answer">I would argue that over-reliance on fossil fuels is the primary driver. <strong>Given that</strong> energy demand continues to rise, we need to invest in renewables urgently. If we don't act now, the effects will be irreversible. <strong>Consequently</strong>, governments that fail to transition <strong>not only</strong> harm the environment <strong>but also</strong> damage their own economies in the long term. <strong>Provided that</strong> there is international cooperation, I believe progress is still possible.</div>
+
+    <div class="question">• Some people say individual action doesn't matter — only government policy can fix this. What do you think?</div>
+    <button class="reveal-btn">Show model answer</button>
+    <div class="hidden-answer">I see both sides. <strong>Owing to</strong> the scale of the problem, it's true that individual actions alone won't suffice. That said, I think systemic change often starts with public pressure. <strong>When</strong> individuals adopt sustainable habits, <strong>as a result</strong> politicians face pressure to act. So the two are connected. <strong>Unless</strong> both happen simultaneously, <strong>however</strong>, I doubt we'll see meaningful change in time.</div>
+
+    <div style="margin-top:18px"><strong style="color:var(--cs-accent)">Useful linking words for this scene:</strong><br>
+    <span class="phrase-chip">Given that...</span><span class="phrase-chip">Consequently...</span><span class="phrase-chip">Provided that...</span><span class="phrase-chip">Owing to...</span><span class="phrase-chip">Unless...</span><span class="phrase-chip">When...</span><span class="phrase-chip">as a result...</span>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: SPEAKING PRACTICE - ACADEMIC PRESENTATION -->
+<section class="slide" data-slide="4">
+  <div class="card glass">
+    <div class="part-badge">Speaking Practice <span class="level-badge">C1</span></div>
+    <h2 class="glow-text">Scene 2: Academic Presentation</h2>
+    <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">You're giving a short presentation on a topic you know well (technology, education, economics). Use formal linking words to structure your argument and show complex cause-and-effect relationships.</p>
+    
+    <div class="question">• Introduce your topic and explain why it matters.</div>
+    <button class="reveal-btn">Show model answer</button>
+    <div class="hidden-answer">Today I'd like to discuss the impact of artificial intelligence on employment. <strong>Given that</strong> AI adoption is accelerating across industries, this question is more urgent than ever. Rather than making people redundant, <strong>I would argue that</strong> AI is transforming the nature of work. <strong>However</strong>, this transformation comes with significant challenges, <strong>notably</strong> the need for workers to adapt their skills.</div>
+
+    <div style="margin-top:18px"><strong style="color:var(--cs-accent)">Useful linking words for this scene:</strong><br>
+    <span class="phrase-chip">Given that...</span><span class="phrase-chip">I would argue that...</span><span class="phrase-chip">However...</span><span class="phrase-chip">notably</span><span class="phrase-chip">thereby</span>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: SPEAKING PRACTICE - NEGOTIATION -->
+<section class="slide" data-slide="5">
+  <div class="card glass">
+    <div class="part-badge">Speaking Practice <span class="level-badge">C1</span></div>
+    <h2 class="glow-text">Scene 3: A Negotiation</h2>
+    <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">You're negotiating a contract, a salary, or a business deal. Use precise linking language to set conditions, indicate consequences, and explore options professionally.</p>
+    
+    <div class="question">• You want a higher salary. Explain what would need to change for you to accept the offer.</div>
+    <button class="reveal-btn">Show model answer</button>
+    <div class="hidden-answer">Thank you for the offer. Before I accept, I'd like to discuss the terms. I'm very interested in the role. <strong>However</strong>, the salary is below what I expected. <strong>Provided that</strong> we could agree on a higher figure, I would be happy to accept. <strong>Additionally</strong>, I'd like to discuss the possibility of flexible working. <strong>Under those circumstances</strong>, I think we could reach an agreement quite quickly.</div>
+
+    <div style="margin-top:18px"><strong style="color:var(--cs-accent)">Useful linking words for this scene:</strong><br>
+    <span class="phrase-chip">However...</span><span class="phrase-chip">Provided that...</span><span class="phrase-chip">Additionally...</span><span class="phrase-chip">Under those circumstances...</span><span class="phrase-chip">Unless...</span>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: HOMEWORK -->
+<section class="slide" data-slide="6">
+  <div class="card glass">
+    <div class="part-badge">Practice &amp; Homework <span class="level-badge">C1</span></div>
+    <h2 class="glow-text">Your Turn</h2>
+    
+    <div class="question">Writing task</div>
+    <p>Write a formal essay (200-250 words): "To what extent is social media responsible for the rise in mental health problems among young people?" Use cause-effect, condition, and concession language throughout.</p>
+    
+    <div class="question" style="margin-top:14px">Speaking task</div>
+    <p>Record yourself for 3 minutes giving an opinion on a complex topic of your choice (AI, climate, education reform). Try to use at least 6 different C1 linking words naturally.</p>
+    
+    <div class="question" style="margin-top:14px">Reading task</div>
+    <p>Read an opinion piece from The Economist or The Guardian. Highlight every linking word. Which ones appear most often? Which are new to you? Add 5 new ones to your vocabulary log.</p>    
+    <div style="margin-top:24px;padding:18px;border-radius:12px;background:rgba(0,0,0,.3);border:1px solid var(--cs-border)">
+      <h4 style="color:var(--cs-accent);font-size:.85rem;margin-bottom:12px">🎙️ Voice Recorder</h4>
+      <p style="font-size:.8rem;color:var(--cs-text-muted);margin-bottom:12px">Record yourself practising linking words. Play it back to hear your fluency.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
+        <button id="recBtn" onclick="VF_Rec.toggle()" style="font-family:'Space Grotesk';font-size:.75rem;font-weight:700;padding:8px 16px;border-radius:8px;border:1px solid var(--cs-accent);background:transparent;color:var(--cs-accent);cursor:pointer;transition:all .15s">🎤 Connect Mic</button>
+        <button id="recPlayBtn" onclick="VF_Rec.play()" disabled style="font-family:'Space Grotesk';font-size:.75rem;font-weight:700;padding:8px 14px;border-radius:8px;border:1px solid var(--cs-border);background:transparent;color:var(--cs-text-muted);cursor:pointer">▶ Play</button>
+        <button id="recSaveBtn" onclick="VF_Rec.save()" disabled style="font-family:'Space Grotesk';font-size:.75rem;font-weight:700;padding:8px 14px;border-radius:8px;border:1px solid var(--cs-border);background:transparent;color:var(--cs-text-muted);cursor:pointer">💾 Save MP3</button>
+        <select id="recFormat" onchange="VF_Rec.setFormat(this.value)" style="background:var(--cs-bg-card);border:1px solid var(--cs-border);color:var(--cs-text);border-radius:6px;padding:6px 10px;font-size:.75rem;font-family:'Space Grotesk';cursor:pointer">
+          <option value="328">MP3 328kbps</option>
+          <option value="192">MP3 192kbps</option>
+          <option value="128">MP3 128kbps</option>
+        </select>
+      </div>
+      <div id="recStatus" style="font-size:.75rem;color:var(--cs-text-muted);min-height:18px"></div>
+      <audio id="recPlayer" controls style="width:100%;margin-top:8px;display:none;border-radius:8px"></audio>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<div class="nav-btns">
+  <button onclick="prev()" id="prevBtn">← Back</button>
+  <span class="timer" id="slideCounter">1 / 7</span>
+  <button onclick="next()" id="nextBtn">Next →</button>
+</div>
+
+      var player=document.getElementById('recPlayer');
+      player.src=url;player.style.display='block';player.play();
+    },
+    save:function(){
+      if(!recordedBlob)return;
+      var url=URL.createObjectURL(recordedBlob);
+      var a=document.createElement('a');
+      a.href=url;a.download='linking-words-practice-'+formatBitrate+'kbps.mp3'
+<script>
+
+var VF_Rec=(function(){
+  var mediaRecorder,chunks=[],stream=null,recordedBlob=null,formatBitrate=328;
+  function status(msg){var el=document.getElementById('recStatus');if(el)el.textContent=msg;}
+  return {
+    toggle:function(){
+      if(stream){stopRecording();}else{startRecording();}
+    },
+    setFormat:function(v){formatBitrate=parseInt(v);status('Format: MP3 '+formatBitrate+'kbps');},
+    play:function(){
+      if(!recordedBlob)return;
+      var url=URL.createObjectURL(recordedBlob);
+      var player=document.getElementById('recPlayer');
+      player.src=url;player.style.display='block';player.play();
+    },
+    save:function(){
+      if(!recordedBlob)return;
+      var url=URL.createObjectURL(recordedBlob);
+      var a=document.createElement('a');
+      a.href=url;a.download='linking-words-practice-'+formatBitrate+'kbps.mp3';
+      document.body.appendChild(a);a.click();a.remove();
+      status('Saved! Check your Downloads folder.');
+    }
+  };
+  function startRecording(){
+    navigator.mediaDevices.getUserMedia({audio:true}).then(function(s){
+      stream=s;
+      chunks=[];
+      var mime=MediaRecorder.isTypeSupported('audio/mpeg')?'audio/mpeg':'audio/webm';
+      mediaRecorder=new MediaRecorder(stream,{mimeType:mime,audioBitsPerSecond:formatBitrate*1000});
+      mediaRecorder.ondataavailable=function(e){if(e.data.size>0)chunks.push(e.data);};
+      mediaRecorder.onstop=function(){
+        recordedBlob=new Blob(chunks,{type:mime});
+        document.getElementById('recPlayBtn').disabled=false;
+        document.getElementById('recSaveBtn').disabled=false;
+        document.getElementById('recPlayer').style.display='block';
+        document.getElementById('recPlayer').src=URL.createObjectURL(recordedBlob);
+        status('Recording saved. Play it back or download.');
+      };
+      mediaRecorder.start();
+      document.getElementById('recBtn').textContent='⏹ Stop Recording';
+      document.getElementById('recBtn').style.background='var(--cs-accent)';
+      document.getElementById('recBtn').style.color='var(--cs-bg)';
+      status('Recording... Speak now! Click Stop when done.');
+    }).catch(function(err){
+      status('Mic access denied. Please allow microphone access and try again.');
+    });
+  }
+  function stopRecording(){
+    if(mediaRecorder&&mediaRecorder.state!=='inactive'){mediaRecorder.stop();}
+    if(stream){stream.getTracks().forEach(function(t){t.stop();});}
+    stream=null;
+    document.getElementById('recBtn').textContent='🎤 Connect Mic';
+    document.getElementById('recBtn').style.background='transparent';
+    document.getElementById('recBtn').style.color='var(--cs-accent)';
+  }
+})();
+
+var THEME_ORDER=['sunset','eloquent','wte','midnight','forest','light'];
+var THEMES={
+  sunset:{accent:'#fb923c',bg:'#1a0f0a',text:'#fed7aa',card:'#2d1a10',border:'#4a2a1a'},
+  eloquent:{accent:'#22d3ee',bg:'#0a0e1a',text:'#e0f2fe',card:'#111827',border:'#1e3a5f'},
+  wte:{accent:'#a3e635',bg:'#1c1c1c',text:'#e8e8f0',card:'#232323',border:'#3a3a3a'},
+  midnight:{accent:'#818cf8',bg:'#0f0f23',text:'#c7d2fe',card:'#1a1a3e',border:'#2e2e5e'},
+  forest:{accent:'#4ade80',bg:'#0a1a0f',text:'#bbf7d0',card:'#162418',border:'#2a4a2a'},
+  light:{accent:'#2563eb',bg:'#f0f7ff',text:'#1e293b',card:'#e8f4fd',border:'#c2d9f0'}
+};
+function applyTheme(name){
+  var t=THEMES[name]; if(!t) return;
+  var r=document.documentElement;
+  r.style.setProperty('--cs-accent',t.accent);
+  r.style.setProperty('--cs-bg',t.bg);
+  r.style.setProperty('--cs-text',t.text);
+  r.style.setProperty('--cs-bg-card',t.card);
+  r.style.setProperty('--cs-border',t.border);
+  r.style.setProperty('--cs-text-muted',t.text+'99');
+  r.style.setProperty('--cs-accent-glow',t.accent+'33');
+  r.style.setProperty('--cs-accent-dim',t.accent+'18');
+  document.getElementById('themeDot').style.background=t.accent;
+  try{localStorage.setItem('eloquent-theme',name);}catch(e){}
+}
+document.getElementById('themeCycleBtn').addEventListener('click',function(){
+  var saved=localStorage.getItem('eloquent-theme')||'sunset';
+  var idx=THEME_ORDER.indexOf(saved);
+  applyTheme(THEME_ORDER[(idx+1)%THEME_ORDER.length]);
+});
+applyTheme(localStorage.getItem('eloquent-theme')||'sunset');
+
+var current=0, slides=Array.from(document.querySelectorAll('.slide'));
+function goTo(n){
+  if(n<0||n>=slides.length) return;
+  slides[current].classList.remove('active');
+  current=n;
+  slides[current].classList.add('active');
+  document.getElementById('slideCounter').textContent=(current+1)+' / '+slides.length;
+  document.getElementById('progressFill').style.width=((current+1)/slides.length*100)+'%';
+  document.getElementById('prevBtn').disabled=current===0;
+  document.getElementById('nextBtn').disabled=current===slides.length-1;
+  try{
+    var progress=JSON.parse(localStorage.getItem('fce-progress')||'{}');
+    progress['linking-c1']=current;
+    localStorage.setItem('fce-progress',JSON.stringify(progress));
+  }catch(e){}
+}
+function next(){goTo(current+1);}
+function prev(){goTo(current-1);}
+document.addEventListener('click',function(e){
+  var btn=e.target.closest('.reveal-btn');
+  if(btn){
+    var ans=btn.parentElement.querySelector('.hidden-answer');
+    if(ans){ ans.classList.toggle('open'); btn.textContent=ans.classList.contains('open')?'Hide answer':'Show answer'; }
+  }
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); next(); }
+  if(e.key==='ArrowLeft'){ e.preventDefault(); prev(); }
+});
+(function(){
+  try{
+    var progress=JSON.parse(localStorage.getItem('fce-progress')||'{}');
+    var saved=progress['linking-c1'];
+    if(typeof saved==='number' && saved>=0) goTo(saved);
+  }catch(e){}
+})();
+(function(){
+  var bgImages=[];
+  document.querySelectorAll('.slide').forEach(function(s){
+    var style=s.getAttribute('style')||'';
+    var m=style.match(/background-image:\s*url\(([^)]+)\)/);
+    if(m) bgImages.push(m[1].replace(/["']/g,''));
+  });
+  if(!bgImages.length){ document.getElementById('loadingScreen').classList.add('hidden'); document.getElementById('slides').classList.remove('hidden'); return; }
+  var loaded=0;
+  bgImages.forEach(function(src){
+    var img=new Image();
+    img.onload=img.onerror=function(){
+      loaded++;
+      if(loaded===bgImages.length){
+        document.getElementById('loadingScreen').classList.add('hidden');
+        document.getElementById('slides').classList.remove('hidden');
+      }
+    };
+    img.src=src;
+  });
+})();
+</script>
+</body>
+</html>
