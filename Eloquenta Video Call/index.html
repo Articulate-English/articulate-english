@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.socket.io https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' ws: wss:; media-src 'self' blob:; object-src 'none'; frame-ancestors 'none'">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Eloquenta Video Call</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cs-accent:#22d3ee;--cs-bg:#0a0e1a;--cs-bg2:#111827;--cs-bg3:#1e293b;--cs-bg4:#1e293b;
+  --cs-text:#e0f2fe;--cs-text-muted:#94a3b8;--cs-text-dim:#64748b;
+  --cs-border:#1e3a5f;--cs-border-light:#2a4a7f;
+  --cs-accent-glow:rgba(34,211,238,.3);--cs-accent-dim:rgba(34,211,238,.12);
+  --cs-green:#34d399;--cs-rose:#fb7185;--cs-amber:#fbbf24;--cs-violet:#a78bfa;
+  --cs-card:#111827;--cs-nav:rgba(10,14,26,.92);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px}
+body{font-family:'Share Tech Mono',monospace;background:var(--cs-bg);color:var(--cs-text);height:100vh;overflow:hidden;position:relative}
+button{font-family:inherit}
+
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0}
+.star{position:absolute;background:#fff;border-radius:50%;animation:twinkle var(--dur) ease-in-out infinite;opacity:var(--op)}
+@keyframes twinkle{0%,100%{opacity:var(--op)}50%{opacity:.1}}
+
+.call-layout{display:flex;flex-direction:column;height:100vh;position:relative;z-index:1}
+
+.topbar{display:flex;align-items:center;gap:12px;padding:10px 20px;background:var(--cs-nav);backdrop-filter:blur(8px);border-bottom:1px solid var(--cs-border);flex-shrink:0}
+.logo{font-family:'Orbitron',sans-serif;font-size:14px;font-weight:900;color:var(--cs-accent);letter-spacing:2px;white-space:nowrap}
+.logo span{color:var(--cs-text)}
+.topbar-btn{height:32px;padding:0 12px;border-radius:6px;border:1px solid var(--cs-border);background:var(--cs-bg3);color:var(--cs-text-muted);font-size:10px;font-weight:600;cursor:pointer;transition:all .15s;white-space:nowrap;font-family:'Orbitron',sans-serif;display:flex;align-items:center;gap:6px}
+.topbar-btn:hover{border-color:var(--cs-accent);color:var(--cs-accent)}
+.topbar-icon{width:14px;height:14px;flex-shrink:0}
+
+.main-area{flex:1;display:flex;overflow:hidden}
+
+.video-panel{flex:1;display:flex;flex-direction:column;padding:16px;gap:12px;overflow:hidden}
+.video-grid{flex:1;position:relative;display:grid;grid-template-columns:1fr;gap:0;min-height:0}
+.video-box{position:absolute;inset:0;background:var(--cs-bg2);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.video-box video{width:100%;height:100%;object-fit:cover}
+.video-box.local{position:absolute;bottom:90px;right:16px;width:180px;height:135px;z-index:10;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.video-box.local video{transform:scaleX(-1)}
+.video-label{position:absolute;bottom:8px;left:8px;padding:4px 10px;border-radius:6px;background:rgba(10,14,26,.7);backdrop-filter:blur(4px);font-size:10px;font-weight:700;color:var(--cs-text-muted);font-family:'Orbitron',sans-serif}
+.video-label .status-dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:4px}
+.video-label .status-dot.active{background:var(--cs-green);box-shadow:0 0 6px var(--cs-green)}
+.video-label .status-dot.inactive{background:var(--cs-text-dim)}
+.video-placeholder{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--cs-text-dim)}
+.placeholder-icon{width:48px;height:48px;opacity:.3}
+.video-placeholder .text{font-size:11px}
+.video-box.connecting{border-color:var(--cs-amber)}
+.video-box.connected{border-color:var(--cs-green);box-shadow:0 0 20px rgba(52,211,153,.1)}
+
+.timer-overlay{position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:20;display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 16px;border-radius:12px;background:rgba(10,14,26,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.1);opacity:0;transition:opacity .3s;pointer-events:none}
+.timer-overlay.show{opacity:1}
+.timer-overlay:hover{opacity:1}
+.timer-overlay .call-timer{font-size:24px;min-width:0}
+.timer-meter{width:140px;height:4px;background:rgba(255,255,255,.15);border-radius:2px;overflow:hidden}
+.timer-meter-fill{height:100%;background:var(--cs-accent);border-radius:2px;transition:width .5s linear}
+.video-panel:hover .timer-overlay,.timer-overlay.show{opacity:1}
+
+.controls-bar{display:flex;align-items:center;justify-content:center;gap:12px;padding:16px;background:var(--cs-bg2);border:1px solid var(--cs-border);border-radius:12px;flex-shrink:0}
+.ctrl-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:12px 18px;border-radius:10px;border:1px solid var(--cs-border);background:var(--cs-bg3);color:var(--cs-text-muted);cursor:pointer;transition:all .2s;min-width:68px}
+.ctrl-btn:hover{border-color:var(--cs-accent);color:var(--cs-accent);box-shadow:0 0 16px rgba(34,211,238,.15);transform:translateY(-1px)}
+.ctrl-btn.active{background:rgba(34,211,238,.08);border-color:var(--cs-accent);color:var(--cs-accent);box-shadow:0 0 12px rgba(34,211,238,.1)}
+.ctrl-btn.active .ctrl-icon{stroke:var(--cs-accent)}
+.ctrl-btn.danger{border-color:var(--cs-rose);color:var(--cs-rose)}
+.ctrl-btn.danger:hover{background:rgba(251,113,133,.12);box-shadow:0 0 16px rgba(251,113,133,.25);transform:translateY(-1px)}
+.ctrl-btn.danger .ctrl-icon{stroke:var(--cs-rose)}
+.ctrl-btn.large{padding:14px 22px;min-width:76px}
+.ctrl-icon{width:22px;height:22px;flex-shrink:0}
+.ctrl-label{font-family:'Orbitron',sans-serif;font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+.call-timer{font-family:'Orbitron',sans-serif;font-size:36px;font-weight:700;color:var(--cs-text-dim);min-width:120px;text-align:center;letter-spacing:2px;line-height:1}
+.call-timer.active{color:var(--cs-green)}
+.call-timer.warning{color:var(--cs-amber);text-shadow:0 0 12px rgba(251,191,36,.4)}
+.call-timer.danger{color:var(--cs-rose);text-shadow:0 0 20px rgba(251,113,133,.6);animation:timerThrob 1s ease-in-out infinite}
+@keyframes timerThrob{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.08)}}
+
+.sidebar{width:280px;flex-shrink:0;background:var(--cs-bg2);border-left:1px solid var(--cs-border);display:flex;flex-direction:column;transition:width .3s,opacity .3s}
+.sidebar.minimized{width:0;opacity:0;overflow:hidden;border-left:none}
+.sidebar-header{padding:12px 16px;border-bottom:1px solid var(--cs-border);display:flex;align-items:center;justify-content:space-between}
+.sidebar-title{font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;color:var(--cs-text-muted);text-transform:uppercase;letter-spacing:1px}
+.sidebar-toggle{display:none;background:none;border:none;color:var(--cs-text-muted);cursor:pointer;font-size:16px}
+.chat-messages{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.chat-msg{max-width:85%;padding:8px 12px;border-radius:10px;font-size:12px;line-height:1.5}
+.chat-msg.self{background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.2);align-self:flex-end;color:var(--cs-text)}
+.chat-msg.other{background:var(--cs-bg3);border:1px solid var(--cs-border);align-self:flex-start;color:var(--cs-text-muted)}
+.chat-msg .sender{font-family:'Orbitron',sans-serif;font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.chat-msg.self .sender{color:var(--cs-accent)}
+.chat-msg.other .sender{color:var(--cs-violet)}
+.chat-msg .time{font-size:9px;color:var(--cs-text-dim);margin-top:4px;text-align:right}
+.chat-system{text-align:center;font-size:10px;color:var(--cs-text-dim);padding:4px}
+.chat-input-area{padding:12px;border-top:1px solid var(--cs-border);display:flex;gap:8px}
+.chat-input{flex:1;height:36px;padding:0 12px;border-radius:8px;border:1px solid var(--cs-border);background:var(--cs-bg);color:var(--cs-text);font-size:12px;outline:none;font-family:inherit}
+.chat-input:focus{border-color:var(--cs-accent)}
+.chat-send{height:36px;padding:0 14px;border-radius:8px;border:1px solid var(--cs-accent);background:var(--cs-accent);color:var(--cs-bg);font-size:11px;font-weight:700;cursor:pointer;font-family:'Orbitron',sans-serif;transition:all .15s}
+.chat-send:hover{filter:brightness(1.1);box-shadow:0 0 12px rgba(34,211,238,.3)}
+
+.setup-screen{position:fixed;inset:0;z-index:50;background:var(--cs-bg);display:flex;align-items:center;justify-content:center}
+.setup-screen.hidden{display:none}
+.setup-box{width:420px;max-width:90vw;background:var(--cs-bg2);border:1px solid var(--cs-border);border-radius:16px;padding:32px;text-align:center}
+.setup-box h1{font-family:'Orbitron',sans-serif;font-size:1.4rem;font-weight:900;margin-bottom:8px}
+.setup-box h1 span{color:var(--cs-accent)}
+.setup-box .subtitle{font-size:13px;color:var(--cs-text-muted);margin-bottom:24px}
+.setup-preview{width:100%;aspect-ratio:16/9;background:var(--cs-bg3);border:1px solid var(--cs-border);border-radius:12px;margin-bottom:20px;overflow:hidden;position:relative}
+.setup-preview video{width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
+.setup-preview .no-video{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--cs-text-dim);font-size:12px}
+.setup-controls{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
+.setup-btn{display:flex;align-items:center;gap:8px;height:40px;padding:0 20px;border-radius:10px;border:1px solid var(--cs-border);background:var(--cs-bg3);color:var(--cs-text-muted);font-size:11px;font-weight:600;cursor:pointer;font-family:'Orbitron',sans-serif;transition:all .15s}
+.setup-icon{width:18px;height:18px;flex-shrink:0}
+.setup-btn:hover{border-color:var(--cs-accent);color:var(--cs-accent)}
+.setup-btn.active{background:rgba(34,211,238,.1);border-color:var(--cs-accent);color:var(--cs-accent)}
+.setup-btn.danger{border-color:var(--cs-rose);color:var(--cs-rose)}
+.setup-btn.danger:hover{background:rgba(251,113,133,.1)}
+.join-btn{width:100%;height:44px;border-radius:10px;border:1px solid var(--cs-green);background:var(--cs-green);color:var(--cs-bg);font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .15s}
+.join-btn:hover{filter:brightness(1.1);box-shadow:0 0 20px rgba(52,211,153,.3)}
+.join-btn:disabled{opacity:.4;cursor:not-allowed}
+
+@media(max-width:700px){
+  .sidebar{position:fixed;right:0;top:0;bottom:0;z-index:40;transform:translateX(100%);transition:transform .3s,width .3s,opacity .3s}
+  .sidebar.open{transform:translateX(0)}
+  .sidebar.minimized{transform:translateX(100%);width:280px;opacity:1}
+  .sidebar-toggle{display:block}
+  .chat-toggle-btn{display:flex}
+  .video-grid{grid-template-columns:1fr}
+  .video-box.local{bottom:120px;right:12px;width:120px;height:90px;border-radius:8px}
+  .timer-overlay{padding:6px 10px}
+  .timer-overlay .call-timer{font-size:18px}
+  .timer-meter{width:100px}
+  .ctrl-btn#inviteBtn{display:none}
+}
+
+.device-check{position:fixed;inset:0;z-index:200;background:var(--cs-bg);display:none;align-items:center;justify-content:center;overflow-y:auto;padding:20px}
+.device-check.active{display:flex}
+.device-check-box{width:560px;max-width:100%;background:var(--cs-bg4);border:1px solid var(--cs-border);border-radius:16px;padding:28px}
+.device-check-box h2{font-family:'Orbitron',sans-serif;font-size:16px;font-weight:700;color:var(--cs-accent);margin-bottom:4px}
+.device-check-box .dc-subtitle{font-size:12px;color:var(--cs-text-muted);margin-bottom:20px}
+.dev-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--cs-border)}
+.dev-row:last-child{border-bottom:none}
+.dev-icon{width:32px;text-align:center;font-size:18px}
+.dev-info{flex:1}
+.dev-label{font-family:'Orbitron',sans-serif;font-size:10px;color:var(--cs-text-dim);text-transform:uppercase;letter-spacing:1px}
+.dev-name{font-size:12px;color:var(--cs-text);margin-top:2px}
+.dev-status{font-size:11px;font-weight:600;font-family:'Orbitron',sans-serif}
+.dev-status.ok{color:var(--cs-green)}
+.dev-status.fail{color:var(--cs-rose)}
+.dev-status.warn{color:var(--cs-amber)}
+.dev-select{flex:1;max-width:240px;height:30px;padding:0 8px;border-radius:6px;border:1px solid var(--cs-border);background:var(--cs-bg);color:var(--cs-text);font-size:11px;outline:none;font-family:'Orbitron',sans-serif}
+.dev-select:focus{border-color:var(--cs-accent)}
+.dev-meter{height:3px;background:var(--cs-bg);border-radius:2px;overflow:hidden;margin-top:4px}
+.dev-meter-fill{height:100%;background:var(--cs-accent);border-radius:2px;transition:width .1s;width:0%}
+.device-preview{width:100%;height:180px;background:var(--cs-bg2);border-radius:8px;margin:12px 0;overflow:hidden;position:relative}
+.device-preview video{width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
+.device-preview .placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--cs-text-dim);font-size:11px;font-family:'Orbitron',sans-serif}
+.dc-actions{display:flex;gap:10px;margin-top:16px;justify-content:flex-end}
+.dc-btn{height:36px;padding:0 16px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Orbitron',sans-serif;transition:all .15s}
+.dc-btn.primary{background:var(--cs-accent);color:var(--cs-bg);border:1px solid var(--cs-accent)}
+.dc-btn.primary:hover{filter:brightness(1.1)}
+.dc-btn.primary:disabled{opacity:.5;cursor:not-allowed;filter:none}
+.dc-btn.secondary{background:transparent;color:var(--cs-text-muted);border:1px solid var(--cs-border)}
+.dc-btn.secondary:hover{border-color:var(--cs-text-muted)}
+.dc-skip{font-size:10px;color:var(--cs-text-dim);cursor:pointer;text-decoration:underline;margin-top:8px;display:inline-block}
+.dc-skip:hover{color:var(--cs-text-muted)}
+
+.invite-modal{position:fixed;inset:0;z-index:150;background:rgba(10,14,26,.9);display:none;align-items:center;justify-content:center}
+.invite-modal.active{display:flex}
+.invite-box{width:420px;max-width:90vw;background:var(--cs-bg2);border:1px solid var(--cs-border);border-radius:16px;padding:28px;text-align:center}
+.invite-box h2{font-family:'Orbitron',sans-serif;font-size:18px;font-weight:900;color:var(--cs-text);margin-bottom:6px}
+.invite-box h2 span{color:var(--cs-accent)}
+.invite-box .subtitle{font-size:12px;color:var(--cs-text-muted);margin-bottom:20px}
+.invite-grid{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.invite-grid button{flex:1;min-width:120px;padding:12px;border-radius:8px;border:1px solid var(--cs-border);background:transparent;color:var(--cs-text);font-size:12px;font-weight:600;cursor:pointer;font-family:'Orbitron',sans-serif;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .15s}
+.invite-grid button:hover{border-color:var(--cs-accent);color:var(--cs-accent)}
+
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--cs-bg3);border:1px solid var(--cs-border);color:var(--cs-text);padding:10px 16px;border-radius:10px;font-size:12px;z-index:999;font-family:'Orbitron',sans-serif}
+
+.http-warning{position:fixed;inset:0;z-index:300;background:var(--cs-bg);display:none;align-items:center;justify-content:center;padding:20px}
+.http-warning.active{display:flex}
+.http-warning-box{width:480px;max-width:90vw;background:var(--cs-bg2);border:1px solid var(--cs-rose);border-radius:16px;padding:32px;text-align:center}
+.http-warning-box h2{font-family:'Orbitron',sans-serif;color:var(--cs-rose);margin-bottom:12px}
+.http-warning-box p{font-size:13px;color:var(--cs-text-muted);line-height:1.6;margin-bottom:20px}
+</style>
+</head>
+<body class="cs-eloquent" data-cs-mode="dark">
+
+<div class="stars" id="stars"></div>
+
+<div class="http-warning" id="httpWarning">
+  <div class="http-warning-box">
+    <h2>Secure Connection Required</h2>
+    <p>Camera and microphone access require HTTPS or localhost. Please serve this page over HTTPS, or open it via <code>http://localhost:3000</code> / <code>127.0.0.1</code> for local testing.</p>
+    <button class="dc-btn primary" onclick="document.getElementById('httpWarning').classList.remove('active')">Continue anyway</button>
+  </div>
+</div>
+
+<div class="setup-screen" id="setupScreen">
+  <div class="setup-box">
+    <h1>ELOQUENT<span>A</span></h1>
+    <p class="subtitle">Video Classroom — Peer to Peer</p>
+
+    <div class="setup-preview" id="setupPreview">
+      <video id="previewVideo" autoplay muted playsinline></video>
+      <div class="no-video" id="noVideoMsg">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cs-text-dim);opacity:.4"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <div>Camera off</div>
+      </div>
+    </div>
+
+    <div class="setup-controls">
+      <button class="setup-btn active" id="camBtn" onclick="toggleCamera()">
+        <svg class="setup-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        Camera
+      </button>
+      <button class="setup-btn active" id="micBtn" onclick="toggleMic()">
+        <svg class="setup-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        Microphone
+      </button>
+    </div>
+
+    <button class="join-btn" id="joinBtn" onclick="startSessionFlow()">Start Classroom</button>
+  </div>
+</div>
+
+<div class="device-check" id="deviceCheck">
+  <div class="device-check-box">
+    <h2>Test Your Devices</h2>
+    <div class="dc-subtitle">Make sure your camera, microphone, and speakers are working before joining.</div>
+    <div class="dev-row">
+      <div class="dev-icon">&#128247;</div>
+      <div class="dev-info">
+        <div class="dev-label">Camera</div>
+        <div class="dev-name" id="devCamName">Detecting...</div>
+      </div>
+      <select class="dev-select" id="devCamSelect" onchange="devChangeCamera()"></select>
+      <div class="dev-status" id="devCamStatus">...</div>
+    </div>
+    <div class="dev-row">
+      <div class="dev-icon">&#127908;</div>
+      <div class="dev-info">
+        <div class="dev-label">Microphone</div>
+        <div class="dev-name" id="devMicName">Detecting...</div>
+        <div class="dev-meter"><div class="dev-meter-fill" id="devMicMeter"></div></div>
+      </div>
+      <select class="dev-select" id="devMicSelect" onchange="devChangeMic()"></select>
+      <div class="dev-status" id="devMicStatus">...</div>
+    </div>
+    <div class="dev-row">
+      <div class="dev-icon">&#128264;</div>
+      <div class="dev-info">
+        <div class="dev-label">Speaker</div>
+        <div class="dev-name" id="devSpkName">Detecting...</div>
+      </div>
+      <select class="dev-select" id="devSpkSelect" onchange="devChangeSpeaker()"></select>
+      <div class="dev-status" id="devSpkStatus">...</div>
+    </div>
+    <div class="device-preview">
+      <video id="devPreviewVideo" autoplay muted playsinline></video>
+      <div class="placeholder" id="devPreviewPlaceholder">Camera preview will appear here</div>
+    </div>
+    <div class="dc-actions">
+      <button class="dc-btn secondary" onclick="devSkip()">Skip and join anyway</button>
+      <button class="dc-btn primary" id="devJoinBtn" onclick="devJoin()" disabled>Join Classroom</button>
+    </div>
+    <a class="dc-skip" onclick="devTestSpeaker()">&#9654; Play test sound</a>
+    <div style="margin-top:12px;border-top:1px solid var(--cs-border);padding-top:12px;text-align:left">
+      <a class="dc-skip" onclick="devClose()">&#8592; Back to main</a>
+    </div>
+  </div>
+</div>
+
+<div class="call-layout" id="callLayout" style="display:none">
+  <div class="topbar">
+    <div class="logo">ELOQUENT<span>A</span></div>
+    <div id="connQuality" style="font-family:'Orbitron',sans-serif;font-size:10px;color:var(--cs-text-dim);padding:4px 10px;border:1px solid var(--cs-border);border-radius:6px;display:none">Quality: --</div>
+    <div style="flex:1"></div>
+    <button class="topbar-btn" id="themeCycleBtn" title="Change theme">
+      <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--cs-accent);box-shadow:0 0 6px var(--cs-accent);vertical-align:middle;margin-right:6px"></span>
+      <span id="themeName">Theme</span>
+    </button>
+    <button class="topbar-btn" onclick="openInvite()" title="Click to copy invite link">Invite</button>
+    <button class="topbar-btn danger" onclick="leaveCall()">
+      <svg class="topbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      Leave
+    </button>
+  </div>
+
+  <div class="main-area">
+    <div class="video-panel" id="videoPanel">
+      <div class="video-grid">
+        <div class="video-box local" id="localBox">
+          <video id="localVideo" autoplay muted playsinline></video>
+          <div class="video-label">
+            <span class="status-dot active"></span>
+            You
+          </div>
+        </div>
+        <div class="video-box" id="remoteBox">
+          <div class="video-placeholder" id="remotePlaceholder">
+            <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <div class="text">Waiting for peer...</div>
+          </div>
+          <video id="remoteVideo" autoplay playsinline style="display:none"></video>
+          <div class="video-label" id="remoteLabel" style="display:none">
+            <span class="status-dot inactive" id="remoteStatusDot"></span>
+            Peer
+          </div>
+        </div>
+        <div class="timer-overlay" id="timerOverlay">
+          <div class="call-timer" id="callTimer">00:00</div>
+          <div class="timer-meter">
+            <div class="timer-meter-fill" id="timerMeterFill" style="width:0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls-bar">
+        <button class="ctrl-btn active" id="callMicBtn" onclick="callToggleMic()" title="Toggle Microphone (Ctrl+D)">
+          <svg class="ctrl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          <span class="ctrl-label">MIC</span>
+        </button>
+        <button class="ctrl-btn active" id="callCamBtn" onclick="callToggleCam()" title="Toggle Camera">
+          <svg class="ctrl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <span class="ctrl-label">CAM</span>
+        </button>
+        <button class="ctrl-btn" id="screenShareBtn" onclick="toggleScreenShare()" title="Screen Share">
+          <svg class="ctrl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span class="ctrl-label">SCREEN</span>
+        </button>
+        <button class="ctrl-btn chat-toggle-btn" id="chatToggleBtn" onclick="toggleSidebar()" title="Toggle Chat">
+          <svg class="ctrl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span class="ctrl-label">CHAT</span>
+        </button>
+        <button class="ctrl-btn" id="inviteBtn" onclick="openInvite()" title="Invite">
+          <svg class="ctrl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          <span class="ctrl-label">INVITE</span>
+        </button>
+        <button class="ctrl-btn" id="whiteboardBtn" onclick="openWhiteboard()" title="Whiteboard">
+          <svg class="ctrl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span class="ctrl-label">BOARD</span>
+        </button>
+        <button class="ctrl-btn danger large" onclick="leaveCall()" title="Leave Call (Ctrl+E)">
+          <svg class="ctrl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"/></svg>
+          <span class="ctrl-label">END</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">Chat</div>
+        <button class="sidebar-toggle" onclick="toggleSidebar()">&#10005;</button>
+      </div>
+      <div class="chat-messages" id="chatMessages"></div>
+      <div class="chat-input-area">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Type a message..." onkeypress="if(event.key==='Enter')sendChat()">
+        <button class="chat-send" onclick="sendChat()">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="invite-modal" id="inviteModal">
+  <div class="invite-box">
+    <h2>Share <span>Classroom</span></h2>
+    <p class="subtitle">Send this invite through your preferred channel.</p>
+    <div class="invite-grid">
+      <button onclick="shareWhatsApp()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.205 5.077 4.497.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.363z"/></svg>
+        WhatsApp
+      </button>
+      <button onclick="shareTelegram()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        Telegram
+      </button>
+      <button onclick="shareSignal()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295l.213-3.053 5.56-5.023c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.83.94z"/></svg>
+        Signal
+      </button>
+      <button onclick="shareEmail()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </button>
+    </div>
+    <div style="display:flex;gap:8px;justify-content:center;margin-bottom:12px">
+      <button id="copyLinkBtn" onclick="copyInviteLink()" style="padding:8px 16px;border-radius:8px;border:1px solid var(--cs-border);background:var(--cs-bg3);color:var(--cs-text-muted);font-size:11px;font-weight:600;cursor:pointer;font-family:'Orbitron',sans-serif;position:relative">
+        Copy Link
+      </button>
+    </div>
+    <div style="text-align:right">
+      <button onclick="closeInvite()" style="padding:8px 16px;border-radius:8px;border:1px solid var(--cs-border);background:transparent;color:var(--cs-text-muted);font-size:12px;cursor:pointer;font-family:'Orbitron',sans-serif">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+<script>
+function initStars(){
+  var el=document.getElementById('stars');
+  for(var i=0;i<60;i++){
+    var s=document.createElement('div');s.className='star';
+    s.style.cssText='left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;width:'+(1+Math.random()*2)+'px;height:'+(1+Math.random()*2)+'px;--dur:'+(2+Math.random()*4)+'s;--op:'+(0.2+Math.random()*0.5);
+    el.appendChild(s);
+  }
+}
+initStars();
+
+var localStream=null,remoteStream=null;
+var sessionToken='';
+var myRole='initiator';
+var camOn=true,micOn=true;
+var callStartTime=null,timerInterval=null;
+var currentThemeIdx=0;
+
+var socket=null;
+var pc=null;
+var dataChannel=null;
+var statsInterval=null;
+
+var SESSION_DURATION=30*60;
+var sessionEndTime=null;
+
+// Detect non-secure context (file:// or remote HTTP)
+function checkSecureContext(){
+  try{
+    if(!window.isSecureContext){
+      document.getElementById('httpWarning').classList.add('active');
+    }
+  }catch(e){}
+}
+checkSecureContext();
+
+function getServerUrl(){
+  var loc=window.location;
+  return loc.protocol+'//'+loc.host;
+}
+
+function generateSessionToken(){
+  var chars='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789';
+  var t='';
+  for(var i=0;i<16;i++) t+=chars[Math.floor(Math.random()*chars.length)];
+  return t;
+}
+
+function getInviteLink(){
+  var base=window.location.href.split('?')[0];
+  return base+'?t='+encodeURIComponent(sessionToken);
+}
+
+function parseUrlToken(){
+  var params=new URLSearchParams(window.location.search);
+  return params.get('t')||'';
+}
+
+// DEVICE CHECK
+var devPreviewStream=null, devMicMeterInterval=null;
+var videoDevices=[], audioDevices=[], speakerDevices=[];
+
+async function showDeviceCheck(){
+  document.getElementById('deviceCheck').classList.add('active');
+  document.getElementById('setupScreen').classList.add('hidden');
+  await devEnumerateDevices();
+  await devStartPreview();
+}
+
+async function devEnumerateDevices(){
+  try{
+    var temp=await navigator.mediaDevices.getUserMedia({video:true,audio:true});
+    temp.getTracks().forEach(function(t){t.stop();});
+    var all=await navigator.mediaDevices.enumerateDevices();
+    videoDevices=all.filter(function(d){return d.kind==='videoinput';});
+    audioDevices=all.filter(function(d){return d.kind==='audioinput';});
+    speakerDevices=all.filter(function(d){return d.kind==='audiooutput';});
+    populateDevSelects();
+    updateDevStatus();
+  }catch(e){
+    document.getElementById('devCamStatus').textContent='Denied';
+    document.getElementById('devCamStatus').className='dev-status fail';
+    document.getElementById('devMicStatus').textContent='Denied';
+    document.getElementById('devMicStatus').className='dev-status fail';
+  }
+}
+
+function populateDevSelects(){
+  var camSel=document.getElementById('devCamSelect');
+  camSel.innerHTML='';
+  videoDevices.forEach(function(d,i){
+    var o=document.createElement('option');o.value=d.deviceId;o.textContent=d.label||('Camera '+(i+1));camSel.appendChild(o);
+  });
+  var micSel=document.getElementById('devMicSelect');
+  micSel.innerHTML='';
+  audioDevices.forEach(function(d,i){
+    var o=document.createElement('option');o.value=d.deviceId;o.textContent=d.label||('Mic '+(i+1));micSel.appendChild(o);
+  });
+  var spkSel=document.getElementById('devSpkSelect');
+  spkSel.innerHTML='';
+  speakerDevices.forEach(function(d,i){
+    var o=document.createElement('option');o.value=d.deviceId;o.textContent=d.label||('Speaker '+(i+1));spkSel.appendChild(o);
+  });
+}
+
+function updateDevStatus(){
+  if(videoDevices.length){document.getElementById('devCamStatus').textContent='Found';document.getElementById('devCamStatus').className='dev-status ok';}
+  else{document.getElementById('devCamStatus').textContent='None';document.getElementById('devCamStatus').className='dev-status fail';}
+  if(audioDevices.length){document.getElementById('devMicStatus').textContent='Found';document.getElementById('devMicStatus').className='dev-status ok';}
+  else{document.getElementById('devMicStatus').textContent='None';document.getElementById('devMicStatus').className='dev-status fail';}
+  if(speakerDevices.length){document.getElementById('devSpkStatus').textContent='Found';document.getElementById('devSpkStatus').className='dev-status ok';}
+  else{document.getElementById('devSpkStatus').textContent='Unknown';document.getElementById('devSpkStatus').className='dev-status warn';}
+}
+
+async function devStartPreview(){
+  try{
+    if(devPreviewStream){devPreviewStream.getTracks().forEach(function(t){t.stop();});}
+    var camId=document.getElementById('devCamSelect').value;
+    var micId=document.getElementById('devMicSelect').value;
+    devPreviewStream=await navigator.mediaDevices.getUserMedia({
+      video:camId?{deviceId:{exact:camId}}:true,
+      audio:micId?{deviceId:{exact:micId}}:true
+    });
+    document.getElementById('devPreviewVideo').srcObject=devPreviewStream;
+    document.getElementById('devPreviewPlaceholder').style.display='none';
+    document.getElementById('devCamStatus').textContent='OK';
+    document.getElementById('devCamStatus').className='dev-status ok';
+    document.getElementById('devJoinBtn').disabled=false;
+    devStartMicMeter();
+  }catch(e){
+    document.getElementById('devPreviewPlaceholder').textContent='Camera access denied';
+    console.error('Preview error',e);
+  }
+}
+
+function devStartMicMeter(){
+  if(devMicMeterInterval)clearInterval(devMicMeterInterval);
+  var micId=document.getElementById('devMicSelect').value;
+  try{
+    navigator.mediaDevices.getUserMedia({audio:micId?{deviceId:{exact:micId}}:true}).then(function(stream){
+      var ctx=new AudioContext();
+      var analyser=ctx.createAnalyser();
+      var src=ctx.createMediaStreamSource(stream);
+      src.connect(analyser);
+      analyser.fftSize=256;
+      var data=new Uint8Array(analyser.frequencyBinCount);
+      devMicMeterInterval=setInterval(function(){
+        analyser.getByteFrequencyData(data);
+        var avg=data.reduce(function(a,b){return a+b;},0)/data.length;
+        document.getElementById('devMicMeter').style.width=Math.min(100,avg/128*100)+'%';
+      },100);
+    }).catch(function(){});
+  }catch(e){}
+}
+
+function devChangeCamera(){
+  var camId=document.getElementById('devCamSelect').value;
+  var idx=videoDevices.findIndex(function(d){return d.deviceId===camId;});
+  document.getElementById('devCamName').textContent=idx>=0?(videoDevices[idx].label||'Camera '+(idx+1)):'';
+  if(devPreviewStream){devPreviewStream.getTracks().forEach(function(t){t.stop();});}
+  devStartPreview();
+}
+
+function devChangeMic(){
+  var micId=document.getElementById('devMicSelect').value;
+  var idx=audioDevices.findIndex(function(d){return d.deviceId===micId;});
+  document.getElementById('devMicName').textContent=idx>=0?(audioDevices[idx].label||'Mic '+(idx+1)):'';
+  if(devPreviewStream){
+    devPreviewStream.getAudioTracks().forEach(function(t){t.stop();});
+    navigator.mediaDevices.getUserMedia({video:false,audio:micId?{deviceId:{exact:micId}}:true}).then(function(ns){
+      var nt=ns.getAudioTracks()[0];
+      devPreviewStream.addTrack(nt);
+      devStartMicMeter();
+    });
+  }
+}
+
+function devChangeSpeaker(){
+  var spkId=document.getElementById('devSpkSelect').value;
+  var idx=speakerDevices.findIndex(function(d){return d.deviceId===spkId;});
+  document.getElementById('devSpkName').textContent=idx>=0?(speakerDevices[idx].label||'Speaker '+(idx+1)):'';
+  var pv=document.getElementById('devPreviewVideo');
+  if(pv&&pv.setSinkId)pv.setSinkId(spkId).catch(function(){});
+}
+
+function devJoin(){
+  document.getElementById('deviceCheck').classList.remove('active');
+  if(devMicMeterInterval){clearInterval(devMicMeterInterval);devMicMeterInterval=null;}
+  enterCall();
+}
+
+function devSkip(){
+  if(devPreviewStream){devPreviewStream.getTracks().forEach(function(t){t.stop();});devPreviewStream=null;}
+  if(devMicMeterInterval){clearInterval(devMicMeterInterval);devMicMeterInterval=null;}
+  document.getElementById('deviceCheck').classList.remove('active');
+  enterCall();
+}
+
+function devTestSpeaker(){
+  try{
+    var ctx=new AudioContext();
+    var osc=ctx.createOscillator();
+    var gain=ctx.createGain();
+    osc.connect(gain);gain.connect(ctx.destination);
+    osc.frequency.value=660;gain.gain.value=0.2;
+    osc.start();osc.stop(ctx.currentTime+0.5);ctx.close();
+    showToast('Test sound played — can you hear it?');
+  }catch(e){showToast('Speaker test failed');}
+}
+
+function devClose(){
+  if(devPreviewStream){devPreviewStream.getTracks().forEach(function(t){t.stop();});devPreviewStream=null;}
+  if(devMicMeterInterval){clearInterval(devMicMeterInterval);devMicMeterInterval=null;}
+  document.getElementById('deviceCheck').classList.remove('active');
+  document.getElementById('setupScreen').classList.remove('hidden');
+  cleanupCall();
+}
+
+// SETUP
+async function getMedia(){
+  try{
+    localStream=await navigator.mediaDevices.getUserMedia({video:true,audio:true});
+    document.getElementById('previewVideo').srcObject=localStream;
+    document.getElementById('noVideoMsg').style.display='none';
+    return true;
+  }catch(e){
+    console.error('Media error:',e);
+    document.getElementById('noVideoMsg').innerHTML='<div>Camera/Mic access denied</div>';
+    return false;
+  }
+}
+getMedia();
+
+function toggleCamera(){
+  if(!localStream) return;
+  camOn=!camOn;
+  localStream.getVideoTracks().forEach(function(t){t.enabled=camOn});
+  document.getElementById('camBtn').classList.toggle('active',camOn);
+  document.getElementById('callCamBtn').classList.toggle('active',camOn);
+}
+function toggleMic(){
+  if(!localStream) return;
+  micOn=!micOn;
+  localStream.getAudioTracks().forEach(function(t){t.enabled=micOn});
+  document.getElementById('micBtn').classList.toggle('active',micOn);
+  document.getElementById('callMicBtn').classList.toggle('active',micOn);
+}
+
+function startSessionFlow(){
+  var urlToken=parseUrlToken();
+  if(urlToken){
+    sessionToken=urlToken;
+    myRole='peer';
+  }else{
+    sessionToken=generateSessionToken();
+    myRole='initiator';
+  }
+  showDeviceCheck();
+}
+
+function enterCall(){
+  document.getElementById('setupScreen').classList.add('hidden');
+  document.getElementById('callLayout').style.display='flex';
+  document.getElementById('localVideo').srcObject=localStream;
+  connectSignaling();
+}
+
+// SIGNALING + WEBRTC
+function getIceServers(){
+  // Add TURN credentials here if you have them. Format:
+  // { urls: 'turn:your.turn.server:3478', username: 'user', credential: 'pass' }
+  return [
+    { urls:'stun:stun.l.google.com:19302' },
+    { urls:'stun:stun1.l.google.com:19302' },
+    { urls:'stun:stun.cloudflare.com:3478' }
+  ];
+}
+
+function connectSignaling(){
+  addSystemMessage('Connecting to signaling server...');
+  socket=io(getServerUrl(),{ transports:['websocket','polling'] });
+
+  socket.on('connect',function(){
+    addSystemMessage('Signaling connected');
+    socket.emit('join-session',{token:sessionToken,role:myRole});
+  });
+
+  socket.on('session-joined',function(info){
+    addSystemMessage('Joined session as '+info.role);
+    if(info.role==='initiator'){
+      addSystemMessage(info.waiting?'Waiting for peer...':'Peer is already here');
+    }
+    if(info.role==='peer'){
+      if(info.initiatorReady){
+        addSystemMessage('Initiator is ready — connecting...');
+      }else{
+        addSystemMessage('Waiting for host to join...');
+      }
+    }
+  });
+
+  socket.on('peer-joined',function(){
+    addSystemMessage('Peer arrived — starting WebRTC offer...');
+    createPeerConnection(true);
+  });
+
+  socket.on('initiator-joined',function(){
+    addSystemMessage('Host joined — ready to receive offer...');
+  });
+
+  socket.on('signal',function(msg){
+    handleSignal(msg.data);
+  });
+
+  socket.on('peer-left',function(){
+    addSystemMessage('Peer left');
+    resetRemoteVideo();
+  });
+
+  socket.on('disconnect',function(){
+    addSystemMessage('Signaling disconnected');
+  });
+
+  socket.on('connect_error',function(err){
+    addSystemMessage('Signaling error: '+err.message);
+  });
+}
+
+function createPeerConnection(isInitiator){
+  if(pc) pc.close();
+  pc=new RTCPeerConnection({iceServers:getIceServers()});
+
+  pc.onicecandidate=function(event){
+    if(event.candidate){
+      sendSignal({type:'ice-candidate',candidate:event.candidate});
+    }
+  };
+
+  pc.onconnectionstatechange=function(){
+    addSystemMessage('Connection state: '+pc.connectionState);
+    if(pc.connectionState==='connected'){
+      onPeerConnected();
+    }else if(pc.connectionState==='failed'||pc.connectionState==='disconnected'){
+      resetRemoteVideo();
+    }
+  };
+
+  pc.ontrack=function(event){
+    handleRemoteStream(event.streams[0]);
+  };
+
+  pc.ondatachannel=function(event){
+    dataChannel=event.channel;
+    bindDataChannel(dataChannel);
+  };
+
+  // Add local tracks
+  if(localStream){
+    localStream.getTracks().forEach(function(track){
+      pc.addTrack(track,localStream);
+    });
+  }
+
+  if(isInitiator){
+    dataChannel=pc.createDataChannel('chat');
+    bindDataChannel(dataChannel);
+    pc.createOffer().then(function(offer){
+      return pc.setLocalDescription(offer);
+    }).then(function(){
+      sendSignal({type:'offer',sdp:pc.localDescription.sdp});
+    }).catch(function(err){console.error('Offer error',err);});
+  }
+}
+
+function sendSignal(data){
+  if(socket) socket.emit('broadcast-signal',{data:data});
+}
+
+async function handleSignal(data){
+  if(!pc) createPeerConnection(false);
+
+  try{
+    if(data.type==='offer'){
+      await pc.setRemoteDescription(new RTCSessionDescription({type:'offer',sdp:data.sdp}));
+      var answer=await pc.createAnswer();
+      await pc.setLocalDescription(answer);
+      sendSignal({type:'answer',sdp:answer.sdp});
+    }else if(data.type==='answer'){
+      await pc.setRemoteDescription(new RTCSessionDescription({type:'answer',sdp:data.sdp}));
+    }else if(data.type==='ice-candidate'){
+      await pc.addIceCandidate(new RTCIceCandidate(data.candidate));
+    }
+  }catch(err){
+    console.error('Signal handling error',err);
+  }
+}
+
+function bindDataChannel(channel){
+  channel.onopen=function(){ addSystemMessage('Data channel open — chat ready'); };
+  channel.onclose=function(){ addSystemMessage('Data channel closed'); };
+  channel.onmessage=function(event){
+    try{
+      var data=JSON.parse(event.data);
+      if(data.type==='chat') addChatMessage('Peer',data.msg,false);
+    }catch(e){}
+  };
+}
+
+function handleRemoteStream(stream){
+  remoteStream=stream;
+  document.getElementById('remoteVideo').srcObject=remoteStream;
+  document.getElementById('remoteVideo').style.display='block';
+  document.getElementById('remotePlaceholder').style.display='none';
+  document.getElementById('remoteLabel').style.display='block';
+  document.getElementById('remoteStatusDot').classList.add('active');
+  document.getElementById('remoteStatusDot').classList.remove('inactive');
+  document.getElementById('remoteBox').classList.add('connected');
+  startTimer();
+  startStatsMonitor();
+  addSystemMessage('Peer stream received!');
+}
+
+function onPeerConnected(){
+  document.getElementById('remoteBox').classList.add('connected');
+  addSystemMessage('Peer connected!');
+}
+
+function resetRemoteVideo(){
+  document.getElementById('remoteVideo').srcObject=null;
+  document.getElementById('remoteVideo').style.display='none';
+  document.getElementById('remotePlaceholder').style.display='flex';
+  document.getElementById('remoteLabel').style.display='none';
+  document.getElementById('remoteBox').classList.remove('connected');
+  stopTimer();
+  stopStatsMonitor();
+}
+
+function cleanupCall(){
+  stopStatsMonitor();
+  stopTimer();
+  if(pc){pc.close();pc=null;}
+  if(socket){socket.disconnect();socket=null;}
+  dataChannel=null;
+  remoteStream=null;
+}
+
+// CALL CONTROLS
+function callToggleMic(){
+  micOn=!micOn;
+  if(localStream) localStream.getAudioTracks().forEach(function(t){t.enabled=micOn});
+  document.getElementById('callMicBtn').classList.toggle('active',micOn);
+  document.getElementById('micBtn').classList.toggle('active',micOn);
+}
+function callToggleCam(){
+  camOn=!camOn;
+  if(localStream) localStream.getVideoTracks().forEach(function(t){t.enabled=camOn});
+  document.getElementById('callCamBtn').classList.toggle('active',camOn);
+  document.getElementById('camBtn').classList.toggle('active',camOn);
+}
+
+async function toggleScreenShare(){
+  try{
+    var screenStream=await navigator.mediaDevices.getDisplayMedia({video:true});
+    var screenTrack=screenStream.getVideoTracks()[0];
+    if(pc){
+      var sender=pc.getSenders().find(function(s){return s.track&&s.track.kind==='video'});
+      if(sender) await sender.replaceTrack(screenTrack);
+    }
+    document.getElementById('localVideo').srcObject=screenStream;
+    document.getElementById('screenShareBtn').classList.add('active');
+    screenTrack.onended=function(){
+      if(localStream){
+        var camTrack=localStream.getVideoTracks()[0];
+        if(pc){
+          var sender2=pc.getSenders().find(function(s){return s.track&&s.track.kind==='video'});
+          if(sender2) sender2.replaceTrack(camTrack);
+        }
+        document.getElementById('localVideo').srcObject=localStream;
+        document.getElementById('screenShareBtn').classList.remove('active');
+      }
+    };
+  }catch(e){console.error('Screen share error:',e)}
+}
+
+function leaveCall(){
+  cleanupCall();
+  if(localStream) localStream.getTracks().forEach(function(t){t.stop()});
+  document.getElementById('setupScreen').classList.remove('hidden');
+  document.getElementById('callLayout').style.display='none';
+  document.getElementById('remoteVideo').srcObject=null;
+  document.getElementById('remoteVideo').style.display='none';
+  document.getElementById('remotePlaceholder').style.display='flex';
+  document.getElementById('remoteLabel').style.display='none';
+  document.getElementById('remoteBox').classList.remove('connected');
+  document.getElementById('chatMessages').innerHTML='';
+  localStream=null;
+  getMedia();
+}
+
+// TIMER
+var timerOverlayHideTimeout=null;
+
+function startTimer(){
+  callStartTime=Date.now();
+  sessionEndTime=callStartTime+SESSION_DURATION*1000;
+  var timerEl=document.getElementById('callTimer');
+  timerEl.classList.add('active');
+  timerEl.classList.remove('warning','danger');
+  document.getElementById('timerOverlay').classList.add('show');
+  timerInterval=setInterval(updateTimer,1000);
+  updateTimer();
+  scheduleTimerHide();
+}
+function updateTimer(){
+  var now=Date.now();
+  var remaining=Math.max(0,Math.floor((sessionEndTime-now)/1000));
+  var elapsed=SESSION_DURATION-remaining;
+  var pct=Math.min(100,(elapsed/SESSION_DURATION)*100);
+  var m=Math.floor(remaining/60);var s=remaining%60;
+  var timerEl=document.getElementById('callTimer');
+  var fill=document.getElementById('timerMeterFill');
+  timerEl.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+  if(fill) fill.style.width=pct+'%';
+  timerEl.classList.remove('warning','danger');
+  if(remaining<=120&&remaining>0){
+    timerEl.classList.add('danger');
+  }else if(remaining<=300&&remaining>0){
+    timerEl.classList.add('warning');
+  }
+  if(remaining<=0){
+    clearInterval(timerInterval);
+    timerEl.textContent='00:00';
+  }
+}
+function stopTimer(){
+  clearInterval(timerInterval);
+  document.getElementById('callTimer').textContent='00:00';
+  document.getElementById('callTimer').classList.remove('active','warning','danger');
+  var fill=document.getElementById('timerMeterFill');
+  if(fill) fill.style.width='0%';
+  document.getElementById('timerOverlay').classList.remove('show');
+  clearTimeout(timerOverlayHideTimeout);
+}
+
+function showTimerOverlay(){
+  var el=document.getElementById('timerOverlay');
+  el.classList.add('show');
+  clearTimeout(timerOverlayHideTimeout);
+  timerOverlayHideTimeout=setTimeout(function(){
+    el.classList.remove('show');
+  },5000);
+}
+function scheduleTimerHide(){
+  clearTimeout(timerOverlayHideTimeout);
+  timerOverlayHideTimeout=setTimeout(function(){
+    document.getElementById('timerOverlay').classList.remove('show');
+  },5000);
+}
+
+(function initTimerHover(){
+  var panel=document.getElementById('videoPanel');
+  var overlay=document.getElementById('timerOverlay');
+  if(panel){
+    panel.addEventListener('mousemove',function(){ showTimerOverlay(); });
+    panel.addEventListener('mouseleave',function(){ scheduleTimerHide(); });
+  }
+  if(overlay){
+    overlay.addEventListener('mouseenter',function(){ clearTimeout(timerOverlayHideTimeout); });
+    overlay.addEventListener('mouseleave',function(){ scheduleTimerHide(); });
+  }
+})();
+
+// STATS / QUALITY
+function startStatsMonitor(){
+  var el=document.getElementById('connQuality');
+  el.style.display='block';
+  statsInterval=setInterval(function(){
+    if(!pc) return;
+    pc.getStats().then(function(stats){
+      var packetsLost=0,packetsReceived=0,jitter=0,rtt=0;
+      stats.forEach(function(report){
+        if(report.type==='inbound-rtp'){
+          packetsLost+=report.packetsLost||0;
+          packetsReceived+=report.packetsReceived||0;
+          jitter=report.jitter||0;
+        }
+        if(report.type==='candidate-pair'&&report.state==='succeeded'){
+          rtt=report.currentRoundTripTime||0;
+        }
+      });
+      var lossRate=packetsReceived>0?(packetsLost/(packetsLost+packetsReceived)):0;
+      var quality='Good';
+      var color='var(--cs-green)';
+      if(lossRate>0.03||rtt>0.3){ quality='Weak'; color='var(--cs-amber)'; }
+      if(lossRate>0.1||rtt>0.6){ quality='Poor'; color='var(--cs-rose)'; }
+      el.textContent='Quality: '+quality+' ('+Math.round(rtt*1000)+'ms)';
+      el.style.color=color;
+      el.style.borderColor=color;
+    });
+  },5000);
+}
+function stopStatsMonitor(){
+  clearInterval(statsInterval);
+  var el=document.getElementById('connQuality');
+  el.style.display='none';
+  el.textContent='Quality: --';
+}
+
+// CHAT
+function sendChat(){
+  var input=document.getElementById('chatInput');
+  var msg=input.value.trim();
+  if(!msg) return;
+  addChatMessage('You',msg,true);
+  input.value='';
+  if(dataChannel&&dataChannel.readyState==='open'){
+    dataChannel.send(JSON.stringify({type:'chat',msg:msg}));
+  }
+}
+function addChatMessage(sender,msg,self){
+  var div=document.createElement('div');
+  div.className='chat-msg '+(self?'self':'other');
+  var senderDiv=document.createElement('div');
+  senderDiv.className='sender';
+  senderDiv.textContent=sender;
+  var textDiv=document.createElement('div');
+  textDiv.className='text';
+  textDiv.textContent=msg;
+  var timeDiv=document.createElement('div');
+  timeDiv.className='time';
+  timeDiv.textContent=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  div.appendChild(senderDiv);
+  div.appendChild(textDiv);
+  div.appendChild(timeDiv);
+  var msgs=document.getElementById('chatMessages');
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+function addSystemMessage(msg){
+  var div=document.createElement('div');
+  div.className='chat-system';
+  div.textContent=msg;
+  var msgs=document.getElementById('chatMessages');
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+function toggleSidebar(){
+  var sb=document.getElementById('sidebar');
+  var isMobile=window.innerWidth<=700;
+  if(isMobile){
+    sb.classList.toggle('open');
+  }else{
+    sb.classList.toggle('minimized');
+  }
+}
+
+// INVITE
+function openInvite(){
+  var link=getInviteLink();
+  navigator.clipboard.writeText(link).then(function(){
+    showToast('Invite link copied — share it anywhere');
+  }).catch(function(){
+    showToast('Could not copy link');
+  });
+}
+function closeInvite(){ document.getElementById('inviteModal').classList.remove('active'); }
+function copyInviteLink(){
+  var link=getInviteLink();
+  var btn=document.getElementById('copyLinkBtn');
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(link).then(function(){
+      if(btn){
+        var orig=btn.textContent;
+        btn.textContent='Copied!';
+        setTimeout(function(){btn.textContent=orig;},1500);
+      }
+      showToast('Invite link copied');
+    }).catch(function(){
+      showToast('Could not copy link');
+    });
+  }else{
+    showToast('Clipboard not available');
+  }
+}
+function shareWhatsApp(){
+  var link=getInviteLink();
+  var text=encodeURIComponent('Join my Eloquenta video classroom: '+link);
+  window.open('https://wa.me/?text='+text);
+}
+function shareTelegram(){
+  var link=getInviteLink();
+  var text=encodeURIComponent('Join our Eloquenta video classroom: '+link);
+  window.open('https://t.me/share/url?url='+encodeURIComponent(link)+'&text='+text);
+}
+function shareSignal(){
+  var link=getInviteLink();
+  var text=encodeURIComponent('Join our Eloquenta video classroom: '+link);
+  window.open('https://signal.me/?link='+text);
+}
+function shareEmail(){
+  var link=getInviteLink();
+  var subject=encodeURIComponent('Join my Eloquenta video classroom');
+  var body=encodeURIComponent('Hi!\n\nJoin our video classroom here:\n\n'+link);
+  window.open('mailto:?subject='+subject+'&body='+body);
+}
+function showToast(msg){
+  var t=document.createElement('div');
+  t.className='toast';
+  t.textContent=msg; document.body.appendChild(t);
+  setTimeout(function(){ t.remove(); }, 2000);
+}
+function openWhiteboard(){
+  try { window.open('https://eloquenta-whiteboard.fly.dev/', '_blank'); }
+  catch(e) { showToast('Could not open whiteboard'); }
+}
+
+// THEME SYSTEM
+var THEME_ORDER = ['eloquent','wte','midnight','sunset','forest','ice','burgundy','slime','geranium','light'];
+var THEMES = {
+  eloquent: { accent:'#22d3ee', bg:'#0a0e1a', text:'#e0f2fe', card:'#111827', border:'#1e3a5f', borderLight:'#2a4a7f', green:'#34d399', rose:'#fb7185', amber:'#fbbf24', violet:'#a78bfa', nav:'rgba(10,14,26,0.92)', name:'Eloquenta' },
+  wte:      { accent:'#a3e635', bg:'#1c1c1c', text:'#e8e8f0', card:'#232323', border:'#3a3a3a', borderLight:'#555555', green:'#34d399', rose:'#fb7185', amber:'#fbbf24', violet:'#a78bfa', nav:'rgba(28,28,28,0.92)', name:'WTE' },
+  midnight: { accent:'#818cf8', bg:'#0f0f23', text:'#c7d2fe', card:'#1a1a3e', border:'#2e2e5e', borderLight:'#3d3d7e', green:'#34d399', rose:'#fb7185', amber:'#fbbf24', violet:'#a78bfa', nav:'rgba(15,15,35,0.92)', name:'Midnight' },
+  sunset:   { accent:'#fb923c', bg:'#1a0f0a', text:'#fed7aa', card:'#2d1a10', border:'#4a2a1a', borderLight:'#6a3a2a', green:'#34d399', rose:'#fb7185', amber:'#fbbf24', violet:'#a78bfa', nav:'rgba(26,15,10,0.92)', name:'Sunset' },
+  forest:   { accent:'#4ade80', bg:'#0d1f12', text:'#bbf7d0', card:'#1a2e1e', border:'#2a4a2a', borderLight:'#3a6a3a', green:'#34d399', rose:'#fb7185', amber:'#fbbf24', violet:'#a78bfa', nav:'rgba(13,31,18,0.90)', name:'Forest' },
+  ice:      { accent:'#67e8f9', bg:'#0c1929', text:'#cffafe', card:'#162d3d', border:'#1e4a5e', borderLight:'#2a6a7e', green:'#34d399', rose:'#fb7185', amber:'#fbbf24', violet:'#a78bfa', nav:'rgba(12,25,41,0.92)', name:'Ice' },
+  burgundy: { accent:'#e879f9', bg:'#1a0a12', text:'#f3e8ff', card:'#2d1528', border:'#4a1e3a', borderLight:'#6a2e5a', green:'#34d399', rose:'#fb7185', amber:'#fbbf24', violet:'#a78bfa', nav:'rgba(26,10,18,0.92)', name:'Burgundy' },
+  slime:    { accent:'#a855f7', bg:'#0f0a1a', text:'#e9d5ff', card:'#1e1530', border:'#3a1e5e', borderLight:'#5a2e7e', green:'#34d399', rose:'#fb7185', amber:'#fbbf24', violet:'#a78bfa', nav:'rgba(15,10,26,0.92)', name:'Slime' },
+  geranium: { accent:'#fb7185', bg:'#1a0f12', text:'#fecdd3', card:'#2d1a1e', border:'#4a2a2a', borderLight:'#6a3a3a', green:'#34d399', rose:'#fb7185', amber:'#fbbf24', violet:'#a78bfa', nav:'rgba(26,15,18,0.92)', name:'Geranium' },
+  light:    { accent:'#2563eb', bg:'#f8fafc', text:'#1e293b', card:'#ffffff', border:'#e2e8f0', borderLight:'#cbd5e1', green:'#10b981', rose:'#f43f5e', amber:'#f59e0b', violet:'#8b5cf6', nav:'rgba(248,250,252,0.95)', name:'Light' }
+};
+function applyTheme(name){
+  var t=THEMES[name]; if(!t) return;
+  currentThemeIdx=THEME_ORDER.indexOf(name);
+  var r=document.documentElement;
+  r.style.setProperty('--cs-accent', t.accent);
+  r.style.setProperty('--cs-bg', t.bg);
+  r.style.setProperty('--cs-bg2', t.card);
+  r.style.setProperty('--cs-bg3', t.border);
+  r.style.setProperty('--cs-bg4', t.border);
+  r.style.setProperty('--cs-text', t.text);
+  r.style.setProperty('--cs-text-muted', t.borderLight);
+  r.style.setProperty('--cs-text-dim', t.border);
+  r.style.setProperty('--cs-border', t.border);
+  r.style.setProperty('--cs-border-light', t.borderLight);
+  r.style.setProperty('--cs-card', t.card);
+  r.style.setProperty('--cs-nav', t.nav);
+  r.style.setProperty('--cs-green', t.green);
+  r.style.setProperty('--cs-rose', t.rose);
+  r.style.setProperty('--cs-amber', t.amber);
+  r.style.setProperty('--cs-violet', t.violet);
+  r.style.setProperty('--cs-accent-glow', hexToRgba(t.accent,0.3));
+  r.style.setProperty('--cs-accent-dim', hexToRgba(t.accent,0.12));
+  document.querySelector('.topbar').style.background = t.nav;
+  var label=document.getElementById('themeName');
+  if(label) label.textContent=t.name;
+  try { localStorage.setItem('vc-theme', name); } catch(e){}
+}
+function hexToRgba(hex,alpha){
+  var r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
+  return 'rgba('+r+','+g+','+b+','+alpha+')';
+}
+function cycleTheme(){
+  var next=(currentThemeIdx+1)%THEME_ORDER.length;
+  applyTheme(THEME_ORDER[next]);
+}
+document.getElementById('themeCycleBtn').addEventListener('click', cycleTheme);
+(function loadTheme(){
+  try { var saved=localStorage.getItem('vc-theme')||''; if(saved && THEMES[saved]) applyTheme(saved); } catch(e){}
+})();
+
+// KEYBOARD SHORTCUTS
+document.addEventListener('keydown',function(e){
+  if(e.ctrlKey && e.key.toLowerCase()==='d'){
+    e.preventDefault();
+    callToggleMic();
+  }
+  if(e.ctrlKey && e.key.toLowerCase()==='e'){
+    e.preventDefault();
+    leaveCall();
+  }
+});
+</script>
+</body>
+</html>
