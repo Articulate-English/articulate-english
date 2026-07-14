@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#0a0e1a">
+<title>Grammar — Eloquenta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cs-accent:#22d3ee;--cs-bg:#0a0e1a;--cs-text:#e0f2fe;--cs-bg-card:#111827;--cs-border:#1e3a5f;--cs-text-muted:#94a3b8;--cs-accent-glow:rgba(34,211,238,.2);--cs-accent-dim:rgba(34,211,238,.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--cs-bg);color:var(--cs-text);line-height:1.6;min-height:100vh}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
+.bg{position:fixed;inset:0;z-index:-1;background:var(--cs-bg);overflow:hidden}
+.bg::before{content:'';position:absolute;inset:-50%;background:radial-gradient(ellipse at 20% 20%,var(--cs-accent-glow) 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,var(--cs-accent-dim) 0%,transparent 50%);filter:blur(40px);opacity:.5;animation:bg-drift 20s ease-in-out infinite alternate}
+@keyframes bg-drift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-3%,2%) scale(1.05)}}
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--cs-bg) 85%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--cs-border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Space Grotesk';font-size:1.1rem;font-weight:700;color:#fff;text-decoration:none;letter-spacing:1px}
+.nav-logo span{color:var(--cs-accent)}
+.card{padding:24px;margin-bottom:20px;background:color-mix(in srgb,var(--cs-card) 80%,transparent);border:1px solid var(--cs-border);border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.15)}
+.card h3{font-size:1.1rem;margin-bottom:8px;color:var(--cs-accent)}
+.card p{color:var(--cs-text-muted);font-size:.9rem;margin-bottom:12px}
+.card a{display:inline-block;font-family:'Space Grotesk';font-size:.8rem;font-weight:700;padding:8px 16px;border-radius:8px;border:1px solid var(--cs-accent);color:var(--cs-accent);text-decoration:none;transition:all .15s}
+.card a:hover{background:var(--cs-accent);color:var(--cs-bg)}
+.level-badge{display:inline-block;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:3px 8px;border-radius:4px;margin-left:8px}
+.lb-b1{background:rgba(74,222,128,.2);color:#4ade80}
+.lb-b2{background:rgba(96,165,250,.2);color:#60a5fa}
+.lb-c1{background:rgba(251,146,60,.2);color:#fb923c}
+.lb-c2{background:rgba(192,132,252,.2);color:#c084fc}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<nav class="nav">
+  <a href="../../index.html" class="nav-logo">◆ <span>Eloquenta</span></a>
+</nav>
+
+<main style="max-width:900px;margin:0 auto;padding:40px 16px 100px">
+  <h1 style="font-size:2rem;margin-bottom:8px">Grammar Practice</h1>
+  <p style="color:var(--cs-text-muted);margin-bottom:28px">Master the structures that make your English sound natural and advanced.</p>
+
+  <div class="card">
+    <h3>Linking Words B1 <span class="level-badge lb-b1">B1</span></h3>
+    <p>Adding &amp; Sequencing — and, but, because, so, then, finally</p>
+    <a href="linking-words-b1/index.html">Start Lesson</a>
+  </div>
+
+  <div class="card">
+    <h3>Linking Words B2 <span class="level-badge lb-b2">B2</span></h3>
+    <p>Contrast &amp; Concession — although, however, despite, whereas, that said</p>
+    <a href="linking-words-b2/index.html">Start Lesson</a>
+  </div>
+
+  <div class="card">
+    <h3>Linking Words C1 <span class="level-badge lb-c1">C1</span></h3>
+    <p>Cause, Effect &amp; Complex Argumentation — consequently, provided that, given that</p>
+    <a href="linking-words-c1/index.html">Start Lesson</a>
+  </div>
+
+  <div class="card">
+    <h3>Linking Words C2 <span class="level-badge lb-c2">C2</span></h3>
+    <p>Hedging, Nuance &amp; Register Mastery — tends to, it could be argued, insofar as</p>
+    <a href="linking-words-c2/index.html">Start Lesson</a>
+  </div>
+</main>
+</body>
+</html>
