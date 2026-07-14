@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#0a1a0f">
+<title>Linking Words C2 — Eloquenta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cs-accent:#4ade80;--cs-bg:#0a1a0f;--cs-text:#bbf7d0;--cs-bg-card:#162418;
+  --cs-border:#2a4a2a;--cs-text-muted:#6ba86b;--cs-accent-glow:rgba(74,222,128,.2);
+  --cs-accent-dim:rgba(74,222,128,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px}
+body{font-family:'Inter',system-ui,sans-serif;background:color-mix(in srgb,var(--cs-bg) 85%,transparent);color:var(--cs-text);line-height:1.6;min-height:100vh;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
+.bg{position:fixed;inset:0;z-index:-1;background:color-mix(in srgb,var(--cs-bg) 85%,transparent);overflow:hidden}
+.bg::before{content:;position:absolute;inset:-50%;background:radial-gradient(ellipse at 20% 20%,var(--cs-accent-glow) 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,var(--cs-accent-dim) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.02) 0%,transparent 70%);filter:blur(40px);opacity:.5;animation:bg-drift 20s ease-in-out infinite alternate}
+.bg::after{content:;position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 2px,rgba(255,255,255,.015) 2px,rgba(255,255,255,.015) 4px),repeating-linear-gradient(-45deg,transparent,transparent 2px,rgba(255,255,255,.01) 2px,rgba(255,255,255,.01) 4px);opacity:.8}
+@keyframes bg-drift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-3%,2%) scale(1.05)}100%{transform:translate(2,-3%) scale(1.02)}}
+.slide{position:relative}
+.glass{background:rgba(22,36,24,.75);border:1px solid var(--cs-border);border-radius:18px;backdrop-filter:blur(14px);box-shadow:0 0 30px rgba(0,0,0,.3)}
+.glow-text{text-shadow:0 0 12px var(--cs-accent-glow),0 0 24px var(--cs-accent-dim)}
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--cs-bg) 85%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--cs-border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Space Grotesk';font-size:1.1rem;font-weight:700;color:#fff;text-decoration:none;letter-spacing:1px}
+.nav-logo span{color:var(--cs-accent)}
+.theme-cycle-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--cs-border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.theme-dot{width:10px;height:10px;border-radius:50%;background:var(--cs-accent)}
+.loading{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--cs-bg) 85%,transparent);color:var(--cs-accent);font-family:'Space Grotesk';font-size:1rem;letter-spacing:1px}
+.loading.hidden{display:none}
+#slides{max-width:900px;margin:0 auto;padding:30px 16px 100px;min-height:100vh}
+#slides.hidden{display:none}
+.slide{display:none}
+.slide.active{display:block}
+.slide h2{font-size:1.5rem;margin-bottom:16px;color:var(--cs-accent)}
+.card{padding:22px;margin-bottom:18px;background:color-mix(in srgb,var(--cs-card) 80%,transparent);border:1px solid var(--cs-border);border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08),0 0 1px rgba(0,0,0,.04);backdrop-filter:blur(8px)}
+.part-badge{display:inline-block;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:4px 10px;border-radius:6px;background:var(--cs-accent-dim);color:var(--cs-accent);border:1px solid var(--cs-border);margin-bottom:12px}
+.level-badge{display:inline-block;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:4px 10px;border-radius:6px;background:rgba(74,222,128,.15);border:1px solid rgba(74,222,128,.3);color:#4ade80;margin-left:6px}
+.question{font-size:1.05rem;font-weight:600;margin-bottom:12px}
+.reveal-btn{font-family:'Space Grotesk';font-size:.75rem;font-weight:700;padding:8px 14px;border-radius:8px;border:1px solid var(--cs-accent);background:transparent;color:var(--cs-accent);cursor:pointer;transition:all .15s}
+.reveal-btn:hover{background:var(--cs-accent);color:var(--cs-bg)}
+.hidden-answer{display:none;margin-top:12px;padding:14px;border-left:3px solid var(--cs-accent);background:rgba(74,222,128,.06);border-radius:0 10px 10px 0}
+.hidden-answer.open{display:block}
+.phrase-chip{display:inline-block;font-size:.7rem;padding:3px 8px;border-radius:6px;background:var(--cs-bg-card);border:1px solid var(--cs-border);color:var(--cs-text-muted);margin:2px}
+.tooltip{position:relative;border-bottom:1px dotted var(--cs-accent);cursor:help}
+.tooltip::after{content:attr(data-def);position:absolute;bottom:120%;left:50%;transform:translateX(-50%);width:220px;padding:8px 10px;border-radius:8px;background:var(--cs-bg-card);border:1px solid var(--cs-accent);color:var(--cs-text);font-size:.75rem;line-height:1.4;opacity:0;pointer-events:none;transition:opacity .2s;z-index:10}
+.tooltip:hover::after{opacity:1}
+.nav-btns{display:flex;justify-content:space-between;align-items:center;max-width:900px;margin:0 auto;padding:16px;position:fixed;bottom:0;left:0;right:0;background:color-mix(in srgb,var(--cs-bg) 85%,transparent);border-top:1px solid var(--cs-border)}
+.nav-btns button{font-family:'Space Grotesk';font-size:.8rem;font-weight:700;padding:10px 18px;border-radius:10px;border:1px solid var(--cs-border);background:var(--cs-bg-card);color:var(--cs-text);cursor:pointer}
+.nav-btns button:hover{border-color:var(--cs-accent);color:var(--cs-accent)}
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:rgba(255,255,255,.06);z-index:40}
+.progress-fill{height:100%;width:0;background:var(--cs-accent);transition:width .3s;box-shadow:0 0 10px var(--cs-accent-glow)}
+.timer{font-family:'Space Grotesk';font-size:.85rem;color:var(--cs-text-muted)}
+.grammar-box{padding:16px;margin:14px 0;border-radius:12px;background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.2)}
+.grammar-box h4{color:#4ade80;font-size:.8rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.use-case{display:inline-block;font-size:.65rem;font-weight:700;padding:2px 7px;border-radius:4px;margin:3px 3px 3px 0;color:#fff}
+.use-addition{background:rgba(74,222,128,.25);color:#4ade80}
+.use-contrast{background:rgba(251,146,60,.25);color:#fb923c}
+.use-cause{background:rgba(248,113,113,.25);color:#f87171}
+.use-sequence{background:rgba(96,165,250,.25);color:#60a5fa}
+.use-example{background:rgba(192,132,252,.25);color:#c084fc}
+.use-summary{background:rgba(251,191,36,.25);color:#fbbf24}
+.use-concession{background:rgba(244,114,182,.25);color:#f472b6}
+.use-condition{background:rgba(96,165,250,.25);color:#60a5fa}
+.use-purpose{background:rgba(168,85,247,.25);color:#a855f7}
+.use-hedging{background:rgba(251,191,36,.25);color:#fbbf24}
+.use-register{background:rgba(148,163,184,.25);color:#94a3b8}
+.example-line{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.9rem}
+.example-line:last-child{border-bottom:none}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<div class="loading" id="loadingScreen">Loading C2 deck…</div>
+<nav class="nav">
+  <a href="../../../web-apps/VocabForge/index.html" class="nav-logo">◆ <span>Eloquenta</span> Linking Words</a>
+  <button class="theme-cycle-btn" id="themeCycleBtn" title="Cycle theme"><span class="theme-dot" id="themeDot"></span></button>
+</nav>
+
+<main id="slides" class="hidden">
+
+<!-- SLIDE 0: COVER -->
+<section class="slide active" data-slide="0">
+  <div class="card glass" style="text-align:center;margin-top:10vh">
+    <div class="part-badge">Linking Words <span class="level-badge">C2</span></div>
+    <h1 class="glow-text" style="font-size:2.4rem;margin-bottom:12px">Hedging, Nuance &amp; Register Mastery</h1>
+    <p style="color:var(--cs-text-muted);font-size:1rem;max-width:500px;margin:0 auto 24px">The final level. Master the art of saying exactly what you mean — no more, no less. Hedge, emphasise, shift register, and control the precision of your language like a native academic or professional.</p>
+    <button class="reveal-btn" onclick="goTo(1)">Start Deck</button>
+  </div>
+</section>
+
+<!-- SLIDE 1: GRAMMAR EXPLANATION -->
+<section class="slide" data-slide="1">
+  <div class="card glass">
+    <div class="part-badge">Grammar <span class="level-badge">C2</span></div>
+    <h2 class="glow-text">Hedging, Nuance &amp; Register Control</h2>
+    <p style="margin-bottom:14px">At C2, the question is no longer <em>"Can I connect my ideas?"</em> It's <em>"Can I control exactly how strongly I say something, and shift seamlessly between formal and informal registers?"</em></p>
+    
+    <div class="grammar-box">
+      <h4>Why this = C2-level English</h4>
+      <p style="font-size:.9rem;color:var(--cs-text-muted)">C1: <em>"Social media <strong>causes</strong> mental health problems."</em><br>C2: <em>"There is <strong>compelling evidence to suggest that</strong> excessive social media use <strong>may be a contributing factor in</strong> the rise of certain mental health issues, <strong>though it would be an oversimplification to claim</strong> a direct causal relationship."</em></p>
+      <p style="font-size:.9rem;color:var(--cs-text-muted);margin-top:8px">C2 speakers <strong>calibrate</strong>. They know when to be direct and when to soften. They use hedging not from uncertainty, but from <strong>precision</strong>. This is what makes someone sound truly educated rather than merely fluent.</p>
+    </div>
+
+    <h3 style="margin:16px 0 10px;font-size:.95rem">C2 Linking &amp; Hedging Devices</h3>
+    <div class="example-line"><strong style="color:#fbbf24">tends to / has a tendency to</strong> <span class="use-case use-hedging">softened claim</span> — "He <strong>tends to</strong> overcomplicate things." (not "He always...")</div>
+    <div class="example-line"><strong style="color:#fbbf24">it could be argued that / one might contend</strong> <span class="use-case use-hedging">academic distance</span> — "<strong>It could be argued that</strong> the policy was counterproductive."</div>
+    <div class="example-line"><strong style="color:#fbbf24">to some extent / in a sense</strong> <span class="use-case use-hedging">partial agreement</span> — "<strong>To some extent</strong>, I agree with that analysis."</div>
+    <div class="example-line"><strong style="color:#fbbf24">it is worth noting that / it bears mentioning</strong> <span class="use-case use-register">formal emphasis</span> — "<strong>It is worth noting that</strong> these results are preliminary."</div>
+    <div class="example-line"><strong style="color:#94a3b8">be that as it may / having said all that</strong> <span class="use-case use-register">elegant pivot</span> — "<strong>Be that as it may</strong>, we still need to make a decision."</div>
+    <div class="example-line"><strong style="color:#94a3b8">in much the same way / by the same token</strong> <span class="use-case use-register">sophisticated parallel</span> — "Children need boundaries. <strong>By the same token</strong>, they also need freedom."</div>
+    <div class="example-line"><strong style="color:#a855f7">for all / for all that</strong> <span class="use-case use-concession">literary concession</span> — "<strong>For all</strong> his intelligence, he lacks common sense."</div>
+    <div class="example-line"><strong style="color:#60a5fa">insofar as / in that</strong> <span class="use-case use-register">precise limitation</span> — "This is true <strong>insofar as</strong> we're discussing short-term effects."</div>
+  </div>
+</section>
+
+<!-- SLIDE 2: PHRASES WITH MULTIPLE USE CASES -->
+<section class="slide" data-slide="2">
+  <div class="card glass">
+    <div class="part-badge">Key Phrases <span class="level-badge">C2</span></div>
+    <h2 class="glow-text">Phrases That Do More Than One Job</h2>
+    
+    <p style="font-size:.9rem;margin-bottom:12px"><strong>tends to / has a tendency to</strong> <span class="use-case use-hedging">softening</span> <span class="use-case use-example">describing patterns</span></p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:6px">"People <strong>tends to</strong> resist change when they feel uncertain." — describing a general pattern without absolute claim</p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:16px">"She <strong>has a tendency to</strong> overthink decisions." — describing someone's character pattern</p>
+
+    <p style="font-size:.9rem;margin-bottom:12px"><strong>it could be argued that</strong> <span class="use-case use-hedging">academic distance</span> <span class="use-case use-example">presenting others' views</span></p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:6px">"<strong>It could be argued that</strong> capitalism has failed the poorest." — presenting a view without fully endorsing it</p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:16px">"<strong>It could be argued</strong> either way." — showing the issue is genuinely debatable</p>
+
+    <p style="font-size:.9rem;margin-bottom:12px"><strong>to some extent / in a sense</strong> <span class="use-case use-hedging">partial agreement</span> <span class="use-case use-example">nuanced position</span></p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:6px">"<strong>To some extent</strong>, I agree — but there are important exceptions." — agreeing with limits</p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:16px">"<strong>In a sense</strong>, we're all responsible." — reframing the question</p>
+
+    <p style="font-size:.9rem;margin-bottom:12px"><strong>insofar as</strong> <span class="use-case use-register">precise limitation</span> <span class="use-case use-example">defining scope</span></p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:6px">"This applies <strong>insofar as</strong> the data is reliable." — setting a boundary on your claim</p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:16px">"I agree <strong>in that</strong> the principle is sound, but the execution is flawed." — agreeing on one specific aspect</p>
+  </div>
+</section>
+
+<!-- SLIDE 3: SPEAKING PRACTICE - ACADEMIC DISCUSSION -->
+<section class="slide" data-slide="3">
+  <div class="card glass">
+    <div class="part-badge">Speaking Practice <span class="level-badge">C2</span></div>
+    <h2 class="glow-text">Scene 1: Academic Seminar</h2>
+    <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">You're in a graduate-level seminar discussing a complex topic. Use hedging, register shifts, and precise limitation to show you can handle nuance at the highest level.</p>
+    
+    <div class="question">• "Is artificial intelligence a threat to human employment?" Discuss with appropriate nuance.</div>
+    <button class="reveal-btn">Show model answer</button>
+    <div class="hidden-answer"><strong>It could be argued that</strong> AI poses a significant threat to certain types of employment, <strong>insofar as</strong> routine tasks are concerned. <strong>That said</strong>, <strong>it is worth noting that</strong> previous technological revolutions <strong>tended to</strong> create new roles even as they eliminated old ones. <strong>Be that as it may</strong>, the current pace of change is unprecedented, <strong>and</strong> <strong>to some extent</strong>, I think we are underestimating the social disruption. <strong>One might contend that</strong> the real issue is not job loss but the quality of the jobs that remain.</div>
+
+    <div class="question">• "To what extent can individuals really make a difference on climate change?"</div>
+    <button class="reveal-btn">Show model answer</button>
+    <div class="hidden-answer"><strong>In a sense</strong>, the question itself is misleading. <strong>For all</strong> the emphasis on individual action, the structural causes are systemic. <strong>By the same token</strong>, dismissing individual choices entirely would be an oversimplification. <strong>To some extent</strong>, consumer behaviour drives corporate decisions — <strong>insofar as</strong> companies respond to market pressure. <strong>Having said all that</strong>, I think the most meaningful individual action is political engagement, not recycling.</div>
+
+    <div style="margin-top:18px"><strong style="color:var(--cs-accent)">Useful linking words for this scene:</strong><br>
+    <span class="phrase-chip">It could be argued that...</span><span class="phrase-chip">insofar as</span><span class="phrase-chip">That said...</span><span class="phrase-chip">it is worth noting that</span><span class="phrase-chip">tends to</span><span class="phrase-chip">Be that as it may</span><span class="phrase-chip">to some extent</span>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: SPEAKING PRACTICE - PROFESSIONAL MEETING -->
+<section class="slide" data-slide="4">
+  <div class="card glass">
+    <div class="part-badge">Speaking Practice <span class="level-badge">C2</span></div>
+    <h2 class="glow-text">Scene 2: High-Stakes Business Meeting</h2>
+    <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">You're in a senior meeting where the language needs to be diplomatic, precise, and carefully calibrated. One wrong word could damage a relationship. Use hedging and register control to navigate this professionally.</p>
+    
+    <div class="question">• A colleague presents a plan you think is flawed. Express your concerns diplomatically.</div>
+    <button class="reveal-btn">Show model answer</button>
+    <div class="hidden-answer">Thank you for that presentation. <strong>It is worth noting that</strong> there are some aspects I think we should examine more closely. <strong>To some extent</strong>, the timeline seems optimistic, <strong>insofar as</strong> we haven't accounted for regulatory approval. <strong>One might contend that</strong> a phased approach would reduce risk. <strong>Be that as it may</strong>, I think the overall direction is sound — we just need to adjust the implementation.</div>
+
+    <div style="margin-top:18px"><strong style="color:var(--cs-accent)">Useful linking words for this scene:</strong><br>
+    <span class="phrase-chip">It is worth noting that...</span><span class="phrase-chip">To some extent...</span><span class="phrase-chip">insofar as</span><span class="phrase-chip">One might contend that</span><span class="phrase-chip">Be that as it may</span>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: SPEAKING PRACTICE - PRESENTING A BALANCED ARGUMENT -->
+<section class="slide" data-slide="5">
+  <div class="card glass">
+    <div class="part-badge">Speaking Practice <span class="level-badge">C2</span></div>
+    <h2 class="glow-text">Scene 3: Presenting a Balanced Argument</h2>
+    <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Give a short presentation on a topic where you need to show multiple perspectives, hedge appropriately, and still arrive at a clear personal conclusion. This is the hallmark of C2-level discourse.</p>
+    
+    <div class="question">• "Should universities be free for everyone?" Present a balanced argument.</div>
+    <button class="reveal-btn">Show model answer</button>
+    <div class="hidden-answer">This is a question where both sides have legitimate points. <strong>It could be argued that</strong> education is a public good, <strong>and</strong> <strong>in that sense</strong>, it should be funded collectively. <strong>For all</strong> the idealism behind free tuition, <strong>however</strong>, we have to consider sustainability. Countries that offer free university <strong>tend to</strong> fund it through higher taxation, which is not without its own consequences. <strong>By the same token</strong>, charging fees creates barriers that reinforce inequality. <strong>To some extent</strong>, the answer depends on what kind of society we want to be. <strong>My own view is that</strong> at least the first degree should be free, <strong>provided that</strong> funding is ring-fenced properly. <strong>Having said all that</strong>, the quality of education matters more than the price tag.</div>
+
+    <div style="margin-top:18px"><strong style="color:var(--cs-accent)">Useful linking words for this scene:</strong><br>
+    <span class="phrase-chip">It could be argued that...</span><span class="phrase-chip">in that sense</span><span class="phrase-chip">For all...</span><span class="phrase-chip">By the same token</span><span class="phrase-chip">To some extent</span><span class="phrase-chip">My own view is that...</span><span class="phrase-chip">Having said all that</span>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: HOMEWORK -->
+<section class="slide" data-slide="6">
+  <div class="card glass">
+    <div class="part-badge">Practice &amp; Homework <span class="level-badge">C2</span></div>
+    <h2 class="glow-text">Your Turn</h2>
+    
+    <div class="question">Writing task</div>
+    <p>Write an academic-style essay (300 words) on a complex topic of your choice. Use at least 8 hedging/nuance devices. Focus on calibrating the strength of every claim you make.</p>
+    
+    <div class="question" style="margin-top:14px">Speaking task</div>
+    <p>Record yourself for 4 minutes discussing a controversial topic. Challenge yourself: for every strong claim you make, add a hedge or limitation. Then record it again being more direct. Compare the two — which sounds more intelligent?</p>
+    
+    <div class="question" style="margin-top:14px">Reading task</div>
+    <p>Read an academic paper or long-form journalism (The Economist, Aeon, The Atlantic). Highlight every hedging phrase. Notice how rarely top writers make absolute claims. Build a personal "hedging toolkit" from what you find.</p>    
+    <div style="margin-top:24px;padding:18px;border-radius:12px;background:rgba(0,0,0,.3);border:1px solid var(--cs-border)">
+      <h4 style="color:var(--cs-accent);font-size:.85rem;margin-bottom:12px">🎙️ Voice Recorder</h4>
+      <p style="font-size:.8rem;color:var(--cs-text-muted);margin-bottom:12px">Record yourself practising linking words. Play it back to hear your fluency.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
+        <button id="recBtn" onclick="VF_Rec.toggle()" style="font-family:'Space Grotesk';font-size:.75rem;font-weight:700;padding:8px 16px;border-radius:8px;border:1px solid var(--cs-accent);background:transparent;color:var(--cs-accent);cursor:pointer;transition:all .15s">🎤 Connect Mic</button>
+        <button id="recPlayBtn" onclick="VF_Rec.play()" disabled style="font-family:'Space Grotesk';font-size:.75rem;font-weight:700;padding:8px 14px;border-radius:8px;border:1px solid var(--cs-border);background:transparent;color:var(--cs-text-muted);cursor:pointer">▶ Play</button>
+        <button id="recSaveBtn" onclick="VF_Rec.save()" disabled style="font-family:'Space Grotesk';font-size:.75rem;font-weight:700;padding:8px 14px;border-radius:8px;border:1px solid var(--cs-border);background:transparent;color:var(--cs-text-muted);cursor:pointer">💾 Save MP3</button>
+        <select id="recFormat" onchange="VF_Rec.setFormat(this.value)" style="background:var(--cs-bg-card);border:1px solid var(--cs-border);color:var(--cs-text);border-radius:6px;padding:6px 10px;font-size:.75rem;font-family:'Space Grotesk';cursor:pointer">
+          <option value="328">MP3 328kbps</option>
+          <option value="192">MP3 192kbps</option>
+          <option value="128">MP3 128kbps</option>
+        </select>
+      </div>
+      <div id="recStatus" style="font-size:.75rem;color:var(--cs-text-muted);min-height:18px"></div>
+      <audio id="recPlayer" controls style="width:100%;margin-top:8px;display:none;border-radius:8px"></audio>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<div class="nav-btns">
+  <button onclick="prev()" id="prevBtn">← Back</button>
+  <span class="timer" id="slideCounter">1 / 7</span>
+  <button onclick="next()" id="nextBtn">Next →</button>
+</div>
+
+      var player=document.getElementById('recPlayer');
+      player.src=url;player.style.display='block';player.play();
+    },
+    save:function(){
+      if(!recordedBlob)return;
+      var url=URL.createObjectURL(recordedBlob);
+      var a=document.createElement('a');
+      a.href=url;a.download='linking-words-practice-'+formatBitrate+'kbps.mp3'
+<script>
+
+var VF_Rec=(function(){
+  var mediaRecorder,chunks=[],stream=null,recordedBlob=null,formatBitrate=328;
+  function status(msg){var el=document.getElementById('recStatus');if(el)el.textContent=msg;}
+  return {
+    toggle:function(){
+      if(stream){stopRecording();}else{startRecording();}
+    },
+    setFormat:function(v){formatBitrate=parseInt(v);status('Format: MP3 '+formatBitrate+'kbps');},
+    play:function(){
+      if(!recordedBlob)return;
+      var url=URL.createObjectURL(recordedBlob);
+      var player=document.getElementById('recPlayer');
+      player.src=url;player.style.display='block';player.play();
+    },
+    save:function(){
+      if(!recordedBlob)return;
+      var url=URL.createObjectURL(recordedBlob);
+      var a=document.createElement('a');
+      a.href=url;a.download='linking-words-practice-'+formatBitrate+'kbps.mp3';
+      document.body.appendChild(a);a.click();a.remove();
+      status('Saved! Check your Downloads folder.');
+    }
+  };
+  function startRecording(){
+    navigator.mediaDevices.getUserMedia({audio:true}).then(function(s){
+      stream=s;
+      chunks=[];
+      var mime=MediaRecorder.isTypeSupported('audio/mpeg')?'audio/mpeg':'audio/webm';
+      mediaRecorder=new MediaRecorder(stream,{mimeType:mime,audioBitsPerSecond:formatBitrate*1000});
+      mediaRecorder.ondataavailable=function(e){if(e.data.size>0)chunks.push(e.data);};
+      mediaRecorder.onstop=function(){
+        recordedBlob=new Blob(chunks,{type:mime});
+        document.getElementById('recPlayBtn').disabled=false;
+        document.getElementById('recSaveBtn').disabled=false;
+        document.getElementById('recPlayer').style.display='block';
+        document.getElementById('recPlayer').src=URL.createObjectURL(recordedBlob);
+        status('Recording saved. Play it back or download.');
+      };
+      mediaRecorder.start();
+      document.getElementById('recBtn').textContent='⏹ Stop Recording';
+      document.getElementById('recBtn').style.background='var(--cs-accent)';
+      document.getElementById('recBtn').style.color='var(--cs-bg)';
+      status('Recording... Speak now! Click Stop when done.');
+    }).catch(function(err){
+      status('Mic access denied. Please allow microphone access and try again.');
+    });
+  }
+  function stopRecording(){
+    if(mediaRecorder&&mediaRecorder.state!=='inactive'){mediaRecorder.stop();}
+    if(stream){stream.getTracks().forEach(function(t){t.stop();});}
+    stream=null;
+    document.getElementById('recBtn').textContent='🎤 Connect Mic';
+    document.getElementById('recBtn').style.background='transparent';
+    document.getElementById('recBtn').style.color='var(--cs-accent)';
+  }
+})();
+
+var THEME_ORDER=['forest','eloquent','wte','midnight','sunset','light'];
+var THEMES={
+  forest:{accent:'#4ade80',bg:'#0a1a0f',text:'#bbf7d0',card:'#162418',border:'#2a4a2a'},
+  eloquent:{accent:'#22d3ee',bg:'#0a0e1a',text:'#e0f2fe',card:'#111827',border:'#1e3a5f'},
+  wte:{accent:'#a3e635',bg:'#1c1c1c',text:'#e8e8f0',card:'#232323',border:'#3a3a3a'},
+  midnight:{accent:'#818cf8',bg:'#0f0f23',text:'#c7d2fe',card:'#1a1a3e',border:'#2e2e5e'},
+  sunset:{accent:'#fb923c',bg:'#1a0f0a',text:'#fed7aa',card:'#2d1a10',border:'#4a2a1a'},
+  light:{accent:'#2563eb',bg:'#f0f7ff',text:'#1e293b',card:'#e8f4fd',border:'#c2d9f0'}
+};
+function applyTheme(name){
+  var t=THEMES[name]; if(!t) return;
+  var r=document.documentElement;
+  r.style.setProperty('--cs-accent',t.accent);
+  r.style.setProperty('--cs-bg',t.bg);
+  r.style.setProperty('--cs-text',t.text);
+  r.style.setProperty('--cs-bg-card',t.card);
+  r.style.setProperty('--cs-border',t.border);
+  r.style.setProperty('--cs-text-muted',t.text+'99');
+  r.style.setProperty('--cs-accent-glow',t.accent+'33');
+  r.style.setProperty('--cs-accent-dim',t.accent+'18');
+  document.getElementById('themeDot').style.background=t.accent;
+  try{localStorage.setItem('eloquent-theme',name);}catch(e){}
+}
+document.getElementById('themeCycleBtn').addEventListener('click',function(){
+  var saved=localStorage.getItem('eloquent-theme')||'forest';
+  var idx=THEME_ORDER.indexOf(saved);
+  applyTheme(THEME_ORDER[(idx+1)%THEME_ORDER.length]);
+});
+applyTheme(localStorage.getItem('eloquent-theme')||'forest');
+
+var current=0, slides=Array.from(document.querySelectorAll('.slide'));
+function goTo(n){
+  if(n<0||n>=slides.length) return;
+  slides[current].classList.remove('active');
+  current=n;
+  slides[current].classList.add('active');
+  document.getElementById('slideCounter').textContent=(current+1)+' / '+slides.length;
+  document.getElementById('progressFill').style.width=((current+1)/slides.length*100)+'%';
+  document.getElementById('prevBtn').disabled=current===0;
+  document.getElementById('nextBtn').disabled=current===slides.length-1;
+  try{
+    var progress=JSON.parse(localStorage.getItem('fce-progress')||'{}');
+    progress['linking-c2']=current;
+    localStorage.setItem('fce-progress',JSON.stringify(progress));
+  }catch(e){}
+}
+function next(){goTo(current+1);}
+function prev(){goTo(current-1);}
+document.addEventListener('click',function(e){
+  var btn=e.target.closest('.reveal-btn');
+  if(btn){
+    var ans=btn.parentElement.querySelector('.hidden-answer');
+    if(ans){ ans.classList.toggle('open'); btn.textContent=ans.classList.contains('open')?'Hide answer':'Show answer'; }
+  }
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); next(); }
+  if(e.key==='ArrowLeft'){ e.preventDefault(); prev(); }
+});
+(function(){
+  try{
+    var progress=JSON.parse(localStorage.getItem('fce-progress')||'{}');
+    var saved=progress['linking-c2'];
+    if(typeof saved==='number' && saved>=0) goTo(saved);
+  }catch(e){}
+})();
+(function(){
+  var bgImages=[];
+  document.querySelectorAll('.slide').forEach(function(s){
+    var style=s.getAttribute('style')||'';
+    var m=style.match(/background-image:\s*url\(([^)]+)\)/);
+    if(m) bgImages.push(m[1].replace(/["']/g,''));
+  });
+  if(!bgImages.length){ document.getElementById('loadingScreen').classList.add('hidden'); document.getElementById('slides').classList.remove('hidden'); return; }
+  var loaded=0;
+  bgImages.forEach(function(src){
+    var img=new Image();
+    img.onload=img.onerror=function(){
+      loaded++;
+      if(loaded===bgImages.length){
+        document.getElementById('loadingScreen').classList.add('hidden');
+        document.getElementById('slides').classList.remove('hidden');
+      }
+    };
+    img.src=src;
+  });
+})();
+</script>
+</body>
+</html>
