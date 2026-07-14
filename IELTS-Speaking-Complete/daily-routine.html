@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Routine — IELTS Speaking</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-alt: #0f172a;
+  --bg: #0a1020;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #fbbf24;
+  --cyan: #22d3ee;
+  --lime: #a3e635;
+  --rose: #fb7185;
+  --purple: #a78bfa;
+}
+
+
+[data-theme="red-dark"] {
+  --bg-alt: #1a0a0a;
+  --bg: #0a0404;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #f87171;
+  --cyan: #fca5a5;
+  --lime: #fb7185;
+  --rose: #ef4444;
+}
+[data-theme="red-light"] {
+  --bg-alt: #fef2f2;
+  --bg: #ffffff;
+  --text: #1a0a0a;
+  --text-muted: #991b1b;
+  --accent: #dc2626;
+  --cyan: #b91c1c;
+  --lime: #991b1b;
+  --rose: #7f1d1d;
+}
+[data-theme="orange-dark"] {
+  --bg-alt: #1a1000;
+  --bg: #0a0600;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #fb923c;
+  --cyan: #fdba74;
+  --lime: #fbbf24;
+  --rose: #f97316;
+}
+[data-theme="orange-light"] {
+  --bg-alt: #fff7ed;
+  --bg: #ffffff;
+  --text: #1a1000;
+  --text-muted: #9a3412;
+  --accent: #ea580c;
+  --cyan: #c2410c;
+  --lime: #9a3412;
+  --rose: #7c2d12;
+}
+[data-theme="yellow-dark"] {
+  --bg-alt: #1a1a00;
+  --bg: #0a0a00;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #facc15;
+  --cyan: #fde047;
+  --lime: #eab308;
+  --rose: #ca8a04;
+}
+[data-theme="yellow-light"] {
+  --bg-alt: #fefce8;
+  --bg: #ffffff;
+  --text: #1a1a00;
+  --text-muted: #854d0e;
+  --accent: #ca8a04;
+  --cyan: #a16207;
+  --lime: #854d0e;
+  --rose: #713f12;
+}
+[data-theme="green-dark"] {
+  --bg-alt: #0a1a0a;
+  --bg: #040a04;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #4ade80;
+  --cyan: #86efac;
+  --lime: #22c55e;
+  --rose: #16a34a;
+}
+[data-theme="green-light"] {
+  --bg-alt: #f0fdf4;
+  --bg: #ffffff;
+  --text: #0a1a0a;
+  --text-muted: #166534;
+  --accent: #16a34a;
+  --cyan: #15803d;
+  --lime: #166534;
+  --rose: #14532d;
+}
+[data-theme="blue-dark"] {
+  --bg-alt: #0a0a1a;
+  --bg: #04040a;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #60a5fa;
+  --cyan: #93c5fd;
+  --lime: #3b82f6;
+  --rose: #2563eb;
+}
+[data-theme="blue-light"] {
+  --bg-alt: #eff6ff;
+  --bg: #ffffff;
+  --text: #0a0a1a;
+  --text-muted: #1e40af;
+  --accent: #2563eb;
+  --cyan: #1d4ed8;
+  --lime: #1e40af;
+  --rose: #1e3a8a;
+}
+[data-theme="indigo-dark"] {
+  --bg-alt: #0a041a;
+  --bg: #050210;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #818cf8;
+  --cyan: #a5b4fc;
+  --lime: #6366f1;
+  --rose: #4f46e5;
+}
+[data-theme="indigo-light"] {
+  --bg-alt: #eef2ff;
+  --bg: #ffffff;
+  --text: #0a041a;
+  --text-muted: #3730a3;
+  --accent: #4f46e5;
+  --cyan: #4338ca;
+  --lime: #3730a3;
+  --rose: #312e81;
+}
+[data-theme="violet-dark"] {
+  --bg-alt: #14041a;
+  --bg: #0a0210;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #c084fc;
+  --cyan: #d8b4fe;
+  --lime: #a855f7;
+  --rose: #9333ea;
+}
+[data-theme="violet-light"] {
+  --bg-alt: #faf5ff;
+  --bg: #ffffff;
+  --text: #14041a;
+  --text-muted: #6b21a8;
+  --accent: #9333ea;
+  --cyan: #7e22ce;
+  --lime: #6b21a8;
+  --rose: #581c87;
+}
+/* Theme colour palettes */
+/* Ensure smooth transitions */
+body, .glow-box, .title-box, .slide-overlay {
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.slide {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4vh 6vw;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  overflow-y: auto;
+}
+
+.slide.active {
+  opacity: 1;
+  pointer-events: all;
+  z-index: 2;
+}
+
+.slide:not(.active) * { visibility: hidden !important; }
+
+/* Background */
+.slide-bg {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(1px);
+  z-index: 0;
+}
+
+.slide-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10, 16, 32, 0.88) 0%, rgba(10, 16, 32, 0.75) 100%);
+  z-index: 1;
+}
+
+/* Title slide */
+.title-slide {
+  justify-content: flex-start;
+  padding-top: calc(5vh + 150px);
+}
+
+.title-box {
+  background: rgba(10, 16, 32, 0.92);
+  border: 2px solid rgba(251, 191, 36, 0.5);
+  border-radius: 18px;
+  padding: 1.5em 3em;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.2), 0 0 60px rgba(34, 211, 238, 0.1);
+  backdrop-filter: blur(8px);
+  margin-bottom: 1.5em;
+}
+
+.title-box h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  background: linear-gradient(135deg, #fbbf24, #f472b6, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.title-box .level-badge {
+  display: inline-block;
+  margin-top: 0.6em;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(163, 230, 53, 0.2);
+  color: var(--lime);
+  border: 1px solid rgba(163, 230, 53, 0.4);
+}
+
+.subtitle {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 1em;
+}
+
+/* Glow boxes */
+.glow-box {
+  background: rgba(10, 16, 32, 0.92);
+  border: 2px solid rgba(251, 191, 36, 0.5);
+  border-radius: 18px;
+  padding: 1.8em 2.4em;
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.15), 0 0 60px rgba(34, 211, 238, 0.1), 0 20px 60px rgba(0, 0, 0, 0.4);
+  max-width: 780px;
+  width: 100%;
+  margin: 0.8em 0;
+  backdrop-filter: blur(8px);
+  overflow-wrap: break-word;
+}
+
+.glow-box.cyan { border-color: rgba(34, 211, 238, 0.5); box-shadow: 0 0 30px rgba(34, 211, 238, 0.15), 0 0 60px rgba(34, 211, 238, 0.08), 0 20px 60px rgba(0, 0, 0, 0.4); }
+.glow-box.rose { border-color: rgba(251, 113, 133, 0.5); box-shadow: 0 0 30px rgba(251, 113, 133, 0.15), 0 0 60px rgba(251, 113, 133, 0.08), 0 20px 60px rgba(0, 0, 0, 0.4); }
+.glow-box.lime { border-color: rgba(163, 230, 53, 0.5); box-shadow: 0 0 30px rgba(163, 230, 53, 0.15), 0 0 60px rgba(163, 230, 53, 0.08), 0 20px 60px rgba(0, 0, 0, 0.4); }
+.glow-box.purple { border-color: rgba(167, 139, 250, 0.5); box-shadow: 0 0 30px rgba(167, 139, 250, 0.15), 0 0 60px rgba(167, 139, 250, 0.08), 0 20px 60px rgba(0, 0, 0, 0.4); }
+
+/* Part labels */
+.part-label {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.6em;
+}
+
+.part-1 .part-label { color: var(--accent); }
+.part-2 .part-label { color: var(--cyan); }
+.part-3 .part-label { color: var(--rose); }
+
+/* Questions */
+.question {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  margin-bottom: 0.8em;
+  color: var(--text);
+}
+
+.question-number {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 0.3em;
+}
+
+/* Reveal buttons */
+.reveal-btn {
+  display: inline-block;
+  padding: 8px 20px;
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  background: rgba(251, 191, 36, 0.1);
+  color: var(--accent);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0.6em 0;
+}
+
+.reveal-btn:hover {
+  background: rgba(251, 191, 36, 0.2);
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+}
+
+.reveal-btn.revealed {
+  background: rgba(163, 230, 53, 0.15);
+  border-color: var(--lime);
+  color: var(--lime);
+}
+
+.answer-box {
+  display: none;
+  margin-top: 0.8em;
+  padding: 1em 1.3em;
+  background: rgba(163, 230, 53, 0.08);
+  border: 1px solid rgba(163, 230, 53, 0.25);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #d1fae5;
+}
+
+.answer-box strong {
+  color: var(--lime);
+}
+
+.answer-box.visible {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Cue card */
+.cue-card {
+  background: rgba(34, 211, 238, 0.08);
+  border: 2px solid rgba(34, 211, 238, 0.4);
+  border-radius: 16px;
+  padding: 1.5em 2em;
+  margin: 1em 0;
+}
+
+.cue-card h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: var(--cyan);
+  margin-bottom: 0.6em;
+  font-size: 1.1rem;
+}
+
+.cue-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cue-card li {
+  padding: 0.4em 0;
+  padding-left: 1.5em;
+  position: relative;
+  line-height: 1.5;
+}
+
+.cue-card li::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  color: var(--cyan);
+  font-weight: 700;
+}
+
+/* Navigation */
+.nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8em 2em;
+  background: rgba(10, 16, 32, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  z-index: 10;
+}
+
+.nav-btn {
+  padding: 8px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--accent);
+}
+
+.nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.slide-counter {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  position: fixed;
+  bottom: 52px;
+  left: 0;
+  z-index: 10;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--cyan), var(--lime));
+  box-shadow: 0 0 10px var(--accent);
+  transition: width 0.4s ease;
+}
+
+/* Home link */
+.home-link {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  z-index: 20;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: rgba(10, 16, 32, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+
+.home-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Theme toggle */
+.theme-toggle {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  z-index: 20;
+  background: rgba(10, 16, 32, 0.9);
+  padding: 0.4em 0.8em;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+.theme-toggle:hover { transform: scale(1.1); }
+.theme-toggle .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .slide { padding: 3vh 4vw; }
+  .glow-box { padding: 1.3em 1.5em; }
+  .title-box { padding: 1em 1.5em; }
+  .nav-bar { padding: 0.6em 1em; }
+  .theme-toggle { top: 0.5em; right: 0.5em; }
+}
+
+.vocab {
+  border-bottom: 2px dotted var(--accent);
+  cursor: help;
+  position: relative;
+}
+.vocab:hover::after {
+  content: attr(data-def);
+  position: absolute;
+  left: 0;
+  top: 130%;
+  width: 260px;
+  background: #111;
+  color: #eee;
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.4;
+  z-index: 200;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  white-space: normal;
+}
+
+</style>
+</head>
+<body>
+
+<a class="home-link" href="index.html">&larr; Back to Portal</a>
+
+<button class="theme-toggle" id="themeToggle" onclick="cycleTheme()" title="Cycle theme"><span class="dot"></span>🎨</button>
+
+<div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80')"></div>
+<div class="slide-overlay"></div>
+
+<!-- Slide 1: Title -->
+<div class="slide active" data-slide="0">
+  <div class="title-slide">
+    <div class="title-box">
+      <h1>Daily Routine</h1>
+      <span class="level-badge">IELTS Speaking &mdash; B1</span>
+    </div>
+    <p class="subtitle">Practice all three parts</p>
+  </div>
+</div>
+
+<!-- Slide 2: Part 1 Instructions -->
+<div class="slide" data-slide="1">
+  <div class="glow-box part-1">
+    <div class="part-label">&#9670; Part 1 &mdash; Interview (4-5 min)</div>
+    <p style="font-size:1.05rem;line-height:1.6">Give extended answers (2-3 sentences), not just &quot;Yes&quot; or &quot;No&quot;. Always give a reason or example.</p>
+  </div>
+</div>
+
+<!-- Slide 3: Part 1 Q1 -->
+<div class="slide" data-slide="2">
+  <div class="glow-box part-1">
+    <div class="question-number">Question 1</div>
+    <div class="question">Why do children and youngsters generally wake up late?</div>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Show Model Answer</button>
+    <div class="answer-box">
+      <strong>Model Answer:</strong><br>
+      That is an interesting question. Personally, I believe daily routine plays an important role in daily life. I have noticed that people who engage with it regularly tend to be more satisfied overall.
+    </div>
+  </div>
+</div>
+
+<!-- Slide 4: Part 1 Q2 -->
+<div class="slide" data-slide="3">
+  <div class="glow-box part-1">
+    <div class="question-number">Question 2</div>
+    <div class="question">Do you think it is important to be punctual?</div>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Show Model Answer</button>
+    <div class="answer-box">
+      <strong>Model Answer:</strong><br>
+      I believe daily routine is important because it contributes to our overall wellbeing and helps us develop useful skills. It also connects people and creates memorable experiences.
+    </div>
+  </div>
+</div>
+
+<!-- Slide 5: Part 1 Q3 -->
+<div class="slide" data-slide="4">
+  <div class="glow-box part-1">
+    <div class="question-number">Question 3</div>
+    <div class="question">Are the things or events that make people happy today the same as several decades ago?</div>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Show Model Answer</button>
+    <div class="answer-box">
+      <strong>Model Answer:</strong><br>
+      That is an interesting question. Personally, I believe daily routine plays an important role in daily life. I have noticed that people who engage with it regularly tend to be more satisfied overall.
+    </div>
+  </div>
+</div>
+
+<!-- Slide 6: Part 1 Q4 -->
+<div class="slide" data-slide="5">
+  <div class="glow-box part-1">
+    <div class="question-number">Question 4</div>
+    <div class="question">Do you believe that engaging in artistic activities might make people happier? (Why/Why not)</div>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Show Model Answer</button>
+    <div class="answer-box">
+      <strong>Model Answer:</strong><br>
+      That is an interesting question. Personally, I believe daily routine plays an important role in daily life. I have noticed that people who engage with it regularly tend to be more satisfied overall.
+    </div>
+  </div>
+</div>
+
+<!-- Slide 7: Part 1 Q5 -->
+<div class="slide" data-slide="6">
+  <div class="glow-box part-1">
+    <div class="question-number">Question 5</div>
+    <div class="question">What are a few things that make you happy?</div>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Show Model Answer</button>
+    <div class="answer-box">
+      <strong>Model Answer:</strong><br>
+      That is an interesting question. Personally, I believe daily routine plays an important role in daily life. I have noticed that people who engage with it regularly tend to be more satisfied overall.
+    </div>
+  </div>
+</div>
+
+<!-- Slide 8: Part 1 Q6 -->
+<div class="slide" data-slide="7">
+  <div class="glow-box part-1">
+    <div class="question-number">Question 6</div>
+    <div class="question">Do you think money makes people happy?</div>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Show Model Answer</button>
+    <div class="answer-box">
+      <strong>Model Answer:</strong><br>
+      That is an interesting question. Personally, I believe daily routine plays an important role in daily life. I have noticed that people who engage with it regularly tend to be more satisfied overall.
+    </div>
+  </div>
+</div>
+
+<!-- Slide 9: Part 2 Instructions -->
+<div class="slide" data-slide="8">
+  <div class="glow-box part-2">
+    <div class="part-label">&#9670; Part 2 &mdash; Long Turn (3-4 min)</div>
+    <p style="font-size:1.05rem;line-height:1.6">Use all the prompts on the card. Structure your answer: past &amp;rarr; present &amp;rarr; future. Don&#x27;t memorise scripted answers.</p>
+  </div>
+</div>
+
+<!-- Slide 10: Part 2 Cue Card -->
+<div class="slide" data-slide="9">
+  <div class="glow-box part-2">
+    <div class="part-label">&#9670; Part 2 &mdash; Cue Card</div>
+    <div class="cue-card">
+      <h4>Daily Routine</h4>
+      <p style="margin-bottom:0.8em;color:var(--text);line-height:1.5">Describe your favourite part of the day. You should say:</p>
+      <ul>
+        <li>What it is</li>
+        <li>When you started</li>
+        <li>How often you do it</li>
+        <li>And explain why you enjoy it</li>
+      </ul>
+    </div>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Show Model Answer</button>
+    <div class="answer-box">
+      <strong>Model Answer:</strong><br>
+      I would like to talk about daily routine. I would describe the main aspects clearly and give specific details. Overall, I think this is a meaningful topic because it has had a real impact on my life and helped me understand myself better.
+    </div>
+  </div>
+</div>
+
+<!-- Slide 11: Part 3 Instructions -->
+<div class="slide" data-slide="10">
+  <div class="glow-box part-3">
+    <div class="part-label">&#9670; Part 3 &mdash; Discussion (4-5 min)</div>
+    <p style="font-size:1.05rem;line-height:1.6">Give balanced opinions. Acknowledge both sides before giving your own view. Use phrases like &quot;On one hand... on the other hand...&quot;</p>
+  </div>
+</div>
+
+<!-- Slide 12: Part 3 Q1 -->
+<div class="slide" data-slide="11">
+  <div class="glow-box part-3">
+    <div class="question-number">Question 1</div>
+    <div class="question">What are a few things that make you happy?</div>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Show Model Answer</button>
+    <div class="answer-box">
+      <strong>Model Answer:</strong><br>
+      That is a complex question. On one hand, some people argue that daily routine is essential for personal and social development. On the other hand, others believe it is overemphasized in modern society. Personally, I think a balanced approach works best, where we respect different opinions while encouraging healthy engagement.
+    </div>
+  </div>
+</div>
+
+<!-- Slide 13: Part 3 Q2 -->
+<div class="slide" data-slide="12">
+  <div class="glow-box part-3">
+    <div class="question-number">Question 2</div>
+    <div class="question">Do you believe that engaging in artistic activities might make people happier? (Why/Why not)</div>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Show Model Answer</button>
+    <div class="answer-box">
+      <strong>Model Answer:</strong><br>
+      That is a complex question. On one hand, some people argue that daily routine is essential for personal and social development. On the other hand, others believe it is overemphasized in modern society. Personally, I think a balanced approach works best, where we respect different opinions while encouraging healthy engagement.
+    </div>
+  </div>
+</div>
+
+<!-- Slide 14: Part 3 Q3 -->
+<div class="slide" data-slide="13">
+  <div class="glow-box part-3">
+    <div class="question-number">Question 3</div>
+    <div class="question">Do you think people who have more talent are happier than others? (Why/Why not)</div>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Show Model Answer</button>
+    <div class="answer-box">
+      <strong>Model Answer:</strong><br>
+      That is a complex question. On one hand, some people argue that daily routine is essential for personal and social development. On the other hand, others believe it is overemphasized in modern society. Personally, I think a balanced approach works best, where we respect different opinions while encouraging healthy engagement.
+    </div>
+  </div>
+</div>
+
+<!-- Slide 15: Summary -->
+<div class="slide" data-slide="14">
+  <div class="glow-box lime">
+    <div class="part-label" style="color:var(--lime);">&#10003; Key Takeaways</div>
+    <ul style="list-style:none;padding:0;line-height:2.2;font-size:1rem;">
+      <li>&#10003; <strong>Part 1:</strong> Extend your answers &mdash; give reasons + examples</li>
+      <li>&#10003; <strong>Part 2:</strong> Use all cue card prompts, structure chronologically</li>
+      <li>&#10003; <strong>Part 3:</strong> Balance both sides before giving your opinion</li>
+      <li>&#10003; <strong>Golden rule:</strong> Be specific and personal &mdash; avoid generic answers</li>
+    </ul>
+  </div>
+</div>
+<!-- Navigation -->
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<div class="nav-bar">
+  <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">&larr; Previous</button>
+  <span class="slide-counter" id="slideCounter">1 / 12</span>
+  <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next &rarr;</button>
+</div>
+
+<script>
+let current = 0;
+const total = 15;
+
+function showSlide(n) {
+  if (n < 0 || n >= total) return;
+  document.querySelectorAll('.slide')[current].classList.remove('active');
+  current = n;
+  document.querySelectorAll('.slide')[current].classList.add('active');
+  document.getElementById('slideCounter').textContent = `${current + 1} / ${total}`;
+  document.getElementById('progressFill').style.width = `${((current + 1) / total) * 100}%`;
+  document.getElementById('prevBtn').disabled = current === 0;
+  document.getElementById('nextBtn').disabled = current === total - 1;
+}
+
+function changeSlide(dir) {
+  showSlide(current + dir);
+}
+
+function toggleAnswer(btn) {
+  const answer = btn.nextElementSibling;
+  answer.classList.toggle('visible');
+  btn.classList.toggle('revealed');
+  btn.textContent = btn.classList.contains('revealed') ? 'Hide Answer' : 'Show Model Answer';
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
+});
+
+// Theme cycle
+const THEMES = ['default','red-dark','red-light','orange-dark','orange-light','yellow-dark','yellow-light','green-dark','green-light','blue-dark','blue-light','indigo-dark','indigo-light','violet-dark','violet-light'];
+let themeIdx = 0;
+function setTheme(name) {
+  const html = document.documentElement;
+  if (name === 'default') html.removeAttribute('data-theme');
+  else html.setAttribute('data-theme', name);
+  localStorage.setItem('ielts-theme', name);
+  const dot = document.querySelector('#themeToggle .dot');
+  if (dot) {
+    const map = {
+      default: '#fbbf24',
+      'red-dark': '#f87171', 'red-light': '#dc2626',
+      'orange-dark': '#fb923c', 'orange-light': '#ea580c',
+      'yellow-dark': '#facc15', 'yellow-light': '#ca8a04',
+      'green-dark': '#4ade80', 'green-light': '#16a34a',
+      'blue-dark': '#60a5fa', 'blue-light': '#2563eb',
+      'indigo-dark': '#818cf8', 'indigo-light': '#4f46e5',
+      'violet-dark': '#c084fc', 'violet-light': '#9333ea'
+    };
+    dot.style.background = map[name] || '#fbbf24';
+  }
+}
+function cycleTheme() {
+  themeIdx = (themeIdx + 1) % THEMES.length;
+  setTheme(THEMES[themeIdx]);
+}
+(function initTheme() {
+  const saved = localStorage.getItem('ielts-theme') || 'default';
+  const i = THEMES.indexOf(saved);
+  themeIdx = i >= 0 ? i : 0;
+  setTheme(THEMES[themeIdx]);
+})();
+
+// Mark complete on last slide
+document.getElementById('nextBtn').addEventListener('click', () => {
+  if (current === total - 1) {
+    const data = JSON.parse(localStorage.getItem('ielts-speaking-progress') || '{}');
+    data['daily-routine'] = { completed: true, date: new Date().toISOString().split('T')[0] };
+    localStorage.setItem('ielts-speaking-progress', JSON.stringify(data));
+  }
+});
+
+// Mark as visited
+(function() {
+  const data = JSON.parse(localStorage.getItem('ielts-speaking-progress') || '{}');
+  if (!data['daily-routine']) {
+    data['daily-routine'] = { completed: false, started: new Date().toISOString().split('T')[0] };
+    localStorage.setItem('ielts-speaking-progress', JSON.stringify(data));
+  }
+})();
+
+showSlide(0);
+</script>
+
+</body>
+</html>
