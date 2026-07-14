@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Speaking Practice Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a1020;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #fbbf24;
+  --cyan: #22d3ee;
+  --lime: #a3e635;
+  --rose: #fb7185;
+}
+
+
+[data-theme="red-dark"] {
+  --bg-alt: #1a0a0a;
+  --bg: #0a0404;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #f87171;
+  --cyan: #fca5a5;
+  --lime: #fb7185;
+  --rose: #ef4444;
+}
+[data-theme="red-light"] {
+  --bg-alt: #fef2f2;
+  --bg: #ffffff;
+  --text: #1a0a0a;
+  --text-muted: #991b1b;
+  --accent: #dc2626;
+  --cyan: #b91c1c;
+  --lime: #991b1b;
+  --rose: #7f1d1d;
+}
+[data-theme="orange-dark"] {
+  --bg-alt: #1a1000;
+  --bg: #0a0600;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #fb923c;
+  --cyan: #fdba74;
+  --lime: #fbbf24;
+  --rose: #f97316;
+}
+[data-theme="orange-light"] {
+  --bg-alt: #fff7ed;
+  --bg: #ffffff;
+  --text: #1a1000;
+  --text-muted: #9a3412;
+  --accent: #ea580c;
+  --cyan: #c2410c;
+  --lime: #9a3412;
+  --rose: #7c2d12;
+}
+[data-theme="yellow-dark"] {
+  --bg-alt: #1a1a00;
+  --bg: #0a0a00;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #facc15;
+  --cyan: #fde047;
+  --lime: #eab308;
+  --rose: #ca8a04;
+}
+[data-theme="yellow-light"] {
+  --bg-alt: #fefce8;
+  --bg: #ffffff;
+  --text: #1a1a00;
+  --text-muted: #854d0e;
+  --accent: #ca8a04;
+  --cyan: #a16207;
+  --lime: #854d0e;
+  --rose: #713f12;
+}
+[data-theme="green-dark"] {
+  --bg-alt: #0a1a0a;
+  --bg: #040a04;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #4ade80;
+  --cyan: #86efac;
+  --lime: #22c55e;
+  --rose: #16a34a;
+}
+[data-theme="green-light"] {
+  --bg-alt: #f0fdf4;
+  --bg: #ffffff;
+  --text: #0a1a0a;
+  --text-muted: #166534;
+  --accent: #16a34a;
+  --cyan: #15803d;
+  --lime: #166534;
+  --rose: #14532d;
+}
+[data-theme="blue-dark"] {
+  --bg-alt: #0a0a1a;
+  --bg: #04040a;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #60a5fa;
+  --cyan: #93c5fd;
+  --lime: #3b82f6;
+  --rose: #2563eb;
+}
+[data-theme="blue-light"] {
+  --bg-alt: #eff6ff;
+  --bg: #ffffff;
+  --text: #0a0a1a;
+  --text-muted: #1e40af;
+  --accent: #2563eb;
+  --cyan: #1d4ed8;
+  --lime: #1e40af;
+  --rose: #1e3a8a;
+}
+[data-theme="indigo-dark"] {
+  --bg-alt: #0a041a;
+  --bg: #050210;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #818cf8;
+  --cyan: #a5b4fc;
+  --lime: #6366f1;
+  --rose: #4f46e5;
+}
+[data-theme="indigo-light"] {
+  --bg-alt: #eef2ff;
+  --bg: #ffffff;
+  --text: #0a041a;
+  --text-muted: #3730a3;
+  --accent: #4f46e5;
+  --cyan: #4338ca;
+  --lime: #3730a3;
+  --rose: #312e81;
+}
+[data-theme="violet-dark"] {
+  --bg-alt: #14041a;
+  --bg: #0a0210;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #c084fc;
+  --cyan: #d8b4fe;
+  --lime: #a855f7;
+  --rose: #9333ea;
+}
+[data-theme="violet-light"] {
+  --bg-alt: #faf5ff;
+  --bg: #ffffff;
+  --text: #14041a;
+  --text-muted: #6b21a8;
+  --accent: #9333ea;
+  --cyan: #7e22ce;
+  --lime: #6b21a8;
+  --rose: #581c87;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+|/* Animated mesh canvas background */
+|#meshBg {
+|  position: fixed;
+|  inset: 0;
+|  width: 100%;
+|  height: 100%;
+|  z-index: 0;
+|  opacity: 0.5;
+|  pointer-events: none;
+|}
+|
+|/* Nature background image */
+|#natureBg {
+|  position: fixed;
+|  inset: 0;
+|  width: 100%;
+|  height: 100%;
+|  z-index: 0;
+|  background-size: cover;
+|  background-position: center;
+|  background-repeat: no-repeat;
+|  opacity: 0.5;
+|  pointer-events: none;
+|  transition: background-image 1.5s ease-in-out;
+|}
+|
+|#natureBg::after {
+|  content: "";
+|  position: absolute;
+|  inset: 0;
+|  background: var(--bg);
+|  opacity: 0.5;
+|}
+
+/* Theme toggle */
+.theme-toggle {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  z-index: 20;
+  background: rgba(10, 16, 32, 0.9);
+  padding: 0.4em 0.8em;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+.theme-toggle:hover { transform: scale(1.1); }
+.theme-toggle .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+|/* Content overlay */
+|.portal {
+|  position: relative;
+|  z-index: 1;
+|  max-width: 1200px;
+|  margin: 0 auto;
+|  padding: 40px 20px;
+|}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding-top: 20px;
+}
+.header h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  background: linear-gradient(135deg, #fbbf24, #f472b6, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px;
+}
+.header p {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Stats bar */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.stat {
+  text-align: center;
+  padding: 16px 28px;
+  background: rgba(10, 16, 32, 0.8);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+}
+.stat-value {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--accent);
+}
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Deck grid */
+.deck-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.deck-card {
+  background: rgba(10, 16, 32, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+.deck-card:hover {
+  border-color: rgba(251, 191, 36, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px rgba(251, 191, 36, 0.1);
+}
+.deck-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--cyan));
+  opacity: 0.6;
+}
+.deck-card.completed::after {
+  content: '\2713';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  background: rgba(163, 230, 53, 0.2);
+  border: 1px solid var(--lime);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--lime);
+}
+.deck-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+.deck-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.deck-progress {
+  margin-top: 12px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.deck-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--cyan));
+  border-radius: 2px;
+  transition: width 0.4s ease;
+  width: 0%;
+}
+.deck-card.completed .deck-progress-fill {
+  width: 100%;
+  background: var(--lime);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 60px;
+  padding: 30px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 768px) {
+  .deck-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  .stats { gap: 16px; }
+  .stat { padding: 12px 20px; }
+}
+</style>
+</head>
+<body>
+
+|<canvas id="meshBg"></canvas>
+|<div id="natureBg"></div>
+
+<button class="theme-toggle" id="themeToggle" onclick="cycleTheme()" title="Cycle theme"><span class="dot"></span>🎨</button>
+
+<div class="portal">
+  <div class="header">
+    <h1>IELTS Speaking Practice</h1>
+    <p>47 Topic-Based Mock Exams</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-value" id="totalDecks">47</div>
+      <div class="stat-label">Total Decks</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" id="completedDecks">0</div>
+      <div class="stat-label">Completed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" id="progressPercent">0%</div>
+      <div class="stat-label">Progress</div>
+    </div>
+  </div>
+
+  <div class="deck-grid" id="deckGrid">
+    <a href="a-challenging-thing-you-did.html" class="deck-card" data-slug="a-challenging-thing-you-did">
+      <div class="deck-name">A Challenging Thing You Did</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-a-challenging-thing-you-did"></div></div>
+    </a>
+    <a href="advertisements.html" class="deck-card" data-slug="advertisements">
+      <div class="deck-name">Advertisements</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-advertisements"></div></div>
+    </a>
+    <a href="art.html" class="deck-card" data-slug="art">
+      <div class="deck-name">Art</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-art"></div></div>
+    </a>
+    <a href="books.html" class="deck-card" data-slug="books">
+      <div class="deck-name">Books</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-books"></div></div>
+    </a>
+    <a href="business.html" class="deck-card" data-slug="business">
+      <div class="deck-name">Business</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-business"></div></div>
+    </a>
+    <a href="change.html" class="deck-card" data-slug="change">
+      <div class="deck-name">Change</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-change"></div></div>
+    </a>
+    <a href="city.html" class="deck-card" data-slug="city">
+      <div class="deck-name">City</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-city"></div></div>
+    </a>
+    <a href="clothes.html" class="deck-card" data-slug="clothes">
+      <div class="deck-name">Clothes</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-clothes"></div></div>
+    </a>
+    <a href="company.html" class="deck-card" data-slug="company">
+      <div class="deck-name">Company</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-company"></div></div>
+    </a>
+    <a href="daily-routine.html" class="deck-card" data-slug="daily-routine">
+      <div class="deck-name">Daily Routine</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-daily-routine"></div></div>
+    </a>
+    <a href="decision.html" class="deck-card" data-slug="decision">
+      <div class="deck-name">Decision</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-decision"></div></div>
+    </a>
+    <a href="electronic-devices.html" class="deck-card" data-slug="electronic-devices">
+      <div class="deck-name">Electronic Devices</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-electronic-devices"></div></div>
+    </a>
+    <a href="entertainment.html" class="deck-card" data-slug="entertainment">
+      <div class="deck-name">Entertainment</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-entertainment"></div></div>
+    </a>
+    <a href="environment.html" class="deck-card" data-slug="environment">
+      <div class="deck-name">Environment</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-environment"></div></div>
+    </a>
+    <a href="exciting-experience.html" class="deck-card" data-slug="exciting-experience">
+      <div class="deck-name">Exciting Experience</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-exciting-experience"></div></div>
+    </a>
+    <a href="family.html" class="deck-card" data-slug="family">
+      <div class="deck-name">Family</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-family"></div></div>
+    </a>
+    <a href="food.html" class="deck-card" data-slug="food">
+      <div class="deck-name">Food</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-food"></div></div>
+    </a>
+    <a href="friends.html" class="deck-card" data-slug="friends">
+      <div class="deck-name">Friends</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-friends"></div></div>
+    </a>
+    <a href="furniture.html" class="deck-card" data-slug="furniture">
+      <div class="deck-name">Furniture</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-furniture"></div></div>
+    </a>
+    <a href="health.html" class="deck-card" data-slug="health">
+      <div class="deck-name">Health</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-health"></div></div>
+    </a>
+    <a href="help.html" class="deck-card" data-slug="help">
+      <div class="deck-name">Help</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-help"></div></div>
+    </a>
+    <a href="history.html" class="deck-card" data-slug="history">
+      <div class="deck-name">History</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-history"></div></div>
+    </a>
+    <a href="holiday.html" class="deck-card" data-slug="holiday">
+      <div class="deck-name">Holiday</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-holiday"></div></div>
+    </a>
+    <a href="home.html" class="deck-card" data-slug="home">
+      <div class="deck-name">Home</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-home"></div></div>
+    </a>
+    <a href="influence.html" class="deck-card" data-slug="influence">
+      <div class="deck-name">Influence</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-influence"></div></div>
+    </a>
+    <a href="internet.html" class="deck-card" data-slug="internet">
+      <div class="deck-name">Internet</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-internet"></div></div>
+    </a>
+    <a href="late.html" class="deck-card" data-slug="late">
+      <div class="deck-name">Late</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-late"></div></div>
+    </a>
+    <a href="machine.html" class="deck-card" data-slug="machine">
+      <div class="deck-name">Machine</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-machine"></div></div>
+    </a>
+    <a href="memory.html" class="deck-card" data-slug="memory">
+      <div class="deck-name">Memory</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-memory"></div></div>
+    </a>
+    <a href="music.html" class="deck-card" data-slug="music">
+      <div class="deck-name">Music</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-music"></div></div>
+    </a>
+    <a href="news.html" class="deck-card" data-slug="news">
+      <div class="deck-name">News</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-news"></div></div>
+    </a>
+    <a href="parenting.html" class="deck-card" data-slug="parenting">
+      <div class="deck-name">Parenting</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-parenting"></div></div>
+    </a>
+    <a href="party.html" class="deck-card" data-slug="party">
+      <div class="deck-name">Party</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-party"></div></div>
+    </a>
+    <a href="plans.html" class="deck-card" data-slug="plans">
+      <div class="deck-name">Plans</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-plans"></div></div>
+    </a>
+    <a href="products.html" class="deck-card" data-slug="products">
+      <div class="deck-name">Products</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-products"></div></div>
+    </a>
+    <a href="restaurants.html" class="deck-card" data-slug="restaurants">
+      <div class="deck-name">Restaurants</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-restaurants"></div></div>
+    </a>
+    <a href="rules.html" class="deck-card" data-slug="rules">
+      <div class="deck-name">Rules</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-rules"></div></div>
+    </a>
+    <a href="school.html" class="deck-card" data-slug="school">
+      <div class="deck-name">School</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-school"></div></div>
+    </a>
+    <a href="science.html" class="deck-card" data-slug="science">
+      <div class="deck-name">Science</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-science"></div></div>
+    </a>
+    <a href="shopping.html" class="deck-card" data-slug="shopping">
+      <div class="deck-name">Shopping</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-shopping"></div></div>
+    </a>
+    <a href="social-problems.html" class="deck-card" data-slug="social-problems">
+      <div class="deck-name">Social Problems</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-social-problems"></div></div>
+    </a>
+    <a href="sports.html" class="deck-card" data-slug="sports">
+      <div class="deck-name">Sports</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-sports"></div></div>
+    </a>
+    <a href="things.html" class="deck-card" data-slug="things">
+      <div class="deck-name">Things</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-things"></div></div>
+    </a>
+    <a href="travel.html" class="deck-card" data-slug="travel">
+      <div class="deck-name">Travel</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-travel"></div></div>
+    </a>
+    <a href="tv.html" class="deck-card" data-slug="tv">
+      <div class="deck-name">Tv</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-tv"></div></div>
+    </a>
+    <a href="vegetables.html" class="deck-card" data-slug="vegetables">
+      <div class="deck-name">Vegetables</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-vegetables"></div></div>
+    </a>
+    <a href="work.html" class="deck-card" data-slug="work">
+      <div class="deck-name">Work</div>
+      <div class="deck-meta">Part 1 · Part 2 · Part 3</div>
+      <div class="deck-progress"><div class="deck-progress-fill" id="progress-work"></div></div>
+    </a>
+  </div>
+
+  <div class="footer">
+    Use arrow keys or swipe to navigate slides. Tap "Show Model Answer" to reveal answers.<br>
+    Vocabulary words have dotted underlines — hover for definitions.
+  </div>
+</div>
+
+<script>
+// === Nature Background with Daily Rotation ===
+const NATURE_IMAGES = [
+  'https://cdn.pixabay.com/photo/2016/11/21/03/56/landscape-1844226_1280.jpg',
+  'https://cdn.pixabay.com/photo/2016/11/29/05/32/forest-1868028_1280.jpg',
+  'https://cdn.pixabay.com/photo/2015/06/19/21/24/avenue-815297_1280.jpg',
+  'https://cdn.pixabay.com/photo/2017/01/28/02/24/japan-2014618_1280.jpg',
+  'https://cdn.pixabay.com/photo/2018/01/12/14/24/night-3078326_1280.jpg',
+  'https://cdn.pixabay.com/photo/2015/09/09/16/40/forest-931715_1280.jpg',
+  'https://cdn.pixabay.com/photo/2016/10/22/17/46/mountains-1761292_1280.jpg'
+];
+
+const BG_COLORS = [
+  '#0a1020', // deep navy
+  '#0a1f0a', // deep forest
+  '#1a0a20', // deep plum
+  '#0a1818', // deep teal
+  '#1a0a0a', // deep wine
+  '#0f172a', // slate
+  '#0a1028'  // midnight blue
+];
+
+const NATURE_BG_KEY = 'ielts-nature-bg-day';
+const NATURE_IMG_KEY = 'ielts-nature-bg-url';
+
+function getTodayString() {
+  return new Date().toISOString().split('T')[0];
+}
+
+function setNatureBackground() {
+  const savedDay = localStorage.getItem(NATURE_BG_KEY);
+  const savedUrl = localStorage.getItem(NATURE_IMG_KEY);
+  const savedColor = localStorage.getItem('ielts-nature-bg-color');
+  const today = getTodayString();
+  const bgEl = document.getElementById('natureBg');
+
+  if (savedDay === today && savedUrl) {
+    bgEl.style.backgroundImage = `url('${savedUrl}')`;
+    if (savedColor) document.documentElement.style.setProperty('--bg', savedColor);
+    return;
+  }
+
+  // Pick a deterministic image based on the day
+  const seed = parseInt(today.replace(/-/g, ''), 10);
+  const imgIndex = seed % NATURE_IMAGES.length;
+  const colorIndex = (seed >> 3) % BG_COLORS.length;
+  const url = NATURE_IMAGES[imgIndex];
+  const color = BG_COLORS[colorIndex];
+
+  localStorage.setItem(NATURE_BG_KEY, today);
+  localStorage.setItem(NATURE_IMG_KEY, url);
+  localStorage.setItem('ielts-nature-bg-color', color);
+  bgEl.style.backgroundImage = `url('${url}')`;
+  document.documentElement.style.setProperty('--bg', color);
+}
+
+|setNatureBackground();
+|
+|// === Animated Mesh Background ===
+|(function initMeshBg() {
+|  const canvas = document.getElementById('meshBg');
+|  if (!canvas) return;
+|  
+|  const ctx = canvas.getContext('2d');
+|  let width, height;
+|  let mouse = { x: 0, y: 0 };
+|  let animationId;
+|  
+|  // Mesh configuration
+|  const config = {
+|    gridSize: 60,
+|    pointRadius: 1.5,
+|    lineWidth: 0.5,
+|    waveSpeed: 0.001,
+|    waveAmplitude: 15,
+|    connectionDistance: 100,
+|    mouseRadius: 150
+|  };
+|  
+|  let points = [];
+|  let time = 0;
+|  
+|  function resize() {
+|    width = canvas.width = window.innerWidth;
+|    height = canvas.height = window.innerHeight;
+|    initPoints();
+|  }
+|  
+|  function initPoints() {
+|    points = [];
+|    const cols = Math.ceil(width / config.gridSize) + 2;
+|    const rows = Math.ceil(height / config.gridSize) + 2;
+|    
+|    for (let i = -1; i < cols; i++) {
+|      for (let j = -1; j < rows; j++) {
+|        points.push({
+|          x: i * config.gridSize,
+|          y: j * config.gridSize,
+|          baseX: i * config.gridSize,
+|          baseY: j * config.gridSize,
+|          phase: Math.random() * Math.PI * 2,
+|          speed: 0.5 + Math.random() * 0.5
+|        });
+|      }
+|    }
+|  }
+|  
+|  function updatePoints() {
+|    time += config.waveSpeed;
+|    
+|    points.forEach(p => {
+|      // Wave motion
+|      const waveX = Math.sin(time * p.speed + p.phase) * config.waveAmplitude;
+|      const waveY = Math.cos(time * p.speed + p.phase * 0.7) * config.waveAmplitude * 0.6;
+|      
+|      p.x = p.baseX + waveX;
+|      p.y = p.baseY + waveY;
+|      
+|      // Mouse interaction
+|      const dx = mouse.x - p.x;
+|      const dy = mouse.y - p.y;
+|      const dist = Math.sqrt(dx * dx + dy * dy);
+|      
+|      if (dist < config.mouseRadius) {
+|        const force = (config.mouseRadius - dist) / config.mouseRadius;
+|        const angle = Math.atan2(dy, dx);
+|        p.x -= Math.cos(angle) * force * 20;
+|        p.y -= Math.sin(angle) * force * 20;
+|      }
+|    });
+|  }
+|  
+|  function draw() {
+|    ctx.clearRect(0, 0, width, height);
+|    
+|    // Get current accent color from CSS
+|    const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#fbbf24';
+|    const cyan = getComputedStyle(document.documentElement).getPropertyValue('--cyan').trim() || '#22d3ee';
+|    
+|    // Draw connections
+|    ctx.lineWidth = config.lineWidth;
+|    
+|    for (let i = 0; i < points.length; i++) {
+|      const p1 = points[i];
+|      
+|      // Connect to nearby points
+|      for (let j = i + 1; j < points.length; j++) {
+|        const p2 = points[j];
+|        const dx = p2.x - p1.x;
+|        const dy = p2.y - p1.y;
+|        const dist = Math.sqrt(dx * dx + dy * dy);
+|        
+|        if (dist < config.connectionDistance) {
+|          const alpha = (1 - dist / config.connectionDistance) * 0.4;
+|          ctx.strokeStyle = `rgba(34, 211, 238, ${alpha})`;
+|          ctx.beginPath();
+|          ctx.moveTo(p1.x, p1.y);
+|          ctx.lineTo(p2.x, p2.y);
+|          ctx.stroke();
+|        }
+|      }
+|    }
+|    
+|    // Draw points
+|    points.forEach(p => {
+|      const alpha = 0.3 + (Math.sin(time + p.phase) + 1) * 0.2;
+|      ctx.fillStyle = accent;
+|      ctx.globalAlpha = alpha;
+|      ctx.beginPath();
+|      ctx.arc(p.x, p.y, config.pointRadius, 0, Math.PI * 2);
+|      ctx.fill();
+|    });
+|    ctx.globalAlpha = 1;
+|  }
+|  
+|  function animate() {
+|    updatePoints();
+|    draw();
+|    animationId = requestAnimationFrame(animate);
+|  }
+|  
+|  // Event listeners
+|  window.addEventListener('resize', resize);
+|  window.addEventListener('mousemove', (e) => {
+|    mouse.x = e.clientX;
+|    mouse.y = e.clientY;
+|  });
+|  
+|  // Initialize
+|  resize();
+|  animate();
+|})();
+
+// === Theme cycle ===
+const THEMES = ['default','red-dark','red-light','orange-dark','orange-light','yellow-dark','yellow-light','green-dark','green-light','blue-dark','blue-light','indigo-dark','indigo-light','violet-dark','violet-light'];
+let themeIdx = 0;
+function setTheme(name) {
+  const html = document.documentElement;
+  if (name === 'default') html.removeAttribute('data-theme');
+  else html.setAttribute('data-theme', name);
+  localStorage.setItem('ielts-theme', name);
+  const dot = document.querySelector('#themeToggle .dot');
+  if (dot) {
+    const map = {
+      default: '#fbbf24',
+      'red-dark': '#f87171', 'red-light': '#dc2626',
+      'orange-dark': '#fb923c', 'orange-light': '#ea580c',
+      'yellow-dark': '#facc15', 'yellow-light': '#ca8a04',
+      'green-dark': '#4ade80', 'green-light': '#16a34a',
+      'blue-dark': '#60a5fa', 'blue-light': '#2563eb',
+      'indigo-dark': '#818cf8', 'indigo-light': '#4f46e5',
+      'violet-dark': '#c084fc', 'violet-light': '#9333ea'
+    };
+    dot.style.background = map[name] || '#fbbf24';
+  }
+}
+function cycleTheme() {
+  themeIdx = (themeIdx + 1) % THEMES.length;
+  setTheme(THEMES[themeIdx]);
+}
+(function initTheme() {
+  const saved = localStorage.getItem('ielts-theme') || 'default';
+  const i = THEMES.indexOf(saved);
+  themeIdx = i >= 0 ? i : 0;
+  setTheme(THEMES[themeIdx]);
+})();
+
+// === Progress Tracking ===
+function updateProgress() {
+  const data = JSON.parse(localStorage.getItem('ielts-speaking-progress') || '{}');
+  const cards = document.querySelectorAll('.deck-card');
+  let completed = 0;
+
+  cards.forEach(card => {
+    const slug = card.dataset.slug;
+    const fill = document.getElementById('progress-' + slug);
+    if (data[slug] && data[slug].completed) {
+      card.classList.add('completed');
+      if (fill) fill.style.width = '100%';
+      completed++;
+    } else {
+      card.classList.remove('completed');
+      if (fill) fill.style.width = '0%';
+    }
+  });
+
+  document.getElementById('completedDecks').textContent = completed;
+  const pct = Math.round((completed / cards.length) * 100);
+  document.getElementById('progressPercent').textContent = pct + '%';
+}
+
+updateProgress();
+window.addEventListener('storage', updateProgress);
+// Also update on visibility change in case user returned from a deck
+window.addEventListener('visibilitychange', () => {
+  if (!document.hidden) updateProgress();
+});
+</script>
+
+</body>
+</html>
