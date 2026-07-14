@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#0f0f23">
+<title>Linking Words B2 — Eloquenta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cs-accent:#818cf8;--cs-bg:#0f0f23;--cs-text:#c7d2fe;--cs-bg-card:#1a1a3e;
+  --cs-border:#2e2e5e;--cs-text-muted:#7c8db5;--cs-accent-glow:rgba(129,140,248,.2);
+  --cs-accent-dim:rgba(129,140,248,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px}
+body{font-family:'Inter',system-ui,sans-serif;background:color-mix(in srgb,var(--cs-bg) 85%,transparent);color:var(--cs-text);line-height:1.6;min-height:100vh;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
+.bg{position:fixed;inset:0;z-index:-1;background:color-mix(in srgb,var(--cs-bg) 85%,transparent);overflow:hidden}
+.bg::before{content:;position:absolute;inset:-50%;background:radial-gradient(ellipse at 20% 20%,var(--cs-accent-glow) 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,var(--cs-accent-dim) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.02) 0%,transparent 70%);filter:blur(40px);opacity:.5;animation:bg-drift 20s ease-in-out infinite alternate}
+.bg::after{content:;position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 2px,rgba(255,255,255,.015) 2px,rgba(255,255,255,.015) 4px),repeating-linear-gradient(-45deg,transparent,transparent 2px,rgba(255,255,255,.01) 2px,rgba(255,255,255,.01) 4px);opacity:.8}
+@keyframes bg-drift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-3%,2%) scale(1.05)}100%{transform:translate(2,-3%) scale(1.02)}}
+.slide{position:relative}
+.glass{background:rgba(26,26,62,.75);border:1px solid var(--cs-border);border-radius:18px;backdrop-filter:blur(14px);box-shadow:0 0 30px rgba(0,0,0,.3)}
+.glow-text{text-shadow:0 0 12px var(--cs-accent-glow),0 0 24px var(--cs-accent-dim)}
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--cs-bg) 85%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--cs-border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Space Grotesk';font-size:1.1rem;font-weight:700;color:#fff;text-decoration:none;letter-spacing:1px}
+.nav-logo span{color:var(--cs-accent)}
+.theme-cycle-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--cs-border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.theme-dot{width:10px;height:10px;border-radius:50%;background:var(--cs-accent)}
+.loading{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--cs-bg) 85%,transparent);color:var(--cs-accent);font-family:'Space Grotesk';font-size:1rem;letter-spacing:1px}
+.loading.hidden{display:none}
+#slides{max-width:900px;margin:0 auto;padding:30px 16px 100px;min-height:100vh}
+#slides.hidden{display:none}
+.slide{display:none}
+.slide.active{display:block}
+.slide h2{font-size:1.5rem;margin-bottom:16px;color:var(--cs-accent)}
+.card{padding:22px;margin-bottom:18px;background:color-mix(in srgb,var(--cs-card) 80%,transparent);border:1px solid var(--cs-border);border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08),0 0 1px rgba(0,0,0,.04);backdrop-filter:blur(8px)}
+.part-badge{display:inline-block;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:4px 10px;border-radius:6px;background:var(--cs-accent-dim);color:var(--cs-accent);border:1px solid var(--cs-border);margin-bottom:12px}
+.level-badge{display:inline-block;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:4px 10px;border-radius:6px;background:rgba(129,140,248,.15);border:1px solid rgba(129,140,248,.3);color:#818cf8;margin-left:6px}
+.question{font-size:1.05rem;font-weight:600;margin-bottom:12px}
+.reveal-btn{font-family:'Space Grotesk';font-size:.75rem;font-weight:700;padding:8px 14px;border-radius:8px;border:1px solid var(--cs-accent);background:transparent;color:var(--cs-accent);cursor:pointer;transition:all .15s}
+.reveal-btn:hover{background:var(--cs-accent);color:var(--cs-bg)}
+.hidden-answer{display:none;margin-top:12px;padding:14px;border-left:3px solid var(--cs-accent);background:rgba(129,140,248,.06);border-radius:0 10px 10px 0}
+.hidden-answer.open{display:block}
+.phrase-chip{display:inline-block;font-size:.7rem;padding:3px 8px;border-radius:6px;background:var(--cs-bg-card);border:1px solid var(--cs-border);color:var(--cs-text-muted);margin:2px}
+.tooltip{position:relative;border-bottom:1px dotted var(--cs-accent);cursor:help}
+.tooltip::after{content:attr(data-def);position:absolute;bottom:120%;left:50%;transform:translateX(-50%);width:220px;padding:8px 10px;border-radius:8px;background:var(--cs-bg-card);border:1px solid var(--cs-accent);color:var(--cs-text);font-size:.75rem;line-height:1.4;opacity:0;pointer-events:none;transition:opacity .2s;z-index:10}
+.tooltip:hover::after{opacity:1}
+.nav-btns{display:flex;justify-content:space-between;align-items:center;max-width:900px;margin:0 auto;padding:16px;position:fixed;bottom:0;left:0;right:0;background:color-mix(in srgb,var(--cs-bg) 85%,transparent);border-top:1px solid var(--cs-border)}
+.nav-btns button{font-family:'Space Grotesk';font-size:.8rem;font-weight:700;padding:10px 18px;border-radius:10px;border:1px solid var(--cs-border);background:var(--cs-bg-card);color:var(--cs-text);cursor:pointer}
+.nav-btns button:hover{border-color:var(--cs-accent);color:var(--cs-accent)}
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:rgba(255,255,255,.06);z-index:40}
+.progress-fill{height:100%;width:0;background:var(--cs-accent);transition:width .3s;box-shadow:0 0 10px var(--cs-accent-glow)}
+.timer{font-family:'Space Grotesk';font-size:.85rem;color:var(--cs-text-muted)}
+.grammar-box{padding:16px;margin:14px 0;border-radius:12px;background:rgba(129,140,248,.06);border:1px solid rgba(129,140,248,.2)}
+.grammar-box h4{color:#818cf8;font-size:.8rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.use-case{display:inline-block;font-size:.65rem;font-weight:700;padding:2px 7px;border-radius:4px;margin:3px 3px 3px 0;color:#fff}
+.use-addition{background:rgba(74,222,128,.25);color:#4ade80}
+.use-contrast{background:rgba(251,146,60,.25);color:#fb923c}
+.use-cause{background:rgba(248,113,113,.25);color:#f87171}
+.use-sequence{background:rgba(96,165,250,.25);color:#60a5fa}
+.use-example{background:rgba(192,132,252,.25);color:#c084fc}
+.use-summary{background:rgba(251,191,36,.25);color:#fbbf24}
+.use-concession{background:rgba(244,114,182,.25);color:#f472b6}
+.example-line{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.9rem}
+.example-line:last-child{border-bottom:none}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<div class="loading" id="loadingScreen">Loading B2 deck…</div>
+<nav class="nav">
+  <a href="../../../web-apps/VocabForge/index.html" class="nav-logo">◆ <span>Eloquenta</span> Linking Words</a>
+  <button class="theme-cycle-btn" id="themeCycleBtn" title="Cycle theme"><span class="theme-dot" id="themeDot"></span></button>
+</nav>
+
+<main id="slides" class="hidden">
+
+<!-- SLIDE 0: COVER -->
+<section class="slide active" data-slide="0">
+  <div class="card glass" style="text-align:center;margin-top:10vh">
+    <div class="part-badge">Linking Words <span class="level-badge">B2</span></div>
+    <h1 class="glow-text" style="font-size:2.4rem;margin-bottom:12px">Contrast &amp; Concession</h1>
+    <p style="color:var(--cs-text-muted);font-size:1rem;max-width:500px;margin:0 auto 24px">Go beyond "but" and "however". Learn to express nuance, show both sides of an argument, and sound like a confident speaker.</p>
+    <button class="reveal-btn" onclick="goTo(1)">Start Deck</button>
+  </div>
+</section>
+
+<!-- SLIDE 1: GRAMMAR EXPLANATION -->
+<section class="slide" data-slide="1">
+  <div class="card glass">
+    <div class="part-badge">Grammar <span class="level-badge">B2</span></div>
+    <h2 class="glow-text">Contrast &amp; Concession</h2>
+    <p style="margin-bottom:14px">At B2, you need to show that you can hold two ideas in your mind at once. Contrast words show differences. Concession words show that you acknowledge the other side — even before you disagree with it.</p>
+    
+    <div class="grammar-box">
+      <h4>Why this = B2-level English</h4>
+      <p style="font-size:.9rem;color:var(--cs-text-muted)">B1: <em>"I liked the film, <strong>but</strong> it was too long."</em><br>B2: <em>"<strong>Although</strong> the film was over three hours, I found it genuinely engaging. <strong>That said</strong>, I can understand why some people walked out."</em></p>
+      <p style="font-size:.9rem;color:var(--cs-text-muted);margin-top:8px">The difference? B2 speakers <strong>anticipate the counter-argument</strong>. They show range. Examiners reward this in both speaking and writing.</p>
+    </div>
+
+    <h3 style="margin:16px 0 10px;font-size:.95rem">B2 Contrast Words</h3>
+    <div class="example-line"><strong style="color:#fb923c">although / even though</strong> <span class="use-case use-contrast">contrast</span> <span class="use-case use-concession">concession</span> — <strong>Although</strong> it was raining, we went out.</div>
+    <div class="example-line"><strong style="color:#fb923c">however</strong> <span class="use-case use-contrast">contrast</span> — The hotel was expensive. <strong>However</strong>, the location was perfect.</div>
+    <div class="example-line"><strong style="color:#fb923c">on the other hand</strong> <span class="use-case use-contrast">balancing view</span> — City life is exciting. <strong>On the other hand</strong>, it can be exhausting.</div>
+    <div class="example-line"><strong style="color:#fb923c">whereas / while</strong> <span class="use-case use-contrast">direct comparison</span> — I prefer tea, <strong>whereas</strong> my brother loves coffee.</div>
+    <div class="example-line"><strong style="color:#f472b6">despite / in spite of</strong> <span class="use-case use-concession">concession</span> — <strong>Despite</strong> the rain, we enjoyed the trip.</div>
+    <div class="example-line"><strong style="color:#f472b6">nevertheless / nonetheless</strong> <span class="use-case use-concession">formal concession</span> — The task was difficult. <strong>Nevertheless</strong>, we completed it on time.</div>
+    <div class="example-line"><strong style="color:#fbbf24">that said / having said that</strong> <span class="use-case use-concession">softening</span> — The food was excellent. <strong>That said</strong>, the service could be faster.</div>
+  </div>
+</section>
+
+<!-- SLIDE 2: PHRASES WITH MULTIPLE USE CASES -->
+<section class="slide" data-slide="2">
+  <div class="card glass">
+    <div class="part-badge">Key Phrases <span class="level-badge">B2</span></div>
+    <h2 class="glow-text">Phrases That Do More Than One Job</h2>
+    
+    <p style="font-size:.9rem;margin-bottom:12px"><strong>although</strong> <span class="use-case use-contrast">contrast</span> <span class="use-case use-concession">concession</span></p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:6px">"<strong>Although</strong> I'm not a fan of horror films, I enjoyed that one." — concession (you went against your usual preference)</p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:16px">"<strong>Although</strong> she's 70, she runs marathons." — contrast (surprising difference)</p>
+
+    <p style="font-size:.9rem;margin-bottom:12px"><strong>however</strong> <span class="use-case use-contrast">contrast</span> <span class="use-case use-example">topic shift</span></p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:6px">"The hotel was lovely. <strong>However</strong>, the beach was far away." — direct contrast</p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:16px">"<strong>However</strong>, let's move on to the next point." — moving the discussion forward</p>
+
+    <p style="font-size:.9rem;margin-bottom:12px"><strong>despite / in spite of</strong> <span class="use-case use-concession">concession</span> <span class="use-case use-cause">emphasising obstacles</span></p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:6px">"<strong>Despite</strong> the delay, we arrived on time." — concession</p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:16px">"<strong>In spite of</strong> feeling nervous, she gave an excellent presentation." — emphasising the obstacle overcome</p>
+
+    <p style="font-size:.9rem;margin-bottom:12px"><strong>whereas</strong> <span class="use-case use-contrast">comparison</span> <span class="use-case use-example">formal writing</span></p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:6px">"Northern Europe is cold, <strong>whereas</strong> the south is warm." — geographical comparison</p>
+    <p style="font-size:.85rem;color:var(--cs-text-muted);margin-bottom:16px">"Online learning offers flexibility, <strong>whereas</strong> traditional classes provide more social interaction." — essay structure</p>
+  </div>
+</section>
+
+<!-- SLIDE 3: SPEAKING PRACTICE - DISCUSSING A CONTROVERSIAL TOPIC -->
+<section class="slide" data-slide="3">
+  <div class="card glass">
+    <div class="part-badge">Speaking Practice <span class="level-badge">B2</span></div>
+    <h2 class="glow-text">Scene 1: A Debate About Social Media</h2>
+    <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">You're in a discussion group at an English school. The topic: "Social media does more harm than good." Show both sides using concession and contrast language.</p>
+    
+    <div class="question">• What is your opinion on social media's impact on young people?</div>
+    <button class="reveal-btn">Show model answer</button>
+    <div class="hidden-answer">I think it's complicated. <strong>Although</strong> social media helps people stay connected, it can also be addictive. <strong>On the one hand</strong>, it's a great way to share ideas. <strong>On the other hand</strong>, it can make people feel inadequate. <strong>That said</strong>, I don't think we should ban it — we just need to use it more carefully.</div>
+
+    <div class="question">• Do you think governments should regulate social media companies?</div>
+    <button class="reveal-btn">Show model answer</button>
+    <div class="hidden-answer"><strong>Even though</strong> I believe in free speech, I think some regulation is necessary. <strong>Despite</strong> the benefits of open platforms, there's too much misinformation. <strong>Nevertheless</strong>, we have to be careful not to give governments too much control over what people can say.</div>
+
+    <div style="margin-top:18px"><strong style="color:var(--cs-accent)">Useful linking words for this scene:</strong><br>
+    <span class="phrase-chip">Although...</span><span class="phrase-chip">On the one hand...</span><span class="phrase-chip">On the other hand...</span><span class="phrase-chip">That said...</span><span class="phrase-chip">Even though...</span><span class="phrase-chip">Despite...</span><span class="phrase-chip">Nevertheless...</span>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: SPEAKING PRACTICE - JOB INTERVIEW -->
+<section class="slide" data-slide="4">
+  <div class="card glass">
+    <div class="part-badge">Speaking Practice <span class="level-badge">B2</span></div>
+    <h2 class="glow-text">Scene 2: Job Interview — Talking About Weaknesses</h2>
+    <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">The interviewer asks about your weaknesses. This is where concession language shines — acknowledge the weakness, then show how you manage it.</p>
+    
+    <div class="question">• What would you say is your biggest weakness?</div>
+    <button class="reveal-btn">Show model answer</button>
+    <div class="hidden-answer">I'd say I sometimes take on too much at once. <strong>Although</strong> I enjoy helping my colleagues, I've learned to be more selective. <strong>That said</strong>, I've started using a task management system, <strong>and</strong> it's made a real difference. <strong>Despite</strong> this weakness, I think my ability to prioritise has improved a lot.</div>
+
+    <div class="question">• Tell me about a time you disagreed with a manager.</div>
+    <button class="reveal-btn">Show model answer</button>
+    <div class="hidden-answer">Once, I thought a project deadline was unrealistic. <strong>Even though</strong> I respected my manager's experience, I felt I had to speak up. I suggested an alternative timeline, <strong>and</strong> <strong>despite</strong> some initial resistance, they agreed to it. <strong>In the end</strong>, we delivered on the revised date, <strong>whereas</strong> the original plan would have been impossible.</div>
+
+    <div style="margin-top:18px"><strong style="color:var(--cs-accent)">Useful linking words for this scene:</strong><br>
+    <span class="phrase-chip">Although...</span><span class="phrase-chip">That said...</span><span class="phrase-chip">Even though...</span><span class="phrase-chip">despite</span><span class="phrase-chip">In the end...</span><span class="phrase-chip">whereas</span>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: SPEAKING PRACTICE - DESCRIBING A DIFFICULT DECISION -->
+<section class="slide" data-slide="5">
+  <div class="card glass">
+    <div class="part-badge">Speaking Practice <span class="level-badge">B2</span></div>
+    <h2 class="glow-text">Scene 3: A Difficult Decision</h2>
+    <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">A friend asks about a tough choice you made. Use concession and contrast to show you considered both sides before deciding.</p>
+    
+    <div class="question">• Have you ever had to choose between two good options? Tell me about it.</div>
+    <button class="reveal-btn">Show model answer</button>
+    <div class="hidden-answer">Last year, I had to decide between staying in my current job and accepting a new offer. <strong>On the one hand</strong>, my current job was comfortable and the team was great. <strong>On the other hand</strong>, the new role offered more responsibility. <strong>Although</strong> it was a risk, I decided to take the new position. <strong>Despite</strong> feeling nervous at first, I think it was the right choice.</div>
+
+    <div style="margin-top:18px"><strong style="color:var(--cs-accent)">Useful linking words for this scene:</strong><br>
+    <span class="phrase-chip">On the one hand...</span><span class="phrase-chip">On the other hand...</span><span class="phrase-chip">Although...</span><span class="phrase-chip">Despite...</span><span class="phrase-chip">In the end...</span>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: HOMEWORK -->
+<section class="slide" data-slide="6">
+  <div class="card glass">
+    <div class="part-badge">Practice &amp; Homework <span class="level-badge">B2</span></div>
+    <h2 class="glow-text">Your Turn</h2>
+    
+    <div class="question">Writing task</div>
+    <p>Write a short essay (150–200 words): "Is it better to live in a city or the countryside?" Use at least 5 different contrast/concession linking words.</p>
+    
+    <div class="question" style="margin-top:14px">Speaking task</div>
+    <p>Record yourself for 2 minutes discussing a controversial topic (e.g. remote work, AI in education, fast fashion). Try to show BOTH sides using concession language.</p>
+    
+    <div class="question" style="margin-top:14px">Listening task</div>
+    <p>Watch a TED Talk or listen to a podcast where someone presents an argument. Note every contrast/concession word they use. How many can you catch?</p>
+    
+    <div style="margin-top:24px;padding:18px;border-radius:12px;background:rgba(0,0,0,.3);border:1px solid var(--cs-border)">
+      <h4 style="color:var(--cs-accent);font-size:.85rem;margin-bottom:12px">🎙️ Voice Recorder</h4>
+      <p style="font-size:.8rem;color:var(--cs-text-muted);margin-bottom:12px">Record yourself practising linking words. Play it back to hear your fluency.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
+        <button id="recBtn" onclick="VF_Rec.toggle()" style="font-family:'Space Grotesk';font-size:.75rem;font-weight:700;padding:8px 16px;border-radius:8px;border:1px solid var(--cs-accent);background:transparent;color:var(--cs-accent);cursor:pointer;transition:all .15s">🎤 Connect Mic</button>
+        <button id="recPlayBtn" onclick="VF_Rec.play()" disabled style="font-family:'Space Grotesk';font-size:.75rem;font-weight:700;padding:8px 14px;border-radius:8px;border:1px solid var(--cs-border);background:transparent;color:var(--cs-text-muted);cursor:pointer">▶ Play</button>
+        <button id="recSaveBtn" onclick="VF_Rec.save()" disabled style="font-family:'Space Grotesk';font-size:.75rem;font-weight:700;padding:8px 14px;border-radius:8px;border:1px solid var(--cs-border);background:transparent;color:var(--cs-text-muted);cursor:pointer">💾 Save MP3</button>
+        <select id="recFormat" onchange="VF_Rec.setFormat(this.value)" style="background:var(--cs-bg-card);border:1px solid var(--cs-border);color:var(--cs-text);border-radius:6px;padding:6px 10px;font-size:.75rem;font-family:'Space Grotesk';cursor:pointer">
+          <option value="328">MP3 328kbps</option>
+          <option value="192">MP3 192kbps</option>
+          <option value="128">MP3 128kbps</option>
+        </select>
+      </div>
+      <div id="recStatus" style="font-size:.75rem;color:var(--cs-text-muted);min-height:18px"></div>
+      <audio id="recPlayer" controls style="width:100%;margin-top:8px;display:none;border-radius:8px"></audio>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="nav-btns">
+  <button onclick="prev()" id="prevBtn">← Back</button>
+  <span class="timer" id="slideCounter">1 / 7</span>
+  <button onclick="next()" id="nextBtn">Next →</button>
+</div>
+
+      var player=document.getElementById('recPlayer');
+      player.src=url;player.style.display='block';player.play();
+    },
+    save:function(){
+      if(!recordedBlob)return;
+      var url=URL.createObjectURL(recordedBlob);
+      var a=document.createElement('a');
+      a.href=url;a.download='linking-words-practice-'+formatBitrate+'kbps.mp3'
+<script>
+
+var VF_Rec=(function(){
+  var mediaRecorder,chunks=[],stream=null,recordedBlob=null,formatBitrate=328;
+  function status(msg){var el=document.getElementById('recStatus');if(el)el.textContent=msg;}
+  return {
+    toggle:function(){
+      if(stream){stopRecording();}else{startRecording();}
+    },
+    setFormat:function(v){formatBitrate=parseInt(v);status('Format: MP3 '+formatBitrate+'kbps');},
+    play:function(){
+      if(!recordedBlob)return;
+      var url=URL.createObjectURL(recordedBlob);
+      var player=document.getElementById('recPlayer');
+      player.src=url;player.style.display='block';player.play();
+    },
+    save:function(){
+      if(!recordedBlob)return;
+      var url=URL.createObjectURL(recordedBlob);
+      var a=document.createElement('a');
+      a.href=url;a.download='linking-words-practice-'+formatBitrate+'kbps.mp3';
+      document.body.appendChild(a);a.click();a.remove();
+      status('Saved! Check your Downloads folder.');
+    }
+  };
+  function startRecording(){
+    navigator.mediaDevices.getUserMedia({audio:true}).then(function(s){
+      stream=s;
+      chunks=[];
+      var mime=MediaRecorder.isTypeSupported('audio/mpeg')?'audio/mpeg':'audio/webm';
+      mediaRecorder=new MediaRecorder(stream,{mimeType:mime,audioBitsPerSecond:formatBitrate*1000});
+      mediaRecorder.ondataavailable=function(e){if(e.data.size>0)chunks.push(e.data);};
+      mediaRecorder.onstop=function(){
+        recordedBlob=new Blob(chunks,{type:mime});
+        document.getElementById('recPlayBtn').disabled=false;
+        document.getElementById('recSaveBtn').disabled=false;
+        document.getElementById('recPlayer').style.display='block';
+        document.getElementById('recPlayer').src=URL.createObjectURL(recordedBlob);
+        status('Recording saved. Play it back or download.');
+      };
+      mediaRecorder.start();
+      document.getElementById('recBtn').textContent='⏹ Stop Recording';
+      document.getElementById('recBtn').style.background='var(--cs-accent)';
+      document.getElementById('recBtn').style.color='var(--cs-bg)';
+      status('Recording... Speak now! Click Stop when done.');
+    }).catch(function(err){
+      status('Mic access denied. Please allow microphone access and try again.');
+    });
+  }
+  function stopRecording(){
+    if(mediaRecorder&&mediaRecorder.state!=='inactive'){mediaRecorder.stop();}
+    if(stream){stream.getTracks().forEach(function(t){t.stop();});}
+    stream=null;
+    document.getElementById('recBtn').textContent='🎤 Connect Mic';
+    document.getElementById('recBtn').style.background='transparent';
+    document.getElementById('recBtn').style.color='var(--cs-accent)';
+  }
+})();
+
+var THEME_ORDER=['midnight','eloquent','wte','sunset','forest','light'];
+var THEMES={
+  midnight:{accent:'#a78bfa',bg:'#1a0f2e',text:'#e0d4ff',card:'#2a1a4e',border:'#4c2a8e'},
+  eloquent:{accent:'#22d3ee',bg:'#0a0e1a',text:'#e0f2fe',card:'#111827',border:'#1e3a5f'},
+  wte:{accent:'#a3e635',bg:'#1c1c1c',text:'#e8e8f0',card:'#232323',border:'#3a3a3a'},
+  sunset:{accent:'#fb923c',bg:'#1a0f0a',text:'#fed7aa',card:'#2d1a10',border:'#4a2a1a'},
+  forest:{accent:'#4ade80',bg:'#0a1a0f',text:'#bbf7d0',card:'#162418',border:'#2a4a2a'},
+  light:{accent:'#2563eb',bg:'#f0f7ff',text:'#1e293b',card:'#e8f4fd',border:'#c2d9f0'}
+};
+function applyTheme(name){
+  var t=THEMES[name]; if(!t) return;
+  var r=document.documentElement;
+  r.style.setProperty('--cs-accent',t.accent);
+  r.style.setProperty('--cs-bg',t.bg);
+  r.style.setProperty('--cs-text',t.text);
+  r.style.setProperty('--cs-bg-card',t.card);
+  r.style.setProperty('--cs-border',t.border);
+  r.style.setProperty('--cs-text-muted',t.text+'99');
+  r.style.setProperty('--cs-accent-glow',t.accent+'33');
+  r.style.setProperty('--cs-accent-dim',t.accent+'18');
+  document.getElementById('themeDot').style.background=t.accent;
+  try{localStorage.setItem('eloquent-theme',name);}catch(e){}
+}
+document.getElementById('themeCycleBtn').addEventListener('click',function(){
+  var saved=localStorage.getItem('eloquent-theme')||'midnight';
+  var idx=THEME_ORDER.indexOf(saved);
+  applyTheme(THEME_ORDER[(idx+1)%THEME_ORDER.length]);
+});
+applyTheme(localStorage.getItem('eloquent-theme')||'midnight');
+
+var current=0, slides=Array.from(document.querySelectorAll('.slide'));
+function goTo(n){
+  if(n<0||n>=slides.length) return;
+  slides[current].classList.remove('active');
+  current=n;
+  slides[current].classList.add('active');
+  document.getElementById('slideCounter').textContent=(current+1)+' / '+slides.length;
+  document.getElementById('progressFill').style.width=((current+1)/slides.length*100)+'%';
+  document.getElementById('prevBtn').disabled=current===0;
+  document.getElementById('nextBtn').disabled=current===slides.length-1;
+  try{
+    var progress=JSON.parse(localStorage.getItem('fce-progress')||'{}');
+    progress['linking-b2']=current;
+    localStorage.setItem('fce-progress',JSON.stringify(progress));
+  }catch(e){}
+}
+function next(){goTo(current+1);}
+function prev(){goTo(current-1);}
+document.addEventListener('click',function(e){
+  var btn=e.target.closest('.reveal-btn');
+  if(btn){
+    var ans=btn.parentElement.querySelector('.hidden-answer');
+    if(ans){ ans.classList.toggle('open'); btn.textContent=ans.classList.contains('open')?'Hide answer':'Show answer'; }
+  }
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); next(); }
+  if(e.key==='ArrowLeft'){ e.preventDefault(); prev(); }
+});
+(function(){
+  try{
+    var progress=JSON.parse(localStorage.getItem('fce-progress')||'{}');
+    var saved=progress['linking-b2'];
+    if(typeof saved==='number' && saved>=0) goTo(saved);
+  }catch(e){}
+})();
+(function(){
+  var bgImages=[];
+  document.querySelectorAll('.slide').forEach(function(s){
+    var style=s.getAttribute('style')||'';
+    var m=style.match(/background-image:\s*url\(([^)]+)\)/);
+    if(m) bgImages.push(m[1].replace(/["']/g,''));
+  });
+  if(!bgImages.length){ document.getElementById('loadingScreen').classList.add('hidden'); document.getElementById('slides').classList.remove('hidden'); return; }
+  var loaded=0;
+  bgImages.forEach(function(src){
+    var img=new Image();
+    img.onload=img.onerror=function(){
+      loaded++;
+      if(loaded===bgImages.length){
+        document.getElementById('loadingScreen').classList.add('hidden');
+        document.getElementById('slides').classList.remove('hidden');
+      }
+    };
+    img.src=src;
+  });
+})();
+</script>
+</body>
+</html>
