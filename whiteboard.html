@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eloquenta Whiteboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cs-accent: #22d3ee;
+  --cs-bg: #0a0e1a;
+  --cs-bg2: #111827;
+  --cs-bg3: #1e293b;
+  --cs-bg4: #1e293b;
+  --cs-text: #e0f2fe;
+  --cs-text-muted: #94a3b8;
+  --cs-text-dim: #64748b;
+  --cs-border: #1e3a5f;
+  --cs-border-light: #2a4a6f;
+  --cs-accent-glow: rgba(34,211,238,.3);
+  --cs-accent-dim: rgba(34,211,238,.12);
+  --cs-green: #34d399;
+  --cs-rose: #fb7185;
+  --cs-amber: #fbbf24;
+  --cs-card: #111827;
+  --cs-nav: rgba(10,14,26,.92);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--cs-bg);
+  color: var(--cs-text);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+}
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  background: var(--cs-nav);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--cs-border);
+}
+.logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cs-accent);
+  letter-spacing: 2px;
+}
+.toolbar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tool-btn {
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 6px;
+  border: 1px solid var(--cs-border);
+  background: var(--cs-bg3);
+  color: var(--cs-text-muted);
+  font-size: 12px;
+  cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+}
+.tool-btn:hover { border-color: var(--cs-accent); color: var(--cs-accent); }
+.tool-btn.active { background: var(--cs-accent-dim); border-color: var(--cs-accent); color: var(--cs-accent); }
+.color-swatch {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--cs-border);
+  cursor: pointer;
+}
+.canvas-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+}
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  cursor: crosshair;
+}
+.theme-cycle-btn {
+  margin-left: auto;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 6px;
+  border: 1px solid var(--cs-border);
+  background: var(--cs-bg3);
+  color: var(--cs-text-muted);
+  font-size: 12px;
+  cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+}
+.theme-cycle-btn:hover { border-color: var(--cs-accent); color: var(--cs-accent); background: var(--cs-accent-dim); }
+
+</style>
+</head>
+<body class="cs-eloquent">
+  <div class="topbar">
+    <div class="logo">ELOQUENTA WHITEBOARD</div>
+    <div class="toolbar">
+      <button class="tool-btn active" data-tool="pen">Pen</button>
+      <button class="tool-btn" data-tool="eraser">Eraser</button>
+      <input id="size" type="range" min="1" max="20" value="3">
+      <span id="sizeLabel" style="color:var(--cs-text-muted);font-size:12px;align-self:center">3</span>
+      <button class="tool-btn" id="clearBtn">Clear</button>
+    </div>
+    <div style="display:flex;gap:6px">
+      <button class="color-swatch" data-color="#000000" style="background:#000000"></button>
+      <button class="color-swatch" data-color="#ef4444" style="background:#ef4444"></button>
+      <button class="color-swatch" data-color="#22d3ee" style="background:#22d3ee"></button>
+      <button class="color-swatch" data-color="#a855f7" style="background:#a855f7"></button>
+      <button class="color-swatch" data-color="#34d399" style="background:#34d399"></button>
+    </div>
+    <button class="theme-cycle-btn" id="themeCycleBtn">Theme</button>
+  </div>
+  <div class="canvas-wrap">
+    <canvas id="canvas"></canvas>
+  </div>
+
+<script>
+(function() {
+  var canvas = document.getElementById('canvas');
+  var ctx = canvas.getContext('2d');
+  var tool = 'pen';
+  var color = '#000000';
+  var size = 3;
+  var drawing = false;
+  var last = null;
+
+  function resize() {
+    var dpr = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function pos(e) {
+    if (e.touches && e.touches.length) return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    return { x: e.clientX, y: e.clientY };
+  }
+
+  function start(e) {
+    drawing = true;
+    var p = pos(e);
+    last = p;
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+  }
+  function move(e) {
+    if (!drawing) return;
+    var p = pos(e);
+    ctx.lineWidth = tool === 'eraser' ? size * 5 : size;
+    ctx.strokeStyle = tool === 'eraser' ? '#ffffff' : color;
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+    last = p;
+  }
+  function end() { drawing = false; last = null; }
+
+  canvas.addEventListener('mousedown', start);
+  canvas.addEventListener('mousemove', move);
+  canvas.addEventListener('mouseup', end);
+  canvas.addEventListener('touchstart', start, { passive: true });
+  canvas.addEventListener('touchmove', move, { passive: true });
+  canvas.addEventListener('touchend', end);
+
+  document.querySelectorAll('[data-tool]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      tool = this.getAttribute('data-tool');
+      document.querySelectorAll('[data-tool]').forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+    });
+  });
+  document.querySelectorAll('.color-swatch').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      color = this.getAttribute('data-color');
+      tool = 'pen';
+      document.querySelectorAll('[data-tool]').forEach(function(b) { b.classList.remove('active'); });
+      document.querySelector('[data-tool="pen"]').classList.add('active');
+    });
+  });
+  var sizeInput = document.getElementById('size');
+  var sizeLabel = document.getElementById('sizeLabel');
+  sizeInput.addEventListener('input', function() {
+    size = parseInt(this.value, 10);
+    sizeLabel.textContent = size;
+  });
+  document.getElementById('clearBtn').addEventListener('click', function() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  });
+
+  /* Theme system */
+  var THEME_ORDER = ['eloquent','wte','midnight','sunset','forest','ice','burgundy','slime','geranium','light'];
+  var THEMES = {
+    eloquent: { accent:'#22d3ee', bg:'#0a0e1a', text:'#e0f2fe', card:'#111827', border:'#1e3a5f', nav:'rgba(10,14,26,0.92)', name:'Eloquenta' },
+    wte:      { accent:'#a3e635', bg:'#1c1c1c', text:'#e8e8f0', card:'#232323', border:'#3a3a3a', nav:'rgba(28,28,28,0.92)', name:'WTE' },
+    midnight: { accent:'#818cf8', bg:'#0f0f23', text:'#c7d2fe', card:'#1a1a3e', border:'#2e2e5e', nav:'rgba(15,15,35,0.92)', name:'Midnight' },
+    sunset:   { accent:'#fb923c', bg:'#1a0f0a', text:'#fed7aa', card:'#2d1a10', border:'#4a2a1a', nav:'rgba(26,15,10,0.92)', name:'Sunset' },
+    forest:   { accent:'#4ade80', bg:'#0d1f12', text:'#bbf7d0', card:'#1a2e1e', border:'#2a4a2a', nav:'rgba(13,31,18,0.90)', name:'Forest' },
+    ice:      { accent:'#67e8f9', bg:'#0c1929', text:'#cffafe', card:'#162d3d', border:'#1e4a5e', nav:'rgba(12,25,41,0.92)', name:'Ice' },
+    burgundy: { accent:'#e879f9', bg:'#1a0a12', text:'#f3e8ff', card:'#2d1528', border:'#4a1e3a', nav:'rgba(26,10,18,0.92)', name:'Burgundy' },
+    slime:    { accent:'#a855f7', bg:'#0f0a1a', text:'#e9d5ff', card:'#1e1530', border:'#3a1e5e', nav:'rgba(15,10,26,0.92)', name:'Slime' },
+    geranium: { accent:'#fb7185', bg:'#1a0f12', text:'#fecdd3', card:'#2d1a1e', border:'#4a2a2a', nav:'rgba(26,15,18,0.92)', name:'Geranium' },
+    light:    { accent:'#2563eb', bg:'#f8fafc', text:'#1e293b', card:'#ffffff', border:'#e2e8f0', nav:'rgba(248,250,252,0.95)', name:'Light' }
+  };
+  var currentThemeIdx = 0;
+  function applyTheme(name) {
+    var t = THEMES[name]; if (!t) return;
+    currentThemeIdx = THEME_ORDER.indexOf(name);
+    var r = document.documentElement;
+    r.style.setProperty('--cs-accent', t.accent);
+    r.style.setProperty('--cs-bg', t.bg);
+    r.style.setProperty('--cs-text', t.text);
+    r.style.setProperty('--cs-card', t.card);
+    r.style.setProperty('--cs-border', t.border);
+    r.style.setProperty('--cs-bg2', t.card);
+    r.style.setProperty('--cs-bg3', t.border);
+    r.style.setProperty('--cs-text-muted', t.text + '99');
+    r.style.setProperty('--cs-text-dim', t.text + '66');
+    r.style.setProperty('--cs-accent-glow', t.accent + '33');
+    r.style.setProperty('--cs-accent-dim', t.accent + '18');
+    r.style.setProperty('--cs-border-light', t.border + 'cc');
+    document.querySelector('.topbar').style.background = t.nav;
+    try { localStorage.setItem('vc-theme', name); } catch(e) {}
+  }
+  function cycleTheme() {
+    var next = (currentThemeIdx + 1) % THEME_ORDER.length;
+    applyTheme(THEME_ORDER[next]);
+  }
+  document.getElementById('themeCycleBtn').addEventListener('click', cycleTheme);
+  (function loadTheme() {
+    var saved = '';
+    try { saved = localStorage.getItem('vc-theme') || ''; } catch(e) {}
+    if (saved && THEMES[saved]) applyTheme(saved);
+  })();
+})();
+</script>
+</body>
+</html>
