@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; media-src 'self' blob:; object-src 'none'; frame-ancestors 'none'"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Egyptian Electrical Engineer — Accent Reduction</title>
+<style>
+:root{
+  --bg:#020617;--bg-card:#0f172a;--bg-hover:#1e293b;
+  --border:#1e293b;--border-light:#334155;
+  --text:#e2e8f0;--text-dim:#64748b;--text-muted:#94a3b8;
+  --cyan:#22d3ee;--amber:#fbbf24;--emerald:#34d399;
+  --violet:#a78bfa;--rose:#fb7185;
+  --accent:var(--cyan);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;overflow:hidden;height:100vh;width:100vw;font-size:22px}
+.deck{position:relative;width:100vw;height:100vh;overflow:hidden;background:linear-gradient(160deg,#020617 0%,#0a1628 100%)}
+.slide{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:5vh 8vw 8vh;opacity:0;
+  transition:opacity .45s;pointer-events:none;
+}
+.slide.active{opacity:1;pointer-events:auto}
+.slide-inner{width:100%;max-width:85vw;margin:0 auto}
+
+.slide.title{align-items:flex-start;justify-content:center;padding-left:8vw}
+.slide.title h1{font-size:4.5rem;font-weight:800;line-height:1.1;color:#fff;margin-bottom:1rem}
+.slide.title h1 em{color:var(--cyan);font-style:normal}
+.slide.title .subtitle{font-size:1.6rem;color:var(--text-muted);font-weight:400;margin-bottom:1.5rem}
+.slide.title .tagline{font-size:1rem;color:var(--text-dim);letter-spacing:2px;text-transform:uppercase;border-left:3px solid var(--cyan);padding-left:1rem;margin-bottom:.8rem}
+
+.slide.section h2{font-size:5.5rem;font-weight:800;color:#fff;margin-bottom:.5rem}
+.slide.section h2 em{color:var(--cyan);font-style:normal}
+.slide.section .bar{width:120px;height:6px;background:linear-gradient(90deg,var(--cyan),var(--violet));border-radius:3px;margin-top:1rem}
+
+.slide h3{font-size:2.4rem;font-weight:700;color:#fff;margin-bottom:.4rem}
+.slide h3 em{color:var(--cyan);font-style:normal}
+.slide h4{font-size:1.15rem;color:var(--text-muted);font-weight:400;margin-bottom:1.8rem;letter-spacing:.5px}
+
+.content-grid{display:grid;gap:1rem;margin-top:1rem}
+.content-grid.two{grid-template-columns:1fr 1fr}
+.content-grid.three{grid-template-columns:1fr 1fr 1fr}
+.content-grid.four{grid-template-columns:1fr 1fr 1fr 1fr}
+
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.4rem 1.6rem;transition:border-color .3s}
+.card:hover{border-color:var(--border-light)}
+.card .label{font-size:.85rem;color:var(--text-dim);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.5rem;font-weight:600}
+.card .value{font-size:1.05rem;color:#fff;line-height:1.6;font-weight:500}
+.card .value strong{color:var(--cyan);font-weight:600}
+.card .value em{color:var(--amber);font-style:normal;font-weight:600}
+.card .sub{font-size:.85rem;color:var(--text-dim);margin-top:.5rem;line-height:1.5}
+
+.callout{background:rgba(34,211,238,.05);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;padding:1.2rem 1.6rem;margin-top:1.2rem}
+.callout .cl-title{font-size:.9rem;color:var(--cyan);font-weight:700;margin-bottom:.4rem;letter-spacing:.5px}
+.callout .cl-body{font-size:1rem;color:var(--text);line-height:1.6}
+
+.ref{font-size:.8rem;color:var(--text-dim);margin-top:.5rem;line-height:1.6}
+
+.ph-table{width:100%;margin-top:.8rem;border-spacing:0}
+.ph-table th{font-size:.85rem;color:var(--text-dim);letter-spacing:1.5px;text-transform:uppercase;text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--border-light);font-weight:600}
+.ph-table td{font-size:1.0rem;color:#fff;padding:.7rem .8rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.55}
+.ph-table tr:last-child td{border-bottom:none}
+.ph-table td:first-child{color:var(--cyan);font-weight:700;font-family:'SF Mono',Monaco,'Cascadia Code',monospace;font-size:1.05rem;white-space:nowrap;min-width:100px}
+.ph-table td .ar{color:var(--rose);font-weight:600}
+.ph-table td .en{color:var(--emerald);font-weight:600}
+.ph-table td .ex{color:var(--amber);font-style:normal;font-weight:500}
+
+.flow{display:flex;gap:.8rem;margin-top:1rem;align-items:stretch}
+.flow-step{flex:1;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.2rem 1rem;text-align:center;position:relative}
+.flow-step .num{width:2rem;height:2rem;border-radius:50%;background:rgba(34,211,238,.15);color:var(--cyan);font-weight:800;font-size:1rem;display:flex;align-items:center;justify-content:center;margin:0 auto .6rem}
+.flow-step .fs-title{font-size:.95rem;color:#fff;font-weight:700;margin-bottom:.4rem}
+.flow-step .fs-body{font-size:.8rem;color:var(--text-dim);line-height:1.5}
+.flow-arrow{display:flex;align-items:center;color:var(--text-dim);font-size:1.4rem;flex-shrink:0;padding-bottom:2rem}
+
+.mp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:.8rem}
+.mp{background:rgba(34,211,238,.04);border:1px solid var(--border);border-radius:8px;padding:.8rem 1rem;text-align:center}
+.mp .ipa{font-family:'SF Mono',Monaco,monospace;font-size:1.2rem;color:#fff;margin-bottom:.3rem}
+.mp .ipa span.l{color:var(--cyan)}
+.mp .ipa span.r{color:var(--rose)}
+.mp .gloss{font-size:.75rem;color:var(--text-dim)}
+
+/* Audio player */
+.audio-player{background:var(--bg-card);border:1px solid var(--border-light);border-radius:14px;padding:1.4rem 1.8rem;margin-top:1rem}
+.ap-title{font-size:.85rem;color:var(--text-dim);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.7rem;font-weight:600}
+.ap-pair{display:flex;gap:1rem;margin-bottom:.8rem;align-items:center}
+.ap-word{font-size:1.6rem;font-weight:700;color:#fff;min-width:8rem;font-family:'SF Mono',Monaco,monospace}
+.ap-word.a-word{color:var(--cyan)}
+.ap-word.b-word{color:var(--rose)}
+.ap-vs{font-size:1rem;color:var(--text-dim);font-weight:600}
+.ap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.5rem}
+.ap-btn{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;
+  padding:.6rem .8rem;cursor:pointer;transition:all .2s;
+  color:#fff;font-size:.9rem;font-weight:500;
+}
+.ap-btn:hover{background:rgba(34,211,238,.1);border-color:var(--cyan)}
+.ap-btn:active{transform:scale(.97)}
+.ap-btn .flag{font-size:.95rem;font-weight:800;color:var(--cyan);letter-spacing:1px}
+.ap-btn .aname{font-size:.8rem;font-weight:600;color:#fff}
+.ap-btn .adial{font-size:.7rem;color:var(--text-dim)}
+.ap-btn .play-icon{margin-left:auto;font-size:.9rem;color:var(--cyan)}
+.ap-btn.playing{background:rgba(34,211,238,.15);border-color:var(--cyan)}
+.ap-status{font-size:.85rem;color:var(--text-dim);margin-top:.6rem;min-height:1.2rem}
+.ap-status.active{color:var(--emerald)}
+
+/* Teacher section */
+.teach-step{display:flex;gap:1rem;align-items:flex-start;margin-bottom:.8rem;padding:.8rem 1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:10px}
+.teach-step .ts-num{width:1.8rem;height:1.8rem;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--violet));color:#000;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.teach-step .ts-body{flex:1}
+.teach-step .ts-title{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.3rem}
+.teach-step .ts-desc{font-size:.9rem;color:var(--text-muted);line-height:1.55}
+.teach-step .ts-tip{font-size:.8rem;color:var(--amber);margin-top:.25rem;font-style:italic}
+
+/* Progress bar */
+#progress{position:fixed;top:0;left:0;height:6px;background:linear-gradient(90deg,var(--cyan),var(--violet));border-radius:0 3px 3px 0;z-index:100;transition:width .3s;box-shadow:0 0 12px rgba(34,211,238,.5)}
+#nav{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:1.2rem;z-index:100}
+#nav button{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--text);padding:.6rem 1.4rem;border-radius:8px;font-size:.9rem;cursor:pointer;transition:background .2s}
+#nav button:hover{background:rgba(255,255,255,.12)}
+#slide-count{font-size:.85rem;color:var(--text-dim);min-width:4rem;text-align:center}
+
+.deck-wrapper{width:100vw;height:100vh;overflow:hidden}
+/* Eloquenta Logo */
+  .elo-logo-wrap{display:inline-flex;align-items:center;gap:10px;text-decoration:none;transition:opacity .2s}
+  .elo-logo-wrap:hover{text-decoration:none;opacity:.85}
+  .elo-logo-wrap .elo-wordmark{font-size:22px;font-weight:700;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;letter-spacing:-.5px;line-height:1;color:#f1f5f9}
+  .elo-logo-wrap .elo-wordmark .o{color:#22d3ee}
+</style>
+</head><body><!-- Eloquenta Brand Bar --><div class="elo-brand-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:rgba(15,23,42,.95);border-bottom:1px solid #1e293b;position:sticky;top:0;z-index:999;backdrop-filter:blur(8px)"><a href="../Extras/landing.html" class="elo-logo-wrap" title="Eloquenta Home"><span class="elo-wordmark">El<span class="o">o</span>quenta</span></a><span style="font-size:10px;color:#64748b;letter-spacing:1px;text-transform:uppercase">English &middot; In Your Language</span></div>
+
+<div class="deck-wrapper">
+<div class="deck">
+
+<!-- SLIDE 1: Title -->
+<div class="slide title active" id="s1">
+  <div class="tagline">Eloquenta Accent Reduction</div>
+  <h1>English Pronunciation<br>for an <em>Egyptian</em> Electrical Engineer</h1>
+  <div class="subtitle">Evidence-based accent reduction for engineers who present, report &amp; lead in English</div>
+  <div class="tagline" style="border-left-color:var(--violet)">Empirical phonetics &middot; Targeted drills &middot; Measurable outcomes</div>
+</div>
+
+<!-- SLIDE 2: The Problem -->
+<div class="slide section" id="s2">
+  <h2>The <em>Core</em> Challenge</h2>
+  <div class="bar"></div>
+</div>
+
+<!-- SLIDE 3: L1 Transfer -->
+<div class="slide" id="s3">
+  <h3>Why Egyptian Arabic Speakers Struggle with English</h3>
+  <h4>First-language (L1) phonological transfer — the science</h4>
+  <div class="content-grid two">
+    <div class="card">
+      <div class="label">Egyptian Arabic Phonology</div>
+      <div class="value">No /p/ phoneme (it is perceived as /b/). <span class="ar">/θ/</span> and <span class="ar">/ð/</span> (the "th" sounds) exist in MSA — but in spoken Egyptian they collapse to /s, z, t, d/. <span class="ar">/q/</span> &rarr; glottal stop <span class="ar">[ʔ]</span> ("gummed" pronunciation). Pharyngeal and uvular consonants (ع, ق, غ) have no English equivalent. Stress is largely predictable from syllable weight — not a free contrast.</div>
+      <div class="sub">Arabic phonology (Wikipedia); Egyptian Arabic (Wikipedia)</div>
+    </div>
+    <div class="card">
+      <div class="label">English Phonology</div>
+      <div class="value">A distinct /p/ (voiceless, aspirated, bilabial). Two dental fricatives <span class="en">/θ/ /ð/</span>. No glottal-stop phoneme. Stress is <strong>lexical and contrastive</strong> — it marks meaning (REcord vs reCORD). 14+ vowels vs Arabic's ~6. Heavy use of schwa /ə/ in unstressed syllables.</div>
+      <div class="sub">Non-native Pronunciations of English (Wikipedia)</div>
+    </div>
+  </div>
+  <div class="callout">
+    <div class="cl-title">THE BOTTLENECK</div>
+    <div class="cl-body">Egyptian English is rarely "unintelligible" — the core issues are <strong>consonant substitution</strong> (p/v, th/s-z, q/glottal) and <strong>stress placement</strong>. Flege's Speech Learning Model (1995) shows L2 sounds close to an L1 category get "assimilated" — so /p/ is heard as /b/ and /θ/ as /s/ unless trained explicitly. These substitutions are exactly what can confuse a technical listener during a switchgear briefing.</div>
+  </div>
+</div>
+
+<!-- SLIDE 4: The Phonetic Gap -->
+<div class="slide" id="s4">
+  <h3>The Phonetic Gap</h3>
+  <h4>Egyptian Arabic L1 transfer — the high-frequency substitutions</h4>
+  <table class="ph-table">
+    <tr><th>English</th><th>Egyptian Substitute</th><th>Result in engineering English</th></tr>
+    <tr><td>/p/ [pʰ]</td><td>No /p/ — realised as /b/ (or written as ب)</td><td><span class="ex">"pressure" &rarr; "bressure"</span>; "switchgear panel" &rarr; "banel"</td></tr>
+    <tr><td>/v/ [v]</td><td>No /v/ — realised as /f/ (ب vs ف merged)</td><td><span class="ex">"voltage" &rarr; "foltage"</span>; "verify" &rarr; "ferify"</td></tr>
+    <tr><td>/θ/ /ð/ (th)</td><td>MSA keeps them; Egyptian &rarr; [s], [z] (or [t], [d])</td><td><span class="ex">"thermal" &rarr; "sermal"</span>; "this" &rarr; "zis / dis"</td></tr>
+    <tr><td>/q/ [q]</td><td>Glottal stop [ʔ] ("gummed q")</td><td>Not an English phoneme, but the <strong>glottal stop habit</strong> can appear in English word-medial position</td></tr>
+    <tr><td>Stress</td><td>Weight-based, predictable; vowels fully pronounced</td><td>Flat or "wrong-stressed" English: <span class="ex">"a-NAL-y-sis" &rarr; "A-na-ly-sis"</span></td></tr>
+    <tr><td>Vowel reduction</td><td>Every vowel fully pronounced — no schwa /ə/</td><td><span class="ex">"insulation" &rarr; [ʔin.su.ˈlaː.t͡sjoːn]</span>, not [ɪn.sə.ˈleɪ.ʃn]</td></tr>
+  </table>
+  <div class="ref">Munro &amp; Derwing (1995); Derwing &amp; Munro (2005); Non-native Pronunciations of English (Wikipedia)</div>
+</div>
+
+<!-- SLIDE 5: High-Frequency Errors -->
+<div class="slide section" id="s5">
+  <h2>The <em>Key</em> Errors</h2>
+  <div class="bar"></div>
+</div>
+
+<!-- SLIDE 6: Minimal Pairs -->
+<div class="slide" id="s6">
+  <h3>Minimal Pairs — P/V and TH</h3>
+  <h4>Words that differ by only one sound. Critical in a technical briefing.</h4>
+  <div class="mp-grid">
+    <div class="mp"><div class="ipa"><span class="l">p</span>ressure / <span class="r">b</span>ressure</div><div class="gloss">Engineering term / Non-word</div></div>
+    <div class="mp"><div class="ipa"><span class="l">p</span>anel / <span class="r">b</span>anel</div><div class="gloss">Switchboard part / Non-word</div></div>
+    <div class="mp"><div class="ipa"><span class="l">p</span>rotect / <span class="r">b</span>rotect</div><div class="gloss">Safety verb / Non-word</div></div>
+    <div class="mp"><div class="ipa"><span class="l">v</span>erify / <span class="r">f</span>erify</div><div class="gloss">Check / Confuse</div></div>
+    <div class="mp"><div class="ipa"><span class="l">v</span>oltage / <span class="r">f</span>oltage</div><div class="gloss">Electrical term / Non-word</div></div>
+    <div class="mp"><div class="ipa"><span class="l">v</span>alve / <span class="r">f</span>alve</div><div class="gloss">Component / Non-word</div></div>
+    <div class="mp"><div class="ipa"><span class="l">th</span>ermal / <span class="r">s</span>ermal</div><div class="gloss">Heat property / Non-word</div></div>
+    <div class="mp"><div class="ipa"><span class="l">th</span>reshold / <span class="r">s</span>reshold</div><div class="gloss">Trip point / Non-word</div></div>
+    <div class="mp"><div class="ipa"><span class="l">th</span>is / <span class="r">z</span>is</div><div class="gloss">Demonstrative / Non-word</div></div>
+  </div>
+  <div class="callout" style="margin-top:20px">
+    <div class="cl-title">REAL-WORLD CONSEQUENCES</div>
+    <div class="cl-body">In a relay-settings review: "verify the voltage" misheard as "ferify the foltage" slows comprehension but is usually recoverable. The genuine risk is <strong>/p/ &harr; /b/</strong> — "protect the panel" vs "brotect the banel" can blur a safety instruction. Train /p/ and /v/ first; they carry the most technical load.</div>
+  </div>
+</div>
+
+<!-- SLIDE 7: Audio Player -->
+<div class="slide" id="s7">
+  <h3>Listen: <em>verify</em> vs <em>ferify</em> — 7 Native English Accents</h3>
+  <h4>Click an accent button to hear the pair. Record yourself and compare against these models.</h4>
+  <div class="audio-player">
+    <div class="ap-title">Minimal Pair: v / f — Select Accent</div>
+    <div class="ap-pair">
+      <div class="ap-word a-word">/ˈvɛrɪfaɪ/</div>
+      <div class="ap-vs">vs</div>
+      <div class="ap-word b-word">/ˈfɛrɪfaɪ/</div>
+    </div>
+    <div class="ap-grid" id="ap-grid">
+      <!-- Buttons injected by JS -->
+    </div>
+    <div class="ap-status" id="ap-status">Select an accent above to play both words.</div>
+  </div>
+  <div class="callout" style="margin-top:16px">
+    <div class="cl-title">HOW TO USE THIS PLAYER</div>
+    <div class="cl-body">
+      The player uses your browser's built-in text-to-speech with <strong>locale-specific voices</strong> (en-US, en-GB, en-AU, en-ZA, en-IN, en-IE, en-SC).
+      On desktop Chrome/Edge, all 7 locales are typically available. On Safari, some voices may require a download prompt.
+      Record yourself saying each word and compare directly. For production deployment, integrate Google Cloud TTS / AWS Polly for higher-quality native voice samples.
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 8: Formation -->
+<div class="slide" id="s8">
+  <h3>Forming /p/, /v/ and /θ/ /ð/ Correctly</h3>
+  <h4>Practical articulatory training — what to do with your mouth</h4>
+  <div class="content-grid two">
+    <div class="card">
+      <div class="label">English /p/ — Voiceless Bilabial Plosive [pʰ]</div>
+      <div class="value">
+        <strong>1.</strong> Press both lips firmly together — same as /b/.<br><br>
+        <strong>2.</strong> The difference from /b/: <strong>no voice</strong>. Release with a puff of air (aspiration). Put your hand in front of your mouth — you should feel the puff for /p/ but not for /b/.<br><br>
+        <em>Drill: "pie / buy / pie / buy". Feel the aspiration on "pie". Egyptian has no /p/, so the brain substitutes /b/ — force the silence + puff.</em>
+      </div>
+    </div>
+    <div class="card">
+      <div class="label">English /v/ — Voiced Labiodental Fricative [v]</div>
+      <div class="value">
+        <strong>1.</strong> Gently rest your <strong>upper teeth on your lower lip</strong>.<br><br>
+        <strong>2.</strong> Push air through while <strong>voicing</strong> (make sound). The friction you feel is the /v/.<br><br>
+        <strong>3.</strong> /f/ is the same place but <strong>silent</strong> (no voice). "vine / fine" = voice on/off.<br><br>
+        <em>Drill: "veil / fail / veal / feel". Mirror check: teeth on lip, always.</em>
+      </div>
+    </div>
+  </div>
+  <div class="callout">
+    <div class="cl-title">THE KEY INSIGHT</div>
+    <div class="cl-body">These are <strong>place-and-vicing</strong> contrasts, not new tongue positions. The fix is small and physical: lips together + puff for /p/; teeth-on-lip + voice for /v/. Articulatory training works even when perception is shaky (compare Goto 1971 for Japanese R/L — same principle, different sounds).</div>
+  </div>
+</div>
+
+<!-- SLIDE 9: Research -->
+<div class="slide section" id="s9">
+  <h2>What the <em>Research</em> Says</h2>
+  <div class="bar"></div>
+</div>
+
+<!-- SLIDE 10: Key Studies -->
+<div class="slide" id="s10">
+  <h3>Landmark Studies on L2 Accent &amp; Intelligibility</h3>
+  <h4>Four decades of empirical evidence</h4>
+  <div class="content-grid two">
+    <div class="card">
+      <div class="label">Flege (1995) — Speech Learning Model</div>
+      <div class="value">L2 sounds that are <strong>close to an L1 category</strong> get "mapped" onto it and stop improving. New, distinct categories must be formed. This is why Egyptian /p/&rarr;/b/ and /v/&rarr;/f/ persist without explicit training.</div>
+      <div class="sub">Second Language Acquisition, 17, 1-34</div>
+    </div>
+    <div class="card">
+      <div class="label">Derwing &amp; Munro (1997, 2005) — Intelligibility First</div>
+      <div class="value">Listeners judge <strong>intelligibility and accentedness separately</strong>. Heavy accent &ne; hard to understand. Training that targets <strong>comprehensibility</strong> (stress, rhythm, key consonants) beats accent-elimination drills. Goal: be understood, not sound native.</div>
+      <div class="sub">Studies in SLA; Munro &amp; Derwing (1995), JASA</div>
+    </div>
+    <div class="card">
+      <div class="label">Munro &amp; Derwing (1995) — Listener Training</div>
+      <div class="value">Naive listeners adapt quickly to a foreign accent once they hear a few sentences. This means <strong>clear stress and a few corrected consonants</strong> unlock understanding faster than perfect pronunciation ever could.</div>
+      <div class="sub">JASA, 97(1), 568-578</div>
+    </div>
+    <div class="card">
+      <div class="label">Horwitz et al. (1986) — Language Anxiety</div>
+      <div class="value">Foreign Language Classroom Anxiety Scale shows <strong>speaking in L2 triggers measurable anxiety</strong>, which consumes working-memory capacity. Rehearsal and psychological safety are not "soft" — they directly improve performance.</div>
+      <div class="sub">Modern Language Journal, 70(2), 125-132</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 11: Training Protocols -->
+<div class="slide" id="s11">
+  <h3>Evidence-Based Training Protocols</h3>
+  <h4>Methods validated for professional learners</h4>
+  <div class="flow">
+    <div class="flow-step"><div class="num">1</div><div class="fs-title">Diagnose</div><div class="fs-body">Record a 2-minute explanation of your own work (e.g. a switchgear test). Score the 9-point grid at slide 14.</div></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step"><div class="num">2</div><div class="fs-title">Perception</div><div class="fs-body">Minimal-pair identification with feedback (Lively et al. 1993). Hear /p/&harr;/b/, /v/&harr;/f/ across 5+ speaker accents.</div></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step"><div class="num">3</div><div class="fs-title">Articulation</div><div class="fs-body">Mirror + physical placement. Lips-together-puff for /p/; teeth-on-lip-voice for /v/. Drill in real phrases.</div></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step"><div class="num">4</div><div class="fs-title">Prosody</div><div class="fs-body">Stress-timed rhythm + sentence stress. Mark the content words; reduce the rest to schwa.</div></div>
+  </div>
+  <div class="callout" style="margin-top:20px">
+    <div class="cl-title">PRIORITY NOTE</div>
+    <div class="cl-body">For an engineer, prioritise by <strong>technical impact</strong>: (1) /p/ and /v/ — safety and component terms; (2) sentence stress — keeps listeners oriented; (3) /θ/ /ð/ — lower frequency in engineering talk; (4) schwa/rhythm — the "hidden accent".</div>
+  </div>
+</div>
+
+<!-- SLIDE 12: Psychology Intro -->
+<div class="slide section" id="s12">
+  <h2>The <em>Psychology</em> of L2 Work</h2>
+  <div class="bar"></div>
+</div>
+
+<!-- SLIDE 13: Psychology Cards -->
+<div class="slide" id="s13">
+  <h3>Working &amp; Presenting in a Second Language</h3>
+  <h4>Six findings that change how you should practise — and how you should feel about your accent</h4>
+  <div class="content-grid three">
+    <div class="card">
+      <div class="label">1 &middot; Accent &ne; Intelligibility</div>
+      <div class="value">A clear accent is fine. Listeners separate <strong>accentedness from comprehensibility</strong> (Derwing &amp; Munro 2005). Your goal is to be <em>understood</em>, not to erase your background.</div>
+    </div>
+    <div class="card">
+      <div class="label">2 &middot; Anxiety Uses Bandwidth</div>
+      <div class="value">L2 speaking anxiety (Horwitz 1986) <strong>consumes working memory</strong>. Rehearse aloud, record, and normalise mistakes — this frees cognitive space for the actual content.</div>
+    </div>
+    <div class="card">
+      <div class="label">3 &middot; Identity Is Not the Target</div>
+      <div class="value">You are an engineer communicating, not an actor imitating a native. Keep your <em>authority and identity</em>. Pronunciation is a tool, not a test of belonging.</div>
+    </div>
+    <div class="card">
+      <div class="label">4 &middot; Listeners Adapt Fast</div>
+      <div class="value">Naive listeners adjust to a foreign accent within a few sentences (Munro &amp; Derwing 1995). A slow, well-stressed opening buys you that adaptation window.</div>
+    </div>
+    <div class="card">
+      <div class="label">5 &middot; Psychological Safety</div>
+      <div class="value">Edmondson (1999): teams learn faster when mistakes are <strong>safe, not punished</strong>. Practise where errors are welcome — the gains transfer to high-stakes meetings.</div>
+    </div>
+    <div class="card">
+      <div class="label">6 &middot; It Is Trainable</div>
+      <div class="value">Dweck (2006) growth mindset applies to pronunciation: it is a <em>skill</em>, not a fixed talent. Small, repeated, explicit drills beat years of hoping it "comes naturally".</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 14: Presenting Mindset -->
+<div class="slide" id="s14">
+  <h3>A Practical Mindset for Presenting</h3>
+  <h4>What to do before, during and after you speak in English</h4>
+  <div class="content-grid two">
+    <div class="card">
+      <div class="label">Before</div>
+      <div class="value">
+        <strong>1.</strong> Rehearse aloud, not silently — the mouth must learn too.<br>
+        <strong>2.</strong> Record and compare to a native model (use slide 7).<br>
+        <strong>3.</strong> Pre-write your <em>signpost</em> phrases: "First… Next… To summarise…"<br>
+        <strong>4.</strong> Mark sentence stress on your script in <strong>CAPITALS</strong>.
+      </div>
+    </div>
+    <div class="card">
+      <div class="label">During</div>
+      <div class="value">
+        <strong>1.</strong> Slow down. Pausing reads as <em>control</em>, not hesitation.<br>
+        <strong>2.</strong> Stress content words; let function words shrink to schwa.<br>
+        <strong>3.</strong> If stuck, use a bridge: "Let me rephrase that."<br>
+        <strong>4.</strong> It is OK to ask: "Could you repeat the question?"
+      </div>
+    </div>
+  </div>
+  <div class="callout">
+    <div class="cl-title">THE REFRAME</div>
+    <div class="cl-body">You are not "fixing a defect" in yourself. You are <strong>adding a professional communication toolkit</strong>. The accent you keep is part of who you are; the clarity you gain is part of doing your job well. Both can be true at once.</div>
+  </div>
+</div>
+
+<!-- SLIDE 15: Case Study Intro -->
+<div class="slide section" id="s15">
+  <h2>The <em>Case Study</em></h2>
+  <div class="bar"></div>
+</div>
+
+<!-- SLIDE 16: Case Study Context -->
+<div class="slide" id="s16">
+  <h3>Case Study — Switchgear Quality Control &amp; Assessment</h3>
+  <h4>We will model the whole deck on one real engineering presentation</h4>
+  <div class="content-grid two">
+    <div class="card">
+      <div class="label">The Scenario</div>
+      <div class="value">You are presenting the <strong>quality-control and assessment procedures</strong> for medium-voltage switchgear to a mixed technical audience (clients, senior engineers, QA). The talk has 7 stages: introduce &rarr; background &rarr; methods &rarr; results &rarr; discussion &rarr; conclusion &rarr; Q&amp;A.</div>
+    </div>
+    <div class="card">
+      <div class="label">Why This Is Hard in L2</div>
+      <div class="value">Technical talks pile <strong>cognitive load</strong> on top of language load: numbers, component names, cause-effect logic. Clear stress and a few corrected consonants (panel, verify, voltage) are what keep the room with you.</div>
+    </div>
+  </div>
+  <div class="callout">
+    <div class="cl-title">HOW TO USE THE NEXT SLIDES</div>
+    <div class="cl-body">Each stage gives you <strong>B1+ and B2 model phrases</strong> plus a switchgear example. Practise the B1+ set first (they carry the talk). Use the B2 set when you want more nuance. Record yourself; fix stress before words.</div>
+  </div>
+</div>
+
+<!-- SLIDE 17: Stages Overview -->
+<div class="slide" id="s17">
+  <h3>The 7 Stages of the Talk</h3>
+  <h4>The arc of a quality-control presentation</h4>
+  <div class="flow">
+    <div class="flow-step"><div class="num">1</div><div class="fs-title">Introduce</div><div class="fs-body">Outline &amp; aim</div></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step"><div class="num">2</div><div class="fs-title">Background</div><div class="fs-body">Why it matters</div></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step"><div class="num">3</div><div class="fs-title">Methods</div><div class="fs-body">The procedure</div></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step"><div class="num">4</div><div class="fs-title">Results</div><div class="fs-body">What we found</div></div>
+  </div>
+  <div class="flow" style="margin-top:.8rem">
+    <div class="flow-step"><div class="num">5</div><div class="fs-title">Discussion</div><div class="fs-body">What it means</div></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step"><div class="num">6</div><div class="fs-title">Conclusion</div><div class="fs-body">Recommendation</div></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step"><div class="num">7</div><div class="fs-title">Q &amp; A</div><div class="fs-body">Handle questions</div></div>
+    <div class="flow-step" style="visibility:hidden"></div>
+  </div>
+</div>
+
+<!-- SLIDE 18: Stage 1 Introduce -->
+<div class="slide" id="s18">
+  <h3>Stage 1 — Introduce &amp; Outline</h3>
+  <h4>Set the aim and the roadmap in the first 30 seconds</h4>
+  <table class="ph-table">
+    <tr><th>Function</th><th>B1+ phrase</th><th>B2 phrase</th><th>Switchgear example</th></tr>
+    <tr><td>Greet</td><td>Good morning, everyone.</td><td>Thank you all for joining this session.</td><td class="ex">Good morning, and thank you for the invitation to present.</td></tr>
+    <tr><td>Aim</td><td>Today I will talk about our QC procedures.</td><td>I'll walk you through our quality-control and assessment protocol.</td><td class="ex">I'll walk you through our quality-control and assessment procedures for MV switchgear.</td></tr>
+    <tr><td>Outline</td><td>First I'll show the method. Then the results.</td><td>I'll begin with the assessment method, move to the findings, and close with recommendations.</td><td class="ex">I'll begin with incoming inspection, then electrical testing, then the results.</td></tr>
+    <tr><td>Signpost</td><td>Let's start with the background.</td><td>To set the context, let me briefly outline the problem.</td><td class="ex">To set the context, let me outline why we revised the torque settings.</td></tr>
+  </table>
+  <div class="callout"><div class="cl-title">STRESS TIP</div><div class="cl-body">Stress the <strong>content words</strong>: "I'll WALK you through our QUALity-CONtrol PROcedure." Keep "I'll / you / the" short and quiet.</div></div>
+</div>
+
+<!-- SLIDE 19: Stage 2 Background -->
+<div class="slide" id="s19">
+  <h3>Stage 2 — Background &amp; Context</h3>
+  <h4>Explain why the procedure matters before the detail</h4>
+  <table class="ph-table">
+    <tr><th>Function</th><th>B1+ phrase</th><th>B2 phrase</th><th>Switchgear example</th></tr>
+    <tr><td>Why it matters</td><td>This is important because faults are costly.</td><td>This matters because premature failure carries significant safety and cost risk.</td><td class="ex">This matters because a busbar fault can take a whole substation offline.</td></tr>
+    <tr><td>Problem</td><td>In the past we had some failures.</td><td>Historically we observed intermittent trip failures under load.</td><td class="ex">Historically we observed intermittent trip failures above 80% rated current.</td></tr>
+    <tr><td>Objective</td><td>Our goal was to find faults earlier.</td><td>Our objective was to detect degradation earlier in the lifecycle.</td><td class="ex">Our objective was to detect contact wear earlier, before it became critical.</td></tr>
+    <tr><td>Bridge</td><td>So, let me explain the method.</td><td>With that context, let me turn to the assessment method.</td><td class="ex">With that context, let me turn to the inspection method we adopted.</td></tr>
+  </table>
+</div>
+
+<!-- SLIDE 20: Stage 3 Methods -->
+<div class="slide" id="s20">
+  <h3>Stage 3 — Methods / Procedures</h3>
+  <h4>Describe the step-by-step assessment (sequencing language)</h4>
+  <table class="ph-table">
+    <tr><th>Function</th><th>B1+ phrase</th><th>B2 phrase</th><th>Switchgear example</th></tr>
+    <tr><td>Sequence</td><td>First we check the panel. Then we test it.</td><td>We begin with a visual inspection, followed by dielectric and continuity testing.</td><td class="ex">We begin with a visual inspection, followed by insulation-resistance and continuity testing.</td></tr>
+    <tr><td>Method</td><td>We use a megger to measure resistance.</td><td>We apply a 5 kV dielectric test to verify isolation.</td><td class="ex">We apply a 5 kV dielectric test to verify isolation between phases.</td></tr>
+    <tr><td>Criteria</td><td>If the value is low, we reject it.</td><td>Any reading below the threshold triggers a quarantine and root-cause review.</td><td class="ex">Any IR below 1 MΩ triggers quarantine and root-cause analysis.</td></tr>
+    <tr><td>Precision</td><td>We record the voltage carefully.</td><td>We log the applied voltage and ambient temperature for traceability.</td><td class="ex">We log the applied voltage and ambient humidity for full traceability.</td></tr>
+  </table>
+  <div class="callout"><div class="cl-title">/v/ &amp; /p/ WATCH</div><div class="cl-body">"We VERify the VOltage on the PANel." Practise these three words slowly — they appear constantly in this stage.</div></div>
+</div>
+
+<!-- SLIDE 21: Stage 4 Results -->
+<div class="slide" id="s21">
+  <h3>Stage 4 — Results &amp; Findings</h3>
+  <h4>Report numbers clearly; signpost the trend</h4>
+  <table class="ph-table">
+    <tr><th>Function</th><th>B1+ phrase</th><th>B2 phrase</th><th>Switchgear example</th></tr>
+    <tr><td>Headline</td><td>The results show fewer faults.</td><td>The results indicate a 12% reduction in field failures.</td><td class="ex">The results indicate a 12% reduction in field failures after the retorque step.</td></tr>
+    <tr><td>Trend</td><td>Failures went down over time.</td><td>Failure rate declined steadily across the three assessment batches.</td><td class="ex">The trip-failure rate declined steadily across batches A, B and C.</td></tr>
+    <tr><td>Compare</td><td>New method is better than old.</td><td>The revised protocol outperformed the baseline on every metric.</td><td class="ex">The revised protocol outperformed the baseline on insulation and torque consistency.</td></tr>
+    <tr><td>Numbers</td><td>Ninety-five percent passed.</td><td>95% of units met the acceptance criteria on first pass.</td><td class="ex">95% of units met the acceptance criteria on first pass; 5% required rework.</td></tr>
+  </table>
+</div>
+
+<!-- SLIDE 22: Stage 5 Discussion -->
+<div class="slide" id="s22">
+  <h3>Stage 5 — Discussion &amp; Implications</h3>
+  <h4>Interpret the results; show judgement (hedging language)</h4>
+  <table class="ph-table">
+    <tr><th>Function</th><th>B1+ phrase</th><th>B2 phrase</th><th>Switchgear example</th></tr>
+    <tr><td>Interpret</td><td>This means the method works.</td><td>This suggests the retorque step is the key driver of the improvement.</td><td class="ex">This suggests the retorque step is the main driver of the gain.</td></tr>
+    <tr><td>Hedge</td><td>Maybe humidity is a factor.</td><td>Humidity may have contributed, though we cannot confirm causality.</td><td class="ex">Ambient humidity may have contributed, though we cannot confirm causality.</td></tr>
+    <tr><td>Limit</td><td>The sample was small.</td><td>We should note the sample size limits how far we can generalise.</td><td class="ex">We should note the batch size limits how far we can generalise to other sites.</td></tr>
+    <tr><td>Trade-off</td><td>It takes more time but it is safer.</td><td>The trade-off is added cycle time against a clear safety benefit.</td><td class="ex">The trade-off is added test time against a clear reliability benefit.</td></tr>
+  </table>
+</div>
+
+<!-- SLIDE 23: Stage 6 Conclusion -->
+<div class="slide" id="s23">
+  <h3>Stage 6 — Conclusion &amp; Recommendation</h3>
+  <h4>Close with a clear recommendation and next step</h4>
+  <table class="ph-table">
+    <tr><th>Function</th><th>B1+ phrase</th><th>B2 phrase</th><th>Switchgear example</th></tr>
+    <tr><td>Summarise</td><td>To sum up, the new check works.</td><td>To summarise, the revised assessment protocol gives earlier warning of failure.</td><td class="ex">To summarise, the protocol gives earlier warning of contact degradation.</td></tr>
+    <tr><td>Recommend</td><td>I recommend we use it everywhere.</td><td>I recommend rolling the procedure out across all MV lines.</td><td class="ex">I recommend rolling the procedure out across all medium-voltage lines.</td></tr>
+    <tr><td>Next step</td><td>Next we will train the team.</td><td>Next we will train QA staff and update the work instruction.</td><td class="ex">Next we will train the QA team and revise the work instruction.</td></tr>
+    <tr><td>Thanks</td><td>Thank you. Any questions?</td><td>Thank you for your attention. I'm happy to take questions.</td><td class="ex">Thank you. I'm happy to take your questions on the procedure.</td></tr>
+  </table>
+</div>
+
+<!-- SLIDE 24: Stage 7 Q&A -->
+<div class="slide" id="s24">
+  <h3>Stage 7 — Q&amp;A Session Phrases</h3>
+  <h4>Keep control of the room; buy thinking time safely</h4>
+  <table class="ph-table">
+    <tr><th>Function</th><th>B1+ phrase</th><th>B2 phrase</th><th>Note</th></tr>
+    <tr><td>Buy time</td><td>That's a good question.</td><td>That's a fair question — let me think for a moment.</td><td class="ex">Pausing is professional. Do not fill silence with "um".</td></tr>
+    <tr><td>Clarify</td><td>Sorry, can you repeat?</td><td>Could you rephrase that, please? I want to be sure I answer the right point.</td><td class="ex">Asking for clarity is normal in technical Q&amp;A.</td></tr>
+    <tr><td>Confirm</td><td>Do you mean the test method?</td><td>Are you asking about the dielectric test specifically, or the whole protocol?</td><td class="ex">Narrow the question before answering.</td></tr>
+    <tr><td>Answer</td><td>In our case, we used X.</td><td>In our setup, we applied a 5 kV test and logged every result.</td><td class="ex">Anchor to your data, not generalities.</td></tr>
+    <tr><td>Don't know</td><td>I'm not sure. I'll check.</td><td>I don't have that figure to hand — I'll follow up after the session.</td><td class="ex">"I'll follow up" beats guessing under pressure.</td></tr>
+    <tr><td>Close</td><td>Was that clear?</td><td>Does that address your concern, or should I go deeper?</td><td class="ex">Hand control back; offer depth if needed.</td></tr>
+  </table>
+</div>
+
+<!-- SLIDE 25: Safe Pauses -->
+<div class="slide" id="s25">
+  <h3>Buying Time Without Sounding Nervous</h3>
+  <h4>Prepared "filler" phrases — better than silence or "um"</h4>
+  <div class="content-grid two">
+    <div class="card">
+      <div class="label">To Think (B1+)</div>
+      <div class="value">
+        &bull; "Let me put it another way."<br>
+        &bull; "If I understand you correctly…"<br>
+        &bull; "That's an interesting point."<br>
+        &bull; "Let me check the data on that."
+      </div>
+    </div>
+    <div class="card">
+      <div class="label">To Think (B2)</div>
+      <div class="value">
+        &bull; "If I may reframe the question…"<br>
+        &bull; "The short answer is yes; the longer answer is more nuanced."<br>
+        &bull; "I'd qualify that by saying…"<br>
+        &bull; "Let me come back to that after the next point."
+      </div>
+    </div>
+  </div>
+  <div class="callout"><div class="cl-title">WHY THIS MATTERS</div><div class="cl-body">In L2, silence feels like failure but is actually <strong>control</strong>. Pre-loaded phrases let you pause with intent, which lowers anxiety (Horwitz 1986) and keeps the listener confident in you.</div></div>
+</div>
+
+<!-- SLIDE 26: Common Switchgear Errors -->
+<div class="slide" id="s26">
+  <h3>Watch These Words — Switchgear Vocabulary</h3>
+  <h4>The terms where /p/, /v/ and stress most often slip</h4>
+  <table class="ph-table">
+    <tr><th>Word</th><th>IPA</th><th>Common Egyptian substitution</th><th>Fix</th></tr>
+    <tr><td>panel</td><td>/ˈpæn.əl/</td><td class="ar">"banel"</td><td class="ex">Lips + puff: P not B</td></tr>
+    <tr><td>pressure</td><td>/ˈprɛʃ.ər/</td><td class="ar">"bressure"</td><td class="ex">Aspirated P</td></tr>
+    <tr><td>protect</td><td>/prəˈtɛkt/</td><td class="ar">"brotect"</td><td class="ex">P + schwa in middle</td></tr>
+    <tr><td>verify</td><td>/ˈvɛr.ɪ.faɪ/</td><td class="ar">"ferify"</td><td class="ex">Teeth on lip + voice</td></tr>
+    <tr><td>voltage</td><td>/ˈvoʊl.tɪdʒ/</td><td class="ar">"foltage"</td><td class="ex">Voiced V, not F</td></tr>
+    <tr><td>analysis</td><td>/əˈnæl.ə.sɪs/</td><td class="ar">"A-na-ly-sis"</td><td class="ex">Stress on 2nd syllable; schwa first</td></tr>
+    <tr><td>isolation</td><td>/ˌaɪ.səˈleɪ.ʃən/</td><td class="ar">"i-so-LA-tion"</td><td class="ex">Stress on "LA"; reduce the rest</td></tr>
+  </table>
+</div>
+
+<!-- SLIDE 27: Summary -->
+<div class="slide section" id="s27">
+  <h2>The <em>Summary</em></h2>
+  <div class="bar"></div>
+</div>
+
+<!-- SLIDE 28: Key Takeaways -->
+<div class="slide" id="s28">
+  <h3>Six Principles for This Engineer</h3>
+  <h4>Phonetics + psychology, in one place</h4>
+  <div class="content-grid two">
+    <div class="card">
+      <div class="label">1 &middot; Fix /p/ and /v/ First</div>
+      <div class="value">They carry the most technical weight (panel, verify, voltage, protect). Small physical change — lips-puff, teeth-on-lip.</div>
+    </div>
+    <div class="card">
+      <div class="label">2 &middot; Stress Beats Perfection</div>
+      <div class="value">Clear sentence stress orients listeners more than native vowels (Derwing &amp; Munro 2005). Mark CAPITALS on your script.</div>
+    </div>
+    <div class="card">
+      <div class="label">3 &middot; Intelligibility &gt; Nativeness</div>
+      <div class="value">Keep your identity. Be understood. Listeners adapt within a few sentences (Munro &amp; Derwing 1995).</div>
+    </div>
+    <div class="card">
+      <div class="label">4 &middot; Rehearse Aloud</div>
+      <div class="value">Silent reading doesn't train the mouth. Record, compare to slide 7, repeat. Lowers anxiety too (Horwitz 1986).</div>
+    </div>
+    <div class="card">
+      <div class="label">5 &middot; Pre-Load Q&amp;A Phrases</div>
+      <div class="value">Bridge phrases ("Let me reframe that…") buy time and signal control. They are a skill, not a crutch.</div>
+    </div>
+    <div class="card">
+      <div class="label">6 &middot; It Is Trainable</div>
+      <div class="value">Pronunciation is a skill (Dweck 2006), not a fixed trait. Explicit, repeated drills beat hope.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 29: References -->
+<div class="slide" id="s29">
+  <h3>References</h3>
+  <h4>Empirical sources informing this program</h4>
+  <div class="ref" style="font-size:13px;line-height:1.8;color:var(--text-muted);margin-top:16px">
+    Derwing, T.M. &amp; Munro, M.J. (1997). <em>Studies in Second Language Acquisition</em>, 19, 285-310.<br>
+    Derwing, T.M. &amp; Munro, M.J. (2005). <em>Second Language Research</em>, 21(4), 325-341.<br>
+    Dweck, C. (2006). <em>Mindset: The New Psychology of Success</em>, Random House.<br>
+    Edmondson, A. (1999). <em>Administrative Science Quarterly</em>, 44(2), 350-383.<br>
+    Flege, J.E. (1995). <em>Second Language Acquisition</em>, 17, 1-34 (Speech Learning Model).<br>
+    Horwitz, E.K., Horwitz, M.B. &amp; Cope, J. (1986). <em>Modern Language Journal</em>, 70(2), 125-132.<br>
+    Lively, S. et al. (1993). <em>JASA</em>, 94(3), 1242-1255.<br>
+    Munro, M.J. &amp; Derwing, T.M. (1995). <em>JASA</em>, 97(1), 568-578.<br>
+    Wikipedia: Arabic Phonology &middot; Egyptian Arabic &middot; Non-native Pronunciations of English (May 2026)
+  </div>
+</div>
+
+<!-- SLIDE 30: Closing -->
+<div class="slide title" id="s30">
+  <div class="tagline">Eloquenta Accent Reduction</div>
+  <h1>Clear English.<br><em>Your</em> Expertise.</h1>
+  <div class="subtitle">Evidence-based &middot; Engineer-focused &middot; Measurable</div>
+  <div style="margin-top:40px;font-size:16px;color:var(--text-dim);border-left:3px solid var(--cyan);padding-left:16px">
+    Diagnose &rarr; Train Perception &amp; Articulation &rarr; Practise the Talk &rarr; Present with Confidence
+  </div>
+</div>
+
+</div><!-- /deck -->
+</div><!-- /deck-wrapper -->
+
+<div id="progress"></div>
+<div id="nav">
+  <button onclick="prev()">&#8592; Prev</button>
+  <span id="slide-count">1 / 30</span>
+  <button onclick="next()">Next &rarr;</button>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  // --- Audio Player (configurable minimal pair) ---
+  var WORD_A = 'verify';   // /v/ word
+  var WORD_B = 'ferify';   // /f/ word (non-word used for contrast)
+  var accents = [
+    {code:'en-US', flag:'US', name:'American',  dialect:'General American', locale:'en-US'},
+    {code:'en-GB', flag:'GB', name:'British',   dialect:'Received Pronunciation', locale:'en-GB'},
+    {code:'en-AU', flag:'AU', name:'Australian',dialect:'General Australian', locale:'en-AU'},
+    {code:'en-ZA', flag:'ZA', name:'S. African',dialect:'South African English', locale:'en-ZA'},
+    {code:'en-IN', flag:'IN', name:'Indian',    dialect:'Indian English', locale:'en-IN'},
+    {code:'en-IE', flag:'IE', name:'Irish',     dialect:'Irish English', locale:'en-IE'},
+    {code:'en-SC', flag:'SC', name:'Scottish',  dialect:'Scottish English', locale:'en-GB-scotland'},
+  ];
+
+  var audioGrid = document.getElementById('ap-grid');
+  var statusEl = document.getElementById('ap-status');
+  var currentUtterance = null;
+
+  function buildPlayer(){
+    if(!('speechSynthesis' in window)){
+      audioGrid.innerHTML = '<div style="color:var(--rose);font-size:14px">Speech synthesis not supported in this browser. Use Chrome or Edge for full functionality.</div>';
+      return;
+    }
+    audioGrid.innerHTML = '';
+    accents.forEach(function(a, i){
+      var btn = document.createElement('button');
+      btn.className = 'ap-btn';
+      btn.dataset.index = i;
+      btn.innerHTML = '<span class="flag">'+a.flag+'</span><div><div class="aname">'+a.name+'</div><div class="adial">'+a.dialect+'</div></div><span class="play-icon">&#9654;</span>';
+      btn.onclick = function(){ playAccent(i); };
+      audioGrid.appendChild(btn);
+    });
+  }
+
+  function playAccent(index){
+    if(!('speechSynthesis' in window)) return;
+    speechSynthesis.cancel();
+
+    var btns = audioGrid.querySelectorAll('.ap-btn');
+    btns.forEach(function(b){ b.classList.remove('playing'); });
+
+    var a = accents[index];
+    var btn = btns[index];
+    btn.classList.add('playing');
+    statusEl.textContent = 'Playing: ' + a.flag + ' ' + a.name + ' — "' + WORD_A + '"';
+    statusEl.className = 'ap-status active';
+
+    function speak(text, cb){
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = a.locale;
+      var voices = speechSynthesis.getVoices();
+      var match = voices.filter(function(v){ return v.lang === a.locale || v.lang.indexOf(a.code) === 0; });
+      if(match.length > 0) u.voice = match[0];
+      u.rate = 0.8;
+      u.onend = cb || function(){};
+      u.onerror = function(){ statusEl.textContent = 'Error playing. Try another accent.'; };
+      speechSynthesis.speak(u);
+      currentUtterance = u;
+    }
+
+    speak(WORD_A, function(){
+      statusEl.textContent = 'Playing: ' + a.flag + ' ' + a.name + ' — "' + WORD_B + '"';
+      speak(WORD_B, function(){
+        statusEl.textContent = a.flag + ' ' + a.name + ' — ' + WORD_A + ' / ' + WORD_B + ' played.';
+        statusEl.className = 'ap-status';
+        btn.classList.remove('playing');
+      });
+    });
+  }
+
+  if('speechSynthesis' in window){
+    speechSynthesis.onvoiceschanged = buildPlayer;
+    if(speechSynthesis.getVoices().length > 0) buildPlayer();
+    setTimeout(buildPlayer, 300);
+  }
+
+  // --- Slide Navigation ---
+  var slides = document.querySelectorAll('.slide');
+  var total = slides.length;
+  var current = 0;
+  var SK = 'egyptianAccentDeck';
+
+  function show(n){
+    n = (n + total) % total;
+    for(var i = 0; i < total; i++){
+      slides[i].classList.toggle('active', i === n);
+    }
+    current = n;
+    document.getElementById('slide-count').textContent = (n + 1) + ' / ' + total;
+    document.getElementById('progress').style.width = ((n + 1) / total * 100).toFixed(1) + '%';
+    try { localStorage.setItem(SK, n); } catch(e){}
+    if(n !== 6) speechSynthesis.cancel(); // pause audio when leaving slide 7 (player)
+  }
+  function next(){ show(current + 1); }
+  function prev(){ show(current - 1); }
+  window.next = next;
+  window.prev = prev;
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); next(); }
+    else if(e.key === 'ArrowLeft' || e.key === 'Backspace'){ e.preventDefault(); prev(); }
+    else if(e.key === 'Home'){ e.preventDefault(); show(0); }
+    else if(e.key === 'End'){ e.preventDefault(); show(total - 1); }
+  });
+
+  var touchStartX = 0;
+  document.addEventListener('touchstart', function(e){ touchStartX = e.changedTouches[0].clientX; });
+  document.addEventListener('touchend', function(e){
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    if(Math.abs(dx) > 50){ dx < 0 ? next() : prev(); }
+  });
+
+  try { var s = localStorage.getItem(SK); if(s !== null) current = parseInt(s, 10) || 0; } catch(e){}
+  show(current);
+})();
+</script>
+</body></html>
