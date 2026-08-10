@@ -1,4 +1,4 @@
-# Eloquenta Video Call - Verification
+# Articulate Video Call - Verification
 
 ## Native WebSocket Version (Cloudflare Workers)
 - Works without backend for local testing (WebRTC P2P direct)
@@ -22,7 +22,7 @@
 ## Local Testing
 ```bash
 # Serve locally
-cd "C:\Users\irieb\Documents\William's Projects\websites\ESL-Professional\Eloquenta\Eloquenta Video Call"
+cd "C:\Users\irieb\Documents\William's Projects\websites\ESL-Professional\Articulate\Articulate Video Call"
 python -m http.server 3000 --bind 127.0.0.1
 # Open http://127.0.0.1:3000/
 ```

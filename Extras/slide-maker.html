@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self' blob:; object-src 'none'; frame-ancestors 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Slide Show Maker — Eloquenta</title>
+<title>Slide Show Maker — Articulate</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#020617;--bg-card:#0f172a;--bg-hover:#1e293b;--border:#1e293b;--border-light:#334155;--text:#e2e8f0;--text-muted:#94a3b8;--text-dim:#64748b;--cyan:#22d3ee;--cyan-dim:rgba(34,211,238,.12);--amber:#fbbf24;--amber-dim:rgba(251,191,36,.12);--emerald:#34d399;--emerald-dim:rgba(52,211,153,.12);--violet:#a78bfa;--violet-dim:rgba(167,139,250,.12);--rose:#fb7185;--rose-dim:rgba(251,113,133,.12)}
@@ -110,7 +110,7 @@ textarea{resize:vertical;min-height:80px}
 </div>
 
 <div class="container">
-  <p style="color:var(--text-muted);margin-bottom:20px">Paste your content — diagram topics, vocabulary lists, grammar points — and we'll build a complete interactive slideshow with the Eloquenta format.</p>
+  <p style="color:var(--text-muted);margin-bottom:20px">Paste your content — diagram topics, vocabulary lists, grammar points — and we'll build a complete interactive slideshow with the Articulate format.</p>
 
   <div class="maker-tabs">
     <button class="maker-tab active" onclick="switchMakerTab('paste',this)">1. Paste Content</button>
@@ -396,7 +396,7 @@ The parser will identify sections, vocabulary, examples, and exercises to build 
       if(s.subtitle)h+='<div class="fs-subtitle">'+s.subtitle+'</div>';
       if(s.text)h+='<div class="fs-text">'+s.text+'</div>';
     }
-    h+='<div class="fs-footer">Eloquenta — Teacher Studio</div>';
+    h+='<div class="fs-footer">Articulate — Teacher Studio</div>';
     el.innerHTML=h;
   }
 

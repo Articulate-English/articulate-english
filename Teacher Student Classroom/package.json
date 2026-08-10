@@ -1,7 +1,7 @@
 {
-  "name": "eloquenta-whiteboard",
+  "name": "articulate-whiteboard",
   "version": "1.0.0",
-  "description": "Eloquenta shared whiteboard",
+  "description": "Articulate shared whiteboard",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

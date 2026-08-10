@@ -3,69 +3,83 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#0a0e1a">
-<title>Education & School Life — Eloquenta B2 First Speaking</title>
+<meta name="theme-color" content="#060a14">
+<title>Education & School Life — Articulate B2 First Speaking</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --cs-accent:#22d3ee;--cs-bg:#0a0e1a;--cs-text:#e0f2fe;--cs-bg-card:#111827;
-  --cs-border:#1e3a5f;--cs-text-muted:#94a3b8;--cs-accent-glow:rgba(34,211,238,.2);
-  --cs-accent-dim:rgba(34,211,238,.08);--cs-border-light:rgba(30,58,95,.7);
+  --cs-accent:#fbbf24;--cs-bg:#060a14;--cs-text:#f2f0f8;--cs-bg-card:#10131f;
+  --cs-border:#3d3a2e;--cs-text-muted:#b0bec5;--cs-green:#34d399;
+  --cs-accent-glow:rgba(251,191,36,.22);--cs-accent-dim:rgba(251,191,36,.1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{font-size:16px}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--cs-bg);color:var(--cs-text);line-height:1.6;min-height:100vh;overflow-x:hidden}
-h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
-.bg{position:fixed;inset:0;background:radial-gradient(circle at 20% 20%,rgba(34,211,238,.08),transparent 40%),radial-gradient(circle at 80% 80%,rgba(167,139,250,.08),transparent 40%),var(--cs-bg);z-index:-2}
-.glass{background:rgba(255,255,255,.04);border:1px solid var(--cs-border);border-radius:18px;backdrop-filter:blur(14px);box-shadow:0 0 30px rgba(0,0,0,.3)}
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
+.glass{background:color-mix(in srgb,color-mix(in srgb,var(--cs-bg) 68%,var(--cs-accent) 32%) 55%,transparent);border:1px solid var(--cs-accent-glow);border-radius:16px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 0 25px var(--cs-accent-glow),0 0 60px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.04)}
 .glow-text{text-shadow:0 0 12px var(--cs-accent-glow),0 0 24px var(--cs-accent-dim)}
-.nav{position:sticky;top:0;z-index:50;background:rgba(10,14,26,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--cs-border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:'Space Grotesk';font-size:1.1rem;font-weight:700;color:#fff;text-decoration:none;letter-spacing:1px}
-.nav-logo span{color:var(--cs-accent)}
-.theme-cycle-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--cs-border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.theme-dot{width:10px;height:10px;border-radius:50%;background:var(--cs-accent)}
-.loading{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:var(--cs-bg);color:var(--cs-accent);font-family:'Space Grotesk';font-size:1rem;letter-spacing:1px}
+.home-link{position:fixed;top:1em;left:1em;z-index:300;color:var(--cs-accent);text-decoration:none;font-size:.95rem;padding:6px 12px;border-radius:16px;background:var(--cs-accent-dim);border:1px solid var(--cs-accent-glow);transition:all .2s;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.home-link:hover{background:var(--cs-accent-glow);box-shadow:0 0 12px var(--cs-accent-glow)}
+.theme-btn{position:fixed;top:1em;right:1em;z-index:300;width:44px;height:44px;border-radius:50%;background:var(--cs-accent-dim);border:1.5px solid var(--cs-accent-glow);cursor:pointer;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;color:var(--cs-accent);transition:transform .15s ease}
+.theme-btn:hover{transform:scale(1.1);background:rgba(255,255,255,.08)}
+.theme-btn:active{transform:scale(.93)}
+.theme-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 6px var(--cs-accent-glow))}
+.model-answers-btn{position:fixed;bottom:1em;right:1em;z-index:290;display:none;font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;padding:8px 16px;border-radius:24px;border:1px solid var(--cs-accent);background:var(--cs-accent-dim);color:var(--cs-accent);cursor:pointer;transition:all .2s;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.model-answers-btn:hover{background:var(--cs-accent-glow);box-shadow:0 0 15px var(--cs-accent-glow);transform:scale(1.05)}
+.model-answers-btn:active{transform:scale(.94)}
+.model-answers-btn.show{display:inline-block}
+.loading{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:var(--cs-bg);color:var(--cs-accent);font-family:'Montserrat',sans-serif;font-size:1rem;letter-spacing:1px}
 .loading.hidden{display:none}
-#slides{max-width:900px;margin:0 auto;padding:30px 16px 100px;min-height:100vh}
+#slides{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:30px 16px 100px;min-height:100vh}
 #slides.hidden{display:none}
+.bg-layer{position:fixed;inset:0;z-index:0;background-size:cover;background-position:center;background-color:var(--cs-bg)}
+.bg-layer::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,color-mix(in srgb,var(--cs-bg) 78%,transparent) 0%,color-mix(in srgb,var(--cs-bg) 45%,transparent) 45%,color-mix(in srgb,var(--cs-bg) 18%,transparent) 100%);pointer-events:none}
 .slide{display:none}
 .slide.active{display:block}
-.slide h2{font-size:1.5rem;margin-bottom:16px;color:var(--cs-accent)}
-.card{padding:22px;margin-bottom:18px}
-.part-badge{display:inline-block;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:4px 10px;border-radius:6px;background:var(--cs-accent-dim);color:var(--cs-accent);border:1px solid var(--cs-border);margin-bottom:12px}
-.question{font-size:1.05rem;font-weight:600;margin-bottom:12px}
-.reveal-btn{font-family:'Space Grotesk';font-size:.75rem;font-weight:700;padding:8px 14px;border-radius:8px;border:1px solid var(--cs-accent);background:transparent;color:var(--cs-accent);cursor:pointer;transition:all .15s}
+.slide h2{font-size:1.5rem;margin-bottom:16px;color:var(--cs-accent);text-shadow:0 1px 3px rgba(0,0,0,.5)}
+.card{position:relative;z-index:1;padding:22px;margin-bottom:18px}
+.part-badge{display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:4px 10px;border-radius:10px;background:var(--cs-accent-dim);color:var(--cs-accent);margin-bottom:12px;box-shadow:0 0 10px var(--cs-accent-glow)}
+.links-box{margin-top:18px;padding-top:16px;border-top:1px dashed var(--cs-accent-glow)}
+.links-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.links-box a{color:var(--cs-accent);text-decoration:none;font-size:.95rem;border-bottom:1px solid var(--cs-accent-dim);transition:color .15s,border-color .15s}
+.links-box a:hover{color:var(--cs-text);border-bottom-color:var(--cs-accent)}
+.question{font-size:1.05rem;font-weight:600;margin-bottom:12px;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+.reveal-btn{font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:700;padding:8px 14px;border-radius:8px;border:1px solid var(--cs-accent);background:transparent;color:var(--cs-accent);cursor:pointer;transition:all .15s}
 .reveal-btn:hover{background:var(--cs-accent);color:var(--cs-bg)}
-.hidden-answer{display:none;margin-top:12px;padding:14px;border-left:3px solid var(--cs-accent);background:rgba(34,211,238,.06);border-radius:0 10px 10px 0}
+.hidden-answer{display:none;margin-top:12px;padding:14px;border-left:3px solid var(--cs-accent);background:var(--cs-accent-dim);border-radius:0 10px 10px 0}
 .hidden-answer.open{display:block}
 .phrase-chip{display:inline-block;font-size:.7rem;padding:3px 8px;border-radius:6px;background:var(--cs-bg-card);border:1px solid var(--cs-border);color:var(--cs-text-muted);margin:2px}
 .tooltip{position:relative;border-bottom:1px dotted var(--cs-accent);cursor:help}
 .tooltip::after{content:attr(data-def);position:absolute;bottom:120%;left:50%;transform:translateX(-50%);width:220px;padding:8px 10px;border-radius:8px;background:var(--cs-bg-card);border:1px solid var(--cs-accent);color:var(--cs-text);font-size:.75rem;line-height:1.4;opacity:0;pointer-events:none;transition:opacity .2s;z-index:10}
 .tooltip:hover::after{opacity:1}
 .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
-.photo-box{min-height:140px;display:flex;align-items:center;justify-content:center;border-radius:10px;border:1px solid var(--cs-border);background:rgba(0,0,0,.25);padding:16px;text-align:center;font-size:.85rem;color:var(--cs-text-muted)}
-.nav-btns{display:flex;justify-content:space-between;align-items:center;max-width:900px;margin:0 auto;padding:16px;position:fixed;bottom:0;left:0;right:0;background:rgba(10,14,26,.9);border-top:1px solid var(--cs-border)}
-.nav-btns button{font-family:'Space Grotesk';font-size:.8rem;font-weight:700;padding:10px 18px;border-radius:10px;border:1px solid var(--cs-border);background:var(--cs-bg-card);color:var(--cs-text);cursor:pointer}
-.nav-btns button:hover{border-color:var(--cs-accent);color:var(--cs-accent)}
-.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;background:rgba(255,255,255,.06);z-index:40}
+.photo-box{position:relative;min-height:180px;border-radius:10px;border:1px solid var(--cs-border);background-size:cover;background-position:center;background-color:rgba(0,0,0,.35);overflow:hidden;display:flex;align-items:flex-end}
+.photo-box .cap{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;background:color-mix(in srgb,var(--cs-bg) 80%,transparent);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);color:var(--cs-text);font-size:.82rem;line-height:1.4;text-align:left;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+.nav-btns{display:flex;align-items:center;justify-content:center;gap:1.2em;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:200;background:color-mix(in srgb,color-mix(in srgb,var(--cs-bg) 62%,var(--cs-accent) 38%) 85%,transparent);border:1px solid var(--cs-accent-glow);border-radius:40px;padding:10px 24px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.nav-btns button{font-family:'Inter',sans-serif;font-size:1rem;padding:8px 18px;border-radius:24px;border:1px solid var(--cs-accent);background:var(--cs-accent-dim);color:var(--cs-accent);cursor:pointer;min-width:44px;min-height:44px;transition:transform .15s ease,box-shadow .2s}
+.nav-btns button:hover{background:var(--cs-accent-glow);box-shadow:0 0 15px var(--cs-accent-glow);transform:scale(1.05)}
+.nav-btns button:active{transform:scale(.94)}
+.nav-btns button:disabled{opacity:.4;cursor:default;transform:none}
+.progress-bar{position:fixed;top:0;left:0;right:0;height:3px;background:rgba(255,255,255,.06);z-index:200}
 .progress-fill{height:100%;width:0;background:var(--cs-accent);transition:width .3s;box-shadow:0 0 10px var(--cs-accent-glow)}
-.timer{font-family:'Space Grotesk';font-size:.85rem;color:var(--cs-text-muted)}
-@media(max-width:640px){.slide h2{font-size:1.25rem}.card{padding:16px}.photo-grid{grid-template-columns:1fr}}
+.timer{font-family:'Inter',monospace;font-size:.85rem;color:var(--cs-text-muted)}
+@media(max-width:640px){.slide h2{font-size:1.25rem}.card{padding:16px}.photo-grid{grid-template-columns:1fr}.nav-btns{bottom:12px;padding:8px 16px;gap:.6em}.nav-btns button{padding:6px 12px;font-size:.95rem}.model-answers-btn{bottom:5.5em;right:.5em}}
 </style>
 </head>
 <body>
-<div class="bg"></div>
+<div class="bg-layer" id="bgLayer" style="background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80')"></div>
 <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 <div class="loading" id="loadingScreen">Loading deck…</div>
-<nav class="nav">
-  <a href="../index.html" class="nav-logo">◆ <span>Eloquenta</span> B2 First</a>
-  <button class="theme-cycle-btn" id="themeCycleBtn" title="Cycle theme"><span class="theme-dot" id="themeDot"></span></button>
-</nav>
+<a href="../index.html" class="home-link">Back</a>
+<button class="theme-btn" id="themeCycleBtn" title="Cycle theme" aria-label="Cycle color theme">
+  <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+</button>
+<button class="model-answers-btn" id="modelAnswersBtn" title="Reveal model answers" aria-label="Reveal model answers">Reveal model answers</button>
 
 <main id="slides" class="hidden">
-  <section class="slide active" data-slide="0" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80')">
+  <section class="slide active" data-slide="0">
     <div class="card glass" style="text-align:center;margin-top:10vh">
       <div class="part-badge">B2 First Speaking</div>
       <h1 class="glow-text" style="font-size:2.4rem;margin-bottom:12px">Education & School Life</h1>
@@ -74,43 +88,38 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
     </div>
   </section>
 
-  <section class="slide" data-slide="1" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80')">
+  <section class="slide" data-slide="1">
   <div class="card glass">
     <div class="part-badge">Part 1 — Interview</div>
     <h2 class="glow-text">Part 1 — Interview</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Answer these questions. Spend about 20 seconds on each.</p>
-<div class="question">• Do you enjoy going to school?</div>
-<button class="reveal-btn">Show answer</button>
+<div class="question">1. Do you enjoy going to school?</div>
 <div class="hidden-answer">I would say that I generally enjoy school, especially when the lessons are practical. However, I find long days exhausting, especially after a late night of homework.</div>
-<div class="question">• What is your favourite subject and why?</div>
-<button class="reveal-btn">Show answer</button>
+<div class="question">2. What is your favourite subject and why?</div>
 <div class="hidden-answer">My favourite subject is probably biology because I find the human body fascinating. I also like doing experiments, which makes the lessons more memorable.</div>
-<div class="question">• How do you usually revise for exams?</div>
-<button class="reveal-btn">Show answer</button>
+<div class="question">3. How do you usually revise for exams?</div>
 <div class="hidden-answer">I usually revise by making flashcards and testing myself. I also meet up with friends to explain topics to each other, which helps me remember things better.</div>
-<div class="question">• Have you ever taken extra lessons outside school?</div>
-<button class="reveal-btn">Show answer</button>
+<div class="question">4. Have you ever taken extra lessons outside school?</div>
 <div class="hidden-answer">Yes, I took private maths lessons last year because I was struggling with algebra. The extra <span class='tooltip' data-def='the act of teaching, especially when given to a small group or one person'>tuition</span> helped me catch up with the rest of the class.</div>
-<div class="question">• What would you change about your school?</div>
-<button class="reveal-btn">Show answer</button>
+<div class="question">5. What would you change about your school?</div>
 <div class="hidden-answer">If I could change one thing, I would make the school day shorter. I think students would concentrate better if they had more time to rest and do <span class='tooltip' data-def='activities done outside normal classes, such as clubs or sports'>extracurricular</span> activities.</div>
 <div style="margin-top:18px"><strong style="color:var(--cs-accent)">Useful phrases:</strong><br><span class="phrase-chip">I would say that...</span><span class="phrase-chip">From my point of view...</span><span class="phrase-chip">That's a tricky question because...</span><span class="phrase-chip">On the one hand... on the other hand...</span><span class="phrase-chip">I tend to...</span><span class="phrase-chip">It depends on the situation.</span></div>
 
   </div>
 </section>
-<section class="slide" data-slide="2" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80')">
+<section class="slide" data-slide="2">
   <div class="card glass">
     <div class="part-badge">Part 2 — Long Turn</div>
     <h2 class="glow-text">Part 2 — Photo Comparison</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Talk for 1 minute. Compare the photos and answer the question.</p>
 <div class="question">What can schools do to help students enjoy learning more?</div>
-<div class="photo-grid"><div class="photo-box">Photo A:<br>A traditional classroom with students listening to a teacher at the front</div><div class="photo-box">Photo B:<br>A modern classroom where students are working together in small groups</div></div>
+<div class="photo-grid"><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80')"><span class="cap">Photo A:<br>A traditional classroom with students listening to a teacher at the front</span></div><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80')"><span class="cap">Photo B:<br>A modern classroom where students are working together in small groups</span></div></div>
 <button class="reveal-btn">Show model answer</button>
 <div class="hidden-answer">In photo A, the students are sitting in rows and listening to the teacher, which looks quite formal and maybe a bit boring. In photo B, they are working in groups and seem more active and engaged. I think group work is better for motivation because students can discuss ideas and learn from each other. On the other hand, traditional lessons are sometimes necessary for explaining difficult concepts. Overall, a mixture of both approaches is probably the best way to help students enjoy learning.</div>
 
   </div>
 </section>
-<section class="slide" data-slide="3" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80')">
+<section class="slide" data-slide="3">
   <div class="card glass">
     <div class="part-badge">Part 3 — Discussion</div>
     <h2 class="glow-text">Part 3 — Collaborative Task</h2>
@@ -122,27 +131,27 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
 
   </div>
 </section>
-<section class="slide" data-slide="4" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80')">
+<section class="slide" data-slide="4">
   <div class="card glass">
     <div class="part-badge">Part 4 — Extension</div>
     <h2 class="glow-text">Part 4 — Follow-up Discussion</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Answer these deeper questions.</p>
-<div class="question">• Do you think homework is necessary?</div>
+<div class="question">1. Do you think homework is necessary?</div>
 <button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I think homework is necessary in moderation. It helps students practise what they learned, but too much homework can cause stress and reduce free time.</div>
-<div class="question">• Should students wear uniforms?</div>
+<div class="question">2. Should students wear uniforms?</div>
 <button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I believe uniforms are a good idea because they stop students from being judged by their clothes. On the other hand, some people argue that uniforms limit personal expression.</div>
-<div class="question">• How important are teachers compared to technology?</div>
+<div class="question">3. How important are teachers compared to technology?</div>
 <button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">Teachers are still very important because they can adapt to students' needs and explain things in different ways. Technology is useful, but it cannot replace human interaction.</div>
-<div class="question">• What skills should schools teach more?</div>
+<div class="question">4. What skills should schools teach more?</div>
 <button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">Schools should teach more practical skills like financial literacy, communication, and critical thinking. These are essential for adult life but often missing from the <span class='tooltip' data-def='the subjects that are studied in a school or college'>curriculum</span>.</div>
 
   </div>
 </section>
-<section class="slide" data-slide="5" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80')">
+<section class="slide" data-slide="5">
   <div class="card glass">
     <div class="part-badge">Vocabulary</div>
     <h2 class="glow-text">Vocabulary & Phrases</h2>
@@ -155,7 +164,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
   </div>
 </section>
 
-  <section class="slide" data-slide="6" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80')">
+  <section class="slide" data-slide="6">
     <div class="card glass">
       <div class="part-badge">Homework</div>
       <h2 class="glow-text">Reading, Listening & Writing</h2>
@@ -165,6 +174,15 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
 <p>Watch a TED Talk about education reform. Note down the speaker's three main arguments.</p>
 <div class="question" style="margin-top:14px">Writing</div>
 <p>Write an essay (140–190 words): 'Should students be allowed to choose all their own subjects? Give reasons for your answer.'</p>
+<div class="links-box">
+  <div class="part-badge">Useful links</div>
+  <ul>
+    <li><a href="https://www.bbc.co.uk/bitesize" target="_blank" rel="noopener">BBC Bitesize — study guides</a></li>
+    <li><a href="https://www.ted.com/talks/ken_robinson_says_schools_kill_creativity" target="_blank" rel="noopener">TED — Ken Robinson: Do schools kill creativity?</a></li>
+    <li><a href="https://www.elllo.org/" target="_blank" rel="noopener">ELLLO — graded listening lessons</a></li>
+    <li><a href="https://www.cambridgeenglish.org/exams-and-tests/first/" target="_blank" rel="noopener">Cambridge B2 First — exam info</a></li>
+  </ul>
+</div>
 
     </div>
   </section>
@@ -177,14 +195,24 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
 </div>
 
 <script>
-var THEME_ORDER=['eloquent','wte','midnight','sunset','forest','light'];
+var THEME_ORDER=['classic','forest','violet','gold','rose','ocean','indigo'];
 var THEMES={
-  eloquent:{accent:'#22d3ee',bg:'#0a0e1a',text:'#e0f2fe',card:'#111827',border:'#1e3a5f'},
-  wte:{accent:'#a3e635',bg:'#1c1c1c',text:'#e8e8f0',card:'#232323',border:'#3a3a3a'},
-  midnight:{accent:'#818cf8',bg:'#0f0f23',text:'#c7d2fe',card:'#1a1a3e',border:'#2e2e5e'},
-  sunset:{accent:'#fb923c',bg:'#1a0f0a',text:'#fed7aa',card:'#2d1a10',border:'#4a2a1a'},
-  forest:{accent:'#4ade80',bg:'#0a1a0f',text:'#bbf7d0',card:'#162418',border:'#2a4a2a'},
-  light:{accent:'#2563eb',bg:'#f8fafc',text:'#1e293b',card:'#ffffff',border:'#e2e8f0'}
+  classic:{accent:'#fbbf24',bg:'#191207',text:'#f2f0f8',card:'#191207',border:'#4a3a1e'},
+  forest:{accent:'#34d399',bg:'#081710',text:'#f2f0f8',card:'#081710',border:'#1f4a3a'},
+  violet:{accent:'#a78bfa',bg:'#120e22',text:'#f2f0f8',card:'#120e22',border:'#3b3563'},
+  gold:{accent:'#f59e0b',bg:'#1a1206',text:'#f2f0f8',card:'#1a1206',border:'#4a3a1e'},
+  rose:{accent:'#fb7185',bg:'#1e0d13',text:'#f2f0f8',card:'#1e0d13',border:'#5a2a38'},
+  ocean:{accent:'#22d3ee',bg:'#061620',text:'#f2f0f8',card:'#061620',border:'#1f4a5a'},
+  indigo:{accent:'#818cf8',bg:'#0a0a24',text:'#eef0ff',card:'#0a0a24',border:'#2e2e5e'}
+};
+var themeIcons={
+  1:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>',
+  2:'<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>',
+  3:'<path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/>',
+  4:'<path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/>',
+  5:'<path d="M12 18.176a3 3 0 1 1 -4.953 -2.449l-.025 .023a4.502 4.502 0 0 1 1.483 -8.75c1.414 0 2.675 .652 3.5 1.671a4.5 4.5 0 1 1 4.983 7.079a3 3 0 1 1 -4.983 2.25l-.005 .176"/><path d="M12 19v-10"/><path d="M9 3l3 2l3 -2"/>',
+  6:'<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>',
+  7:'<path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/><path d="M18 5h4"/><path d="M20 3v4"/>'
 };
 function applyTheme(name){
   var t=THEMES[name]; if(!t) return;
@@ -195,17 +223,20 @@ function applyTheme(name){
   r.style.setProperty('--cs-bg-card',t.card);
   r.style.setProperty('--cs-border',t.border);
   r.style.setProperty('--cs-text-muted',t.text+'99');
-  r.style.setProperty('--cs-accent-glow',t.accent+'33');
-  r.style.setProperty('--cs-accent-dim',t.accent+'18');
-  document.getElementById('themeDot').style.background=t.accent;
-  try{localStorage.setItem('eloquent-theme',name);}catch(e){}
+  r.style.setProperty('--cs-accent-glow',t.accent+'38');
+  r.style.setProperty('--cs-accent-dim',t.accent+'1a');
+  var icon=document.getElementById('themeIcon');
+  var ti=THEME_ORDER.indexOf(name)+1;
+  if(icon && themeIcons[ti]) icon.innerHTML=themeIcons[ti];
+  try{localStorage.setItem('fce-theme',name);}catch(e){}
 }
 document.getElementById('themeCycleBtn').addEventListener('click',function(){
-  var saved=localStorage.getItem('eloquent-theme')||'eloquent';
+  var saved=localStorage.getItem('fce-theme')||'classic';
   var idx=THEME_ORDER.indexOf(saved);
+  if(idx<0) idx=0;
   applyTheme(THEME_ORDER[(idx+1)%THEME_ORDER.length]);
 });
-applyTheme(localStorage.getItem('eloquent-theme')||'eloquent');
+applyTheme(localStorage.getItem('fce-theme')||'classic');
 
 var current=0, slides=Array.from(document.querySelectorAll('.slide'));
 function goTo(n){
@@ -213,6 +244,7 @@ function goTo(n){
   slides[current].classList.remove('active');
   current=n;
   slides[current].classList.add('active');
+  document.getElementById('modelAnswersBtn').classList.toggle('show',n===1);
   document.getElementById('slideCounter').textContent=(current+1)+' / '+slides.length;
   document.getElementById('progressFill').style.width=((current+1)/slides.length*100)+'%';
   document.getElementById('prevBtn').disabled=current===0;
@@ -225,6 +257,14 @@ function goTo(n){
 }
 function next(){goTo(current+1);}
 function prev(){goTo(current-1);}
+document.getElementById('modelAnswersBtn').addEventListener('click',function(){
+  var slide=slides[current]; if(!slide) return;
+  var ans=slide.querySelectorAll('.hidden-answer');
+  var allOpen=true;
+  for(var i=0;i<ans.length;i++){ if(!ans[i].classList.contains('open')){ allOpen=false; break; } }
+  for(var i=0;i<ans.length;i++){ ans[i].classList.toggle('open',!allOpen); }
+  this.textContent=allOpen?'Reveal model answers':'Hide model answers';
+});
 document.addEventListener('click',function(e){
   var btn=e.target.closest('.reveal-btn');
   if(btn){
@@ -244,25 +284,15 @@ document.addEventListener('keydown',function(e){
   }catch(e){}
 })();
 (function(){
-  var bgImages=[];
-  document.querySelectorAll('.slide').forEach(function(s){
-    var style=s.getAttribute('style')||'';
-    var m=style.match(/background-image:\s*url\(([^)]+)\)/);
-    if(m) bgImages.push(m[1].replace(/["']/g,''));
-  });
-  if(!bgImages.length){ document.getElementById('loadingScreen').classList.add('hidden'); document.getElementById('slides').classList.remove('hidden'); return; }
-  var loaded=0;
-  bgImages.forEach(function(src){
-    var img=new Image();
-    img.onload=img.onerror=function(){
-      loaded++;
-      if(loaded===bgImages.length){
-        document.getElementById('loadingScreen').classList.add('hidden');
-        document.getElementById('slides').classList.remove('hidden');
-      }
-    };
-    img.src=src;
-  });
+  var style=(document.getElementById('bgLayer').getAttribute('style')||'');
+  var m=style.match(/background-image:\s*url\(([^)]+)\)/);
+  if(!m){ document.getElementById('loadingScreen').classList.add('hidden'); document.getElementById('slides').classList.remove('hidden'); return; }
+  var img=new Image();
+  img.onload=img.onerror=function(){
+    document.getElementById('loadingScreen').classList.add('hidden');
+    document.getElementById('slides').classList.remove('hidden');
+  };
+  img.src=m[1].replace(/["']/g,'');
 })();
 </script>
 </body>

@@ -1,50 +1,70 @@
-import { ReactNode, ButtonHTMLAttributes } from 'react';
-
-interface GlassButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: ReactNode;
-  variant?: 'primary' | 'secondary' | 'ghost' | 'danger';
-  size?: 'sm' | 'md' | 'lg';
+export function sanitizeInput(input: string): string {
+  return input
+    .replace(/\u0026/g, '\u0026amp;')
+    .replace(/\u003c/g, '\u0026lt;')
+    .replace(/\u003e/g, '\u0026gt;')
+    .replace(/"/g, '\u0026quot;')
+    .replace(/'/g, '\u0026#x27;')
+    .replace(/\//g, '\u0026#x2F;');
 }
 
-export default function GlassButton({
-  children,
-  variant = 'primary',
-  size = 'md',
-  className = '',
-  ...props
-}: GlassButtonProps) {
-  const variants = {
-    primary: 'bg-accent-violet/20 hover:bg-accent-violet/30 text-primary-text border-accent-violet/30 hover:shadow-glow-lg',
-    secondary: 'bg-white/[0.05] hover:bg-white/[0.08] text-secondary-text border-white/[0.1]',
-    ghost: 'bg-transparent hover:bg-white/[0.05] text-tertiary-text border-transparent',
-    danger: 'bg-red-500/20 hover:bg-red-500/30 text-red-200 border-red-500/30',
-  };
+const requestCounts = new Map<string, { count: number; resetTime: number }>();
 
-  const sizes = {
-    sm: 'px-3 py-1.5 text-sm',
-    md: 'px-4 py-2',
-    lg: 'px-6 py-3 text-lg',
-  };
+export function checkRateLimit(ip: string, maxRequests: number = 10, windowMs: number = 60000): boolean {
+  const now = Date.now();
+  const record = requestCounts.get(ip);
+  
+  if (!record || now > record.resetTime) {
+    requestCounts.set(ip, { count: 1, resetTime: now + windowMs });
+    return true;
+  }
+  
+  if (record.count >= maxRequests) {
+    return false;
+  }
+  
+  record.count++;
+  return true;
+}
 
-  return (
-    <button
-      className={`
-        backdrop-blur-[20px]
-        border
-        rounded-lg
-        font-medium
-        transition-all
-        duration-200
-        hover:-translate-y-0.5
-        active:translate-y-0
-        shadow-glass
-        ${variants[variant]}
-        ${sizes[size]}
-        ${className}
-      `}
-      {...props}
-    >
-      {children}
-    </button>
-  );
+export const securityHeaders = {
+  'Content-Security-Policy': [
+    "default-src 'self'",
+    "script-src 'self' 'unsafe-inline'",
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data: https:",
+    "connect-src 'self'",
+    "frame-ancestors 'none'",
+  ].join('; '),
+  'X-Frame-Options': 'DENY',
+  'X-Content-Type-Options': 'nosniff',
+  'X-XSS-Protection': '1; mode=block',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+};
+
+export function validateBooking(data: any): { valid: boolean; error?: string } {
+  if (!data || typeof data !== 'object') {
+    return { valid: false, error: 'Invalid data format' };
+  }
+  
+  if (!data.uid || typeof data.uid !== 'string') {
+    return { valid: false, error: 'Missing or invalid booking ID' };
+  }
+  
+  if (!data.startTime || !data.endTime) {
+    return { valid: false, error: 'Missing time information' };
+  }
+  
+  const startDate = new Date(data.startTime);
+  const endDate = new Date(data.endTime);
+  
+  if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+    return { valid: false, error: 'Invalid date format' };
+  }
+  
+  if (endDate <= startDate) {
+    return { valid: false, error: 'End time must be after start time' };
+  }
+  
+  return { valid: true };
 }

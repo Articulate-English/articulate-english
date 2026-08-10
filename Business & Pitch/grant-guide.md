@@ -1,4 +1,4 @@
-# Eloquenta — International Grant & Funding Guide
+# Articulate — International Grant & Funding Guide
 
 ## By Country
 
@@ -114,7 +114,7 @@
 - **Erasmus+ KA2 (Cooperation Partnerships)**: Up to €400K for developing innovative educational content.
 
 ### Digital Europe Programme
-- **Digital Europe (DIGITAL)**: Up to €2M for AI and digital skills projects. Directly relevant to Eloquenta's AI lesson platform.
+- **Digital Europe (DIGITAL)**: Up to €2M for AI and digital skills projects. Directly relevant to Articulate's AI lesson platform.
 - **European Digital Innovation Hubs (EDIHs)**: Free access to testing facilities, expertise, and funding advice across Europe.
 
 ### European Social Fund Plus (ESF+)

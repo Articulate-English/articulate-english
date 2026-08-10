@@ -168,7 +168,7 @@ const PROTO = tlsOptions ? 'https' : 'http';
 mainServer.listen(PORT, '0.0.0.0', () => {
   console.log('');
   console.log('============================================');
-  console.log('  Eloquenta Video Classroom Server');
+  console.log('  Articulate Video Classroom Server');
   console.log('============================================');
   console.log('  ' + PROTO + '://localhost:' + PORT);
   console.log('  ' + PROTO + '://0.0.0.0:' + PORT);

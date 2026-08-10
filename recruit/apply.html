@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; media-src 'self' blob:; object-src 'none'; frame-ancestors 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eloquenta — Tutor Application</title>
+<title>Articulate — Tutor Application</title>
 <style>
 :root{--bg:#020617;--bg-card:#0f172a;--bg-hover:#1e293b;--border:#1e293b;--border-light:#334155;--text:#e2e8f0;--text-muted:#94a3b8;--text-dim:#64748b;--cyan:#22d3ee;--cyan-dim:rgba(34,211,238,.15);--amber:#fbbf24;--amber-dim:rgba(251,191,36,.15);--emerald:#34d399;--emerald-dim:rgba(52,211,153,.15);--violet:#a78bfa;--violet-dim:rgba(167,139,250,.15);--rose:#fb7185;--rose-dim:rgba(251,113,133,.15)}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -228,7 +228,7 @@ a{color:var(--cyan)}a:hover{text-decoration:underline}
       <label class="radio-option"><input type="radio" name="tefl" value="tefl"><div class="radio-dot"></div><div class="radio-label">Yes — TEFL (120hr+)</div></label>
       <label class="radio-option"><input type="radio" name="tefl" value="tesol"><div class="radio-dot"></div><div class="radio-label">Yes — TESOL / CELTA / DELTA</div></label>
       <label class="radio-option"><input type="radio" name="tefl" value="other"><div class="radio-dot"></div><div class="radio-label">Yes — other teaching certificate</div></label>
-      <label class="radio-option"><input type="radio" name="tefl" value="none"><div class="radio-dot"></div><div class="radio-label">No certificate (training provided by Eloquenta)</div></label>
+      <label class="radio-option"><input type="radio" name="tefl" value="none"><div class="radio-dot"></div><div class="radio-label">No certificate (training provided by Articulate)</div></label>
     </div>
   </div>
   <div class="field">
@@ -253,7 +253,7 @@ a{color:var(--cyan)}a:hover{text-decoration:underline}
   <div class="step-header">
     <div class="step-num">Step 3 — Languages & Specializations</div>
     <h2 class="step-title">Your Languages</h2>
-    <p class="step-desc">Tell us about your English proficiency and any second languages. This is central to Eloquenta's teaching method.</p>
+    <p class="step-desc">Tell us about your English proficiency and any second languages. This is central to Articulate's teaching method.</p>
   </div>
   <div class="field">
     <label>Native English Accent / Variety <span class="req">*</span></label>
@@ -357,7 +357,7 @@ a{color:var(--cyan)}a:hover{text-decoration:underline}
   <div class="step-header">
     <div class="step-num">Step 5 — CV & Motivation</div>
     <h2 class="step-title">Tell Us More</h2>
-    <p class="step-desc">Upload your CV and tell us why Eloquenta. This is your chance to stand out.</p>
+    <p class="step-desc">Upload your CV and tell us why Articulate. This is your chance to stand out.</p>
   </div>
   <div class="field">
     <label>Upload CV / Resume <span class="hint">(PDF or DOC, max 5MB)</span></label>
@@ -369,7 +369,7 @@ a{color:var(--cyan)}a:hover{text-decoration:underline}
     </div>
   </div>
   <div class="field">
-    <label>Why do you want to teach with Eloquenta? <span class="req">*</span> <span class="hint">(2-3 sentences minimum)</span></label>
+    <label>Why do you want to teach with Articulate? <span class="req">*</span> <span class="hint">(2-3 sentences minimum)</span></label>
     <textarea id="motivation" placeholder="What draws you to our method? Why teach ESL online? What makes you a good fit?"></textarea>
     <div class="error">Please write at least 30 characters</div>
   </div>
@@ -386,7 +386,7 @@ a{color:var(--cyan)}a:hover{text-decoration:underline}
       <option>Facebook / Social Media</option>
       <option>Friend / Referral</option>
       <option>Google Search</option>
-      <option>Current Eloquenta Teacher</option>
+      <option>Current Articulate Teacher</option>
       <option>Other</option>
     </select>
   </div>
@@ -457,7 +457,7 @@ a{color:var(--cyan)}a:hover{text-decoration:underline}
       opts:[
         {text:"Don't worry, grammar comes later. Let's just practice vocabulary.",correct:false,exp:"Dismissing grammar isn't teaching. Both matter."},
         {text:"That's great your medical English is strong! Let's bridge that confidence into grammar. Think of grammar like anatomy — it's the structure that holds everything together.",correct:true,exp:"Connects to their expertise, validates their strength, and reframes grammar in their professional context."},
-        {text:"You need to study grammar more. I'll give you homework.",correct:false,exp:"Too mechanical. Doesn't leverage the student's strengths or Eloquenta's method."},
+        {text:"You need to study grammar more. I'll give you homework.",correct:false,exp:"Too mechanical. Doesn't leverage the student's strengths or Articulate's method."},
         {text:"医学用語は英語で何と言いますか？",correct:false,exp:"Random Japanese switch — irrelevant unless the student is Japanese."}
       ]
     },
@@ -489,11 +489,11 @@ a{color:var(--cyan)}a:hover{text-decoration:underline}
       ]
     },
     {
-      q:"Eloquenta's method uses the student's native language strategically. What does this mean in practice?",
+      q:"Articulate's method uses the student's native language strategically. What does this mean in practice?",
       opts:[
-        {text:"Teach entirely in the student's language, then translate at the end.",correct:false,"exp":"That's the opposite of Eloquenta's method."},
+        {text:"Teach entirely in the student's language, then translate at the end.",correct:false,"exp":"That's the opposite of Articulate's method."},
         {text:"Use precise, targeted translations at key moments — then immediately practice the English. The L1 is a bridge, not the destination.",correct:true,"exp":"This is exactly right. Strategic L1 use accelerates understanding without replacing English practice."},
-        {text:"Don't use the student's language at all — English only.",correct:false,"exp":"That's immersion-only. Eloquenta specifically does NOT do this."},
+        {text:"Don't use the student's language at all — English only.",correct:false,"exp":"That's immersion-only. Articulate specifically does NOT do this."},
         {text:"Translate every sentence the student says into their language.",correct:false,"exp":"Constant translation prevents thinking in English. Too much L1 use."}
       ]
     },
@@ -747,9 +747,9 @@ a{color:var(--cyan)}a:hover{text-decoration:underline}
       submittedAt:new Date().toISOString()
     };
     // Save to localStorage (in production, POST to your server)
-    var apps=JSON.parse(localStorage.getItem('eloquenta_applications')||'[]');
+    var apps=JSON.parse(localStorage.getItem('articulate_applications')||'[]');
     apps.push(data);
-    localStorage.setItem('eloquenta_applications',JSON.stringify(apps));
+    localStorage.setItem('articulate_applications',JSON.stringify(apps));
     // Show success
     document.getElementById('step'+totalSteps).classList.remove('active');
     document.getElementById('formActions').style.display='none';

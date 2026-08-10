@@ -40,5 +40,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, HOST, () => {
-  console.log(`Eloquenta whiteboard server listening on http://${HOST}:${PORT}`);
+  console.log(`Articulate whiteboard server listening on http://${HOST}:${PORT}`);
 });

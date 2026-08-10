@@ -1,4 +1,4 @@
-/* Eloquenta / WTE feedback form shared engine */
+/* Articulate / WTE feedback form shared engine */
 (function(){
 'use strict';
 

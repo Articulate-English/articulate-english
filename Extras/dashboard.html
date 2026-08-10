@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; media-src 'self' blob:; object-src 'none'; frame-ancestors 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eloquenta — Student Dashboard</title>
+<title>Articulate — Student Dashboard</title>
 <style>
 :root {
   --bg: #020617;
@@ -254,7 +254,7 @@ body {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .voip-card { padding: 20px; }
 }
-/* Eloquenta Logo */
+/* Articulate Logo */
   .elo-logo-wrap{display:inline-flex;align-items:center;gap:10px;text-decoration:none;transition:opacity .2s}
   .elo-logo-wrap:hover{text-decoration:none;opacity:.85}
   .elo-logo-wrap .elo-wordmark{font-size:22px;font-weight:700;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;letter-spacing:-.5px;line-height:1;color:#f1f5f9}
@@ -266,7 +266,7 @@ body {
 <div class="app">
   <!-- SIDEBAR -->
   <aside class="sidebar">
-    <div class="sidebar-logo"><a href="landing.html" class="elo-logo-wrap" title="Eloquenta Home" style="padding:0"><span class="elo-wordmark" style="font-size:18px">Eloqu<span class="o">e</span>nta</span></a></div>
+    <div class="sidebar-logo"><a href="landing.html" class="elo-logo-wrap" title="Articulate Home" style="padding:0"><span class="elo-wordmark" style="font-size:18px">Eloqu<span class="o">e</span>nta</span></a></div>
     <nav class="sidebar-nav">
       <ul>
         <li><a href="#" class="active" onclick="showPage('dashboard')">📊 Dashboard</a></li>
@@ -371,7 +371,7 @@ body {
           </div>
 
           <!-- Hidden: backend failover config (not shown to student) -->
-          <!-- Backend picks Google Meet or Talky.io automatically. Student always uses Eloquenta classroom. -->
+          <!-- Backend picks Google Meet or Talky.io automatically. Student always uses Articulate classroom. -->
         </div>
 
         <!-- Stats -->
@@ -778,7 +778,7 @@ body {
 
 <script>
 // Bookmarks data (persisted to localStorage)
-var STORAGE_KEY_BM = 'eloquenta_bookmarks';
+var STORAGE_KEY_BM = 'articulate_bookmarks';
 function loadBookmarks() {
   try {
     var raw = localStorage.getItem(STORAGE_KEY_BM);
@@ -903,14 +903,14 @@ function joinLesson() {
     btn.disabled = false;
     btn.innerHTML = '<span style="font-size:20px; margin-right:8px;">🚀</span> Join Lesson';
 
-    // Open the branded Eloquenta classroom overlay
+    // Open the branded Articulate classroom overlay
     openClassroom();
   }, 1800);
 }
 
 function openClassroom() {
   // Open voip.html as a full-page overlay (same tab for seamless experience)
-  // Student sees ONLY the Eloquenta-branded classroom — no Meet/Talky branding
+  // Student sees ONLY the Articulate-branded classroom — no Meet/Talky branding
   window.location.href = 'voip.html';
 }
 

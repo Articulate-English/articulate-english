@@ -1,4 +1,4 @@
-path = "/home/irieb/William's Projects/Eloquenta/Learning Materials/Speaking/fibromyalgia.html"
+path = "/home/irieb/William's Projects/Articulate/Learning Materials/Speaking/fibromyalgia.html"
 with open(path, 'r') as f:
     content = f.read()
 

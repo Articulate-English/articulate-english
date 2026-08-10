@@ -1,4 +1,4 @@
-app = 'eloquenta-whiteboard'
+app = 'articulate-whiteboard'
 primary_region = 'lhr'
 
 [build]

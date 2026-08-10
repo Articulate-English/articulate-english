@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self' blob:; object-src 'none'; frame-ancestors 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-title>Eloquenta — Project Timeline & Daily Tasks</title>
+title>Articulate — Project Timeline & Daily Tasks</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -118,7 +118,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
   .cal-task{font-size:8px;padding:2px 4px}
   .cal-day-head{font-size:9px;padding:6px 2px}
 }
-/* Eloquenta Logo */
+/* Articulate Logo */
   .elo-logo-wrap{display:inline-flex;align-items:center;gap:10px;text-decoration:none;transition:opacity .2s}
   .elo-logo-wrap:hover{text-decoration:none;opacity:.85}
   .elo-logo-wrap .elo-wordmark{font-size:22px;font-weight:700;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;letter-spacing:-.5px;line-height:1;color:#f1f5f9}
@@ -214,7 +214,7 @@ var PHASES = [
     id:4, name:"Brand & Marketing", color:"#34d399", emoji:"🎨",
     duration:21, startDay:49,
     tasks:[
-      {name:"Brand identity",desc:"Finalize logo (Eloquenta with blue o), color palette, typography. Create social media assets. Brand guidelines document.",days:4},
+      {name:"Brand identity",desc:"Finalize logo (Articulate with blue o), color palette, typography. Create social media assets. Brand guidelines document.",days:4},
       {name:"Social media setup",desc:"Create profiles on Instagram, LinkedIn, Facebook, YouTube. Posting schedule. Content templates. First 10 posts ready.",days:3},
       {name:"Lead magnets",desc:"Create free resources: English level test, grammar cheat sheets, conversation question PDFs. Email capture pages.",days:5},
       {name:"Content strategy",desc:"Plan 30-day content calendar. Mix of educational, testimonial, behind-the-scenes. Engagement tactics.",days:5},
@@ -458,9 +458,9 @@ function addToGoogleCal(phaseId, taskIndex){
   // Build Google Calendar URL
   var params = new URLSearchParams({
     action: 'TEMPLATE',
-    text: '[Eloquenta] ' + task.name,
+    text: '[Articulate] ' + task.name,
     dates: formatGCalDate(startDate) + '/' + formatGCalDate(endDate),
-    details: phase.name + ' - ' + task.desc + '\\n\\nPart of Eloquenta 14-week project plan.',
+    details: phase.name + ' - ' + task.desc + '\\n\\nPart of Articulate 14-week project plan.',
     location: 'Online'
   });
   

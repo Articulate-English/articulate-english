@@ -1,4 +1,4 @@
-# Eloquenta Video Classroom - Deployment Guide
+# Articulate Video Classroom - Deployment Guide
 
 ## Quick Start (Local Testing)
 

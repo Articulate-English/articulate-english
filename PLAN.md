@@ -1,4 +1,4 @@
-# ELOQUENTA — Complete Build Plan
+# ARTICULATE — Complete Build Plan
 
 ## Vision
 A premium ESL platform for adult learners. Dark-first design with mustard/burgundy accents that stands out in the ESL space. "Protect your eyes" positioning. Cal.com booking → trial lesson → paid subscriptions. Video classes via talky.io. Every project (Alien Metronome, Guitar Fretboard, etc.) gets the ChromaSkin theme engine.
@@ -52,11 +52,11 @@ A premium ESL platform for adult learners. Dark-first design with mustard/burgun
 
 ---
 
-## PHASE 1: Eloquenta Site Architecture
+## PHASE 1: Articulate Site Architecture
 *Build the shell. No booking/payments yet — just structure and design.*
 
 ### Task 1.1 — Site Map & Routing
-**File:** `/home/irieb/William's Projects/Eloquenta/site-structure.md`
+**File:** `/home/irieb/William's Projects/Articulate/site-structure.md`
 ```
 /                   → Landing page (hero + steps + CTA)
 /curriculum         → Curriculum overview (FL0-FL13 levels)
@@ -71,7 +71,7 @@ A premium ESL platform for adult learners. Dark-first design with mustard/burgun
 ```
 
 ### Task 1.2 — Base Template with ChromaSkin
-**File:** `/home/irieb/William's Projects/Eloquenta/template.html`
+**File:** `/home/irieb/William's Projects/Articulate/template.html`
 - Include chromaskin.css + chromaskin.js
 - Navbar: logo + links + "Book Free Trial" CTA
 - Footer: links + copyright
@@ -82,7 +82,7 @@ A premium ESL platform for adult learners. Dark-first design with mustard/burgun
 **Verify:** Open template, toggle theme, navigate between test pages.
 
 ### Task 1.3 — Landing Page (Dark Theme Default)
-**File:** `/home/irieb/William's Projects/Eloquenta/index.html`
+**File:** `/home/irieb/William's Projects/Articulate/index.html`
 - Hero: "Online English for Adults" + mustard accent + "Book Free Trial" CTA
 - How It Works: 4-step cards (Book → Placement → Learn → Track)
 - Pricing preview: 3 tiers + "View Full Pricing" link
@@ -94,7 +94,7 @@ A premium ESL platform for adult learners. Dark-first design with mustard/burgun
 **Verify:** Open in browser, check responsive, toggle to classic-white mode.
 
 ### Task 1.4 — Pricing Page
-**File:** `/home/irieb/William's Projects/Eloquenta/pricing.html`
+**File:** `/home/irieb/William's Projects/Articulate/pricing.html`
 - 3 tiers: Trial (free), Standard (monthly), Intensive (2x/week)
 - Feature comparison table
 - "Book Free Trial" button → Cal.com embed
@@ -118,7 +118,7 @@ A premium ESL platform for adult learners. Dark-first design with mustard/burgun
 **Verify:** Book a test appointment, receive confirmation.
 
 ### Task 2.2 — Trial Lesson Flow
-**File:** `/home/irieb/William's Projects/Eloquenta/trial.html`
+**File:** `/home/irieb/William's Projects/Articulate/trial.html`
 - Pre-lesson checklist: test microphone, camera, internet
 - "Join Classroom" button → talky.io room (Task 3.1)
 - Countdown timer to lesson start
@@ -127,7 +127,7 @@ A premium ESL platform for adult learners. Dark-first design with mustard/burgun
 **Verify:** Full flow from booking → reminder → join classroom.
 
 ### Task 2.3 — Payment Integration
-**File:** `/home/irieb/William's Projects/Eloquenta/dashboard.html`
+**File:** `/home/irieb/William's Projects/Articulate/dashboard.html`
 - After trial: show payment options
 - Stripe checkout link (monthly subscription)
 - PayPal button
@@ -142,9 +142,9 @@ A premium ESL platform for adult learners. Dark-first design with mustard/burgun
 *Replace Google Meet with talky.io for lower latency, better for ESL.*
 
 ### Task 3.1 — talky.io Integration
-**File:** `/home/irieb/William's Projects/Eloquenta/classroom.html`
+**File:** `/home/irieb/William's Projects/Articulate/classroom.html`
 - talky.io embed (iframe or JS SDK)
-- Room name: `eloquenta-{student}-{date}`
+- Room name: `articulate-{student}-{date}`
 - Pre-join: camera/mic check
 - In-call: chat, screen share, recording toggle
 - Post-call: feedback form + next lesson booking
@@ -166,7 +166,7 @@ A premium ESL platform for adult learners. Dark-first design with mustard/burgun
 *Post-login experience. Progress tracking, materials, next lesson.*
 
 ### Task 4.1 — Dashboard Shell
-**File:** `/home/irieb/William's Projects/Eloquenta/dashboard.html`
+**File:** `/home/irieb/William's Projects/Articulate/dashboard.html`
 - Sidebar nav: Overview, Materials, Progress, Settings
 - Overview: next lesson card, current level, streak
 - ChromaSkin theme toggle in settings
@@ -174,7 +174,7 @@ A premium ESL platform for adult learners. Dark-first design with mustard/burgun
 **Verify:** Navigate between sections, theme persists.
 
 ### Task 4.2 — Learning Materials Hub
-**File:** `/home/irieb/William's Projects/Eloquenta/materials.html`
+**File:** `/home/irieb/William's Projects/Articulate/materials.html`
 - Topical Conversations integration (the 1,452 questions we scraped)
 - Filter by topic, level, question type
 - Print/PDF export per topic
@@ -197,19 +197,19 @@ A premium ESL platform for adult learners. Dark-first design with mustard/burgun
 *Curriculum, teachers, extras.*
 
 ### Task 5.1 — Curriculum Page
-**File:** `/home/irieb/William's Projects/Eloquenta/curriculum.html`
+**File:** `/home/irieb/William's Projects/Articulate/curriculum.html`
 - 14 levels (FL0-FL13) with descriptions
 - Skills covered per level
 - Sample materials per level
 - "Find Your Level" → placement test link
 
 ### Task 5.2 — Teachers Page
-**File:** `/home/irieb/William's Projects/Eloquenta/teachers.html`
+**File:** `/home/irieb/William's Projects/Articulate/teachers.html`
 - Teacher cards: photo, bio, languages, specialties
 - "Book with [Name]" → Cal.com with teacher-specific link
 
 ### Task 5.3 — Extras / Blog
-**File:** `/home/irieb/William's Projects/Eloquenta/blog.html`
+**File:** `/home/irieb/William's Projects/Articulate/blog.html`
 - Health content (Anandamide research, etc.)
 - ESL tips
 - Guitar tools cross-promotion
@@ -259,7 +259,7 @@ A premium ESL platform for adult learners. Dark-first design with mustard/burgun
 
 ### Task 7.4 — Deployment
 - GitHub Pages (existing: williamthomason.github.io/ESL-Edutech)
-- Custom domain: eloquenta.com
+- Custom domain: articulate.com
 - SSL via Cloudflare
 
 ### Task 7.5 — Analytics
@@ -309,13 +309,13 @@ classic:   hue=220, sat=5,  lit=95   (white/light mode)
 ### Key File Paths
 ```
 ChromaSkin engine:  ~/William's Projects/ChromaSkin/
-Eloquenta site:     ~/William's Projects/Eloquenta/
-Landing page:       ~/William's Projects/Eloquenta/index.html
-Pricing:            ~/William's Projects/Eloquenta/pricing.html
-Classroom:          ~/William's Projects/Eloquenta/classroom.html
-Dashboard:          ~/William's Projects/Eloquenta/dashboard.html
-Materials:          ~/William's Projects/Eloquenta/materials.html
-Video call:         ~/William's Projects/Eloquenta Video Call/index.html
+Articulate site:     ~/William's Projects/Articulate/
+Landing page:       ~/William's Projects/Articulate/index.html
+Pricing:            ~/William's Projects/Articulate/pricing.html
+Classroom:          ~/William's Projects/Articulate/classroom.html
+Dashboard:          ~/William's Projects/Articulate/dashboard.html
+Materials:          ~/William's Projects/Articulate/materials.html
+Video call:         ~/William's Projects/Articulate Video Call/index.html
 ```
 
 ### Cal.com Embed Code
@@ -326,7 +326,7 @@ Video call:         ~/William's Projects/Eloquenta Video Call/index.html
   Cal("init", {origin:"https://cal.com"});
   Cal("inline", {
     elementOrSelector:"#cal-embed",
-    calLink:"eloquenta/free-trial",
+    calLink:"articulate/free-trial",
     layout:"month_view"
   });
 </script>
@@ -336,7 +336,7 @@ Video call:         ~/William's Projects/Eloquenta Video Call/index.html
 ### talky.io Embed Code
 ```html
 <iframe
-  src="https://talky.io/eloquenta-{room-name}"
+  src="https://talky.io/articulate-{room-name}"
   allow="camera; microphone; fullscreen; display-capture"
   style="width:100%;height:100vh;border:none;">
 </iframe>

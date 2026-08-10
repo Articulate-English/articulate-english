@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self' blob:; object-src 'none'; frame-ancestors 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Eloquenta — Professional English for Business, Students &amp; Learners</title>
+<title>Articulate English — Professional English for Business, Students &amp; Learners</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -19,14 +19,14 @@
 .theme-charlime{--accent:#a3e635;--accent2:#65a30d;--accent-dim:rgba(163,230,53,.12);--accent-glow:rgba(163,230,53,.25);--accent-text:#0a0a0a;}
 .theme-light{--bg:#f8fafc;--bg2:#f1f5f9;--bg3:#e2e8f0;--bg-card:#ffffff;--bg-card2:#f8fafc;--border:#cbd5e1;--border-light:#94a3b8;--text:#1e293b;--text-muted:#475569;--text-dim:#94a3b8;--accent:#0d9488;--accent2:#0f766e;--accent-dim:rgba(13,148,136,.1);--accent-glow:rgba(13,148,136,.25);--accent-text:#ffffff;--btn-text:#1e293b;--btn-bg:rgba(0,0,0,.06);}
 .theme-ice{--accent:#38bdf8;--accent2:#0284c7;--accent-dim:rgba(56,189,248,.1);--accent-glow:rgba(56,189,248,.25);--accent-text:#fff;}
-.theme-eloquent{--btn-text:rgba(255,255,255,.92);--btn-bg:rgba(255,255,255,.12);}
-.theme-eloquent,.theme-ice,.theme-charlime,.theme-lavender{--btn-text:rgba(255,255,255,.92);--btn-bg:rgba(255,255,255,.12);}
+.theme-articulate{--btn-text:rgba(255,255,255,.92);--btn-bg:rgba(255,255,255,.12);}
+.theme-articulate,.theme-ice,.theme-charlime,.theme-lavender{--btn-text:rgba(255,255,255,.92);--btn-bg:rgba(255,255,255,.12);}
 *{margin:0;padding:0;box-sizing:border-box}
 html{font-size:16px;scroll-behavior:smooth}
 .bg-overlay{position:fixed;inset:0;z-index:0;pointer-events:none;background-size:cover;background-position:center;opacity:0;filter:blur(3px);transition:opacity .6s ease,background-image .6s ease}
 body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px;opacity:1;}
 body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(13,31,34,.82) 0%,rgba(15,36,39,.88) 40%,rgba(13,31,34,.94) 100%),url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=1920&q=80') center/cover no-repeat fixed;z-index:-1;transition:opacity .6s ease;}
-body.theme-eloquent::after{opacity:1}body:not(.theme-eloquent)::after{opacity:0}
+body.theme-articulate::after{opacity:1}body:not(.theme-articulate)::after{opacity:0}
 body>*{position:relative;z-index:1;}
 body{font-family:'Inter',system-ui,sans-serif;background:transparent;color:var(--text);line-height:1.6;overflow-x:hidden;position:relative;z-index:1;}
 .theme-cycle-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;background:var(--btn-bg);border:1px solid var(--border);color:var(--btn-text);font-size:.75rem;font-weight:700;cursor:pointer;transition:background .15s,border-color .15s;font-family:'Space Grotesk',sans-serif;letter-spacing:1px;text-transform:uppercase;}
@@ -197,13 +197,13 @@ body.theme-light .footer{background:rgba(248,250,252,.95)}
 }
 </style>
 </head>
-<body class="theme-eloquent">
+<body class="theme-articulate">
 
 <!-- Background image overlay for themes with stock photos -->
 <div class="bg-overlay" id="bgOverlay"></div>
 
 <div class="nav">
-  <a href="#" class="nav-logo">ELOQUENT<span>A</span></a>
+  <a href="#" class="nav-logo">ARTICULATE<span>ENGLISH</span></a>
   <div class="nav-links">
     <a href="#offer">What We Offer</a>
     <a href="#why">Why Us</a>
@@ -212,7 +212,7 @@ body.theme-light .footer{background:rgba(248,250,252,.95)}
     <a href="#faq">FAQ</a>
     <button class="theme-cycle-btn" id="themeCycleBtn">
       <span class="theme-dot" id="themeDot"></span>
-      <span id="themeName">Eloquenta</span>
+      <span id="themeName">Articulate</span>
     </button>
     <a href="#cta" class="nav-cta">Book Free Trial</a>
   </div>
@@ -328,7 +328,7 @@ body.theme-light .footer{background:rgba(248,250,252,.95)}
       <div class="comp-row"><span>EF Corporate</span><span>$50–85</span><span class="comp-no">—</span><span class="comp-no">—</span><span class="comp-yes">✓</span></div>
       <div class="comp-row"><span>Berlitz Corporate</span><span>$65–120</span><span class="comp-no">—</span><span class="comp-no">—</span><span class="comp-no">—</span></div>
       <div class="comp-row"><span>Wall Street English B2B</span><span>$80+</span><span class="comp-no">—</span><span class="comp-no">—</span><span class="comp-no">—</span></div>
-      <div class="comp-row highlight"><span><strong>Eloquenta Professional</strong></span><span><strong>$55</strong></span><span class="comp-yes">✓</span><span class="comp-yes">✓</span><span class="comp-yes">✓</span></div>
+      <div class="comp-row highlight"><span><strong>Articulate English Professional</strong></span><span><strong>$55</strong></span><span class="comp-yes">✓</span><span class="comp-yes">✓</span><span class="comp-yes">✓</span></div>
     </div>
   </div>
   <div class="pricing-wrap">
@@ -440,7 +440,7 @@ body.theme-light .footer{background:rgba(248,250,252,.95)}
 <div class="section">
   <div class="referral-box">
     <h3>Refer a Friend, Earn Rewards</h3>
-    <p>Share Eloquenta and both you and your friend benefit. The more you refer, the more you save.</p>
+    <p>Share Articulate English and both you and your friend benefit. The more you refer, the more you save.</p>
     <div class="referral-steps">
       <div class="referral-step">
         <div class="referral-step-num">1</div>
@@ -509,21 +509,21 @@ body.theme-light .footer{background:rgba(248,250,252,.95)}
   <div class="footer-links">
     <a href="#offer">What We Offer</a><a href="#why">Why Us</a><a href="#pricing">Pricing</a><a href="#beta">Beta Offer</a><a href="#faq">FAQ</a><a href="#">Privacy Policy</a><a href="#">Terms of Service</a>
   </div>
-  <p>&copy; 2026 Eloquenta. All rights reserved.</p>
+  <p>&copy; 2026 Articulate English. All rights reserved.</p>
 </div>
 <script>
 (function(){
-  var THEME_ORDER=['eloquent','ice','lavender','charlime','light'];
+  var THEME_ORDER=['articulate','ice','lavender','charlime','light'];
   var THEMES={
-    eloquent:{
-      name:'Eloquenta',
+    articulate:{
+      name:'Articulate',
       accent:'#f59e0b',
       bg:'#0d1f22',bg2:'#0f2427',bg3:'#122d33',bgCard:'#142e35',bgCard2:'#0f2629',
       border:'#1a3a3f',borderLight:'#245660',
       text:'#c8e6e8',textMuted:'#7a9ea3',textDim:'#3d6b72',
       accentDim:'rgba(245,158,11,.1)',accentGlow:'rgba(245,158,11,.3)',
       navBg:'rgba(13,31,34,.92)',btnText:'rgba(255,255,255,.92)',btnBg:'rgba(255,255,255,.12)',
-      bodyClass:'theme-eloquent',
+      bodyClass:'theme-articulate',
       bgImg:'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=1920&q=80',
       bodyAfter:true
     },
@@ -621,7 +621,7 @@ body.theme-light .footer{background:rgba(248,250,252,.95)}
     }
   });
   document.querySelectorAll('a[href="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();});});
-  applyTheme('eloquent');
+  applyTheme('articulate');
 })();
 </script>
 </body>

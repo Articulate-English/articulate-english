@@ -1,4 +1,4 @@
-# ELOQUENTA — Prompt Library & Quick Reference
+# ARTICULATE — Prompt Library & Quick Reference
 
 ## How to Use This File
 Copy any prompt below into a new Hermes session to continue work on that specific task.
@@ -70,15 +70,15 @@ Verify: Open widget.html, toggle all presets, check collapse/expand, verify pers
 
 ---
 
-## ELOQUENTA SITE PROMPTS
+## ARTICULATE SITE PROMPTS
 
-### Prompt: Build Eloquenta Base Template
+### Prompt: Build Articulate Base Template
 ```
-Build the Eloquenta base template at ~/William's Projects/Eloquenta/template.html
+Build the Articulate base template at ~/William's Projects/Articulate/template.html
 
 Requirements:
 - Include chromaskin.css + chromaskin.js from ../ChromaSkin/
-- Sticky navbar: "ELOQUENTA" logo + nav links + "Book Free Trial" CTA button
+- Sticky navbar: "ARTICULATE" logo + nav links + "Book Free Trial" CTA button
 - Nav links: How It Works, Curriculum, Pricing, Login
 - Footer: copyright, privacy, terms, theme toggle
 - ChromaSkin widget embedded (bottom-right)
@@ -91,9 +91,9 @@ Requirements:
 Verify: Open in browser, toggle theme, check responsive, confirm persistence.
 ```
 
-### Prompt: Build Eloquenta Landing Page
+### Prompt: Build Articulate Landing Page
 ```
-Build the Eloquenta landing page at ~/William's Projects/Eloquenta/index.html
+Build the Articulate landing page at ~/William's Projects/Articulate/index.html
 
 Use the base template from template.html. Content:
 
@@ -124,7 +124,7 @@ Verify: Open in browser, check all sections render, toggle theme, test responsiv
 
 ### Prompt: Build Pricing Page with Cal.com
 ```
-Build the Eloquenta pricing page at ~/William's Projects/Eloquenta/pricing.html
+Build the Articulate pricing page at ~/William's Projects/Articulate/pricing.html
 
 Use base template. Content:
 
@@ -134,7 +134,7 @@ PRICING TIERS (3 cards):
 - Intensive: $X/month, 8 lessons, 1-on-1, materials + recordings
 
 BOOKING SECTION:
-- Cal.com inline embed (calLink: "eloquenta/free-trial")
+- Cal.com inline embed (calLink: "articulate/free-trial")
 - Layout: month_view
 - Pre-fill timezone from browser
 
@@ -151,11 +151,11 @@ Verify: Cal.com widget loads, accordion works, theme persists.
 
 ### Prompt: Build Video Classroom Page
 ```
-Build the Eloquenta classroom page at ~/William's Projects/Eloquenta/classroom.html
+Build the Articulate classroom page at ~/William's Projects/Articulate/classroom.html
 
 Requirements:
 - talky.io embed (iframe, allow camera/mic/fullscreen/display-capture)
-- Room name from URL param: ?room=eloquenta-{student}-{date}
+- Room name from URL param: ?room=articulate-{student}-{date}
 - Pre-join screen: camera/mic check, "Enter Classroom" button
 - In-call controls: mute, camera, screen share, leave (with confirm)
 - Connection quality indicator
@@ -168,7 +168,7 @@ Verify: Join room from two tabs, test all controls, check theme.
 
 ### Prompt: Build Student Dashboard
 ```
-Build the Eloquenta student dashboard at ~/William's Projects/Eloquenta/dashboard.html
+Build the Articulate student dashboard at ~/William's Projects/Articulate/dashboard.html
 
 Requirements:
 - Sidebar nav: Overview, Materials, Progress, Settings
@@ -184,7 +184,7 @@ Verify: Navigate all sections, theme toggle in settings works, mock data display
 
 ### Prompt: Build Materials Page with Topical Conversations
 ```
-Build the materials page at ~/William's Projects/Eloquenta/materials.html
+Build the materials page at ~/William's Projects/Articulate/materials.html
 
 Requirements:
 - Display the 109 topics from Topical Conversations (scraped data)
@@ -264,7 +264,7 @@ Steps:
 5. Test with minimal Cal.com embed in isolation
 6. Check if ad blocker is interfering
 
-File: ~/William's Projects/Eloquenta/pricing.html
+File: ~/William's Projects/Articulate/pricing.html
 ```
 
 ### Prompt: Debug talky.io Embed Not Working
@@ -279,7 +279,7 @@ Steps:
 5. Check if HTTPS is required (talky.io needs secure context)
 6. Verify allow attribute on iframe includes camera, microphone, fullscreen
 
-File: ~/William's Projects/Eloquenta/classroom.html
+File: ~/William's Projects/Articulate/classroom.html
 ```
 
 ---
