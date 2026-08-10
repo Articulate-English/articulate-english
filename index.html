@@ -11,6 +11,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ═══ ARTICULATE ENGLISH CUSTOM STYLES ═══ */
+/* Default theme (Articulate) fallback — applied before JS runs so the page
+   is never unstyled, even with JS disabled or on first visit. */
+:root {
+  --cs-accent: #22d3ee;
+  --cs-bg: #0a0e1a;
+  --cs-text: #e0f2fe;
+  --cs-bg-card: #111827;
+  --cs-border: #1e3a5f;
+  --cs-bg2: #111827;
+  --cs-bg3: #1e3a5f;
+  --cs-text-muted: #e0f2fe99;
+  --cs-text-dim: #e0f2fe66;
+  --cs-accent-glow: #22d3ee33;
+  --cs-accent-dim: #22d3ee18;
+  --cs-border-light: #1e3a5fcc;
+}
 body {
   font-family: 'Inter', system-ui, sans-serif;
   background: var(--cs-bg);
@@ -733,6 +749,7 @@ function loadTheme() {
   var saved = '';
   try { saved = localStorage.getItem('articulate-theme') || ''; } catch(e) {}
   if (saved && THEMES[saved]) applyTheme(saved);
+  else applyTheme(THEME_ORDER[0]);
 }
 
 // Event delegation for theme button
