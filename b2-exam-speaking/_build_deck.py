@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Generate a single Articulate B2 FCE Speaking deck HTML from a topic JSON."""
+"""Generate a single Articulate B2 Speaking deck HTML from a topic JSON."""
 import json, re, os, argparse
 
-BASE = r"C:\Users\irieb\Documents\William's Projects\workspace\esl-sites\articulate\b2-fce-speaking"
+BASE = r"C:\Users\irieb\Documents\William's Projects\workspace\esl-sites\articulate\b2-exam-speaking"
 
 def load_template():
     with open(os.path.join(BASE, '_template.html'), encoding='utf-8') as f:
