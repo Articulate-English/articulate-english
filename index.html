@@ -62,13 +62,13 @@ h1, h2, h3, h4 {
   letter-spacing: 2px;
   text-decoration: none;
 }
-.nav-logo-img {
+.nav-logo-svg {
   display: block;
   height: 38px;
   width: auto;
   transition: opacity 0.15s;
 }
-.nav-logo:hover .nav-logo-img { opacity: 0.85; }
+.nav-logo:hover .nav-logo-svg { opacity: 0.85; }
 .nav-logo span {
   color: var(--cs-accent);
 }
@@ -254,8 +254,14 @@ h1, h2, h3, h4 {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 .feature-icon {
-  font-size: 1.8rem;
   margin-bottom: 12px;
+  line-height: 0;
+  color: var(--cs-accent);
+}
+.feature-icon svg {
+  display: block;
+  width: 30px;
+  height: 30px;
 }
 .feature-card h3 {
   font-size: 1rem;
@@ -502,7 +508,23 @@ h1, h2, h3, h4 {
 
 <!-- ═══ NAV ═══ -->
 <div class="nav">
-  <a href="index.html" class="nav-logo"><img class="nav-logo-img" id="navLogo" src="assets/logo/articulate-logo-articulate.png" alt="Articulate English"></a>
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-logo-svg" viewBox="0 0 500 140" role="img" aria-label="Articulate English">
+      <circle cx="60" cy="60" r="50" fill="var(--cs-accent)" stroke="var(--cs-text)" stroke-width="4"/>
+      <path d="M32 95 L28 105 L38 108 L42 98 Z" fill="color-mix(in srgb, var(--cs-accent) 72%, #000)"/>
+      <path d="M78 95 L82 105 L72 108 L68 98 Z" fill="color-mix(in srgb, var(--cs-accent) 72%, #000)"/>
+      <path d="M30 95 L55 25 L65 25 L40 95 Z" fill="var(--cs-text)"/>
+      <path d="M50 60 L65 25 L75 25 L60 60 Z" fill="color-mix(in srgb, var(--cs-accent) 45%, #ffffff)"/>
+      <path d="M38 70 L42 60 L68 60 L64 70 Z" fill="var(--cs-accent)"/>
+      <path d="M42 60 L38 55 L64 55 L68 60 Z" fill="color-mix(in srgb, var(--cs-accent) 65%, #ffffff)"/>
+      <path d="M30 95 L38 70 L42 70 L42 95 Z" fill="color-mix(in srgb, var(--cs-accent) 72%, #000)"/>
+      <path d="M60 95 L64 70 L68 70 L68 95 Z" fill="color-mix(in srgb, var(--cs-accent) 60%, #000)"/>
+      <path d="M55 25 L58 18 L68 18 L65 25 Z" fill="color-mix(in srgb, var(--cs-accent) 65%, #ffffff)"/>
+      <text x="125" y="80" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="var(--cs-text)">rticulate</text>
+      <line x1="20" y1="112" x2="480" y2="112" stroke="var(--cs-text-dim)" stroke-width="1"/>
+      <text x="250" y="132" font-family="'Space Grotesk', sans-serif" font-size="30" font-weight="500" fill="var(--cs-text-dim)" text-anchor="middle" letter-spacing="3">ARTICULATE ENGLISH</text>
+    </svg>
+  </a>
   <div class="nav-links">
     <a href="#steps">How It Works</a>
     <a href="#features">Features</a>
@@ -583,37 +605,70 @@ h1, h2, h3, h4 {
   <div class="features-grid">
 
     <div class="feature-card">
-      <div class="feature-icon">🎯</div>
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/>
+          <circle cx="12" cy="12" r="5"/>
+          <circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
       <h3>Structured Curriculum</h3>
       <p>14 levels from absolute beginner (FL0) to advanced (FL13). Clear progression with assessments at every stage.</p>
     </div>
 
     <div class="feature-card">
-      <div class="feature-icon">🌐</div>
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M3 12h18"/>
+          <path d="M12 3c2.6 2.7 4 5.7 4 9s-1.4 6.3-4 9c-2.6-2.7-4-5.7-4-9s1.4-6.3 4-9z"/>
+        </svg>
+      </div>
       <h3>Live Translation</h3>
       <p>Real-time translation via Reverso Context. Never get stuck on a word you don't understand.</p>
     </div>
 
     <div class="feature-card">
-      <div class="feature-icon">📹</div>
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2.5" y="6" width="13" height="12" rx="2.5"/>
+          <path d="M15.5 10.5l5-3v9l-5-3z"/>
+        </svg>
+      </div>
       <h3>1-on-1 Video Lessons</h3>
       <p>Private video calls focused entirely on your learning. No group classes, no distractions.</p>
     </div>
 
     <div class="feature-card">
-      <div class="feature-icon">📚</div>
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 6.5C10.5 5 8.4 4 5.5 4v13c2.9 0 5 1 6.5 2.5 1.5-1.5 3.6-2.5 6.5-2.5V4c-2.9 0-5 1-6.5 2.5z"/>
+          <path d="M12 6.5v13"/>
+        </svg>
+      </div>
       <h3>Rich Materials</h3>
       <p>1,400+ conversation questions, grammar exercises, vocabulary lists, and real-world content.</p>
     </div>
 
     <div class="feature-card">
-      <div class="feature-icon">⏰</div>
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 7v5l3.5 2"/>
+        </svg>
+      </div>
       <h3>Flexible Scheduling</h3>
       <p>Book lessons that fit your timezone and schedule. Reschedule easily when life gets busy.</p>
     </div>
 
     <div class="feature-card">
-      <div class="feature-icon">🎓</div>
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M2.5 9.2L12 5l9.5 4.2L12 13.4z"/>
+          <path d="M6.5 11.2v4.3c0 1.4 2.5 2.5 5.5 2.5s5.5-1.1 5.5-2.5v-4.3"/>
+          <path d="M21.5 9.2v5"/>
+        </svg>
+      </div>
       <h3>Expert Teacher</h3>
       <p>Every lesson is taught by an experienced teacher, not an algorithm. You pay for expertise, and it shows in your progress.</p>
     </div>
@@ -719,9 +774,8 @@ function applyTheme(name) {
   // Update bg overlay
   var overlay = document.getElementById('bgOverlay');
   if(overlay) overlay.style.backgroundImage = 'url(' + t.bgImg + ')';
-  // Theme-matched logo
-  var logoImg = document.getElementById('navLogo');
-  if(logoImg) logoImg.src = 'assets/logo/articulate-logo-' + name + '.png';
+  // Logo is inline SVG driven by the theme CSS variables, so it recolours
+  // automatically with applyTheme() — no per-theme image swap needed.
   // Light mode: ensure text pops
   if(name === 'light'){
     document.querySelectorAll('.nav-links a').forEach(function(a){ a.style.color = 'rgba(30,41,59,0.7)'; });
