@@ -290,9 +290,9 @@ h1, h2, h3, h4 {
 }
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  max-width: 900px;
+  max-width: 760px;
   margin: 0 auto;
 }
 .price-card {
@@ -510,7 +510,7 @@ h1, h2, h3, h4 {
     <a href="Learning Materials/Grammar/linking-words-b2/index.html">Grammar</a>
     <a href="feedback/index.html">Feedback</a>
     <a href="#pricing">Pricing</a>
-    <a href="#cta" class="nav-cta">Book Free Trial</a>
+    <a href="#cta" class="nav-cta">Book a Lesson</a>
   </div>
   <button class="theme-cycle-btn" id="themeCycleBtn" data-theme="articulate">
     <span class="theme-dot" id="themeDot"></span>
@@ -524,8 +524,8 @@ h1, h2, h3, h4 {
 <!-- ═══ HERO ═══ -->
 <div class="hero">
   <h1>Online English for <span>Adults</span></h1>
-  <p>1-on-1 lessons with structured curriculum from beginner to advanced. Live translation support. Start with a free trial — no commitment, no payment required.</p>
-  <a href="#cta" class="hero-cta">Book Your Free Trial</a>
+  <p>1-on-1 lessons with structured curriculum from beginner to advanced. Live translation support. Book a lesson and start improving from the first hour.</p>
+  <a href="#cta" class="hero-cta">Book a Lesson</a>
 </div>
 
 <!-- ═══ STEPS ═══ -->
@@ -538,10 +538,10 @@ h1, h2, h3, h4 {
 
     <div class="step-card">
       <span class="step-num">1</span>
-      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=70&auto=format" alt="Book a free trial" class="step-img">
+      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=70&auto=format" alt="Book a lesson" class="step-img">
       <div class="step-body">
-        <h3>Book Free Trial</h3>
-        <p>Schedule your free 30-minute session. Pick a time that works across time zones.</p>
+        <h3>Book a Lesson</h3>
+        <p>Choose a time that works across time zones and pay for your first lesson.</p>
       </div>
     </div>
 
@@ -613,9 +613,9 @@ h1, h2, h3, h4 {
     </div>
 
     <div class="feature-card">
-      <div class="feature-icon">💳</div>
-      <h3>Pay After Trial</h3>
-      <p>Try before you buy. Pay only when you're ready. Multiple payment methods accepted.</p>
+      <div class="feature-icon">🎓</div>
+      <h3>Expert Teacher</h3>
+      <p>Every lesson is taught by an experienced teacher, not an algorithm. You pay for expertise, and it shows in your progress.</p>
     </div>
 
   </div>
@@ -624,22 +624,10 @@ h1, h2, h3, h4 {
 <!-- ═══ PRICING PREVIEW ═══ -->
 <div class="pricing-preview" id="pricing">
   <h2>Simple Pricing</h2>
-  <p class="pricing-sub">Start free. Pay only when you're ready.</p>
+  <p class="pricing-sub">One teacher. Clear rates. No gimmicks.</p>
   <div class="pricing-grid">
 
     <div class="price-card">
-      <h3>Free Trial</h3>
-      <div class="price">$0<span> / one-time</span></div>
-      <ul>
-        <li>30-minute trial lesson</li>
-        <li>Placement assessment</li>
-        <li>Level recommendation</li>
-        <li>No payment required</li>
-      </ul>
-      <a href="#cta" class="price-btn primary" data-book>Book Trial</a>
-    </div>
-
-    <div class="price-card popular">
       <h3>Standard</h3>
       <div class="price">$80<span> / month</span></div>
       <ul>
@@ -671,9 +659,9 @@ h1, h2, h3, h4 {
 <!-- ═══ CTA ═══ -->
 <div class="cta-section" id="cta">
   <h2>Ready to improve your English?</h2>
-  <p>Book a free 30-minute trial lesson. No commitment, no payment required.</p>
+  <p>Book your first lesson and start improving from the first hour.</p>
   <div class="cta-buttons">
-    <a href="#cta" class="cta-primary" data-book>Book Free Trial</a>
+    <a href="#cta" class="cta-primary" data-book>Book a Lesson</a>
     <a href="#pricing" class="cta-secondary">View Pricing</a>
   </div>
   <p class="cta-note" id="ctaNote" style="display:none; margin-top:16px; font-size:0.95rem; color:var(--cs-text-dim, rgba(224,242,254,0.7))"></p>
@@ -787,20 +775,20 @@ loadTheme();
   // Fallback note under the booking CTA, so an unconfigured booking path is
   // an honest "message us", never a button that does nothing.
   var note = document.getElementById('ctaNote');
-  var trial = document.querySelector('[data-book]');
-  if (note && trial && trial.getAttribute('data-wired') !== 'true') {
+  var firstCta = document.querySelector('[data-book]');
+  if (note && firstCta && firstCta.getAttribute('data-wired') !== 'true') {
     var alt = [];
     if (A.whatsappLink()) {
       alt.push('<a href="' + A.whatsappLink() + '" target="_blank" rel="noopener">WhatsApp us</a>');
     }
     if (A.email) {
-      alt.push('<a href="mailto:' + A.email + '?subject=Free%20trial%20lesson">email us</a>');
+      alt.push('<a href="mailto:' + A.email + '?subject=First%20lesson">email us</a>');
     }
     if (alt.length) {
       note.innerHTML = 'Online booking is not connected yet — ' + alt.join(' or ') +
-        ' to arrange your free trial lesson.';
+        ' to arrange your first lesson.';
     } else {
-      note.innerHTML = 'Booking opens shortly. Email <a href="mailto:' + A.email + '">' + A.email + '</a> to arrange your free trial lesson.';
+      note.innerHTML = 'Booking opens shortly. Email <a href="mailto:' + A.email + '">' + A.email + '</a> to arrange your first lesson.';
     }
     note.style.display = 'block';
   }

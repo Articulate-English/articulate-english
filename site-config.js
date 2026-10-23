@@ -45,7 +45,6 @@ window.ARTICULATE = {
 
   /* ── Pricing shown on the page (keep in sync with your real rates) ──── */
   prices: {
-    trial:    { label: 'Free Trial',  amount: 0,   note: '30-minute trial lesson' },
     standard: { label: 'Standard',    amount: 80,  currency: 'USD', period: '/month', note: '4 lessons per month' },
     intensive:{ label: 'Intensive',   amount: 150, currency: 'USD', period: '/month', note: '8 lessons per month' }
   }
