@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; media-src 'self' blob:; object-src 'none'; frame-ancestors 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; media-src 'self' blob:; object-src 'none'; frame-src https://app.cal.com https://www.paypal.com https://paystack.com https://checkout.paystack.com https://js.stripe.com https://buy.stripe.com https://donate.stripe.com; frame-ancestors 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Articulate — English. In Your Language.</title>
 <meta name="description" content="Premium 1-on-1 English tutoring with live translations. TOEFL, IELTS, OET, IGCSE and Business English. Your teacher speaks your language.">
+<script src="../site-config.js"></script>
 <style>
 :root {
   --bg: #020617;
@@ -1667,17 +1668,14 @@ a:hover { text-decoration: underline; }
         education to students worldwide — especially those who need it most.
       </p>
       <div class="donate-buttons">
-        <a href="https://www.paypal.com/donate/?hosted_button_id=YOUR_ID" target="_blank" rel="noopener" class="btn-donate-large btn-paypal">
+        <a href="#" target="_blank" rel="noopener" class="btn-donate-large btn-paypal" data-paypal>
           💳 PayPal
         </a>
-        <a href="https://donate.stripe.com/YOUR_LINK" target="_blank" rel="noopener" class="btn-donate-large btn-stripe">
-          💰 Credit / Debit Card
+        <a href="#" target="_blank" rel="noopener" class="btn-donate-large btn-stripe" data-paystack>
+          💳 Credit / Debit Card
         </a>
-        <a href="https://www.gofundme.com/f/YOUR_CAMPAIGN" target="_blank" rel="noopener" class="btn-donate-large btn-gofundme">
-          🌱 GoFundMe
-        </a>
-        <a href="#crypto" onclick="document.getElementById('crypto-details').style.display='block'; return false;" class="btn-donate-large btn-crypto">
-          ₿ Crypto
+        <a href="#" target="_blank" rel="noopener" class="btn-donate-large btn-gofundme" data-whatsapp>
+          💬 WhatsApp us
         </a>
       </div>
       <div id="crypto-details" style="display:none; margin-top:16px; padding:16px; background:var(--bg); border-radius:8px; text-align:left;">
@@ -2024,14 +2022,18 @@ a:hover { text-decoration: underline; }
       <!-- Step 2: Booking Calendar -->
       <div id="checkout-step-2" class="text-box" style="padding:24px; margin-bottom:20px; text-align:left;">
         <h3 style="font-size:16px; margin-bottom:12px;">📅 Choose a Time</h3>
-        <!-- Cal.com inline embed — replace with your Cal.com username -->
+        <!-- Cal.com inline embed — destination comes from site-config.js -->
         <div id="cal-booking-frame" style="min-height:400px; background:var(--bg); border-radius:8px; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:12px;">
           <iframe
-            src="https://app.cal.com/william-o8lcqk"
-            style="width:100%;height:420px;border:0;border-radius:8px;"
+            id="calBookingFrame"
+            src="about:blank"
+            style="width:100%;height:420px;border:0;border-radius:8px;display:none;"
             frameborder="0"
             title="Book a lesson">
           </iframe>
+          <p id="calBookingNote" style="font-size:13px; color:var(--text-dim); padding:0 24px; text-align:center; margin:0;">
+            Online booking is not connected yet — message us and we will send you a time.
+          </p>
           <p style="font-size:12px; color:var(--text-dim); padding:0 24px;">
             Don't see a time that works? <a href="mailto:hello@eloquent.ee">Email us</a> for scheduling.
           </p>
@@ -2193,13 +2195,16 @@ selectPackage('pack4');
 
 // Stripe checkout (placeholder — replace with your Stripe publishable key)
 function startCheckout() {
-  var p = PACKAGES[selectedPkg];
-  // Option A: Stripe Payment Link (simplest — create at dashboard.stripe.com/payment-links)
-  window.open('https://buy.stripe.com/test_YOUR_LINK_HERE?prefilled_email=', '_blank');
-
-  // Option B: Stripe Checkout (requires backend)
-  // fetch('/api/create-checkout-session', {method:'POST', body: JSON.stringify({package: selectedPkg}) })
-  //   .then(r => r.json()).then(d => Stripe('pk_live_...').redirectToCheckout({sessionId: d.id}));
+  // Destination comes from site-config.js (PayPal / Paystack).
+  var A = window.ARTICULATE || {};
+  var url = (A.paystackLink && A.paystackLink()) || (A.paypalLink && A.paypalLink());
+  if (url) {
+    window.open(url, '_blank', 'noopener');
+  } else if (A.whatsappLink && A.whatsappLink()) {
+    window.open(A.whatsappLink('Hi Articulate English, I would like to buy a lesson package.'), '_blank', 'noopener');
+  } else {
+    window.location.href = 'mailto:' + (A.email || 'hello@articulate.ee') + '?subject=Lesson%20package';
+  }
 }
 </script>
 
@@ -2279,18 +2284,17 @@ function startCheckout() {
         <ul>
           <li><a href="#about">About</a></li>
           <li><a href="#donate">❤️ Donate</a></li>
-          <li><a href="#">For Business</a></li>
+          <li><a href="impressum.html">For Business</a></li>
           <li><a href="recruit/">Become a Teacher</a></li>
-          <li><a href="#">Blog</a></li>
         </ul>
       </div>
       <div>
         <h4>Legal</h4>
         <ul>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Cookie Policy</a></li>
-          <li><a href="#">GDPR</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html#cookies">Cookie Policy</a></li>
+          <li><a href="impressum.html">GDPR</a></li>
         </ul>
       </div>
     </div>
@@ -2478,10 +2482,31 @@ function togglePremium() {
 }
 
 function startPremiumCheckout() {
-  // Replace with your Stripe Payment Link for premium
-  window.open('https://buy.stripe.com/test_PREMIUM_LINK', '_blank');
+  // Destination comes from site-config.js (PayPal / Paystack).
+  var A = window.ARTICULATE || {};
+  var url = (A.paystackLink && A.paystackLink()) || (A.paypalLink && A.paypalLink(150));
+  if (url) {
+    window.open(url, '_blank', 'noopener');
+  } else if (A.whatsappLink && A.whatsappLink()) {
+    window.open(A.whatsappLink('Hi Articulate English, I am interested in the Premium English Fluency Program.'), '_blank', 'noopener');
+  } else {
+    window.location.href = 'mailto:' + (A.email || 'hello@articulate.ee') + '?subject=Premium%20program';
+  }
 }
 
+// ═══ BOOKING WIRING ═══
+// Show the Cal.com calendar only when a real booking link is configured;
+// otherwise the honest note stays. Destination comes from site-config.js.
+(function () {
+  var A = window.ARTICULATE || {};
+  var frame = document.getElementById('calBookingFrame');
+  var note  = document.getElementById('calBookingNote');
+  if (frame && A && A.bookingUrl) {
+    frame.src = A.bookingUrl;
+    frame.style.display = 'block';
+    if (note) note.style.display = 'none';
+  }
+})();
 </script>
 </body>
 </html>

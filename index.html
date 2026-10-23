@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://app.cal.com https://js.paypal.com https://js.paystack.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://www.paypal.com https://www.paypalobjects.com https://paystack.com https://*.paystack.com https://wa.me; frame-src https://app.cal.com https://www.paypal.com https://paystack.com https://checkout.paystack.com; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Articulate English — Online English for Adults</title>
 <link rel="icon" type="image/png" href="assets/logo/favicon-32.png">
@@ -9,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="site-config.js"></script>
 <style>
 /* ═══ ARTICULATE ENGLISH CUSTOM STYLES ═══ */
 /* Default theme (Articulate) fallback — applied before JS runs so the page
@@ -634,7 +636,7 @@ h1, h2, h3, h4 {
         <li>Level recommendation</li>
         <li>No payment required</li>
       </ul>
-      <a href="#cta" class="price-btn primary">Book Trial</a>
+      <a href="#cta" class="price-btn primary" data-book>Book Trial</a>
     </div>
 
     <div class="price-card popular">
@@ -647,7 +649,7 @@ h1, h2, h3, h4 {
         <li>Progress tracking</li>
         <li>Cancel anytime</li>
       </ul>
-      <a href="#cta" class="price-btn primary">Get Started</a>
+      <a href="#cta" class="price-btn primary" data-paypal>Get Started</a>
     </div>
 
     <div class="price-card">
@@ -660,7 +662,7 @@ h1, h2, h3, h4 {
         <li>Progress tracking</li>
         <li>Lesson recordings</li>
       </ul>
-      <a href="#cta" class="price-btn">Get Started</a>
+      <a href="#cta" class="price-btn" data-paystack>Get Started</a>
     </div>
 
   </div>
@@ -671,19 +673,21 @@ h1, h2, h3, h4 {
   <h2>Ready to improve your English?</h2>
   <p>Book a free 30-minute trial lesson. No commitment, no payment required.</p>
   <div class="cta-buttons">
-    <a href="#" class="cta-primary" onclick="csShowToast('Booking coming soon!')">Book Free Trial</a>
+    <a href="#cta" class="cta-primary" data-book>Book Free Trial</a>
     <a href="#pricing" class="cta-secondary">View Pricing</a>
   </div>
+  <p class="cta-note" id="ctaNote" style="display:none; margin-top:16px; font-size:0.95rem; color:var(--cs-text-dim, rgba(224,242,254,0.7))"></p>
 </div>
 
 <!-- ═══ FOOTER ═══ -->
 <div class="footer">
   <div class="footer-links">
-    <a href="#">Privacy</a>
-    <a href="#">Terms</a>
-    <a href="#">Contact</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="mailto:hello@articulate.ee">Contact</a>
   </div>
-  <p>© 2026 Articulate English. All rights reserved.</p>
+  <p>&copy; 2026 Articulate English. All rights reserved.</p>
 </div>
 
 <script>
@@ -770,6 +774,58 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor){
 
 // ═══ INIT ═══
 loadTheme();
+
+// ═══ BOOKING + COMMERCE WIRING ═══
+// site-config.js has already given every [data-book] / [data-paypal] /
+// [data-paystack] / [data-whatsapp] element a real destination, or marked it
+// aria-disabled when that provider is not configured yet. This block renders
+// the honest fallback copy and the floating WhatsApp button.
+(function () {
+  var A = window.ARTICULATE;
+  if (!A) return;
+
+  // Fallback note under the booking CTA, so an unconfigured booking path is
+  // an honest "message us", never a button that does nothing.
+  var note = document.getElementById('ctaNote');
+  var trial = document.querySelector('[data-book]');
+  if (note && trial && trial.getAttribute('data-wired') !== 'true') {
+    var alt = [];
+    if (A.whatsappLink()) {
+      alt.push('<a href="' + A.whatsappLink() + '" target="_blank" rel="noopener">WhatsApp us</a>');
+    }
+    if (A.email) {
+      alt.push('<a href="mailto:' + A.email + '?subject=Free%20trial%20lesson">email us</a>');
+    }
+    if (alt.length) {
+      note.innerHTML = 'Online booking is not connected yet — ' + alt.join(' or ') +
+        ' to arrange your free trial lesson.';
+    } else {
+      note.innerHTML = 'Booking opens shortly. Email <a href="mailto:' + A.email + '">' + A.email + '</a> to arrange your free trial lesson.';
+    }
+    note.style.display = 'block';
+  }
+
+  // Floating WhatsApp button — only when a number is configured, so no
+  // half-built control ever appears on a public page.
+  if (A.whatsappLink()) {
+    var b = document.createElement('a');
+    b.href = A.whatsappLink();
+    b.target = '_blank';
+    b.rel = 'noopener';
+    b.setAttribute('aria-label', 'Message us on WhatsApp');
+    b.setAttribute('data-whatsapp', '');
+    b.style.cssText = [
+      'position:fixed', 'right:20px', 'bottom:20px', 'z-index:200',
+      'display:flex', 'align-items:center', 'gap:10px',
+      'padding:13px 20px', 'border-radius:999px',
+      'background:#25D366', 'color:#06281a', 'font-weight:700',
+      'font-size:0.95rem', 'text-decoration:none',
+      'box-shadow:0 8px 24px rgba(37,211,102,0.35)'
+    ].join(';');
+    b.textContent = '💬 WhatsApp';
+    document.body.appendChild(b);
+  }
+})();
 </script>
 
 </body>

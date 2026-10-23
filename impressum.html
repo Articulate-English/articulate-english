@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Impressum — Articulate English</title>
+<meta name="description" content="Legal notice / Impressum for Articulate English — operator, contact and registration details.">
+<link rel="icon" type="image/png" href="assets/logo/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#22d3ee;--bg:#0a0e1a;--text:#e0f2fe;--card:#111827;--border:#1e3a5f;--muted:#e0f2fe99;--warn:#fbbf24}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.7;font-size:17px}
+.wrap{max-width:800px;margin:0 auto;padding:32px 20px 80px}
+a{color:var(--accent)}
+h1,h2{font-family:'Space Grotesk',sans-serif;line-height:1.25}
+h1{font-size:2rem;margin:0 0 8px}
+h2{font-size:1.25rem;margin:36px 0 10px;color:var(--accent)}
+p,li{color:var(--text)}
+.muted{color:var(--muted);font-size:0.9rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin:20px 0}
+.warn{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.35);border-radius:12px;padding:16px 20px;margin:20px 0}
+.warn strong{color:var(--warn)}
+.top{margin:16px 0 0;font-size:0.9rem}
+code{background:rgba(34,211,238,.12);padding:2px 6px;border-radius:5px;font-size:0.9em}
+table{width:100%;border-collapse:collapse;margin:12px 0}
+td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+td:first-child{color:var(--muted);width:38%}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="top"><a href="index.html">&larr; Back to Articulate English</a></p>
+  <h1>Impressum</h1>
+  <p class="muted">Legal notice. Required under German &sect;5 TMG and EU consumer-information rules.</p>
+
+  <div class="warn">
+    <p><strong>Two details still need your real values.</strong> The registration number and the postal address below are marked <code>[PLACEHOLDER]</code>. Replace them before a funder, court or authority sees this page — an Impressum with invented registration data is a legal exposure, so we have deliberately left it unfilled rather than guess.</p>
+  </div>
+
+  <h2>Information according to &sect;5 TMG</h2>
+  <table>
+    <tr><td>Operator</td><td><strong>William Gray Thomason</strong>, trading as Articulate English</td></tr>
+    <tr><td>Form</td><td>Sole proprietorship (no registered company yet)</td></tr>
+    <tr><td>Address</td><td><code>[PLACEHOLDER — your postal address]</code></td></tr>
+    <tr><td>Country</td><td>South Africa</td></tr>
+    <tr><td>Email</td><td><code>hello@articulate.ee</code></td></tr>
+    <tr><td>Phone</td><td><code id="imp-phone">[PLACEHOLDER — your phone]</code></td></tr>
+    <tr><td>VAT ID</td><td><code>[PLACEHOLDER — if registered]</code></td></tr>
+    <tr><td>Responsible for content (&sect;55 II RStV)</td><td>William Gray Thomason, address as above</td></tr>
+  </table>
+
+  <h2>Dispute resolution</h2>
+  <p>The European Commission provides an online dispute-resolution platform at <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>. We are not obliged and not currently willing to take part in proceedings before a consumer arbitration board.</p>
+
+  <h2>Liability for content</h2>
+  <p>We take care over the information on this site. However, we cannot guarantee that all content is complete, current or accurate at every moment. As a service provider we are responsible for our own content on these pages; we are not obliged to monitor third-party material.</p>
+
+  <h2>Liability for links</h2>
+  <p>This site contains links to external websites of third parties. We have no influence on their content and do not adopt it as our own. The relevant provider or operator is always responsible for the content of the linked pages.</p>
+
+  <h2>Copyright</h2>
+  <p>The learning materials, slides, text and design on this site are the property of Articulate English and are protected by copyright. Reproduction or distribution without written permission is not permitted.</p>
+
+  <h2>Contact about this notice</h2>
+  <p><code>hello@articulate.ee</code></p>
+</div>
+<script src="site-config.js"></script>
+<script>
+(function () {
+  var p = document.getElementById('imp-phone');
+  if (p && window.ARTICULATE && ARTICULATE.phoneDisplay) p.textContent = ARTICULATE.phoneDisplay;
+})();
+</script>
+</body>
+</html>
