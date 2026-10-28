@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.paystack.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self' blob:; frame-src 'self' https://checkout.paystack.com https://cal.com https://*.cal.com; object-src 'none'; frame-ancestors 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.paystack.co https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self' blob:; frame-src 'self' https://checkout.paystack.com https://checkout.stripe.com https://cal.com https://*.cal.com; object-src 'none'; frame-ancestors 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="description" content="1-on-1 and group English lessons with live AI translation into your home language. Structured curriculum from beginner to advanced, plus exam preparation for IELTS, TOEFL, OET, CAE and more. ">
 <meta name="theme-color" content="#0d1f22">
@@ -184,6 +184,11 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
 .footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:16px;flex-wrap:wrap}
 .footer-links a{color:var(--text-muted);text-decoration:none;transition:color .15s}
 .footer-links a:hover{color:var(--text)}
+.footer-legal{display:flex;justify-content:center;gap:16px;margin-bottom:16px;align-items:center;flex-wrap:wrap}
+.footer-legal a{color:var(--text-muted);text-decoration:none;transition:color .15s;font-size:.85rem}
+.footer-legal a:hover{color:var(--text)}
+.currency-select{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:4px 10px;font-family:'Inter',sans-serif;font-size:.85rem;cursor:pointer;appearance:none}
+.currency-select option{background:var(--bg-card)}
 @media(max-width:900px){
   .offer-grid,.pricing-grid{grid-template-columns:1fr}
   .diff-grid{grid-template-columns:1fr}
@@ -331,9 +336,9 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
   </div>
   <div class="pricing-wrap">
     <div class="pricing-grid">
-      <div class="price-card">
+      <div class="price-card" data-tier-card="starter">
         <div class="price-label">Starter</div>
-        <div class="price-amount"><span class="currency">$</span>50</div>
+        <div class="price-amount"><span class="currency">$</span><span data-tier-amount="starter">50</span></div>
         <div class="price-period">per 30-min session · 4 sessions/mo</div>
         <ul class="price-features">
           <li>4 x 30-min 1-on-1 sessions per month</li>
@@ -343,12 +348,12 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
           <li>Progress dashboard</li>
           <li>Mobile-friendly platform</li>
         </ul>
-        <a href="#pricing" class="price-btn secondary" data-pay data-amount="20000">Enquire</a>
-        <div class="price-note">$200/mo total · For professionals starting their journey</div>
+        <a href="#pricing" class="price-btn secondary" data-pay data-tier="starter" data-amount="20000">Enquire</a>
+        <div class="price-note"><span data-currency-total="starter"></span>/mo total · For professionals starting their journey</div>
       </div>
-      <div class="price-card featured">
+      <div class="price-card featured" data-tier-card="professional">
         <div class="price-label">Professional</div>
-        <div class="price-amount"><span class="currency">$</span>75</div>
+        <div class="price-amount"><span class="currency">$</span><span data-tier-amount="professional">75</span></div>
         <div class="price-period">per 30-min session · 8 sessions/mo</div>
         <ul class="price-features">
           <li>8 x 30-min 1-on-1 sessions per month</li>
@@ -360,12 +365,12 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
           <li>Monthly progress report</li>
           <li>Lesson recording + replay</li>
         </ul>
-        <a href="#pricing" class="price-btn primary" data-pay data-amount="60000">Enquire</a>
-        <div class="price-note">$600/mo total · Recommended for committed professionals</div>
+        <a href="#pricing" class="price-btn primary" data-pay data-tier="professional" data-amount="60000">Enquire</a>
+        <div class="price-note"><span data-currency-total="professional"></span>/mo total · Recommended for committed professionals</div>
       </div>
-      <div class="price-card">
+      <div class="price-card" data-tier-card="intensive">
         <div class="price-label">Intensive</div>
-        <div class="price-amount"><span class="currency">$</span>100</div>
+        <div class="price-amount"><span class="currency">$</span><span data-tier-amount="intensive">100</span></div>
         <div class="price-period">per 30-min session · 16 sessions/mo</div>
         <ul class="price-features">
           <li>16 x 30-min 1-on-1 sessions per month</li>
@@ -377,8 +382,8 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
           <li>Lesson recording + replay</li>
           <li>Corporate invoice billing</li>
         </ul>
-        <a href="#pricing" class="price-btn secondary" data-pay data-amount="160000">Enquire</a>
-        <div class="price-note">$1,600/mo total · For accelerated progress or exam deadlines</div>
+        <a href="#pricing" class="price-btn secondary" data-pay data-tier="intensive" data-amount="160000">Enquire</a>
+        <div class="price-note"><span data-currency-total="intensive"></span>/mo total · For accelerated progress or exam deadlines</div>
       </div>
     </div>
      <div class="price-note pricing-value-note">What does one missed promotion, one failed IELTS retake, or one stalled negotiation cost you? Our intensive track pays for itself in a single career move.</div>
@@ -402,12 +407,12 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
         <div class="corporate-tiers">
           <div class="corp-tier">
             <div class="corp-tier-name">Team</div>
-            <div class="corp-tier-price">$35<span>/session</span></div>
+            <div class="corp-tier-price" data-corp-price="team"><span data-corp-per="team">$35</span><span>/session</span></div>
             <div class="corp-tier-desc">Up to 10 seats · shared content · $2,500/mo</div>
           </div>
           <div class="corp-tier">
             <div class="corp-tier-name">Business</div>
-            <div class="corp-tier-price">$45<span>/session</span></div>
+            <div class="corp-tier-price" data-corp-price="business"><span data-corp-per="business">$45</span><span>/session</span></div>
             <div class="corp-tier-desc">Up to 50 seats · custom content · $8,500/mo</div>
           </div>
           <div class="corp-tier">
@@ -467,14 +472,26 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
   <div class="footer-links">
     <a href="#offer">What We Offer</a><a href="#why">Why Us</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
   </div>
+  <div class="footer-legal">
+    <a href="impressum.html">Impressum</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <label for="currencySelect" class="currency-label">Currency:</label>
+    <select id="currencySelect" class="currency-select">
+      <option value="auto">Auto</option>
+      <option value="usd">USD ($)</option>
+      <option value="eur">EUR (€)</option>
+      <option value="chf">CHF (Fr.)</option>
+    </select>
+  </div>
   <p>&copy; 2026 Articulate English. All rights reserved.</p>
 </div>
 <script>
 /* ==========================================================================
    PAY-TO-BOOK GATE — 2026-10-28
-   Pricing-tier buttons use data-pay + data-amount (cents) to open a Paystack
-   modal. On success -> redirect to Cal.com to schedule the pre-paid session.
-   Cal.com link + Paystack public key live in site-config.js.
+   Multi-currency: USD → Paystack inline modal, EUR/CHF → Stripe Checkout.
+   After payment success → redirect to Cal.com to schedule.
+   Payment keys + currency detection live in site-config.js.               */
 
    LEAD FORM: create a free Formspree account
    (https://formspree.io/accounts/register), paste the endpoint into the
@@ -668,52 +685,120 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
 <script src="site-config.js"></script>
 <script src="https://js.paystack.co/v1.7.0/paystack.min.js"></script>
 <script>
-/* --- pay-to-book: Paystack -> Cal.com --------------------------------------
-   Reads Cal.com link + Paystack public key from window.ARTICULATE (set by
-   site-config.js). On [data-pay] click: open Paystack modal with tier
-   amount -> on success -> redirect to Cal.com so the pre-paid session is
-   scheduled. If paystackPublicKey is empty, show an honest alert.          */
+/* --- pay-to-book: multi-currency payment gate ------------------------------
+   Reads payment keys + currency from window.ARTICULATE (set by
+   site-config.js). On [data-pay] click:
+   - USD  -> Paystack inline modal (settles ZAR, fine for USD/SA clients)
+   - EUR  -> Stripe Checkout redirect (SCA-compliant for EU)
+   - CHF  -> Stripe Checkout redirect (SCA-compliant for Swiss)
+   PayPal.Me redirect is used as an alternative when paypalUrl is set.
+   If no payment method is configured -> honest alert with contact email.
+   After payment success -> redirect to Cal.com to schedule.              */
 (function () {
   'use strict';
   var A = window.ARTICULATE || {};
+  var BOOKING_URL = A.bookingUrl || '';
   var PAYSTACK_KEY = A.paystackPublicKey || '';
-  var BOOKING_URL  = A.bookingUrl || 'https://cal.com/williamthomason/15-30-45-or-60-minute-sessions';
+  var STRIPE_KEY   = A.stripePublishableKey || '';
+  var PAYPAL_URL   = A.paypalUrl || '';
+
+  function honestAlert(msg) {
+    alert((msg || 'Payment is being configured.') + ' Please email ' +
+          (A.email || 'hello@articulate.ee') +
+          ' to enquire and we will send payment details.');
+  }
 
   document.addEventListener('click', function (e) {
     var btn = e.target.closest('[data-pay]');
     if (!btn) return;
     e.preventDefault();
 
-    var cents = parseInt(btn.getAttribute('data-amount') || '0', 10);
+    var cents    = parseInt(btn.getAttribute('data-amount') || '0', 10);
     if (!cents) return;
 
-    if (!PAYSTACK_KEY) {
-      alert('Payment is being configured. Please email ' + (A.email || 'hello@articulate.ee') + ' to enquire and we will send payment details.');
+    var rail     = A.paymentRail();
+    var currency = A.currency() || {};
+    var code     = currency.code || 'USD';
+    var tierName = btn.getAttribute('data-tier') || '';
+    var tierData = tierName ? A.tier(tierName) : null;
+    var tierLabel = tierData ? tierData.label : 'package';
+
+    /* PayPal redirect (highest priority for EUR/CHF) */
+    if (rail === 'paypal') {
+      var paypalHref = A.paypalLink((cents / 100).toFixed(2));
+      if (paypalHref) { window.location.href = paypalHref; return; }
+    }
+
+    /* Stripe Checkout (for CHF/EUR with stripePublishableKey) */
+    if (rail === 'stripe' && typeof Stripe !== 'undefined' && STRIPE_KEY) {
+      var stripe = Stripe(STRIPE_KEY);
+      stripe.redirectToCheckout({
+        lineItems: [{
+          price_data: {
+            currency: code.toLowerCase(),
+            product_data: {
+              name: tierLabel + ' ' + (A.brand || 'Articulate English'),
+              description: tierData ? tierData.note : ''
+            },
+            unit_amount: cents
+          },
+          quantity: 1
+        }],
+        mode: 'payment',
+        successUrl: BOOKING_URL + '?paid=1',
+        cancelUrl:  window.location.href
+      }).then(function (result) {
+        if (result.error) { alert('Payment error: ' + result.error.message); }
+      });
       return;
     }
 
-    var email = prompt('Enter your email for the receipt and booking confirmation.', '');
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      if (email !== null) alert('A valid email is required to process payment.');
+    /* Paystack modal (for USD, or as fallback for any currency) */
+    if (PAYSTACK_KEY && typeof PaystackPop !== 'undefined') {
+      var paystackCurrency = code.toLowerCase();
+      /* Paystack settles ZAR/USD — for EUR/CHF, warn about FX. */
+      if (code !== 'USD' && code !== 'GBP') {
+        var formatted = A.formatPrice(cents);
+        var ok = confirm(
+          'You are about to pay ' + formatted + '.\n\n' +
+          'Paystack will process this in USD; your bank may apply a\n' +
+          'foreign-exchange markup. For billing in ' + code + ',\n' +
+          'please email ' + (A.email || 'hello@articulate.ee') + ' instead.\n\n' +
+          'Continue anyway?'
+        );
+        if (!ok) return;
+        paystackCurrency = 'usd';
+      }
+
+      var email = prompt('Enter your email for the receipt and booking confirmation.', '');
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^@]+$/.test(email)) {
+        if (email !== null) alert('A valid email is required to process payment.');
+        return;
+      }
+
+      var handler = PaystackPop.setup({
+        key:      PAYSTACK_KEY,
+        email:    email,
+        amount:   cents,
+        currency: paystackCurrency,
+        channels: ['card', 'bank'],
+        ref:      'articulate_' + Date.now(),
+        callback: function () {
+          /* payment successful -> schedule the pre-paid session */
+          window.location.href = BOOKING_URL + '?paid=1';
+        },
+        onClose:  function () {}
+      });
+      handler.open();
       return;
     }
 
-    var handler = PaystackPop.setup({
-      key:      PAYSTACK_KEY,
-      email:    email,
-      amount:   cents,
-      currency: 'USD',
-      channels: ['card', 'bank'],
-      ref:      'articulate_' + Date.now(),
-      callback: function () {
-        /* payment successful -> schedule the pre-paid session */
-        window.location.href = BOOKING_URL;
-      },
-      onClose: function () { /* modal closed without paying */ }
-    });
-    handler.open();
+    /* No payment method configured */
+    honestAlert('Your ' + code + ' price is ' + A.formatPrice(cents) + '.');
   });
 })();
 </script>
+
+<script src="https://js.stripe.com/v3/"></script>
 </body>
 </html>
