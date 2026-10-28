@@ -24,9 +24,8 @@ window.ARTICULATE = {
   /* ── BOOKING ─────────────────────────────────────────────────────────
      Your Cal.com booking link. Find it in the Cal.com dashboard:
      Booking Links -> your event -> "Copy link"  (looks like
-     https://cal.com/<your-username>/<event-slug> )
-     The old value https://app.cal.com/william-o8lcqk now 404s.            */
-  bookingUrl:   '',
+     https://cal.com/<your-username>/<event-slug> )                            */
+  bookingUrl:   'https://cal.com/williamthomason/15-30-45-or-60-minute-sessions',
 
   /* ── WHATSAPP ────────────────────────────────────────────────────────
      Your WhatsApp number in international format, digits only.
@@ -37,11 +36,13 @@ window.ARTICULATE = {
   /* ── PAYMENTS ────────────────────────────────────────────────────────
      PayPal:  a PayPal.Me link  ->  https://paypal.me/<your-slug>/<amount>
               or a PayPal hosted-button / Payment Link from your dashboard.
-     Paystack: a Payment Link from the Paystack dashboard
-              (Payment Pages -> create -> copy the public link).
-              Supports ZAR, Visa/Mastercard and EFT. No code needed.       */
+     Paystack: Public key from the Paystack dashboard
+              (Settings → API Keys → "Public Key"). Starts with pk_live_
+              or pk_test_. Enables inline card/EFT checkout on every tier
+              button; amount is set per-tier in landing.html.               */
   paypalUrl:    '',
   paystackUrl:  '',
+  paystackPublicKey: '',
 
   /* ── Pricing shown on the page (keep in sync with your real rates) ──── */
   prices: {
