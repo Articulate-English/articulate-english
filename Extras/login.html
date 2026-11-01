@@ -34,14 +34,13 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             
-            // Simulation check against local test accounts
-            if (email === 'maria@articulate.com' && password === 'Pass123!') {
-                window.location.href = 'dashboard.html';
-            } else if (email === 'william@articulate.com' && password === 'Pass123!') {
-                window.location.href = 'teacher-studio.html';
-            } else {
-                document.getElementById('error-msg').style.display = 'block';
-            }
+            // Login is not wired to a backend yet. Do NOT accept hardcoded
+            // credentials here — anyone could read them in view-source.
+            document.getElementById('error-msg').textContent =
+              'Sign-in is not connected yet. Please email ' +
+              (window.ARTICULATE && window.ARTICULATE.email ? window.ARTICULATE.email : 'hello@articulate.ee') +
+              ' to arrange access.';
+            document.getElementById('error-msg').style.display = 'block';
         }
     </script>
 </body>
