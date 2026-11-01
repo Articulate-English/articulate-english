@@ -2,900 +2,803 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://app.cal.com https://js.paypal.com https://js.paystack.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://www.paypal.com https://www.paypalobjects.com https://paystack.com https://*.paystack.com https://wa.me; frame-src https://app.cal.com https://www.paypal.com https://paystack.com https://checkout.paystack.com; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.paystack.co https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self' blob:; frame-src 'self' https://checkout.paystack.com https://checkout.stripe.com https://cal.com https://*.cal.com; object-src 'none'; frame-ancestors 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Articulate English — Online English for Adults</title>
+<meta name="description" content="1-on-1 and group English lessons with live AI translation into your home language. Structured curriculum from beginner to advanced, plus exam preparation for IELTS, TOEFL, OET, CAE and more. ">
+<meta name="theme-color" content="#0d1f22">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Articulate English — Professional English for Business &amp; Young Learners">
+<meta property="og:description" content="1-on-1 and group English lessons with live AI translation into your home language, structured curriculum, and exam preparation. ">
+<title>Articulate English — Professional English for Business &amp; Young Learners</title>
 <link rel="icon" type="image/png" href="assets/logo/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/logo/favicon-64.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="site-config.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ═══ ARTICULATE ENGLISH CUSTOM STYLES ═══ */
-/* Default theme (Articulate) fallback — applied before JS runs so the page
-   is never unstyled, even with JS disabled or on first visit. */
-:root {
-  --cs-accent: #22d3ee;
-  --cs-bg: #0a0e1a;
-  --cs-text: #e0f2fe;
-  --cs-bg-card: #111827;
-  --cs-border: #1e3a5f;
-  --cs-bg2: #111827;
-  --cs-bg3: #1e3a5f;
-  --cs-text-muted: #e0f2fe99;
-  --cs-text-dim: #e0f2fe66;
-  --cs-accent-glow: #22d3ee33;
-  --cs-accent-dim: #22d3ee18;
-  --cs-border-light: #1e3a5fcc;
+:root{
+  --bg:#0d1f22;--bg2:#0f2427;--bg3:#122d33;--bg-card:#142e35;--bg-card2:#0f2629;
+  --border:#1a3a3f;--border-light:#245660;
+  --text:#c8e6e8;--text-muted:#7a9ea3;--text-dim:#3d6b72;
+  --accent:#f59e0b;--accent-dim:rgba(245,158,11,.1);--accent-glow:rgba(245,158,11,.3);
+  --accent-text:#1a1a1a;
+  --green:#34d399;--amber:#fbbf24;
+  --card:rgba(20,46,53,.88);--card-soft:rgba(20,46,53,.5);
+  --grad:linear-gradient(135deg,rgba(20,46,53,.88),rgba(15,38,41,.88));
+  --band:rgba(15,36,39,.92);--footer-bg:rgba(13,31,34,.9);--scrim-rgb:13,31,34;
 }
-body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background: var(--cs-bg);
-  color: var(--cs-text);
-  line-height: 1.6;
-  min-height: 100vh;
-}
-h1, h2, h3, h4 {
-  font-family: 'Space Grotesk', sans-serif;
-}
+.theme-lavender{--accent:#a3e635;--accent-dim:rgba(163,230,53,.12);--accent-glow:rgba(163,230,53,.3);--accent-text:#0a0a0a;--card:rgba(38,27,64,.88);--card-soft:rgba(38,27,64,.5);--grad:linear-gradient(135deg,rgba(38,27,64,.88),rgba(30,19,51,.88));--band:rgba(31,20,53,.92);--footer-bg:rgba(26,15,46,.9);--scrim-rgb:26,15,46;}
+.theme-charlime{--accent:#a3e635;--accent-dim:rgba(163,230,53,.12);--accent-glow:rgba(163,230,53,.25);--accent-text:#0a0a0a;--card:rgba(45,45,45,.88);--card-soft:rgba(45,45,45,.5);--grad:linear-gradient(135deg,rgba(45,45,45,.88),rgba(37,37,37,.88));--band:rgba(35,35,35,.95);--footer-bg:rgba(28,28,28,.95);--scrim-rgb:28,28,28;}
+.theme-light{--bg:#f8fafc;--bg2:#f1f5f9;--bg3:#e2e8f0;--bg-card:#ffffff;--bg-card2:#f8fafc;--border:#cbd5e1;--border-light:#94a3b8;--text:#1e293b;--text-muted:#475569;--text-dim:#94a3b8;--accent:#0d9488;--accent-dim:rgba(13,148,136,.1);--accent-glow:rgba(13,148,136,.25);--accent-text:#ffffff;--btn-bg:rgba(0,0,0,.06);--card:rgba(255,255,255,.95);--card-soft:rgba(0,0,0,.04);--grad:linear-gradient(135deg,rgba(255,255,255,.95),rgba(248,250,252,.95));--band:rgba(248,250,252,.95);--footer-bg:rgba(248,250,252,.95);--scrim-rgb:248,250,252;}
+.theme-ice{--accent:#38bdf8;--accent-dim:rgba(56,189,248,.1);--accent-glow:rgba(56,189,248,.25);--accent-text:#fff;--card:rgba(19,42,66,.88);--card-soft:rgba(19,42,66,.5);--grad:linear-gradient(135deg,rgba(19,42,66,.88),rgba(15,34,56,.88));--band:rgba(15,31,51,.92);--footer-bg:rgba(12,25,41,.9);--scrim-rgb:12,25,41;}
+.theme-articulate,.theme-ice,.theme-charlime,.theme-lavender{--btn-bg:rgba(255,255,255,.12);}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px;scroll-behavior:smooth}
+  /* ================================================================
+     BACKGROUND STACK (rebuilt 2026-09-28)
+     Was: three layers fighting. body::after carried a hardcoded
+     Unsplash photo with an 82-94% opaque gradient baked on top, so the
+     photo was mathematically near-invisible; a separate .bg-overlay ran
+     at 15% opacity with a 3px blur and the JS swapped THAT per theme;
+     and body::after declared z-index:0 then z-index:-1 in the same rule.
+     Now one image layer, one grain layer, one scrim, strict order.
 
-/* ═══ NAV ═══ */
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: rgba(10, 14, 26, 0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--cs-border);
-  padding: 0 40px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.nav-logo {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 2px;
-  text-decoration: none;
-}
-.nav-logo-svg {
-  display: block;
-  height: 38px;
-  width: auto;
-  transition: opacity 0.15s;
-}
-.nav-logo:hover .nav-logo-svg { opacity: 0.85; }
-.nav-logo span {
-  color: var(--cs-accent);
-}
-.nav-links {
-  display: flex;
-  gap: 24px;
-  align-items: center;
-}
-.nav-links a {
-  color: rgba(255,255,255,0.7);
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 500;
-  transition: color 0.15s;
-}
-.nav-links a:hover {
-  color: #fff;
-}
-.nav-cta {
-  padding: 8px 20px;
-  border-radius: 8px;
-  border: 2px solid var(--cs-accent);
-  color: #fff;
-  background: var(--cs-accent);
-  text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: 700;
-  transition: all 0.15s;
-}
-.nav-cta:hover {
-  filter: brightness(1.15);
-  box-shadow: 0 0 20px var(--cs-accent-glow);
-}
-
-/* ═══ HERO ═══ */
-.hero {
-  padding: 80px 40px 60px;
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-.hero h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  line-height: 1.15;
-  margin-bottom: 16px;
-  color: var(--cs-text);
-}
-.hero h1 span {
-  color: var(--cs-accent);
-}
-.hero p {
-  font-size: 1.1rem;
-  color: var(--cs-text-muted);
-  margin-bottom: 32px;
-  max-width: 560px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.hero-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 32px;
-  border-radius: 10px;
-  border: 1px solid var(--cs-accent);
-  color: var(--cs-accent);
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 700;
-  transition: all 0.15s;
-}
-.hero-cta:hover {
-  background: var(--cs-accent);
-  color: var(--cs-bg);
-  box-shadow: 0 0 20px var(--cs-accent-glow);
-}
-
-/* ═══ STEPS ═══ */
-.steps {
-  padding: 40px 40px 80px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.steps-header {
-  text-align: center;
-  margin-bottom: 48px;
-}
-.steps-header h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.steps-header p {
-  color: var(--cs-text-muted);
-  font-size: 0.95rem;
-}
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-.step-card {
-  background: var(--cs-bg-card);
-  border: 1px solid var(--cs-border);
-  border-radius: 14px;
-  overflow: hidden;
-  transition: all 0.2s;
-  position: relative;
-}
-.step-card:hover {
-  border-color: var(--cs-border-light);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-}
-.step-img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  display: block;
-  filter: brightness(0.65) saturate(1.1);
-}
-.step-num {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--cs-accent);
-  color: var(--cs-bg);
-  font-size: 0.75rem;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
-.step-body {
-  padding: 20px;
-}
-.step-body h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 6px;
-  color: var(--cs-text);
-}
-.step-body p {
-  font-size: 0.78rem;
-  color: var(--cs-text-muted);
-  line-height: 1.6;
-}
-
-/* ═══ FEATURES ═══ */
-.features {
-  padding: 60px 40px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.features-header {
-  text-align: center;
-  margin-bottom: 48px;
-}
-.features-header h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-.feature-card {
-  background: var(--cs-bg-card);
-  border: 1px solid var(--cs-border);
-  border-radius: 14px;
-  padding: 28px;
-  transition: all 0.2s;
-}
-.feature-card:hover {
-  border-color: var(--cs-border-light);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-.feature-icon {
-  margin-bottom: 12px;
-  line-height: 0;
-  color: var(--cs-accent);
-}
-.feature-icon svg {
-  display: block;
-  width: 30px;
-  height: 30px;
-}
-.feature-card h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: var(--cs-text);
-}
-.feature-card p {
-  font-size: 0.82rem;
-  color: var(--cs-text-muted);
-  line-height: 1.6;
-}
-
-/* ═══ PRICING PREVIEW ═══ */
-.pricing-preview {
-  padding: 60px 40px;
-  background: var(--cs-bg2);
-  border-top: 1px solid var(--cs-border);
-  border-bottom: 1px solid var(--cs-border);
-}
-.pricing-preview h2 {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.pricing-sub {
-  text-align: center;
-  color: var(--cs-text-muted);
-  margin-bottom: 40px;
-  font-size: 0.95rem;
-}
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  max-width: 760px;
-  margin: 0 auto;
-}
-.price-card {
-  background: var(--cs-bg-card);
-  border: 1px solid var(--cs-border);
-  border-radius: 14px;
-  padding: 28px;
-  text-align: center;
-  transition: all 0.2s;
-}
-.price-card:hover {
-  border-color: var(--cs-border-light);
-}
-.price-card.popular {
-  border-color: var(--cs-accent);
-  box-shadow: 0 0 20px var(--cs-accent-dim);
-}
-.price-card h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-.price-card .price {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--cs-accent);
-  margin: 12px 0;
-}
-.price-card .price span {
-  font-size: 0.85rem;
-  color: var(--cs-text-muted);
-  font-weight: 400;
-}
-.price-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 16px 0;
-  text-align: left;
-}
-.price-card ul li {
-  font-size: 0.82rem;
-  color: var(--cs-text-muted);
-  padding: 4px 0;
-  padding-left: 20px;
-  position: relative;
-}
-.price-card ul li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--cs-accent);
-  font-weight: 700;
-}
-.price-btn {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid var(--cs-accent);
-  color: var(--cs-accent);
-  background: transparent;
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.15s;
-  text-decoration: none;
-  text-align: center;
-  font-family: inherit;
-}
-.price-btn:hover {
-  background: var(--cs-accent);
-  color: var(--cs-bg);
-}
-.price-btn.primary {
-  background: var(--cs-accent);
-  color: var(--cs-bg);
-}
-.price-btn.primary:hover {
-  filter: brightness(1.1);
-  box-shadow: 0 0 16px var(--cs-accent-glow);
-}
-
-/* ═══ CTA ═══ */
-.cta-section {
-  padding: 60px 40px;
-  text-align: center;
-}
-.cta-section h2 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-.cta-section p {
-  color: var(--cs-text-muted);
-  margin-bottom: 24px;
-  font-size: 0.95rem;
-}
-.cta-buttons {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.cta-primary {
-  padding: 12px 28px;
-  border-radius: 10px;
-  border: 1px solid var(--cs-accent);
-  color: var(--cs-accent);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 700;
-  transition: all 0.15s;
-}
-.cta-primary:hover {
-  background: var(--cs-accent);
-  color: var(--cs-bg);
-  box-shadow: 0 0 20px var(--cs-accent-glow);
-}
-.cta-secondary {
-  padding: 12px 28px;
-  border-radius: 10px;
-  border: 1px solid var(--cs-border);
-  color: var(--cs-text-muted);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: all 0.15s;
-}
-.cta-secondary:hover {
-  border-color: var(--cs-text-muted);
-  color: var(--cs-text);
-}
-
-/* ═══ FOOTER ═══ */
-.footer {
-  padding: 32px 40px;
-  text-align: center;
-  font-size: 0.75rem;
-  color: var(--cs-text-dim);
-  border-top: 1px solid var(--cs-border);
-}
-.footer a {
-  color: var(--cs-text-muted);
-  text-decoration: none;
-}
-.footer a:hover {
-  color: var(--cs-accent);
-}
-.footer-links {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  margin-bottom: 12px;
-}
-.footer-social {
-  display: flex;
-  gap: 14px;
-  justify-content: center;
-  margin-bottom: 12px;
-}
-.footer-social a {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  color: var(--cs-text-muted);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-.footer-social a:hover { color: var(--cs-accent); }
-.footer-social svg {
-  display: block;
-  width: 16px;
-  height: 16px;
-}
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  border-radius: 6px;
-  border: 1px solid var(--cs-border);
-  background: var(--cs-bg3);
-  color: var(--cs-text-muted);
-  font-size: 0.7rem;
-  cursor: pointer;
-  font-family: inherit;
-  transition: all 0.15s;
-}
-.theme-toggle:hover {
-  border-color: var(--cs-accent);
-  color: var(--cs-accent);
-}
-
-/* ═══ THEME SELECTOR ═══ */
-.theme-selector{margin-left:12px;padding-left:12px;border-left:1px solid rgba(255,255,255,0.15)}
-.theme-cycle-btn{padding:6px 14px;border-radius:6px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:#fff;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;cursor:pointer;transition:all .15s;letter-spacing:.3px;white-space:nowrap}
-.theme-cycle-btn:hover{background:rgba(255,255,255,0.15);border-color:var(--cs-accent)}
-.theme-cycle-btn .theme-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle;box-shadow:0 0 6px currentColor}
-
-/* ═══ BACKGROUND IMAGE OVERLAYS ═══ */
-.bg-overlay{position:fixed;inset:0;z-index:0;pointer-events:none;background-size:cover;background-position:center;opacity:.08;filter:blur(2px)}
-
-/* ═══ BUTTON POP ═══ */
-.step-card,.feature-card,.price-card{position:relative;z-index:1}
-.abtn,.price-btn,.cta-primary,.cta-secondary,.hero-cta{font-weight:700;letter-spacing:.3px}
-.abtn:hover,.price-btn:hover{filter:brightness(1.1);box-shadow:0 4px 16px var(--cs-accent-dim)}
-@media (max-width: 900px) {
-  .steps-grid { grid-template-columns: repeat(2, 1fr); }
-  .features-grid { grid-template-columns: repeat(2, 1fr); }
-  .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
-  .hero h1 { font-size: 2.2rem; }
-  .nav { padding: 0 20px; }
-  .hero { padding: 60px 20px 40px; }
-  .steps { padding: 32px 20px 60px; }
-  .features { padding: 40px 20px; }
-  .pricing-preview { padding: 40px 20px; }
-}
-@media (max-width: 520px) {
-  .steps-grid { grid-template-columns: 1fr; }
-  .features-grid { grid-template-columns: 1fr; }
-  .hero h1 { font-size: 1.8rem; }
-  .nav-links { display: none; }
+     Order: image+KenBurns (0) -> grain (1) -> scrim (2) -> content (3)
+     No blur on the image layer: blurring a full-screen animated layer
+     re-rasterises every frame and hurts the mobile LCP that this page
+     depends on. The slow zoom supersedes what the blur was faking.
+     ================================================================ */
+  .bg-overlay{
+    position:fixed;inset:-10%;z-index:0;pointer-events:none;
+    background-size:cover;background-position:center;opacity:0;
+    will-change:transform,opacity;backface-visibility:hidden;
+    transition:opacity 1.1s ease;
+    animation:kbZoomA 46s ease-in-out infinite alternate;
+  }
+  @keyframes kbZoomA{
+    0%{transform:scale(1.00) translate3d(0,0,0)}
+    100%{transform:scale(1.16) translate3d(-1.6%,-1.1%,0)}
+  }
+  /* alternate drift, applied to alternate themes so switching themes
+     does not restart the identical movement */
+  .bg-overlay.kb-alt{animation-name:kbZoomB}
+  @keyframes kbZoomB{
+    0%{transform:scale(1.16) translate3d(1.4%,1.0%,0)}
+    100%{transform:scale(1.00) translate3d(0,0,0)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .bg-overlay{animation:none!important}
+  }
+  /* grain sits ABOVE the image so it reads as film texture on the photo */
+  body::before{
+    content:'';position:fixed;inset:0;z-index:1;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+    background-repeat:repeat;background-size:256px;opacity:1;
+    mix-blend-mode:overlay;
+  }
+  /* scrim ONLY - no image baked in, so it dims the photo instead of
+     erasing it. Opacity cut from 82-94% down to 58-90%. */
+  body::after{
+    content:'';position:fixed;inset:0;z-index:2;pointer-events:none;
+    background:linear-gradient(180deg,rgba(var(--scrim-rgb),.58) 0%,rgba(var(--scrim-rgb),.72) 38%,rgba(var(--scrim-rgb),.90) 100%);
+  }
+  /* the light theme must not inherit a dark scrim */
+    body.theme-light::before{mix-blend-mode:multiply;opacity:.35}
+  body>*{position:relative;z-index:3;}
+body{font-family:'Inter',system-ui,sans-serif;background:transparent;color:var(--text);line-height:1.6;overflow-x:hidden;position:relative;z-index:1;}
+.theme-cycle-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:8px;background:var(--btn-bg);border:1px solid var(--border);color:var(--accent);cursor:pointer;transition:background .15s,border-color .15s,transform .2s;}
+.theme-cycle-btn:hover{border-color:var(--accent);transform:scale(1.08)}
+.theme-cycle-btn svg{width:19px;height:19px;display:block;flex-shrink:0;transition:transform .35s ease}
+.theme-cycle-btn:hover svg{transform:rotate(20deg)}
+.nav{position:sticky;top:0;z-index:50;background:rgba(13,31,34,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 40px;height:56px;display:flex;align-items:center;justify-content:space-between;transition:background .3s,border-color .3s}
+.nav-logo{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;color:var(--text);letter-spacing:2px;text-decoration:none;transition:color .3s;display:inline-flex;align-items:center;gap:9px}
+.nav-logo img,.nav-logo svg{height:30px;width:auto;display:block;flex-shrink:0}
+.nav-logo span{color:var(--accent);transition:color .3s}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a:not(.nav-cta){color:var(--text-muted);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .15s}
+.nav-links a:not(.nav-cta):hover{color:var(--text)}
+.nav-cta{padding:8px 20px;border-radius:8px;background:var(--accent);color:var(--accent-text);text-decoration:none;font-size:.8rem;font-weight:700;transition:background .15s;white-space:nowrap}
+.nav-cta:hover{filter:brightness(1.15)}
+.hero{padding:80px 40px 60px;text-align:center;max-width:860px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:20px;background:var(--accent-dim);border:1px solid var(--accent-glow);font-size:.75rem;font-weight:600;color:var(--accent);margin-bottom:20px;letter-spacing:1px;text-transform:uppercase}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:3.2rem;font-weight:800;line-height:1.1;margin-bottom:16px;color:var(--text);transition:color .3s}
+.hero h1 .accent{color:var(--accent);transition:color .3s}
+.hero p{font-size:1.1rem;color:var(--text-muted);margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7;transition:color .3s}
+.hero-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:10px;background:var(--accent);color:var(--accent-text);text-decoration:none;font-size:1rem;font-weight:700;transition:all .2s;box-shadow:0 0 20px var(--accent-glow)}
+.hero-cta:hover{filter:brightness(1.1);transform:translateY(-1px);box-shadow:0 4px 30px var(--accent-glow)}
+.hero-cta-outline{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:10px;border:1px solid var(--border);color:var(--text-muted);text-decoration:none;font-size:1rem;font-weight:600;transition:all .2s;margin-left:12px}
+.hero-cta-outline:hover{border-color:var(--accent);color:var(--accent)}
+.section{padding:80px 40px;max-width:1100px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:56px}
+.section-header h2{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:700;margin-bottom:12px}
+.section-header p{color:var(--text-muted);font-size:1rem;max-width:560px;margin:0 auto;line-height:1.7}
+.section-num{font-size:.7rem;font-weight:700;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
+.offer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.offer-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;transition:all .2s;position:relative;overflow:hidden;backdrop-filter:blur(4px)}
+.offer-card:hover{border-color:var(--border-light);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.offer-icon{width:40px;height:40px;border-radius:10px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;margin-bottom:16px;color:var(--accent)}
+.offer-card h3{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:8px;color:var(--text)}
+.offer-card p{font-size:.82rem;color:var(--text-muted);line-height:1.7}
+.offer-tag{display:inline-block;margin-top:12px;padding:3px 10px;border-radius:4px;background:var(--accent-dim);font-size:.65rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase}
+.diff-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.diff-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;display:flex;gap:16px;transition:all .2s;backdrop-filter:blur(4px)}
+.diff-card:hover{border-color:var(--border-light);box-shadow:0 8px 30px rgba(0,0,0,.2)}
+.diff-num{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:900;color:var(--accent);opacity:.35;flex-shrink:0;width:40px;line-height:1}
+.diff-content h3{font-family:'Space Grotesk',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:6px}
+.diff-content p{font-size:.8rem;color:var(--text-muted);line-height:1.7}
+.exams-bar{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:24px}
+.exam-tag{padding:6px 14px;border-radius:6px;border:1px solid var(--border);font-size:.75rem;font-weight:600;color:var(--text-muted);background:var(--bg-card)}
+.pricing-wrap{max-width:960px;margin:0 auto}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:24px}
+.price-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px 28px;text-align:center;transition:all .2s;position:relative;backdrop-filter:blur(4px)}
+.price-card:hover{border-color:var(--border-light);transform:translateY(-2px)}
+.price-card.featured{border-color:var(--accent);box-shadow:0 0 30px var(--accent-glow)}
+.price-card.featured::before{content:'Most Popular';position:absolute;top:-11px;left:50%;transform:translateX(-50%);padding:3px 14px;border-radius:10px;background:var(--accent);color:var(--accent-text);font-size:.65rem;font-weight:700;letter-spacing:1px;white-space:nowrap}
+.faq-link{color:var(--accent)}
+.corporate-form button{border:none;cursor:pointer}
+.form-status{margin:10px 0 0;font-size:.95rem;line-height:1.6}
+.comp-bar{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:24px;backdrop-filter:blur(4px);overflow-x:auto}
+.comp-label{font-size:.7rem;font-weight:700;color:var(--text-dim);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.comp-table{display:flex;flex-direction:column;gap:2px;min-width:560px}
+.comp-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:8px;padding:8px 12px;border-radius:6px;font-size:.75rem;align-items:center}
+.comp-row.head{color:var(--text-dim);font-weight:700;font-size:.65rem;text-transform:uppercase;letter-spacing:1px}
+.comp-row:not(.head){background:var(--card-soft)}
+.comp-row.highlight{background:var(--accent-dim);border:1px solid var(--accent)}
+.comp-yes{color:var(--green);font-weight:700}
+.comp-no{color:var(--text-dim)}
+.corporate-box{background:var(--grad);border:1px solid var(--border);border-radius:16px;padding:36px;margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;backdrop-filter:blur(4px)}
+.corporate-info h3{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:8px}
+.corporate-info p{font-size:.85rem;color:var(--text-muted);line-height:1.7;margin-bottom:16px}
+.corporate-stats{display:flex;gap:24px;margin-bottom:16px}
+.corporate-stat{text-align:center}
+.corporate-stat .num{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:900;color:var(--accent)}
+.corporate-stat .label{font-size:.65rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px}
+.corporate-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.corp-tier{background:var(--bg-card2);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+.corp-tier-name{font-size:.65rem;font-weight:700;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.corp-tier-price{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:900;color:var(--text)}
+.corp-tier-price span{font-size:.7rem;font-weight:600;color:var(--text-dim)}
+.corp-tier-desc{font-size:.65rem;color:var(--text-dim);margin-top:4px}
+.corporate-form{display:flex;flex-direction:column;gap:10px}
+.corporate-form input,.corporate-form textarea{padding:10px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:.85rem;outline:none;font-family:inherit;resize:none}
+body.theme-light .corporate-form input,body.theme-light .corporate-form textarea{background:#fff}
+.corporate-form input:focus,.corporate-form textarea:focus{border-color:var(--accent)}
+.corporate-form textarea{height:80px}
+.faq-grid{max-width:720px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:10px;margin-bottom:8px;overflow:hidden;background:var(--card);backdrop-filter:blur(4px);transition:background .3s}
+.faq-q{padding:16px 20px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-size:.85rem;font-weight:600;transition:background .15s}
+.faq-q:hover{filter:brightness(1.12)}
+.faq-q .arrow{color:var(--text-dim);transition:transform .2s;font-size:.7rem}
+.faq-item.open .arrow{transform:rotate(180deg)}
+.faq-a{padding:0 20px;max-height:0;overflow:hidden;transition:all .3s;font-size:.8rem;color:var(--text-muted);line-height:1.7}
+.faq-item.open .faq-a{padding:0 20px 16px;max-height:300px}
+.cta-section{padding:80px 40px;text-align:center;background:var(--band);border-top:1px solid var(--border);border-bottom:1px solid var(--border);backdrop-filter:blur(4px);transition:background .3s}
+.cta-section h2{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;margin-bottom:12px}
+.cta-section p{color:var(--text-muted);margin-bottom:28px;font-size:1rem;max-width:500px;margin-left:auto;margin-right:auto}
+.cta-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta-primary{padding:12px 28px;border-radius:10px;background:var(--accent);color:var(--accent-text);text-decoration:none;font-size:.9rem;font-weight:700;transition:background .15s}
+.cta-primary:hover{filter:brightness(1.1)}
+.cta-secondary{padding:12px 28px;border-radius:10px;border:1px solid var(--border);color:var(--text-muted);text-decoration:none;font-size:.9rem;font-weight:600;transition:all .15s}
+.cta-secondary:hover{border-color:var(--text-muted);color:var(--text)}
+.footer{padding:40px;text-align:center;font-size:.75rem;color:var(--text-dim);position:relative;z-index:1;background:var(--footer-bg);transition:background .3s}
+.footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:16px;flex-wrap:wrap}
+.footer-links a{color:var(--text-muted);text-decoration:none;transition:color .15s}
+.footer-links a:hover{color:var(--text)}
+.footer-legal{display:flex;justify-content:center;gap:16px;margin-bottom:16px;align-items:center;flex-wrap:wrap}
+.footer-legal a{color:var(--text-muted);text-decoration:none;transition:color .15s;font-size:.85rem}
+.footer-legal a:hover{color:var(--text)}
+.currency-select{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:4px 10px;font-family:'Inter',sans-serif;font-size:.85rem;cursor:pointer;appearance:none}
+.currency-select option{background:var(--bg-card)}
+@media(max-width:900px){
+  .offer-grid,.pricing-grid{grid-template-columns:1fr}
+  .diff-grid{grid-template-columns:1fr}
+  .corporate-box{grid-template-columns:1fr}
+  .corporate-tiers{grid-template-columns:1fr}
+    .hero h1{font-size:2.2rem}
+  .nav{padding:0 20px}
+  .section,.hero,.cta-section{padding-left:20px;padding-right:20px}
+}
+@media(max-width:520px){
+  .hero h1{font-size:1.8rem}
+  .nav-links{gap:14px}
+  .nav-links>a:not(.nav-cta){display:none}
+  .hero-cta-outline{display:block;margin:12px 0 0}
 }
 </style>
 </head>
-<body class="cs-mustard" data-cs-mode="dark">
+<body class="theme-articulate">
 
-<!-- ═══ NAV ═══ -->
+<!-- Background image overlay for themes with stock photos -->
+<div class="bg-overlay" id="bgOverlay"></div>
+
 <div class="nav">
-  <a href="index.html" class="nav-logo">
-    <svg class="nav-logo-svg" viewBox="0 0 500 140" role="img" aria-label="Articulate English">
-      <circle cx="60" cy="60" r="50" fill="var(--cs-accent)" stroke="var(--cs-text)" stroke-width="4"/>
-      <path d="M32 95 L28 105 L38 108 L42 98 Z" fill="color-mix(in srgb, var(--cs-accent) 72%, #000)"/>
-      <path d="M78 95 L82 105 L72 108 L68 98 Z" fill="color-mix(in srgb, var(--cs-accent) 72%, #000)"/>
-      <path d="M30 95 L55 25 L65 25 L40 95 Z" fill="var(--cs-text)"/>
-      <path d="M50 60 L65 25 L75 25 L60 60 Z" fill="color-mix(in srgb, var(--cs-accent) 45%, #ffffff)"/>
-      <path d="M38 70 L42 60 L68 60 L64 70 Z" fill="var(--cs-accent)"/>
-      <path d="M42 60 L38 55 L64 55 L68 60 Z" fill="color-mix(in srgb, var(--cs-accent) 65%, #ffffff)"/>
-      <path d="M30 95 L38 70 L42 70 L42 95 Z" fill="color-mix(in srgb, var(--cs-accent) 72%, #000)"/>
-      <path d="M60 95 L64 70 L68 70 L68 95 Z" fill="color-mix(in srgb, var(--cs-accent) 60%, #000)"/>
-      <path d="M55 25 L58 18 L68 18 L65 25 Z" fill="color-mix(in srgb, var(--cs-accent) 65%, #ffffff)"/>
-      <text x="125" y="80" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="700" fill="var(--cs-text)">rticulate</text>
-      <line x1="20" y1="112" x2="480" y2="112" stroke="var(--cs-text-dim)" stroke-width="1"/>
-      <text x="250" y="132" font-family="'Space Grotesk', sans-serif" font-size="30" font-weight="500" fill="var(--cs-text-dim)" text-anchor="middle" letter-spacing="3">ARTICULATE ENGLISH</text>
-    </svg>
-  </a>
+  <a href="index.html" class="nav-logo"><svg aria-hidden="true" focusable="false" width="30" height="30" viewBox="0 0 100 100"><circle cx="50" cy="50" r="47" fill="var(--accent)" stroke="rgba(255,255,255,.85)" stroke-width="3.5"/><path d="M50 26 L74 72 L61 72 L50 48 L39 72 L26 72 Z" fill="#ffffff"/><rect x="37" y="52" width="26" height="8" rx="2" fill="#ffffff" opacity=".72"/></svg>ARTICULATE<span>ENGLISH</span></a>
   <div class="nav-links">
-    <a href="#steps">How It Works</a>
-    <a href="#features">Features</a>
-    <a href="https://wgt-edutech.github.io/articulate-materials/" target="_blank" rel="noopener">Free Materials</a>
-    <a href="feedback/index.html">Feedback</a>
+    <a href="#offer">What We Offer</a>
+    <a href="#why">Why Us</a>
     <a href="#pricing">Pricing</a>
-    <a href="#cta" class="nav-cta">Book a Lesson</a>
+        <a href="#faq">FAQ</a>
+    <button class="theme-cycle-btn" id="themeCycleBtn" title="Cycle theme" aria-label="Cycle color theme">
+      <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+    </button>
+    <a href="#pricing" class="nav-cta">Enquire Now</a>
   </div>
-  <button class="theme-cycle-btn" id="themeCycleBtn" data-theme="articulate">
-    <span class="theme-dot" id="themeDot"></span>
-    <span id="themeName">Articulate</span>
-  </button>
 </div>
 
-<!-- ═══ BG OVERLAY ═══ -->
-<div class="bg-overlay" id="bgOverlay" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&q=60')"></div>
-
-<!-- ═══ HERO ═══ -->
 <div class="hero">
-  <h1>Online English for <span>Adults</span></h1>
-  <p>1-on-1 lessons with structured curriculum from beginner to advanced. Live translation support. Book a lesson and start improving from the first hour.</p>
-  <a href="#cta" class="hero-cta">Book a Lesson</a>
-</div>
-
-<!-- ═══ STEPS ═══ -->
-<div class="steps" id="steps">
-  <div class="steps-header">
-    <h2>How It Works</h2>
-    <p>Four simple steps to better English</p>
-  </div>
-  <div class="steps-grid">
-
-    <div class="step-card">
-      <span class="step-num">1</span>
-      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=70&auto=format" alt="Book a lesson" class="step-img">
-      <div class="step-body">
-        <h3>Book a Lesson</h3>
-        <p>Choose a time that works across time zones and pay for your first lesson.</p>
-      </div>
-    </div>
-
-    <div class="step-card">
-      <span class="step-num">2</span>
-      <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=70&auto=format" alt="Placement test" class="step-img">
-      <div class="step-body">
-        <h3>Placement Test</h3>
-        <p>We assess your level (FL0–FL13) using a structured test covering all skill areas.</p>
-      </div>
-    </div>
-
-    <div class="step-card">
-      <span class="step-num">3</span>
-      <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&q=70&auto=format" alt="Start learning" class="step-img">
-      <div class="step-body">
-        <h3>Start Learning</h3>
-        <p>1-on-1 video lessons with live translations in your language via Reverso Context.</p>
-      </div>
-    </div>
-
-    <div class="step-card">
-      <span class="step-num">4</span>
-      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=70&auto=format" alt="Track progress" class="step-img">
-      <div class="step-body">
-        <h3>Track Progress</h3>
-        <p>End-of-block assessments, level ups, and clear progress reports. On to the next level.</p>
-      </div>
-    </div>
-
+  <div class="hero-badge"><span class="dot"></span> Now Accepting Students — All Levels</div>
+  <h1>Speak English with confidence in your next <span class="accent">meeting, exam, or conversation</span>.</h1>
+  <p>1-on-1 lessons with a dedicated teacher, live translation in your home language, and a structured path from FL0 to FL13. Built for professionals, exam candidates, and young learners who want measurable progress — not generic classes.</p>
+  <div>
+    <a href="#pricing" class="hero-cta">Enquire Now</a>
+    <a href="#pricing" class="hero-cta-outline">View Pricing</a>
   </div>
 </div>
 
-<!-- ═══ FEATURES ═══ -->
-<div class="features" id="features">
-  <div class="features-header">
-    <h2>Why Articulate English</h2>
+<div class="section" id="offer">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <h2>What We Offer</h2>
+    <p>Comprehensive English training for every stage of your journey — from first words to boardroom fluency.</p>
   </div>
-  <div class="features-grid">
-
-    <div class="feature-card">
-      <div class="feature-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="9"/>
-          <circle cx="12" cy="12" r="5"/>
-          <circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/>
-        </svg>
-      </div>
-      <h3>Structured Curriculum</h3>
-      <p>14 levels from absolute beginner (FL0) to advanced (FL13). Clear progression with assessments at every stage.</p>
+  <div class="offer-grid">
+    <div class="offer-card">
+      <div class="offer-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <h3>Business Professionals</h3>
+      <p>Corporate English training tailored to your industry. Meetings, presentations, emails, negotiations — communicate with confidence in multinational environments.</p>
+      <span class="offer-tag">1-on-1 / Group</span>
     </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="9"/>
-          <path d="M3 12h18"/>
-          <path d="M12 3c2.6 2.7 4 5.7 4 9s-1.4 6.3-4 9c-2.6-2.7-4-5.7-4-9s1.4-6.3 4-9z"/>
-        </svg>
-      </div>
-      <h3>Live Translation</h3>
-      <p>Real-time translation via Reverso Context. Never get stuck on a word you don't understand.</p>
+    <div class="offer-card">
+      <div class="offer-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+      <h3>Exam Preparation</h3>
+      <p>Strategic preparation and support for all major language exams: IELTS, TOEFL, OET, CAE, CFE, IGCSE and more. Proven methods, practice tests, and expert feedback.</p>
+      <span class="offer-tag">All Major Exams</span>
     </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="2.5" y="6" width="13" height="12" rx="2.5"/>
-          <path d="M15.5 10.5l5-3v9l-5-3z"/>
-        </svg>
-      </div>
-      <h3>1-on-1 Video Lessons</h3>
-      <p>Private video calls focused entirely on your learning. No group classes, no distractions.</p>
+    <div class="offer-card">
+      <div class="offer-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+      <h3>Young Learners</h3>
+      <p>Interactive, engaging lessons designed for children and teens. Age-appropriate content that builds strong foundations while keeping learning stimulating and motivating.</p>
+      <span class="offer-tag">Ages 6-17</span>
     </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 6.5C10.5 5 8.4 4 5.5 4v13c2.9 0 5 1 6.5 2.5 1.5-1.5 3.6-2.5 6.5-2.5V4c-2.9 0-5 1-6.5 2.5z"/>
-          <path d="M12 6.5v13"/>
-        </svg>
-      </div>
-      <h3>Rich Materials</h3>
-      <p>1,400+ conversation questions, grammar exercises, vocabulary lists, and real-world content.</p>
+    <div class="offer-card">
+      <div class="offer-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <h3>Live Translation Support</h3>
+      <p>AI-powered translation into your home language when it isn't possible to describe meanings in English. No more looking up words after class — understand in real-time.</p>
+      <span class="offer-tag">AI-Powered</span>
     </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="9"/>
-          <path d="M12 7v5l3.5 2"/>
-        </svg>
-      </div>
-      <h3>Flexible Scheduling</h3>
-      <p>Book lessons that fit your timezone and schedule. Reschedule easily when life gets busy.</p>
+    <div class="offer-card">
+      <div class="offer-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+      <h3>Personal Strategy &amp; Support</h3>
+      <p>Every student gets a custom learning plan. We assess your level (FL0-FL13), identify gaps, and build a roadmap. End-of-block assessments track your progress every step of the way.</p>
+      <span class="offer-tag">FL0-FL13 Levels</span>
     </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M2.5 9.2L12 5l9.5 4.2L12 13.4z"/>
-          <path d="M6.5 11.2v4.3c0 1.4 2.5 2.5 5.5 2.5s5.5-1.1 5.5-2.5v-4.3"/>
-          <path d="M21.5 9.2v5"/>
-        </svg>
-      </div>
-      <h3>Expert Teacher</h3>
-      <p>Every lesson is taught by an experienced teacher, not an algorithm. You pay for expertise, and it shows in your progress.</p>
+    <div class="offer-card">
+      <div class="offer-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3>Modern Interactive Content</h3>
+      <p>Our platform is built for the modern learner. Interactive lessons, video classrooms, progress dashboards, and content that updates every month based on teacher and student feedback.</p>
+      <span class="offer-tag">Continuously Refined</span>
     </div>
-
+  </div>
+  <div class="exams-bar">
+    <span class="exam-tag">IELTS</span><span class="exam-tag">TOEFL</span><span class="exam-tag">OET</span><span class="exam-tag">CAE</span><span class="exam-tag">CFE</span><span class="exam-tag">IGCSE</span><span class="exam-tag">Cambridge</span><span class="exam-tag">PTE</span><span class="exam-tag">Duolingo English</span><span class="exam-tag">CELPIP</span>
   </div>
 </div>
 
-<!-- ═══ PRICING PREVIEW ═══ -->
-<div class="pricing-preview" id="pricing">
-  <h2>Simple Pricing</h2>
-  <p class="pricing-sub">One teacher. Clear rates. No gimmicks.</p>
-  <div class="pricing-grid">
-
-    <div class="price-card">
-      <h3>Standard</h3>
-      <div class="price">$80<span> / month</span></div>
-      <ul>
-        <li>4 lessons per month</li>
-        <li>1-on-1 video calls</li>
-        <li>All learning materials</li>
-        <li>Progress tracking</li>
-        <li>Cancel anytime</li>
-      </ul>
-      <a href="#cta" class="price-btn primary" data-paypal>Get Started</a>
+<div class="section" id="why">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <h2>What Sets Us Apart</h2>
+    <p>We don't just teach English — we engineer fluency with systems that others can't match.</p>
+  </div>
+  <div class="diff-grid">
+    <div class="diff-card">
+      <div class="diff-num">01</div>
+      <div class="diff-content"><h3>Multi-Lingual Teachers</h3><p>Our teachers speak 2nd and 3rd languages themselves. They understand your struggle because they've lived it. When English isn't enough, they can translate into your home language — saving you hours of post-lesson dictionary revision.</p></div>
     </div>
-
-    <div class="price-card">
-      <h3>Intensive</h3>
-      <div class="price">$150<span> / month</span></div>
-      <ul>
-        <li>8 lessons per month</li>
-        <li>1-on-1 video calls</li>
-        <li>All learning materials</li>
-        <li>Progress tracking</li>
-        <li>Lesson recordings</li>
-      </ul>
-      <a href="#cta" class="price-btn" data-paystack>Get Started</a>
+    <div class="diff-card">
+      <div class="diff-num">02</div>
+      <div class="diff-content"><h3>AI-Powered Translation</h3><p>When a teacher can't describe a concept in English, AI translates it into your native language in real-time. This isn't a gimmick — it's a paradigm shift in how ESL works. No other platform does this systematically.</p></div>
     </div>
-
+    <div class="diff-card">
+      <div class="diff-num">03</div>
+      <div class="diff-content"><h3>Rapid Debug &amp; Response</h3><p>We pride ourselves on fixing any site or tech error as soon as it's reported. No ticket queues, no 48-hour waits. If something breaks, our team responds immediately because your learning time is precious.</p></div>
+    </div>
+    <div class="diff-card">
+      <div class="diff-num">04</div>
+      <div class="diff-content"><h3>Monthly Platform Updates</h3><p>We implement new features and improvements every month based on real recommendations from teachers and students. The platform you use today is not the platform you'll use in 6 months.</p></div>
+    </div>
+    <div class="diff-card">
+      <div class="diff-num">05</div>
+      <div class="diff-content"><h3>Ongoing Teacher Training</h3><p>We don't just hire teachers — we develop them. Our teachers receive continuous language training and professional development, ensuring you always work with the best.</p></div>
+    </div>
+    <div class="diff-card">
+      <div class="diff-num">06</div>
+      <div class="diff-content"><h3>Structured Curriculum FL0-FL13</h3><p>Our proprietary level system covers absolute beginner (FL0) to near-native (FL13). Every level has clear milestones, assessments, and learning outcomes. You always know exactly where you stand.</p></div>
+    </div>
   </div>
 </div>
 
-<!-- ═══ CTA ═══ -->
+<div class="section" id="pricing">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <h2>Pricing That Respects Your Time</h2>
+    <p>Every session is 30 minutes of focused, 1-on-1 training with a dedicated teacher. No group classes. No wasted time. Just measurable progress toward the result you're paying for.</p>
+  </div>
+  <div class="comp-bar">
+    <div class="comp-label">What you get per 30-min session vs. corporate ESL providers:</div>
+    <div class="comp-table">
+      <div class="comp-row head"><span>Provider</span><span>Per 30-min Session</span><span>AI Translation</span><span>Multi-Lingual Teachers</span><span>Lesson Replay</span></div>
+      <div class="comp-row"><span>EF Corporate</span><span>$50–85</span><span class="comp-no">—</span><span class="comp-no">—</span><span class="comp-yes">✓</span></div>
+      <div class="comp-row"><span>Berlitz Corporate</span><span>$65–120</span><span class="comp-no">—</span><span class="comp-no">—</span><span class="comp-no">—</span></div>
+      <div class="comp-row"><span>Wall Street English B2B</span><span>$80+</span><span class="comp-no">—</span><span class="comp-no">—</span><span class="comp-no">—</span></div>
+      <div class="comp-row highlight"><span><strong>Articulate English Professional</strong></span><span><strong>$75</strong></span><span class="comp-yes">✓</span><span class="comp-yes">✓</span><span class="comp-yes">✓</span></div>
+    </div>
+  </div>
+  <div class="pricing-wrap">
+    <div class="pricing-grid">
+      <div class="price-card" data-tier-card="starter">
+        <div class="price-label">Starter</div>
+        <div class="price-amount"><span class="currency">$</span><span data-tier-amount="starter">50</span></div>
+        <div class="price-period">per 30-min session · 4 sessions/mo</div>
+        <ul class="price-features">
+          <li>4 x 30-min 1-on-1 sessions per month</li>
+          <li>Dedicated teacher</li>
+          <li>FL placement assessment (know your level in 20 min)</li>
+          <li>AI translation support</li>
+          <li>Progress dashboard</li>
+          <li>Mobile-friendly platform</li>
+        </ul>
+        <a href="#pricing" class="price-btn secondary" data-pay data-tier="starter" data-amount="20000">Enquire</a>
+        <div class="price-note"><span data-currency-total="starter"></span>/mo total · For professionals starting their journey</div>
+      </div>
+      <div class="price-card featured" data-tier-card="professional">
+        <div class="price-label">Professional</div>
+        <div class="price-amount"><span class="currency">$</span><span data-tier-amount="professional">75</span></div>
+        <div class="price-period">per 30-min session · 8 sessions/mo</div>
+        <ul class="price-features">
+          <li>8 x 30-min 1-on-1 sessions per month</li>
+          <li>Dedicated teacher + strategy session</li>
+          <li>AI translation + word revision log</li>
+          <li>Full progress dashboard</li>
+          <li>Exam prep materials included</li>
+          <li>Priority scheduling</li>
+          <li>Monthly progress report</li>
+          <li>Lesson recording + replay</li>
+        </ul>
+        <a href="#pricing" class="price-btn primary" data-pay data-tier="professional" data-amount="60000">Enquire</a>
+        <div class="price-note"><span data-currency-total="professional"></span>/mo total · Recommended for committed professionals</div>
+      </div>
+      <div class="price-card" data-tier-card="intensive">
+        <div class="price-label">Intensive</div>
+        <div class="price-amount"><span class="currency">$</span><span data-tier-amount="intensive">100</span></div>
+        <div class="price-period">per 30-min session · 16 sessions/mo</div>
+        <ul class="price-features">
+          <li>16 x 30-min 1-on-1 sessions per month</li>
+          <li>Custom learning roadmap</li>
+          <li>Full AI translation suite</li>
+          <li>All exam prep materials</li>
+          <li>Dedicated account manager</li>
+          <li>Weekly progress reports</li>
+          <li>Lesson recording + replay</li>
+          <li>Corporate invoice billing</li>
+        </ul>
+        <a href="#pricing" class="price-btn secondary" data-pay data-tier="intensive" data-amount="160000">Enquire</a>
+        <div class="price-note"><span data-currency-total="intensive"></span>/mo total · For accelerated progress or exam deadlines</div>
+      </div>
+    </div>
+     <div class="price-note pricing-value-note">What does one missed promotion, one failed IELTS retake, or one stalled negotiation cost you? Our intensive track pays for itself in a single career move.</div>
+     <div class="price-note pricing-payment-note">Payment methods: Paystack &amp; Wise — card, bank transfer &amp; international payments. Lock your rate for 12 months: ask when you enquire.</div>
+
+    <div class="corporate-box">
+      <div class="corporate-info">
+        <h3>Corporate &amp; Enterprise</h3>
+        <p>We design language training programmes for teams of 10 to 10,000. Custom content, dedicated L&amp;D liaison, bulk pricing, and integration with your existing HR systems.</p>
+        <!-- Removed 2026-09-28: unearned stat claims ("50+ Corporate Partners",
+             "12k Hrs Delivered", "4.9 Avg Rating"). No paying students existed.
+             Fabricated social proof is a criminal-liability exposure under German
+             UWG and equivalent FR/IT/BE regimes. Restore ONLY with real,
+             documented figures. Honest replacements go here:
+             named beta testimonials, photo + name, verifiable credentials. -->
+        <div class="corporate-stats">
+          <div class="corporate-stat"><div class="num">1</div><div class="label">Teacher, not a call centre</div></div>
+          <div class="corporate-stat"><div class="num">B1</div><div class="label">Launch level, CEFR</div></div>
+          <div class="corporate-stat"><div class="num">0</div><div class="label">Investors, or hidden owners</div></div>
+        </div>
+        <div class="corporate-tiers">
+          <div class="corp-tier">
+            <div class="corp-tier-name">Team</div>
+            <div class="corp-tier-price" data-corp-price="team"><span data-corp-per="team">$35</span><span>/session</span></div>
+            <div class="corp-tier-desc">Up to 10 seats · shared content · $2,500/mo</div>
+          </div>
+          <div class="corp-tier">
+            <div class="corp-tier-name">Business</div>
+            <div class="corp-tier-price" data-corp-price="business"><span data-corp-per="business">$45</span><span>/session</span></div>
+            <div class="corp-tier-desc">Up to 50 seats · custom content · $8,500/mo</div>
+          </div>
+          <div class="corp-tier">
+            <div class="corp-tier-name">Enterprise</div>
+            <div class="corp-tier-price">Custom</div>
+            <div class="corp-tier-desc">50+ seats · API &amp; SSO · volume pricing</div>
+          </div>
+        </div>
+      </div>
+      <!-- LEAD FORM (2026-09-28): previously a fake. It had no name= attributes
+           (so it could never POST) and an onsubmit handler that printed "Sent!"
+           while silently discarding the submission. Now a real Formspree form.
+           TO ACTIVATE: create a free Formspree account, paste the endpoint below. -->
+      <form class="corporate-form" id="lead-form" method="POST" action="#FORM_ENDPOINT_NOT_SET" data-endpoint-set="false" data-mailto="william@williamthomason.co.za">
+        <input type="text" name="company" placeholder="Company name" required>
+        <input type="email" name="email" placeholder="Work email" required>
+        <input type="text" name="company_size" placeholder="Company size (employees)">
+        <textarea name="needs" placeholder="Tell us about your team's English training needs..."></textarea>
+        <input type="hidden" name="_subject" value="New corporate enquiry — Articulate English">
+        <button type="submit" class="price-btn primary" id="lead-submit">Request Proposal</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="section" id="faq">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <h2>Frequently Asked Questions</h2>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I get started?<span class="arrow">▼</span></div><div class="faq-a">Choose a plan above and book your first session. We'll confirm your teacher, send your learning materials, and run a quick placement check so every session is targeted from day one.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What exams do you prepare for?<span class="arrow">▼</span></div><div class="faq-a">We cover IELTS, TOEFL, OET, CAE, CFE, IGCSE, Cambridge exams, PTE, Duolingo English Test, and CELPIP. If it's a major English exam, we have materials and strategies for it.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does AI translation work during lessons?<span class="arrow">▼</span></div><div class="faq-a">When a concept can't be explained in English alone, your teacher can instantly translate key terms into your home language using integrated AI tools. This saves you from having to look up words after class and keeps the lesson flowing.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I lock in my current rate?<span class="arrow">▼</span></div><div class="faq-a">Current rates are guaranteed for the duration of your plan. If you commit to 12 months upfront we can offer a reduced rate — request the details when you enquire.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do you offer corporate training?<span class="arrow">▼</span></div><div class="faq-a">Yes. We offer custom corporate contracts starting at $2,500/month with dedicated account managers, bulk pricing, custom content, and team progress dashboards. <a href="#pricing" class="faq-link">Request a proposal above</a>.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do you teach groups or only 1-on-1?<span class="arrow">▼</span></div><div class="faq-a">Every session on this site is dedicated 1-on-1 with your teacher. Group formats are available for corporate clients under a separate team contract.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What does FL0-FL13 mean?<span class="arrow">▼</span></div><div class="faq-a">Our proprietary Fluency Level system ranges from FL0 (absolute beginner) to FL13 (near-native). Every level has clear milestones, assessments, and learning outcomes so you always know exactly where you stand.</div></div>
+  </div>
+</div>
+
 <div class="cta-section" id="cta">
-  <h2>Ready to improve your English?</h2>
-  <p>Book your first lesson and start improving from the first hour.</p>
+  <h2>Begin Your Professional Programme</h2>
+  <p>Every programme starts with a placement assessment and a tailored learning plan. No generic classes — just structured progress with a dedicated teacher.</p>
   <div class="cta-buttons">
-    <a href="#cta" class="cta-primary" data-book>Book a Lesson</a>
-    <a href="#pricing" class="cta-secondary">View Pricing</a>
+    <a href="#pricing" class="cta-primary">View Plans &amp; Book</a>
+    <a href="#faq" class="cta-secondary">Read the FAQ</a>
   </div>
-  <p class="cta-note" id="ctaNote" style="display:none; margin-top:16px; font-size:0.95rem; color:var(--cs-text-dim, rgba(224,242,254,0.7))"></p>
 </div>
 
-<!-- ═══ FOOTER ═══ -->
 <div class="footer">
   <div class="footer-links">
+    <a href="#offer">What We Offer</a><a href="#why">Why Us</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+  </div>
+  <div class="footer-legal">
+    <a href="impressum.html">Impressum</a>
     <a href="privacy.html">Privacy</a>
     <a href="terms.html">Terms</a>
-    <a href="impressum.html">Impressum</a>
-    <a href="mailto:hello@articulate.ee">Contact</a>
-  </div>
-  <div class="footer-social">
-    <a href="https://www.linkedin.com/in/william-thomason-7091391a7/" target="_blank" rel="noopener" aria-label="William Thomason on LinkedIn">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-      </svg>
-      <span>LinkedIn</span>
-    </a>
+    <label for="currencySelect" class="currency-label">Currency:</label>
+    <select id="currencySelect" class="currency-select">
+      <option value="auto">Auto</option>
+      <option value="usd">USD ($)</option>
+      <option value="eur">EUR (€)</option>
+      <option value="chf">CHF (Fr.)</option>
+    </select>
   </div>
   <p>&copy; 2026 Articulate English. All rights reserved.</p>
 </div>
-
 <script>
-// ═══ THEME SYSTEM ═══
-var THEME_ORDER = ['articulate','wte','midnight','sunset','forest','light'];
-var THEMES = {
-  articulate: { accent: '#22d3ee', bg: '#0a0e1a', text: '#e0f2fe', card: '#111827', border: '#1e3a5f', nav: 'rgba(10,14,26,0.92)', name: 'Articulate', bgImg: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&q=60' },
-  wte:      { accent: '#a3e635', bg: '#1c1c1c', text: '#e8e8f0', card: '#232323', border: '#3a3a3a', nav: 'rgba(28,28,28,0.92)', name: 'WTE', bgImg: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1920&q=60' },
-  midnight: { accent: '#818cf8', bg: '#0f0f23', text: '#c7d2fe', card: '#1a1a3e', border: '#2e2e5e', nav: 'rgba(15,15,35,0.92)', name: 'Midnight', bgImg: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=60' },
-  sunset:   { accent: '#fb923c', bg: '#1a0f0a', text: '#fed7aa', card: '#2d1a10', border: '#4a2a1a', nav: 'rgba(26,15,10,0.92)', name: 'Sunset', bgImg: 'https://images.unsplash.com/photo-1507400492013-162706c8c05e?w=1920&q=60' },
-  forest:   { accent: '#4ade80', bg: '#0a1a0f', text: '#bbf7d0', card: '#162418', border: '#2a4a2a', nav: 'rgba(10,26,15,0.92)', name: 'Forest', bgImg: 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920&q=60' },
-  light:    { accent: '#2563eb', bg: '#f8fafc', text: '#1e293b', card: '#ffffff', border: '#e2e8f0', nav: 'rgba(248,250,252,0.95)', name: 'Light', bgImg: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=60' }
-};
-var currentThemeIdx = 0;
+/* ==========================================================================
+   PAY-TO-BOOK GATE — 2026-10-28
+   Multi-currency: USD → Paystack inline modal, EUR/CHF → Stripe Checkout.
+   After payment success → redirect to Cal.com to schedule.
+   Payment keys + currency detection live in site-config.js.               */
 
-function applyTheme(name) {
-  var t = THEMES[name]; if (!t) return;
-  currentThemeIdx = THEME_ORDER.indexOf(name);
-  var r = document.documentElement;
-  r.style.setProperty('--cs-accent', t.accent);
-  r.style.setProperty('--cs-bg', t.bg);
-  r.style.setProperty('--cs-text', t.text);
-  r.style.setProperty('--cs-bg-card', t.card);
-  r.style.setProperty('--cs-border', t.border);
-  r.style.setProperty('--cs-bg2', t.card);
-  r.style.setProperty('--cs-bg3', t.border);
-  r.style.setProperty('--cs-text-muted', t.text + '99');
-  r.style.setProperty('--cs-text-dim', t.text + '66');
-  r.style.setProperty('--cs-accent-glow', t.accent + '33');
-  r.style.setProperty('--cs-accent-dim', t.accent + '18');
-  r.style.setProperty('--cs-border-light', t.border + 'cc');
-  // Nav background
-  document.querySelector('.nav').style.background = t.nav;
-  // Update cycle button
-  var btn = document.getElementById('themeCycleBtn');
-  var dot = document.getElementById('themeDot');
-  var label = document.getElementById('themeName');
-  if(btn) btn.dataset.theme = name;
-  if(dot) dot.style.background = t.accent;
-  if(label) label.textContent = t.name;
-  // Update bg overlay
-  var overlay = document.getElementById('bgOverlay');
-  if(overlay) overlay.style.backgroundImage = 'url(' + t.bgImg + ')';
-  // Logo is inline SVG driven by the theme CSS variables, so it recolours
-  // automatically with applyTheme() — no per-theme image swap needed.
-  // Light mode: ensure text pops
-  if(name === 'light'){
-    document.querySelectorAll('.nav-links a').forEach(function(a){ a.style.color = 'rgba(30,41,59,0.7)'; });
-    document.querySelectorAll('.nav-links a').forEach(function(a){ a.addEventListener('hover', function(){ this.style.color='#1e293b'; }); });
-  } else {
-    document.querySelectorAll('.nav-links a').forEach(function(a){ a.style.color = 'rgba(255,255,255,0.7)'; });
+   LEAD FORM: create a free Formspree account
+   (https://formspree.io/accounts/register), paste the endpoint into the
+   #lead-form action attribute, then set data-endpoint-set="true".
+   Until then the form says so honestly instead of faking a "Sent!".
+   ========================================================================== */
+
+(function(){
+  /* --- lead form: real POST, honest failure ---------------------------- */
+  var form = document.getElementById('lead-form');
+  var status = document.getElementById('form-status');
+  var submitBtn = document.getElementById('lead-submit');
+  if (form && status){
+    var endpointSet = form.getAttribute('data-endpoint-set') === 'true';
+    var mailto = form.getAttribute('data-mailto') || '';
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      /* --- HONEST FALLBACK -------------------------------------------
+         No Formspree endpoint yet, so we do NOT pretend to send. We open
+         the visitor's own email client with every field filled in, which
+         genuinely delivers the enquiry and cannot silently discard it. */
+      if (!endpointSet && mailto){
+        var fd = new FormData(form);
+        var company = (fd.get('company')||'').toString().trim();
+        var email   = (fd.get('email')||'').toString().trim();
+        var size    = (fd.get('company_size')||'').toString().trim();
+        var needs   = (fd.get('needs')||'').toString().trim();
+        var body = 'Company: ' + company + '\n' +
+                   'Contact email: ' + email + '\n' +
+                   'Team size: ' + (size || 'not given') + '\n\n' +
+                   'Training needs:\n' + (needs || 'not given') + '\n';
+        var href = 'mailto:' + mailto +
+                   '?subject=' + encodeURIComponent('Corporate enquiry — ' + company) +
+                   '&body=' + encodeURIComponent(body);
+        status.style.color = 'var(--text, #c8e6e8)';
+        status.textContent = 'Opening your email app so you can send this enquiry. If nothing happens, email us directly at ' + mailto + '.';
+        window.location.href = href;
+        return;
+      }
+      if (!endpointSet){
+        ev.preventDefault();
+        status.textContent = 'Enquiries are not connected yet. Please email us directly and we will reply within one working day.';
+        status.style.color = 'var(--accent, #f59e0b)';
+        return;
+      }
+      submitBtn.disabled = true;
+      status.textContent = 'Sending...';
+      status.style.color = 'var(--text-muted, #7a9ea3)';
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function(r){
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        form.reset();
+        status.textContent = 'Thank you - your enquiry has been sent. We reply within one working day.';
+        status.style.color = 'var(--text, #c8e6e8)';
+      }).catch(function(err){
+        status.textContent = 'Sorry, that did not send (' + err.message + '). Please try again.';
+        status.style.color = 'var(--accent, #f59e0b)';
+      }).then(function(){
+        submitBtn.disabled = false;
+      });
+    });
   }
-  try { localStorage.setItem('articulate-theme', name); } catch(e) {}
-}
-
-function cycleTheme() {
-  var nextIdx = (currentThemeIdx + 1) % THEME_ORDER.length;
-  applyTheme(THEME_ORDER[nextIdx]);
-}
-
-function loadTheme() {
-  var saved = '';
-  try { saved = localStorage.getItem('articulate-theme') || ''; } catch(e) {}
-  if (saved && THEMES[saved]) applyTheme(saved);
-  else applyTheme(THEME_ORDER[0]);
-}
-
-// Event delegation for theme button
-document.addEventListener('click', function(e){
-  if(e.target.closest('#themeCycleBtn')) cycleTheme();
-});
-
-// ═══ SMOOTH SCROLL ═══
-document.querySelectorAll('a[href^="#"]').forEach(function(anchor){
-  anchor.addEventListener('click', function(e){
-    var target = document.querySelector(this.getAttribute('href'));
-    if(target){
-      e.preventDefault();
-      target.scrollIntoView({behavior:'smooth', block:'start'});
+})();
+(function(){
+  var THEME_ORDER=['articulate','ice','lavender','charlime','light'];
+  var THEMES={
+    articulate:{
+      name:'Articulate',
+      accent:'#f59e0b',
+      bg:'#0d1f22',bg2:'#0f2427',bg3:'#122d33',bgCard:'#142e35',bgCard2:'#0f2629',
+      border:'#1a3a3f',borderLight:'#245660',
+      text:'#c8e6e8',textMuted:'#7a9ea3',textDim:'#3d6b72',
+      accentDim:'rgba(245,158,11,.1)',accentGlow:'rgba(245,158,11,.3)',
+      navBg:'rgba(13,31,34,.92)',btnBg:'rgba(255,255,255,.12)',
+      bodyClass:'theme-articulate',
+      bgImg:'https://images.unsplash.com/photo-1550684376-efcbd6e3f031?w=1920&q=80',bgAlt:false,
+    },
+    ice:{
+      name:'Ice',
+      accent:'#38bdf8',
+      bg:'#0c1929',bg2:'#0f1f33',bg3:'#122940',bgCard:'#132a42',bgCard2:'#0f2238',
+      border:'#1a3050',borderLight:'#245080',
+      text:'#d0e8f8',textMuted:'#7aafc8',textDim:'#3d6b88',
+      accentDim:'rgba(56,189,248,.1)',accentGlow:'rgba(56,189,248,.25)',
+      navBg:'rgba(12,25,41,.92)',btnBg:'rgba(255,255,255,.12)',
+      bodyClass:'theme-ice',
+      bgImg:'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1920&q=80',bgAlt:true,
+    },
+    lavender:{
+      name:'Lavender',
+      accent:'#a3e635',
+      bg:'#1a0f2e',bg2:'#1f1435',bg3:'#251a3d',bgCard:'#261b40',bgCard2:'#1e1333',
+      border:'#3a2858',borderLight:'#543a80',
+      text:'#e8dcf5',textMuted:'#a898c8',textDim:'#5d4f78',
+      accentDim:'rgba(163,230,53,.12)',accentGlow:'rgba(163,230,53,.3)',
+      navBg:'rgba(26,15,46,.92)',btnBg:'rgba(255,255,255,.12)',
+      bodyClass:'theme-lavender',
+      bgImg:'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1920&q=80',bgAlt:false,
+    },
+    charlime:{
+      name:'Char-Lime',
+      accent:'#a3e635',
+      bg:'#1c1c1c',bg2:'#232323',bg3:'#2a2a2a',bgCard:'#2d2d2d',bgCard2:'#252525',
+      border:'#3a3a3a',borderLight:'#555555',
+      text:'#e8e8e8',textMuted:'#a0a0a0',textDim:'#585858',
+      accentDim:'rgba(163,230,53,.12)',accentGlow:'rgba(163,230,53,.25)',
+      navBg:'rgba(28,28,28,.95)',btnBg:'rgba(255,255,255,.12)',
+      bodyClass:'theme-charlime',
+      bgImg:null,
+    },
+    light:{
+      name:'Light',
+      accent:'#0d9488',
+      bg:'#f8fafc',bg2:'#f1f5f9',bg3:'#e2e8f0',bgCard:'#ffffff',bgCard2:'#f8fafc',
+      border:'#cbd5e1',borderLight:'#94a3b8',
+      text:'#1e293b',textMuted:'#475569',textDim:'#94a3b8',
+      accentDim:'rgba(13,148,136,.1)',accentGlow:'rgba(13,148,136,.25)',
+      navBg:'rgba(248,250,252,.92)',btnBg:'rgba(0,0,0,.06)',
+      bodyClass:'theme-light',
+      bgImg:null,
+    }
+  };
+  var idx=0;
+  /* Icon per theme — the deck pattern: swap the SVG's innerHTML on cycle.
+     Keyed by theme NAME so it survives reordering THEME_ORDER. */
+  var themeIcons={
+    articulate:'<path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/>',
+    ice:'<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>',
+    lavender:'<path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/>',
+    charlime:'<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>',
+    light:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93 1.41 1.41"/>'
+  };
+  function applyTheme(key){
+    var t=THEMES[key];
+    if(!t)return;
+    var r=document.documentElement;
+    r.style.setProperty('--bg',t.bg);
+    r.style.setProperty('--bg2',t.bg2);
+    r.style.setProperty('--bg3',t.bg3);
+    r.style.setProperty('--bg-card',t.bgCard);
+    r.style.setProperty('--bg-card2',t.bgCard2);
+    r.style.setProperty('--border',t.border);
+    r.style.setProperty('--border-light',t.borderLight);
+    r.style.setProperty('--text',t.text);
+    r.style.setProperty('--text-muted',t.textMuted);
+    r.style.setProperty('--text-dim',t.textDim);
+    r.style.setProperty('--accent',t.accent);
+    r.style.setProperty('--accent-dim',t.accentDim);
+    r.style.setProperty('--accent-glow',t.accentGlow);
+    r.style.setProperty('--btn-bg',t.btnBg);
+    document.body.className=t.bodyClass;
+    var icon=document.getElementById('themeIcon');
+    if(icon&&themeIcons[key])icon.innerHTML=themeIcons[key];
+    var cycleBtn=document.getElementById('themeCycleBtn');
+    if(cycleBtn)cycleBtn.setAttribute('aria-label','Cycle color theme (current: '+t.name+')');
+    var nav=document.querySelector('.nav');
+    if(nav)nav.style.background=t.navBg;
+    if(t.bgImg){
+          var overlay=document.getElementById('bgOverlay');
+          if(overlay){
+            overlay.style.backgroundImage='url('+t.bgImg+')';
+            /* Full opacity: the 58-90% scrim in body::after now does the
+               dimming. The old .15 here fought the rebuilt stack. */
+            overlay.style.opacity='1';
+            /* restart the Ken Burns drift cleanly on theme change, and
+               alternate direction so themes do not all drift identically */
+            var alt=t.bgAlt;
+            overlay.classList.toggle('kb-alt',!!alt);
+            overlay.style.animation='none';
+            void overlay.offsetWidth;            /* force reflow to restart */
+            overlay.style.animation='';
+          }
+        }else{
+          var overlay=document.getElementById('bgOverlay');
+          if(overlay)overlay.style.opacity='0';
+        }
+  }
+  document.addEventListener('click',function(e){
+    if(e.target.closest('#themeCycleBtn')){
+      idx=(idx+1)%THEME_ORDER.length;
+      applyTheme(THEME_ORDER[idx]);
     }
   });
-});
+  applyTheme('articulate');
+  })();
+</script>
 
-// ═══ INIT ═══
-loadTheme();
-
-// ═══ BOOKING + COMMERCE WIRING ═══
-// site-config.js has already given every [data-book] / [data-paypal] /
-// [data-paystack] / [data-whatsapp] element a real destination, or marked it
-// aria-disabled when that provider is not configured yet. This block renders
-// the honest fallback copy and the floating WhatsApp button.
+<script src="site-config.js"></script>
+<script src="https://js.paystack.co/v1.7.0/paystack.min.js"></script>
+<script>
+/* --- pay-to-book: multi-currency payment gate ------------------------------
+   Reads payment keys + currency from window.ARTICULATE (set by
+   site-config.js). On [data-pay] click:
+   - USD  -> Paystack inline modal (settles ZAR, fine for USD/SA clients)
+   - EUR  -> Stripe Checkout redirect (SCA-compliant for EU)
+   - CHF  -> Stripe Checkout redirect (SCA-compliant for Swiss)
+   PayPal.Me redirect is used as an alternative when paypalUrl is set.
+   If no payment method is configured -> honest alert with contact email.
+   After payment success -> redirect to Cal.com to schedule.              */
 (function () {
-  var A = window.ARTICULATE;
-  if (!A) return;
+  'use strict';
+  var A = window.ARTICULATE || {};
+  var BOOKING_URL = A.bookingUrl || '';
+  var PAYSTACK_KEY = A.paystackPublicKey || '';
+  var STRIPE_KEY   = A.stripePublishableKey || '';
+  var PAYPAL_URL   = A.paypalUrl || '';
 
-  // Fallback note under the booking CTA, so an unconfigured booking path is
-  // an honest "message us", never a button that does nothing.
-  var note = document.getElementById('ctaNote');
-  var firstCta = document.querySelector('[data-book]');
-  if (note && firstCta && firstCta.getAttribute('data-wired') !== 'true') {
-    var alt = [];
-    if (A.whatsappLink()) {
-      alt.push('<a href="' + A.whatsappLink() + '" target="_blank" rel="noopener">WhatsApp us</a>');
-    }
-    if (A.email) {
-      alt.push('<a href="mailto:' + A.email + '?subject=First%20lesson">email us</a>');
-    }
-    if (alt.length) {
-      note.innerHTML = 'Online booking is not connected yet — ' + alt.join(' or ') +
-        ' to arrange your first lesson.';
-    } else {
-      note.innerHTML = 'Booking opens shortly. Email <a href="mailto:' + A.email + '">' + A.email + '</a> to arrange your first lesson.';
-    }
-    note.style.display = 'block';
+  function honestAlert(msg) {
+    alert((msg || 'Payment is being configured.') + ' Please email ' +
+          (A.email || 'hello@articulate.ee') +
+          ' to enquire and we will send payment details.');
   }
 
-  // Floating WhatsApp button — only when a number is configured, so no
-  // half-built control ever appears on a public page.
-  if (A.whatsappLink()) {
-    var b = document.createElement('a');
-    b.href = A.whatsappLink();
-    b.target = '_blank';
-    b.rel = 'noopener';
-    b.setAttribute('aria-label', 'Message us on WhatsApp');
-    b.setAttribute('data-whatsapp', '');
-    b.style.cssText = [
-      'position:fixed', 'right:20px', 'bottom:20px', 'z-index:200',
-      'display:flex', 'align-items:center', 'gap:10px',
-      'padding:13px 20px', 'border-radius:999px',
-      'background:#25D366', 'color:#06281a', 'font-weight:700',
-      'font-size:0.95rem', 'text-decoration:none',
-      'box-shadow:0 8px 24px rgba(37,211,102,0.35)'
-    ].join(';');
-    b.textContent = '💬 WhatsApp';
-    document.body.appendChild(b);
-  }
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-pay]');
+    if (!btn) return;
+    e.preventDefault();
+
+    var cents    = parseInt(btn.getAttribute('data-amount') || '0', 10);
+    if (!cents) return;
+
+    var rail     = A.paymentRail();
+    var currency = A.currency() || {};
+    var code     = currency.code || 'USD';
+    var tierName = btn.getAttribute('data-tier') || '';
+    var tierData = tierName ? A.tier(tierName) : null;
+    var tierLabel = tierData ? tierData.label : 'package';
+
+    /* PayPal redirect (highest priority for EUR/CHF) */
+    if (rail === 'paypal') {
+      var paypalHref = A.paypalLink((cents / 100).toFixed(2));
+      if (paypalHref) { window.location.href = paypalHref; return; }
+    }
+
+    /* Stripe Checkout (for CHF/EUR with stripePublishableKey) */
+    if (rail === 'stripe' && typeof Stripe !== 'undefined' && STRIPE_KEY) {
+      var stripe = Stripe(STRIPE_KEY);
+      stripe.redirectToCheckout({
+        lineItems: [{
+          price_data: {
+            currency: code.toLowerCase(),
+            product_data: {
+              name: tierLabel + ' ' + (A.brand || 'Articulate English'),
+              description: tierData ? tierData.note : ''
+            },
+            unit_amount: cents
+          },
+          quantity: 1
+        }],
+        mode: 'payment',
+        successUrl: BOOKING_URL + '?paid=1',
+        cancelUrl:  window.location.href
+      }).then(function (result) {
+        if (result.error) { alert('Payment error: ' + result.error.message); }
+      });
+      return;
+    }
+
+    /* Paystack modal (for USD, or as fallback for any currency) */
+    if (PAYSTACK_KEY && typeof PaystackPop !== 'undefined') {
+      var paystackCurrency = code.toLowerCase();
+      /* Paystack settles ZAR/USD — for EUR/CHF, warn about FX. */
+      if (code !== 'USD' && code !== 'GBP') {
+        var formatted = A.formatPrice(cents);
+        var ok = confirm(
+          'You are about to pay ' + formatted + '.\n\n' +
+          'Paystack will process this in USD; your bank may apply a\n' +
+          'foreign-exchange markup. For billing in ' + code + ',\n' +
+          'please email ' + (A.email || 'hello@articulate.ee') + ' instead.\n\n' +
+          'Continue anyway?'
+        );
+        if (!ok) return;
+        paystackCurrency = 'usd';
+      }
+
+      var email = prompt('Enter your email for the receipt and booking confirmation.', '');
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^@]+$/.test(email)) {
+        if (email !== null) alert('A valid email is required to process payment.');
+        return;
+      }
+
+      var handler = PaystackPop.setup({
+        key:      PAYSTACK_KEY,
+        email:    email,
+        amount:   cents,
+        currency: paystackCurrency,
+        channels: ['card', 'bank'],
+        ref:      'articulate_' + Date.now(),
+        callback: function () {
+          /* payment successful -> schedule the pre-paid session */
+          window.location.href = BOOKING_URL + '?paid=1';
+        },
+        onClose:  function () {}
+      });
+      handler.open();
+      return;
+    }
+
+    /* No payment method configured */
+    honestAlert('Your ' + code + ' price is ' + A.formatPrice(cents) + '.');
+  });
 })();
 </script>
 
+<script src="https://js.stripe.com/v3/"></script>
 </body>
 </html>
