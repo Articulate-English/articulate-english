@@ -20,7 +20,7 @@ body{
   font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   line-height:1.6;
 }
-#matrix{position:fixed;inset:0;z-index:1;pointer-events:none}
+#matrix{position:fixed;inset:0;z-index:1;pointer-events:none;display:none}
 .label-sm{display:block;margin-bottom:.6rem;color:var(--accent-cyan);font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:.75rem}
 
 /* ---- Each phase is its own scroll room ---- */
@@ -162,9 +162,9 @@ let scrollVelocity=0,lastScrollY=0;
 const bgMatrix=new MatrixLayer(0.35,0.8);
 const fgMatrix=new MatrixLayer(0.15,2);
 function setupMatrix(w,h){matrixW=w;matrixH=h;matrixCanvas.width=w;matrixCanvas.height=h;bgMatrix.width=w;bgMatrix.height=h;bgMatrix.init();fgMatrix.width=w;fgMatrix.height=h;fgMatrix.init();}
-setupMatrix(matrixW,matrixH);
+/* setupMatrix(matrixW,matrixH); */
 function animateMatrix(){matrixCtx.fillStyle='rgba(2,2,4,0.15)';matrixCtx.fillRect(0,0,matrixW,matrixH);bgMatrix.update();bgMatrix.draw(matrixCtx);fgMatrix.update();fgMatrix.draw(matrixCtx);requestAnimationFrame(animateMatrix);}
-animateMatrix();
+/* animateMatrix(); */
 window.addEventListener('scroll',()=>{scrollVelocity=window.scrollY-lastScrollY;lastScrollY=window.scrollY;fgMatrix.spawn(scrollVelocity)},{passive:true});
 window.addEventListener('resize',()=>setupMatrix(window.innerWidth,window.innerHeight));
 
