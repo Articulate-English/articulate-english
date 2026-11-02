@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://cdn.pixabay.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self'; object-src 'none'; frame-ancestors 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Business English Decks — Articulate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-void:#020205; --bg-deep:#0a0a15;
+  --accent-cyan:#22d3ee; --accent-violet:#8b5cf6; --text-cream:#f4f1ea;
+  --card-w:280px; --card-h:380px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#000; color:var(--text-cream);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  line-height:1.6;
+}
+#matrix{position:fixed;inset:0;z-index:1;pointer-events:none}
+.label-sm{display:block;margin-bottom:.6rem;color:var(--accent-cyan);font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:.75rem}
+
+/* ---- Each phase is its own scroll room ---- */
+.room{position:relative;width:100%;z-index:2}
+.room-loading{height:100vh}
+.room-title{height:250vh}
+.room-slogan{height:150vh}
+.room-gallery{height:640vh}
+.room-finale{height:150vh}
+.sticky{position:sticky;top:0;height:100vh;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.center{display:flex;align-items:center;justify-content:center;width:100%}
+
+/* ---- Loading ---- */
+.loading-inner{opacity:1;transition:opacity 0.6s ease}
+.loading-inner.hidden{opacity:0}
+
+/* ---- Title ---- */
+.title-stage{max-width:1100px;width:90%;padding:30px;text-align:center}
+.hero-title{font-family:'Oswald',sans-serif;font-size:clamp(3.5rem,12vw,10rem);line-height:.9;letter-spacing:-.03em;text-transform:uppercase;overflow:hidden}
+.char-line{display:block}
+.char{display:inline-block;opacity:0;transform:translateY(20px);transition:all 0.4s cubic-bezier(0.2,0.8,0.2,1)}
+.char.visible{opacity:1;transform:translateY(0)}
+
+/* ---- Slogan ---- */
+.slogan-line{font-family:'Oswald',sans-serif;font-size:clamp(2rem,6vw,4rem);letter-spacing:.25em;text-transform:uppercase;opacity:0;transform:translateY(40px);transition:all 0.8s ease;color:var(--text-cream);margin-top:1rem}
+.slogan-line.visible{opacity:1;transform:translateY(0)}
+.slogan-char{display:inline-block;opacity:0;transform:translateY(20px)}
+.slogan-char.revealed{opacity:1;transform:translateY(0);transition:all 0.3s ease}
+
+/* ---- Gallery ---- */
+.gallery-sticky{position:sticky;top:0;height:100vh;width:100%;display:flex;align-items:center;justify-content:center;perspective:1000px;overflow:hidden}
+.gallery-label{position:absolute;top:8vh;left:50%;transform:translateX(-50%);z-index:10}
+.gallery-container{position:relative;width:100%;height:100%;transform-style:preserve-3d}
+.coverflow-card{
+  position:absolute;left:50%;top:50%;width:var(--card-w);height:var(--card-h);
+  margin-left:calc(var(--card-w) / -2);margin-top:calc(var(--card-h) / -2);
+  transform-style:preserve-3d;cursor:pointer;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.6s ease;
+  opacity:0;transform:translateY(40px) scale(0.8);
+}
+.coverflow-card.visible{opacity:1;transform:translateY(0) scale(1)}
+.card-face{position:absolute;inset:0;border-radius:16px;overflow:hidden;backface-visibility:hidden;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04)}
+.card-front{display:flex;flex-direction:column}
+.card-back{transform:rotateY(180deg);display:flex;align-items:center;justify-content:center}
+.card-image{width:100%;height:220px;object-fit:cover;border-bottom:1px solid rgba(255,255,255,0.06)}
+.card-title{padding:30px;text-align:center;font-family:'Oswald',sans-serif;font-size:1.25rem;font-weight:600;text-transform:uppercase;letter-spacing:0.03em}
+.coverflow-card:hover{box-shadow:0 20px 40px rgba(139,92,246,0.25)}
+.coverflow-card.active{transform:translateZ(120px) rotateY(0deg) scale(1.05);z-index:100;opacity:1}
+.coverflow-card.side-left{transform:translateX(-220px) translateZ(-80px) rotateY(25deg) scale(0.85);z-index:50;opacity:0.8}
+.coverflow-card.far-left{transform:translateX(-380px) translateZ(-150px) rotateY(45deg) scale(0.7);z-index:30;opacity:0.5}
+.coverflow-card.side-right{transform:translateX(220px) translateZ(-80px) rotateY(-25deg) scale(0.85);z-index:50;opacity:0.8}
+.coverflow-card.far-right{transform:translateX(380px) translateZ(-150px) rotateY(-45deg) scale(0.7);z-index:30;opacity:0.5}
+.coverflow-card.hidden{opacity:0;pointer-events:none}
+
+/* ---- Finale ---- */
+.finale-content{text-align:center;padding:30px}
+.cta-button{padding:1.25rem 2.5rem;border-radius:8px;font-family:'Oswald',sans-serif;font-weight:600;text-decoration:none;text-transform:uppercase;letter-spacing:0.05em;transition:all 0.3s ease;margin:0 0.5rem;border:none;cursor:pointer}
+.cta-primary{background:linear-gradient(135deg,var(--accent-violet),var(--accent-cyan));color:#000}
+.cta-secondary{background:transparent;color:var(--text-cream);border:1px solid rgba(255,255,255,0.1)}
+
+/* ---- Bottom bar ---- */
+#bottom-bar{position:fixed;bottom:0;left:0;right:0;height:70px;background:rgba(10,10,20,0.95);border-top:1px solid rgba(34,211,238,0.35);display:flex;align-items:center;justify-content:center;gap:2rem;z-index:1000;opacity:0;transform:translateY(100%);transition:opacity 0.6s ease,transform 0.6s cubic-bezier(0.2,0.8,0.2,1);backdrop-filter:blur(10px)}
+#bottom-bar.visible{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion: reduce){.char,.slogan-char,.coverflow-card{transition:none;opacity:1;transform:none}}
+@media (max-width:768px){
+  :root{--card-w:220px;--card-h:300px}
+  .coverflow-card{margin-left:-110px;margin-top:-150px}
+  .cta-button{padding:1rem 2rem;font-size:0.9rem}
+  .title-stage{padding:20px}
+  .finale-content{padding:20px}
+}
+</style>
+</head>
+<body>
+<canvas id="matrix"></canvas>
+
+<!-- ROOM 1: LOADING -->
+<section class="room room-loading" id="roomLoading">
+  <div class="sticky center"><div class="loading-inner" id="loadingInner"><div class="label-sm">Loading Banking Course</div></div></div>
+</section>
+
+<!-- ROOM 2: TITLE -->
+<section class="room room-title" id="roomTitle">
+  <div class="sticky center">
+    <div class="title-stage">
+      <div class="label-sm" id="eyebrow">Financial English Vocabulary</div>
+      <h1 class="hero-title" id="heroTitle"><span class="char-line"><span class="char">B</span><span class="char">A</span><span class="char">N</span><span class="char">K</span><span class="char">I</span><span class="char">N</span><span class="char">G</span></span><br><span class="char-line"><span class="char">&amp;</span><span class="char">&nbsp;</span><span class="char">I</span><span class="char">N</span><span class="char">V</span><span class="char">E</span><span class="char">S</span><span class="char">T</span><span class="char">M</span><span class="char">E</span><span class="char">N</span><span class="char">T</span></span></h1>
+    </div>
+  </div>
+</section>
+
+<!-- ROOM 3: SLOGAN -->
+<section class="room room-slogan" id="roomSlogan">
+  <div class="sticky center">
+    <div style="text-align:center">
+      <div class="label-sm">12 Financial Lessons for Italian Learners.</div>
+      <div class="slogan-line" id="sloganLine"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOM 4: GALLERY -->
+<section class="room room-gallery" id="roomGallery">
+  <div class="gallery-sticky">
+    <div class="label-sm gallery-label">Select Lesson</div>
+    <div class="gallery-container" id="galleryContainer"></div>
+  </div>
+</section>
+
+<!-- ROOM 5: FINALE -->
+<section class="room room-finale" id="roomFinale">
+  <div class="sticky center">
+    <div class="finale-content">
+      <h2 style="font-family:'Oswald',sans-serif;font-size:clamp(2rem,5vw,4.5rem);line-height:1;font-weight:700;text-transform:uppercase;letter-spacing:.04em">Start Your<br>Financial English</h2>
+      <div style="margin-top:2rem"><a href="#roomGallery" class="cta-button cta-primary">Begin Course</a></div>
+    </div>
+  </div>
+</section>
+
+<div id="bottom-bar">
+  <a href="#roomGallery" class="cta-button cta-secondary">Lessons</a>
+  <button id="themeCycleBtn" class="cta-button cta-secondary">Theme</button>
+</div>
+
+<script>
+/* ---------- Matrix background ---------- */
+const MATRIX_CHARS='アイウエオカキクケコサシスセソタチツテト0123456789ABCDEF';
+const MATRIX_FONT=18;
+class MatrixLayer{
+  constructor(density,speed){this.density=density;this.speed=speed;this.streams=[];}
+  init(){const cols=Math.floor(this.width/MATRIX_FONT);const count=Math.floor(cols*this.density);for(let i=0;i<count;i++){this.streams.push({x:Math.floor(Math.random()*cols)*MATRIX_FONT,y:Math.random()*this.height,speed:this.speed*(0.8+Math.random()*0.4),chars:Array.from({length:15},()=>MATRIX_CHARS[Math.floor(Math.random()*MATRIX_CHARS.length)]),brightness:0.5+Math.random()*0.5})}}
+  spawn(v){const cols=Math.floor(this.width/MATRIX_FONT);for(let i=0;i<Math.min(3,Math.floor(Math.abs(v)*0.2));i++){this.streams.push({x:Math.floor(Math.random()*cols)*MATRIX_FONT,y:Math.sign(v)>0?-MATRIX_FONT*15:this.height+MATRIX_FONT,speed:this.speed*(0.5+Math.random()*0.5)*Math.sign(v),chars:Array.from({length:15},()=>MATRIX_CHARS[Math.floor(Math.random()*MATRIX_CHARS.length)]),brightness:0.5+Math.random()*0.5})}}
+  update(){for(let s of this.streams)s.y+=s.speed;this.streams=this.streams.filter(s=>s.y>-MATRIX_FONT*15-100&&s.y<this.height+100)}
+  draw(ctx){ctx.font=`${MATRIX_FONT}px monospace`;for(let s of this.streams){s.chars.forEach((ch,i)=>{const y=s.y+i*MATRIX_FONT;if(y<0||y>this.height)return;const a=i===s.chars.length-1?s.brightness:s.brightness*(0.3+i/s.chars.length*0.4);ctx.fillStyle=`rgba(34,211,238,${a})`;ctx.fillText(ch,s.x,y)})}}
+}
+const matrixCanvas=document.getElementById('matrix');
+const matrixCtx=matrixCanvas.getContext('2d');
+let matrixW=window.innerWidth,matrixH=window.innerHeight;
+let scrollVelocity=0,lastScrollY=0;
+const bgMatrix=new MatrixLayer(0.35,0.8);
+const fgMatrix=new MatrixLayer(0.15,2);
+function setupMatrix(w,h){matrixW=w;matrixH=h;matrixCanvas.width=w;matrixCanvas.height=h;bgMatrix.width=w;bgMatrix.height=h;bgMatrix.init();fgMatrix.width=w;fgMatrix.height=h;fgMatrix.init();}
+setupMatrix(matrixW,matrixH);
+function animateMatrix(){matrixCtx.fillStyle='rgba(2,2,4,0.15)';matrixCtx.fillRect(0,0,matrixW,matrixH);bgMatrix.update();bgMatrix.draw(matrixCtx);fgMatrix.update();fgMatrix.draw(matrixCtx);requestAnimationFrame(animateMatrix);}
+animateMatrix();
+window.addEventListener('scroll',()=>{scrollVelocity=window.scrollY-lastScrollY;lastScrollY=window.scrollY;fgMatrix.spawn(scrollVelocity)},{passive:true});
+window.addEventListener('resize',()=>setupMatrix(window.innerWidth,window.innerHeight));
+
+/* ---------- Gallery data ---------- */
+const cardData=[
+  {name:"Banking Basics",img:"https://cdn.pixabay.com/photo/2020/05/09/07/12/banking-546x546.jpg",url:"lesson-1-banking-basics.html"},
+  {name:"Credit & Loans",img:"https://cdn.pixabay.com/photo/2016/08/10/15/01/credit-cards-1583534_1280.jpg",url:"lesson-2-credit-loans.html"},
+  {name:"Investment Fundamentals",img:"https://cdn.pixabay.com/photo/2017/09/07/08/54/money-2724241_1280.jpg",url:"lesson-3-investment-fundamentals.html"},
+  {name:"Savings & Interest",img:"https://cdn.pixabay.com/photo/2015/10/30/10/03/gold-1013618_1280.jpg",url:"lesson-4-savings-interest.html"},
+  {name:"Insurance & Protection",img:"https://cdn.pixabay.com/photo/2014/07/23/15/36/coins-400252_1280.jpg",url:"lesson-5-insurance-protection.html"},
+  {name:"Financial Planning",img:"https://cdn.pixabay.com/photo/2013/07/13/01/21/euro-155597_1280.png",url:"lesson-6-financial-planning.html"},
+  {name:"Market Trading",img:"https://cdn.pixabay.com/photo/2013/07/13/01/21/euro-155597_1280.png",url:"lesson-7-market-trading.html"},
+  {name:"Pension & Retirement",img:"https://cdn.pixabay.com/photo/2015/09/15/20/33/hourglass-money-time-investment-1703349_1280.jpg",url:"lesson-8-pension-retirement.html"},
+  {name:"Taxes & Compliance",img:"https://cdn.pixabay.com/photo/2013/07/13/01/21/euro-155597_1280.png",url:"lesson-9-taxes-compliance.html"},
+  {name:"Cryptocurrency",img:"https://cdn.pixabay.com/photo/2017/09/07/08/54/money-2724241_1280.jpg",url:"lesson-10-cryptocurrency.html"},
+  {name:"Real Estate",img:"https://cdn.pixabay.com/photo/2015/09/15/20/33/hourglass-money-time-investment-1703349_1280.jpg",url:"lesson-11-real-estate.html"},
+  {name:"Financial Services",img:"https://cdn.pixabay.com/photo/2016/08/10/15/01/credit-cards-1583534_1280.jpg",url:"lesson-12-financial-services.html"}
+];
+function initGallery(){
+  const container=document.getElementById('galleryContainer');
+  cardData.forEach((c)=>{
+    const el=document.createElement('div');
+    el.className='coverflow-card';
+    el.innerHTML=`<div class="card-face card-front"><img src="${c.img}" alt="${c.name}" class="card-image"><div class="card-title">${c.name}</div></div><div class="card-face card-back"><div class="card-title">${c.name}</div></div>`;
+    el.addEventListener('click',()=>c.url&&window.open(c.url,'_blank'));
+    container.appendChild(el);
+  });
+}
+function positionCards(activeIdx){
+  const cards=document.querySelectorAll('.coverflow-card');
+  cards.forEach((c,i)=>{
+    const d=i-activeIdx;
+    c.className='coverflow-card';
+    c.classList.add('visible');
+    if(d===0)c.classList.add('active');
+    else if(d===-1)c.classList.add('side-left');
+    else if(d===-2)c.classList.add('far-left');
+    else if(d===1)c.classList.add('side-right');
+    else if(d===2)c.classList.add('far-right');
+    else c.classList.add('hidden');
+  });
+}
+initGallery();
+
+/* ---------- Per-room scroll progress ---------- */
+function roomProgress(room){
+  const rect=room.getBoundingClientRect();
+  const total=rect.height-window.innerHeight;
+  if(total<=0)return rect.top<=0?1:0;
+  return Math.max(0,Math.min(1,-rect.top/total));
+}
+
+const roomLoading=document.getElementById('roomLoading');
+const roomTitle=document.getElementById('roomTitle');
+const roomSlogan=document.getElementById('roomSlogan');
+const roomGallery=document.getElementById('roomGallery');
+const roomFinale=document.getElementById('roomFinale');
+const loadingInner=document.getElementById('loadingInner');
+const sloganLine=document.getElementById('sloganLine');
+const bottomBar=document.getElementById('bottom-bar');
+
+/* Build slogan characters */
+const SLOGAN_TEXT="Speak Finance With Confidence.";
+sloganLine.innerHTML=SLOGAN_TEXT.split('').map(ch=>`<span class="slogan-char">${ch===' '?'&nbsp;':ch}</span>`).join('');
+const sloganChars=Array.from(sloganLine.children);
+
+let titleRevealed=false, sloganRevealed=false;
+function revealTitle(){
+  if(titleRevealed)return;
+  titleRevealed=true;
+  document.querySelectorAll('.char').forEach((ch,i)=>setTimeout(()=>ch.classList.add('visible'),i*50));
+}
+function revealSlogan(){
+  if(sloganRevealed)return;
+  sloganRevealed=true;
+  sloganLine.classList.add('visible');
+  sloganChars.forEach((ch,i)=>setTimeout(()=>ch.classList.add('revealed'),300+i*30));
+}
+
+function animate(){
+  requestAnimationFrame(animate);
+  const tp=roomProgress(roomTitle);
+  const sp=roomProgress(roomSlogan);
+  const gp=roomProgress(roomGallery);
+  const fp=roomProgress(roomFinale);
+
+  // Loading fades once we leave the loading room
+  if(window.scrollY>40||tp>0)loadingInner.classList.add('hidden');
+
+  // Title: reveal chars when the title room becomes active
+  if(tp>0.02)revealTitle();
+
+  // Slogan: reveal when the slogan room becomes active
+  if(sp>0.05)revealSlogan();
+
+  // Gallery: advance cards by scroll progress through the gallery room
+  if(gp>0){
+    const activeIdx=Math.max(0,Math.min(cardData.length-1,Math.floor(gp*cardData.length)));
+    positionCards(activeIdx);
+  }
+
+  // Finale: show bottom bar
+  if(fp>0.05)bottomBar.classList.add('visible'); else bottomBar.classList.remove('visible');
+}
+requestAnimationFrame(animate);
+
+/* ---------- Theme cycle ---------- */
+const THEMES=[
+  {cyan:'#22d3ee',violet:'#8b5cf6'},
+  {cyan:'#fbbf24',violet:'#f97316'},
+  {cyan:'#34d399',violet:'#10b981'},
+  {cyan:'#f472b6',violet:'#a855f7'}
+];
+let themeIdx=0;
+document.getElementById('themeCycleBtn').addEventListener('click',()=>{
+  themeIdx=(themeIdx+1)%THEMES.length;
+  const t=THEMES[themeIdx];
+  document.documentElement.style.setProperty('--accent-cyan',t.cyan);
+  document.documentElement.style.setProperty('--accent-violet',t.violet);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Banking English - Real Estate</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700}&display=swap');
+:root{--bg:#03030a;--accent:#22d3ee;--accent-rgb:34,211,238;--vocab-b1:#81d4fa;--vocab-b2:#a3e635;--vocab-b2p:#ff7ac6}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:#e2e8f0;font-family:'Inter',sans-serif}
+.slide{position:fixed;inset:0;opacity:0;pointer-events:none;padding:5vh 4vw;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+.slide.active{opacity:1;pointer-events:auto}
+.slide::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,10,20,.78) 0%,rgba(6,10,20,.45) 45%,rgba(6,10,20,.18) 100%);z-index:0}
+.content{position:relative;z-index:1;max-width:80vw;background:rgba(var(--accent-rgb),.12);border:1px solid rgba(var(--accent-rgb),.45);border-left:3px solid var(--accent);border-radius:18px;padding:1.4em 1.8em;backdrop-filter:blur(12px);margin:auto 0}
+.label{color:#94a3b8;font-size:.85rem;text-transform:uppercase;margin-bottom:.4em}
+.vocab-word{cursor:pointer;font-weight:600;border-bottom:1.5px dotted var(--accent);color:var(--accent);padding:0 2px}
+#vocabTooltip{position:fixed;background:rgba(10,16,32,.95);border:1px solid var(--accent);border-radius:12px;padding:1em;max-width:280px;z-index:100;display:none}
+.ex-btn{background:rgba(var(--accent-rgb),.2);border:2px solid rgba(var(--accent-rgb),.6);color:#fff;padding:.6em 1.2em;border-radius:12px;cursor:pointer;min-height:44px}
+.ex-btn.revealed{background:rgba(52,211,153,.25)}
+.answer-reveal{background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3);border-radius:12px;padding:.8em 1.2em;margin:.6em 0;color:#34d399;display:none}
+.nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:10px;background:rgba(10,16,32,.9);padding:10px 20px;border-radius:30px;border:1px solid rgba(var(--accent-rgb),.3)}
+.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--cyan));width:0%}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div id="vocabTooltip"><div class="word" style="font-weight:700;color:var(--accent)"></div><div class="it" style="font-size:.85rem;color:#fbbf24;font-style:italic"></div></div>
+
+<section class="slide active" data-slide="0" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=80')"><div class="content"><h1 style="font-size:2rem;background:linear-gradient(135deg,var(--accent),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;margin-bottom:.5em">Real Estate</h1><p class="label">Key vocabulary:</p><p style="line-height:1.8;font-size:.95rem;margin-top:.5em"><span class="vocab-word" data-word="mortgage-loan">mortgage loan</span> · <span class="vocab-word" data-word="property-value">property value</span> · <span class="vocab-word" data-word="real-estate-agent">real estate agent</span> · <span class="vocab-word" data-word="listing-agreement">listing agreement</span></p></div></section>
+
+<section class="slide" data-slide="1"><div class="content"><p class="label">Question:</p><p style="font-size:.95rem;margin:.8em 0">What real estate terms should expatriates understand?</p><button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('a1').classList.toggle('show')">Reveal</button><div class="answer-reveal" id="a1">Understand basic terminology before opening accounts. Fees, interest rates, and legal requirements vary by country. Comparison shopping saves money long-term.</div></div></section>
+
+<section class="slide" data-slide="2"><div class="content"><p class="label">Order words:</p><p style="font-size:1rem;color:var(--accent);text-align:center;margin:.8em 0">[Could / I / get / a / detailed / statement / please?]</p><button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('o1').classList.toggle('show')">Check</button><div class="answer-reveal" id="o1">Could I get a detailed statement please?</div></div></section>
+
+<section class="slide" data-slide="3"><div class="content"><p class="label">Describe picture:</p><img src="https://cdn.pixabay.com/photo/2015/10/14/06/16/bank-988148_1280.jpg" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin:.5em 0"><textarea placeholder="Describe..." style="width:100%;min-height:90px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#e2e8f0;padding:8px;font-size:.9rem"></textarea><button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('d1').classList.toggle('show')">Model</button><div class="answer-reveal" id="d1">The bank interior shows modern design with security features. Cashiers behind protective glass serve customers. Digital displays show rates and information.</div></div></section>
+
+<section class="slide" data-slide="4"><div class="content"><p class="label">Question:</p><p style="font-size:.95rem;margin:.8em 0">Any challenges setting up accounts abroad?</p><button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('a2').classList.toggle('show')">Reveal</button><div class="answer-reveal" id="a2">Documentation requirements can be extensive. Language barriers complicate forms. Fees are often higher for foreigners. Local references help expedite processes.</div></div></section>
+
+<section class="slide" data-slide="5"><div class="content"><p class="label">Compare:</p><div style="display:flex;gap:8px;margin:.5em 0"><img src="https://cdn.pixabay.com/photo/2015/01/26/10/33/bank-51-o-711042_1280.jpg" style="flex:1;height:120px;object-fit:cover;border-radius:8px"><img src="https://cdn.pixabay.com/photo/2015/02/02/15/42/building-770x511.jpg" style="flex:1;height:120px;object-fit:cover;border-radius:8px"></div><button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('c1').classList.toggle('show')">Model</button><div class="answer-reveal" id="c1">Both show financial institutions. Traditional banks vs modern fintech offices. Services overlap but delivery methods differ significantly.</div></div></section>
+
+<section class="slide" data-slide="6"><div class="content"><p class="label">Discussion:</p><p style="font-size:.95rem;margin:.8em 0">How has digital banking changed services?</p><button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('a3').classList.toggle('show')">Reveal</button><div class="answer-reveal" id="a3">Apps now handle most transactions. Branch visits are rarer but more specialized. Security concerns increase with digital solutions. Accessibility improves for rural areas.</div></div></section>
+
+<section class="slide" data-slide="7"><div class="content"><p class="label">Speaking:</p><p style="font-size:.95rem;margin:.8em 0">Describe opening your first bank account.</p><button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('s1').classList.toggle('show')">Model</button><div class="answer-reveal" id="s1">I needed ID and proof of address. The process took thirty minutes with paperwork. The teller explained all fees and online features. I felt relieved having local banking access.</div></div></section>
+
+<section class="slide" data-slide="8"><div class="content"><p class="label">Vocabulary:</p><p style="line-height:1.8;font-size:.95rem"><span class="vocab-word" data-word="property-inspection">property inspection</span> · <span class="vocab-word" data-word="title-deed">title deed</span> · <span class="vocab-word" data-word="closing-cost">closing cost</span> · <span class="vocab-word" data-word="equity-build">equity build</span></p></div></section>
+
+<section class="slide" data-slide="9"><div class="content"><p class="label">Grammar:</p><p style="font-size:.95rem;margin:.8em 0">Interest <strong>is calculated</strong> monthly.<br>Fees <strong>are deducted</strong> automatically.<br>Statements <strong>are sent</strong> quarterly.</p><button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('g1').classList.toggle('show')">More</button><div class="answer-reveal" id="g1">My balance <strong>has been updated</strong>. Policies <strong>have been revised</strong>. Terms <strong>are displayed</strong> clearly online now.</div></div></section>
+
+<section class="slide" data-slide="10"><div class="content"><p class="label">Expressions:</p><p style="font-size:.95rem">"What are the fees?" · "Is online banking available?" · "Can I get a receipt?" · "Where is the nearest branch?"</p></div></section>
+
+<section class="slide" data-slide="11"><div class="content"><p class="label">Cultural tip:</p><p style="font-size:.95rem;line-height:1.6">Italian banks prefer personal relationships. Appointment scheduling shows respect. Formal address (Lei) is expected initially. Smaller banks may offer better personalized service.</p></div></section>
+
+<section class="slide" data-slide="12"><div class="content"><p class="label">Summary:</p><p style="font-size:.95rem">Learned 8 key terms. Practice describing financial experiences.</p></div></section>
+
+<div class="nav"><button id="prev">Prev</button><span style="font-size:.85rem;color:#64748b;min-width:50px;text-align:center">1 / 12</span><button id="next">Next</button></div>
+<script>
+(function(){{var t=localStorage.getItem('bank-theme');if(t&&t!=='1')document.body.setAttribute('data-theme',['','midnight'][parseInt(t)]||'');}})();
+var slides=document.querySelectorAll('.slide'),vocab={'mortgage-loan':{'it':'mutuo immobiliare'},'property-value':{'it':'valore immobile'},'real-estate-agent':{'it':'agente immobiliare'},'listing-agreement':{'it':'accordo listing'},'property-inspection':{'it':'ispezione immobile'},'title-deed':{'it':'titolo proprieta'},'closing-cost':{'it':'costo trasferimento'},'equity-build':{'it':'accumulo equity'}},current=0;
+function update(){{slides.forEach((s,i)=>s.classList.toggle('active',i===current));document.getElementById('progress').style.width=((current+1)/slides.length*100)+'%'}}
+document.getElementById('next').addEventListener('click',()=>{{if(current<slides.length-1)current++;update()}});
+document.getElementById('prev').addEventListener('click',()=>{{if(current>0)current--;update()}});
+document.addEventListener('keydown',e=>{{if(e.key==='ArrowRight'||e.key===' ')next();if(e.key==='ArrowLeft')prev()}});
+update();
+document.querySelectorAll('.vocab-word').forEach(el=>el.addEventListener('click',e=>{{var v=vocab[e.target.dataset.word];if(v){{var t=document.getElementById('vocabTooltip');t.querySelector('.word').textContent=e.target.textContent;t.querySelector('.it').textContent='Italian: '+v.it;t.classList.add('show');}}}}));
+document.addEventListener('click',e=>{{if(!e.target.closest('.vocab-word'))document.getElementById('vocabTooltip').classList.remove('show')}});
+</script>
+</body>
+</html>
