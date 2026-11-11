@@ -1,0 +1,35 @@
+{
+  "slug": "a2-prepositions-movement",
+  "title": "Manta Ray Mania",
+  "level": "A2",
+  "grammar": "Prepositions of movement",
+  "source": "Scuba Sam's World",
+  "emoji": "🐟",
+  "videoId": "s0DQL-bHegQ",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":3,"sentence":"Get ready to dive _____ the ocean.","answer":"into","explain":"'Dive into' = move into."},
+    {"id":"q2","type":"mcq","time":3,"question":"Which sentence is correct?","options":["Dive into the ocean.","Dive onto the ocean.","Dive up the ocean.","Dive down the ocean."],"correct":0,"explain":"Into = movement towards the inside."},
+    {"id":"q3","type":"fillgap","time":22,"sentence":"The manta ray glides _____ the ocean.","answer":"through","explain":"'Through' = moving within."},
+    {"id":"q4","type":"mcq","time":22,"question":"Which sentence is correct?","options":["It glides through the ocean.","It glides on the ocean.","It glides over the ocean.","It glides above the ocean."],"correct":0,"explain":"Through the ocean (inside the water)."},
+    {"id":"q5","type":"fillgap","time":26,"sentence":"It's like a bird flying _____ the water.","answer":"under","explain":"'Under' = below."},
+    {"id":"q6","type":"mcq","time":26,"question":"Which sentence is correct?","options":["It's like a bird flying under the water.","It's like a bird flying over the water.","It's like a bird flying above the water.","It's like a bird flying on the water."],"correct":0,"explain":"Under = below the surface."},
+    {"id":"q7","type":"fillgap","time":10,"sentence":"The manta ray can leap _____ the water and into the air.","answer":"out of","explain":"'Out of' = from inside to outside."},
+    {"id":"q8","type":"mcq","time":10,"question":"Which word completes the sentence?","options":["out of","into","on","at"],"correct":0,"explain":"Leap out of the water."},
+    {"id":"q9","type":"fillgap","time":36,"sentence":"Manta rays have tiny eyes _____ the sides of their heads.","answer":"on","explain":"'On' = position."},
+    {"id":"q10","type":"mcq","time":36,"question":"Which sentence is correct?","options":["Eyes on the sides of their heads.","Eyes in the sides of their heads.","Eyes over the sides of their heads.","Eyes under the sides of their heads."],"correct":0,"explain":"On the side."},
+    {"id":"q11","type":"fillgap","time":58,"sentence":"So it stays around _____ many years to come.","answer":"for","explain":"'For' + period of time."},
+    {"id":"q12","type":"mcq","time":58,"question":"Which sentence is correct?","options":["For many years to come.","Since many years to come.","During many years to come.","From many years to come."],"correct":0,"explain":"For + duration."},
+    {"id":"q13","type":"fillgap","time":8,"sentence":"There's a giant manta ray that swims _____ the ocean.","answer":"through","explain":"Swim through the ocean."},
+    {"id":"q14","type":"mcq","time":8,"question":"Which sentence is correct?","options":["It swims through the ocean.","It swims on the ocean.","It swims over the ocean.","It swims above the ocean."],"correct":0,"explain":"Through the water."},
+    {"id":"q15","type":"order","time":3,"words":["Get","ready","to","dive","into","the","ocean"],"correct":"Get ready to dive into the ocean.","explain":"Dive into."}
+  ],
+  "vocab": [
+    {"w":"manta ray","d":"a large flat sea animal with big fins"},
+    {"w":"ocean","d":"a very large sea"},
+    {"w":"wingspan","d":"the distance from wing tip to wing tip"},
+    {"w":"pectoral fins","d":"the big side fins of a fish"},
+    {"w":"marine","d":"living in the sea"},
+    {"w":"tropical","d":"from the hot parts of the world"},
+    {"w":"solitary","d":"likes to be alone"}
+  ]
+}
