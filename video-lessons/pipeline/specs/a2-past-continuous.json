@@ -1,0 +1,35 @@
+{
+  "slug": "a2-past-continuous",
+  "title": "Kelp Forest: An Underwater Forest",
+  "level": "A2",
+  "grammar": "Past continuous and past simple",
+  "source": "Nature Boom Time",
+  "emoji": "🌊",
+  "videoId": "GDbHoF6loa8",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":117,"sentence":"We were _____ through the enormous kelp columns.","answer":"weaving","explain":"Past continuous: was/were + verb-ing."},
+    {"id":"q2","type":"mcq","time":117,"question":"Which sentence is correct?","options":["We were weaving through the kelp columns.","We was weaving through the kelp columns.","We are weaving through the kelp columns.","We were weave through the kelp columns."],"correct":0,"explain":"We + were + verb-ing."},
+    {"id":"q3","type":"fillgap","time":119,"sentence":"Light was _____ through the canopy.","answer":"shining","explain":"Was + verb-ing."},
+    {"id":"q4","type":"mcq","time":119,"question":"Which sentence is correct?","options":["Light was shining through the canopy.","Light was shine through the canopy.","Light is shining through the canopy.","Light were shining through the canopy."],"correct":0,"explain":"Light (singular) + was + verb-ing."},
+    {"id":"q5","type":"fillgap","time":121,"sentence":"The sea floor was _____ with life.","answer":"teeming","explain":"Was + verb-ing."},
+    {"id":"q6","type":"mcq","time":121,"question":"Which sentence is correct?","options":["The sea floor was teeming with life.","The sea floor were teeming with life.","The sea floor was teem with life.","The sea floor is teeming with life."],"correct":0,"explain":"Was + verb-ing."},
+    {"id":"q7","type":"fillgap","time":414,"sentence":"But it felt more like we were _____ through a forest.","answer":"flying","explain":"Were + verb-ing."},
+    {"id":"q8","type":"mcq","time":414,"question":"Which sentence is correct?","options":["It felt like we were flying through a forest.","It felt like we was flying through a forest.","It felt like we are flying through a forest.","It felt like we were fly through a forest."],"correct":0,"explain":"We + were + verb-ing."},
+    {"id":"q9","type":"fillgap","time":314,"sentence":"Charlie _____ over while underwater and looked up at the kelp.","answer":"rolled","explain":"Past simple for a completed action."},
+    {"id":"q10","type":"mcq","time":314,"question":"Which sentence is correct?","options":["I rolled over while underwater.","I roll over while underwater.","I was roll over while underwater.","I rolling over while underwater."],"correct":0,"explain":"Past simple: rolled."},
+    {"id":"q11","type":"fillgap","time":317,"sentence":"Charlie literally _____ and couldn't breathe.","answer":"gasped","explain":"Past simple: gasped."},
+    {"id":"q12","type":"mcq","time":317,"question":"Which sentence is correct?","options":["He gasped and couldn't breathe.","He gasp and couldn't breathe.","He was gasp and couldn't breathe.","He gasping and couldn't breathe."],"correct":0,"explain":"Past simple: gasped."},
+    {"id":"q13","type":"fillgap","time":50,"sentence":"The water was insanely cold, so they _____ on some scuba tanks.","answer":"threw","explain":"Past simple: throw → threw."},
+    {"id":"q14","type":"mcq","time":50,"question":"Which sentence is correct?","options":["They threw on some scuba tanks.","They throw on some scuba tanks.","They thrown on some scuba tanks.","They throwing on some scuba tanks."],"correct":0,"explain":"Past simple: threw."},
+    {"id":"q15","type":"order","time":117,"words":["We","were","weaving","through","the","enormous","kelp","columns"],"correct":"We were weaving through the enormous kelp columns.","explain":"Past continuous: were + verb-ing."}
+  ],
+  "vocab": [
+    {"w":"kelp","d":"large brown seaweed that grows in forests underwater"},
+    {"w":"canopy","d":"the top layer of a forest"},
+    {"w":"sea floor","d":"the bottom of the sea"},
+    {"w":"scuba","d":"equipment for breathing underwater"},
+    {"w":"algae","d":"simple plants that grow in water"},
+    {"w":"sea urchin","d":"a round, spiny sea creature"},
+    {"w":"sea otter","d":"a small sea animal that eats sea urchins"}
+  ]
+}
