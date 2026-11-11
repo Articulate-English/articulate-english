@@ -1,0 +1,35 @@
+{
+  "slug": "b1-future-forms",
+  "title": "Animal Care That Counts",
+  "level": "B1",
+  "grammar": "Future forms: will, be going to, present continuous",
+  "source": "Bandit Patrol",
+  "emoji": "🦝",
+  "videoId": "LYpR9790UOc",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":62,"sentence":"Most mammals _____ give birth to live young instead of laying eggs.","answer":"will","explain":"Will for a general truth/prediction."},
+    {"id":"q2","type":"mcq","time":62,"question":"Which sentence is correct?","options":["Most mammals will give birth to live young.","Most mammals shall give birth to live young.","Most mammals will gives birth to live young.","Most mammals will giving birth to live young."],"correct":0,"explain":"Will + base verb (give)."},
+    {"id":"q3","type":"fillgap","time":72,"sentence":"You never know what your prize _____ going to be.","answer":"is","explain":"Be going to: is + going to."},
+    {"id":"q4","type":"mcq","time":72,"question":"Which sentence is correct?","options":["You never know what your prize is going to be.","You never know what your prize are going to be.","You never know what your prize will going to be.","You never know what your prize going to be."],"correct":0,"explain":"Is going to be."},
+    {"id":"q5","type":"fillgap","time":84,"sentence":"Skunks will tell you they're _____ to spray you.","answer":"going","explain":"They're going to spray you."},
+    {"id":"q6","type":"mcq","time":84,"question":"Which sentence is correct?","options":["They're going to spray you.","They're will spray you.","They're going spray you.","They'll going to spray you."],"correct":0,"explain":"Be going to + base verb."},
+    {"id":"q7","type":"fillgap","time":86,"sentence":"They'll _____ their little front feet.","answer":"stomp","explain":"Will + base verb (stomp)."},
+    {"id":"q8","type":"mcq","time":86,"question":"Which sentence is correct?","options":["They'll stomp their feet.","They'll stomps their feet.","They'll stomping their feet.","They'll stomped their feet."],"correct":0,"explain":"Will + base verb (stomp)."},
+    {"id":"q9","type":"fillgap","time":124,"sentence":"In the wild, raccoons will _____ for little crawfish.","answer":"fish","explain":"Will + base verb (fish)."},
+    {"id":"q10","type":"mcq","time":124,"question":"Which sentence is correct?","options":["Raccoons will fish for crawfish.","Raccoons will fishes for crawfish.","Raccoons will fishing for crawfish.","Raccoons will fished for crawfish."],"correct":0,"explain":"Will + base verb (fish)."},
+    {"id":"q11","type":"fillgap","time":132,"sentence":"Unfortunately, Blackjack will _____ be able to make his way into the wild.","answer":"not","explain":"Will not (won't) + base verb."},
+    {"id":"q12","type":"mcq","time":132,"question":"Which sentence is correct?","options":["He will not be able to live in the wild.","He will not is able to live in the wild.","He will not being able to live in the wild.","He not will be able to live in the wild."],"correct":0,"explain":"Will not be able to."},
+    {"id":"q13","type":"fillgap","time":140,"sentence":"We _____ to take care of him the rest of his life.","answer":"have","explain":"Have to + base verb."},
+    {"id":"q14","type":"mcq","time":140,"question":"Which sentence is correct?","options":["We have to take care of him.","We has to take care of him.","We have take care of him.","We are have to take care of him."],"correct":0,"explain":"Have to + base verb."},
+    {"id":"q15","type":"order","time":62,"words":["Most","mammals","will","give","birth","to","live","young"],"correct":"Most mammals will give birth to live young.","explain":"Will + base verb."}
+  ],
+  "vocab": [
+    {"w":"wildlife center","d":"a place that helps sick or hurt wild animals"},
+    {"w":"rehabilitator","d":"a person who helps injured animals get better"},
+    {"w":"raccoon","d":"a small animal with a black mask on its face"},
+    {"w":"nocturnal","d":"awake at night, asleep during the day"},
+    {"w":"skunk","d":"a black and white animal that sprays a bad smell"},
+    {"w":"mammal","d":"a warm-blooded animal with fur"},
+    {"w":"crawfish","d":"a small water animal like a tiny lobster"}
+  ]
+}
