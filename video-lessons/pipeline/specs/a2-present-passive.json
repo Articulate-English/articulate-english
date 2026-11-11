@@ -1,0 +1,35 @@
+{
+  "slug": "a2-present-passive",
+  "title": "Cool Facts About Sharks",
+  "level": "A2",
+  "grammar": "Present simple passive",
+  "source": "Things You Wanna Know",
+  "emoji": "🦈",
+  "videoId": "WzKs948SEZ8",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":11,"sentence":"Sharks are oftentimes the main _____ in some scary movies.","answer":"attraction","explain":"Be + noun phrase."},
+    {"id":"q2","type":"mcq","time":11,"question":"Which sentence is correct?","options":["Sharks are oftentimes the main attraction.","Sharks oftentimes the main attraction are.","Are sharks oftentimes the main attraction.","Sharks is oftentimes the main attraction."],"correct":0,"explain":"Subject + be + complement."},
+    {"id":"q3","type":"fillgap","time":31,"sentence":"Sharks can be _____ in every ocean on Earth.","answer":"found","explain":"Can be + past participle (found)."},
+    {"id":"q4","type":"mcq","time":31,"question":"Which is the correct passive form?","options":["Sharks can be found in every ocean.","Sharks can be find in every ocean.","Sharks can found in every ocean.","Sharks can be finding in every ocean."],"correct":0,"explain":"Be + past participle (found)."},
+    {"id":"q5","type":"fillgap","time":35,"sentence":"Sharks are often _____ as the supervillain of the sea.","answer":"seen","explain":"Be + past participle (seen)."},
+    {"id":"q6","type":"mcq","time":35,"question":"Which sentence is correct?","options":["Sharks are often seen as the supervillain.","Sharks are often see as the supervillain.","Sharks are often saw as the supervillain.","Sharks are often seeing as the supervillain."],"correct":0,"explain":"Are + seen (past participle)."},
+    {"id":"q7","type":"fillgap","time":40,"sentence":"Sharks are better _____ as superheroes.","answer":"cast","explain":"Be + past participle (cast)."},
+    {"id":"q8","type":"mcq","time":40,"question":"Which is the correct passive form?","options":["Sharks are better cast as superheroes.","Sharks are better casted as superheroes.","Sharks are better casting as superheroes.","Sharks are better casts as superheroes."],"correct":0,"explain":"Cast → cast → cast."},
+    {"id":"q9","type":"fillgap","time":50,"sentence":"The truth is, you're more likely to get _____ by a toilet than attacked by a shark.","answer":"injured","explain":"Get + past participle (injured)."},
+    {"id":"q10","type":"mcq","time":50,"question":"Which sentence is correct?","options":["You're more likely to get injured by a toilet.","You're more likely to get injure by a toilet.","You're more likely to get injuring by a toilet.","You're more likely to got injured by a toilet."],"correct":0,"explain":"Get + past participle (injured)."},
+    {"id":"q11","type":"fillgap","time":84,"sentence":"Sharks _____ the superheroes of the sea.","answer":"are","explain":"Subject + be."},
+    {"id":"q12","type":"mcq","time":84,"question":"Which sentence is correct?","options":["Sharks are the superheroes of the sea.","Sharks is the superheroes of the sea.","Sharks am the superheroes of the sea.","Sharks be the superheroes of the sea."],"correct":0,"explain":"Sharks (plural) + are."},
+    {"id":"q13","type":"order","time":35,"words":["Sharks","are","often","seen","as","the","supervillain"],"correct":"Sharks are often seen as the supervillain.","explain":"Be + adverb + past participle."},
+    {"id":"q14","type":"fillgap","time":15,"sentence":"Sharks are one of the oldest living _____ on planet Earth.","answer":"organisms","explain":"One of the + superlative + plural noun."},
+    {"id":"q15","type":"mcq","time":15,"question":"Which sentence is correct?","options":["Sharks are one of the oldest living organisms.","Sharks is one of the oldest living organisms.","Sharks are one of the oldest living organism.","Sharks am one of the oldest living organisms."],"correct":0,"explain":"'One of the' + plural noun."}
+  ],
+  "vocab": [
+    {"w":"shark","d":"a large fish with sharp teeth"},
+    {"w":"ocean","d":"a very large sea"},
+    {"w":"prey","d":"an animal that is hunted"},
+    {"w":"supervillain","d":"an evil character in a story"},
+    {"w":"superhero","d":"a hero with special powers"},
+    {"w":"basking shark","d":"a very large shark that eats tiny food"},
+    {"w":"agility","d":"the ability to move quickly and easily"}
+  ]
+}
