@@ -1,0 +1,35 @@
+{
+  "slug": "b1-can-could-be-able-to",
+  "title": "Hoh Rain Forest",
+  "level": "B1",
+  "grammar": "Can, could, be able to",
+  "source": "Nature Boom Time",
+  "emoji": "🌲",
+  "videoId": "Aw72gxV_PH8",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":213,"sentence":"You can _____ biomass by adding up all the living things in an area.","answer":"calculate","explain":"Can + base verb for ability/possibility."},
+    {"id":"q2","type":"mcq","time":213,"question":"Which sentence is correct?","options":["You can calculate it by adding up living things.","You can calculated it by adding up living things.","You can calculating it by adding up living things.","You cans calculate it by adding up living things."],"correct":0,"explain":"Can + base verb (calculate)."},
+    {"id":"q3","type":"fillgap","time":215,"sentence":"You can _____ it by adding up the living things.","answer":"do","explain":"Can + base verb (do)."},
+    {"id":"q4","type":"mcq","time":215,"question":"Which sentence is correct?","options":["You can do it by adding up the living things.","You can does it by adding up the living things.","You can doing it by adding up the living things.","You can did it by adding up the living things."],"correct":0,"explain":"Can + base verb (do)."},
+    {"id":"q5","type":"fillgap","time":354,"sentence":"We _____ climb a tree in the rainforest.","answer":"can","explain":"Can + base verb for ability."},
+    {"id":"q6","type":"mcq","time":354,"question":"Which sentence is correct?","options":["We are going to climb a tree.","We going to climb a tree.","We are go to climb a tree.","We are gonna climbing a tree."],"correct":0,"explain":"Be going to + base verb."},
+    {"id":"q7","type":"fillgap","time":341,"sentence":"They set out to find the most magical tree. They _____ able to find it.","answer":"were","explain":"Were able to (past of be able to)."},
+    {"id":"q8","type":"mcq","time":341,"question":"Which sentence is correct?","options":["They were able to find it.","They was able to find it.","They are able to find it.","They could able to find it."],"correct":0,"explain":"Were able to + base verb."},
+    {"id":"q9","type":"fillgap","time":455,"sentence":"Patrick did the climb easily. He said it was pretty easy. He _____ to do it.","answer":"was able","explain":"Was able to (managed to)."},
+    {"id":"q10","type":"mcq","time":455,"question":"Which sentence is correct?","options":["He was able to do the climb easily.","He was able doing the climb easily.","He could to do the climb easily.","He can do the climb easily."],"correct":0,"explain":"Was able to + base verb."},
+    {"id":"q11","type":"fillgap","time":105,"sentence":"When Charlie was a child, he _____ visit a rainforest. Now he can.","answer":"couldn't","explain":"Couldn't (past of can't)."},
+    {"id":"q12","type":"mcq","time":105,"question":"Which sentence is correct?","options":["He couldn't visit a rainforest.","He can't visited a rainforest.","He couldn't visited a rainforest.","He could not visits a rainforest."],"correct":0,"explain":"Couldn't + base verb."},
+    {"id":"q13","type":"fillgap","time":336,"sentence":"The team had to get a better look. They _____ climb the tree to see it.","answer":"were able to","explain":"Were able to (past)."},
+    {"id":"q14","type":"mcq","time":336,"question":"Which sentence is correct?","options":["They were able to climb the tree.","They was able to climb the tree.","They are able to climb the tree.","They could to climb the tree."],"correct":0,"explain":"Were able to + base verb."},
+    {"id":"q15","type":"order","time":213,"words":["You","can","calculate","biomass","by","adding","up","living","things"],"correct":"You can calculate biomass by adding up living things.","explain":"Can + base verb."}
+  ],
+  "vocab": [
+    {"w":"rain forest","d":"a forest with a lot of rain"},
+    {"w":"temperate","d":"a mild climate, not too hot or cold"},
+    {"w":"tropical","d":"from the hot parts of the world"},
+    {"w":"biomass","d":"the total amount of living things in an area"},
+    {"w":"acre","d":"a unit of land area"},
+    {"w":"nurse log","d":"a fallen tree that helps new plants grow"},
+    {"w":"club moss","d":"a small green plant that covers the forest floor"}
+  ]
+}
