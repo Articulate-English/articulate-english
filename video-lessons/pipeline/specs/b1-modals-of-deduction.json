@@ -1,0 +1,34 @@
+{
+  "slug": "b1-modals-of-deduction",
+  "title": "Sequoia National Park: Climbing the Giant Trees",
+  "level": "B1",
+  "grammar": "Modal verbs of deduction: must, might, could, can't",
+  "source": "Nature Boom Time",
+  "emoji": "🌲",
+  "videoId": "TEM4b8n0JTc",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":5,"sentence":"Kirby climbed the tree for 80 minutes. She _____ be very tired.","answer":"must","explain":"Must + base verb for a logical conclusion."},
+    {"id":"q2","type":"mcq","time":5,"question":"Which sentence is correct?","options":["She must be very tired.","She mightn't be very tired.","She can't be very tired.","She mustn't be very tired."],"correct":0,"explain":"Must be = I am sure she is tired."},
+    {"id":"q3","type":"fillgap","time":142,"sentence":"The tree is 310 feet tall. It _____ be taller than the Statue of Liberty.","answer":"must","explain":"Must = logical certainty."},
+    {"id":"q4","type":"mcq","time":142,"question":"Which sentence is correct?","options":["It must be taller than the Statue of Liberty.","It might be taller than the Statue of Liberty.","It can't be taller than the Statue of Liberty.","It mustn't be taller than the Statue of Liberty."],"correct":0,"explain":"Must = near certainty."},
+    {"id":"q5","type":"fillgap","time":147,"sentence":"Kirby is only 5'2. She _____ not reach the top without climbing.","answer":"can't","explain":"Can't = impossibility."},
+    {"id":"q6","type":"mcq","time":147,"question":"Which sentence is correct?","options":["She can't reach the top without climbing.","She mustn't reach the top without climbing.","She mightn't reach the top without climbing.","She could reach the top without climbing."],"correct":0,"explain":"Can't = impossible."},
+    {"id":"q7","type":"fillgap","time":523,"sentence":"It's thundering. It _____ rain soon.","answer":"might","explain":"Might + base verb for possibility."},
+    {"id":"q8","type":"mcq","time":523,"question":"Which sentence is correct?","options":["It might rain soon.","It must rain soon.","It can't rain soon.","It mustn't rain soon."],"correct":0,"explain":"Might = possible."},
+    {"id":"q9","type":"fillgap","time":545,"sentence":"The scientists are studying the canopies. They _____ want to learn more about trees.","answer":"must","explain":"Must = logical conclusion."},
+    {"id":"q10","type":"mcq","time":545,"question":"Which sentence is correct?","options":["They must want to learn more.","They mightn't want to learn more.","They can't want to learn more.","They mustn't want to learn more."],"correct":0,"explain":"Must = near certainty."},
+    {"id":"q11","type":"fillgap","time":505,"sentence":"Kirby spent 80 minutes climbing. She _____ be exhausted.","answer":"must","explain":"Must = logical conclusion."},
+    {"id":"q12","type":"mcq","time":505,"question":"Which sentence is correct?","options":["She must be exhausted.","She mightn't be exhausted.","She can't be exhausted.","She mustn't be exhausted."],"correct":0,"explain":"Must be = near certainty."},
+    {"id":"q13","type":"fillgap","time":601,"sentence":"Some people think climbing a tree is crazy. It _____ be dangerous.","answer":"could","explain":"Could + base verb for possibility."},
+    {"id":"q14","type":"mcq","time":601,"question":"Which sentence is correct?","options":["It could be dangerous.","It must be dangerous.","It can't be dangerous.","It mustn't be dangerous."],"correct":0,"explain":"Could = possible."},
+    {"id":"q15","type":"order","time":5,"words":["Kirby","must","be","tired","after","80","minutes","of","climbing"],"correct":"Kirby must be tired after 80 minutes of climbing.","explain":"Must + base verb for deduction."}
+  ],
+  "vocab": [
+    {"w":"sequoia","d":"a giant tree with thick reddish bark"},
+    {"w":"canopy","d":"the top layer of a forest"},
+    {"w":"ascend","d":"to climb up"},
+    {"w":"harness","d":"straps that hold you safely"},
+    {"w":"crossbow","d":"a weapon that shoots arrows"},
+    {"w":"thunderstorm","d":"a storm with thunder and lightning"}
+  ]
+}
