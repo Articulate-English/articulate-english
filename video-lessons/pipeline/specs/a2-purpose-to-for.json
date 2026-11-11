@@ -1,0 +1,34 @@
+{
+  "slug": "a2-purpose-to-for",
+  "title": "How Do Animals Talk Without Words?",
+  "level": "A2",
+  "grammar": "Expressing purpose with to and for",
+  "source": "Nat Geo Kids",
+  "emoji": "🐜",
+  "videoId": "cJghbzC4dAA",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":2,"sentence":"Animals work together _____ problem-solve.","answer":"to","explain":"To + base verb shows purpose."},
+    {"id":"q2","type":"mcq","time":2,"question":"Which sentence is correct?","options":["Animals work together to problem-solve.","Animals work together for problem-solve.","Animals work together to problem-solving.","Animals work together problem-solve."],"correct":0,"explain":"To + base verb (problem-solve)."},
+    {"id":"q3","type":"fillgap","time":9,"sentence":"Let's dive in _____ discover the secret ways.","answer":"to","explain":"To + base verb shows purpose."},
+    {"id":"q4","type":"mcq","time":9,"question":"Which sentence is correct?","options":["Let's dive in to discover the secret.","Let's dive in for discover the secret.","Let's dive in to discovering the secret.","Let's dive in discovering the secret."],"correct":0,"explain":"To + base verb (discover)."},
+    {"id":"q5","type":"fillgap","time":16,"sentence":"Keep watching _____ unlock all three power-ups.","answer":"to","explain":"To + base verb shows purpose."},
+    {"id":"q6","type":"mcq","time":16,"question":"Which sentence is correct?","options":["Keep watching to unlock the power-ups.","Keep watching for unlock the power-ups.","Keep watching to unlocking the power-ups.","Keep watching unlock the power-ups."],"correct":0,"explain":"To + base verb (unlock)."},
+    {"id":"q7","type":"fillgap","time":25,"sentence":"Chimps use their body language _____ communicate.","answer":"to","explain":"Use + object + to + base verb."},
+    {"id":"q8","type":"mcq","time":25,"question":"Which sentence is correct?","options":["Chimps use body language to communicate.","Chimps use body language for communicate.","Chimps use body language to communicating.","Chimps use body language communicating."],"correct":0,"explain":"To + base verb (communicate)."},
+    {"id":"q9","type":"fillgap","time":62,"sentence":"Whales turn the ocean into a speaker system _____ their songs.","answer":"for","explain":"For + noun shows purpose."},
+    {"id":"q10","type":"mcq","time":62,"question":"Which sentence is correct?","options":["They use the ocean for their songs.","They use the ocean to their songs.","They use the ocean for sing their songs.","They use the ocean to singing their songs."],"correct":0,"explain":"For + noun (their songs)."},
+    {"id":"q11","type":"fillgap","time":74,"sentence":"Calves babble for their first couple of years _____ they learn to click properly.","answer":"before","explain":"Before + clause shows time order."},
+    {"id":"q12","type":"mcq","time":74,"question":"Which sentence is correct?","options":["Calves babble before they learn to click.","Calves babble after they learn to click.","Calves babble while they learn to click.","Calves babble because they learn to click."],"correct":0,"explain":"Babbling comes before clicking."},
+    {"id":"q13","type":"fillgap","time":149,"sentence":"When an ant finds food, it lays down a scent trail on the way _____.","answer":"home","explain":"On the way home."},
+    {"id":"q14","type":"mcq","time":149,"question":"Which sentence is correct?","options":["The ant lays a scent trail on the way home.","The ant lays a scent trail on the way to home.","The ant lays a scent trail on the way for home.","The ant lays a scent trail on the way at home."],"correct":0,"explain":"'On the way home' is the fixed phrase."},
+    {"id":"q15","type":"order","time":16,"words":["Keep","watching","to","unlock","the","power-ups"],"correct":"Keep watching to unlock the power-ups.","explain":"To + base verb for purpose."}
+  ],
+  "vocab": [
+    {"w":"communicate","d":"to share information"},
+    {"w":"body language","d":"using your body to communicate"},
+    {"w":"gesture","d":"a movement that means something"},
+    {"w":"chimpanzee","d":"a large African ape"},
+    {"w":"scent trail","d":"a smell path left by an animal"},
+    {"w":"antennae","d":"the feelers on an insect's head"}
+  ]
+}
