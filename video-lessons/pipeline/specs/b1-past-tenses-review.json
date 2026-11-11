@@ -1,0 +1,35 @@
+{
+  "slug": "b1-past-tenses-review",
+  "title": "Cherry Blossom Festival",
+  "level": "B1",
+  "grammar": "Past simple, past continuous, past perfect",
+  "source": "Nature Boom Time",
+  "emoji": "🌸",
+  "videoId": "k68VdWyMGJM",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":39,"sentence":"Last March, Pat and I _____ had enough.","answer":"had","explain":"Past perfect: had + had."},
+    {"id":"q2","type":"mcq","time":39,"question":"Which sentence is correct?","options":["Pat and I had had enough.","Pat and I have had enough.","Pat and I had have enough.","Pat and I was having enough."],"correct":0,"explain":"Past perfect: had + past participle."},
+    {"id":"q3","type":"fillgap","time":41,"sentence":"The snow _____ driven us to our limit.","answer":"had","explain":"Past perfect: had + driven."},
+    {"id":"q4","type":"mcq","time":41,"question":"Which sentence is correct?","options":["The snow had driven us to our limit.","The snow has driven us to our limit.","The snow was driving us to our limit.","The snow had driving us to our limit."],"correct":0,"explain":"Had + past participle (driven)."},
+    {"id":"q5","type":"fillgap","time":43,"sentence":"We _____ losing our minds.","answer":"were","explain":"Past continuous: were + verb-ing."},
+    {"id":"q6","type":"mcq","time":43,"question":"Which sentence is correct?","options":["We were losing our minds.","We was losing our minds.","We are losing our minds.","We had losing our minds."],"correct":0,"explain":"We + were + verb-ing."},
+    {"id":"q7","type":"fillgap","time":96,"sentence":"We _____ in the car and drove to Washington D.C.","answer":"hopped","explain":"Past simple: hopped."},
+    {"id":"q8","type":"mcq","time":96,"question":"Which sentence is correct?","options":["We hopped in the car.","We hop in the car.","We are hopping in the car.","We had hopped in the car."],"correct":0,"explain":"Past simple: hopped."},
+    {"id":"q9","type":"fillgap","time":97,"sentence":"After a quick 12-hour drive we _____ at our friend Mike's house.","answer":"arrived","explain":"Past simple: arrived."},
+    {"id":"q10","type":"mcq","time":97,"question":"Which sentence is correct?","options":["We arrived at Mike's house.","We arrive at Mike's house.","We are arriving at Mike's house.","We were arrived at Mike's house."],"correct":0,"explain":"Past simple: arrived."},
+    {"id":"q11","type":"fillgap","time":130,"sentence":"Back in 1909, Japan _____ the United States with 2,000 cherry trees.","answer":"gifted","explain":"Past simple: gifted."},
+    {"id":"q12","type":"mcq","time":130,"question":"Which sentence is correct?","options":["Japan gifted the US with 2,000 trees.","Japan gift the US with 2,000 trees.","Japan gifting the US with 2,000 trees.","Japan has gifted the US with 2,000 trees."],"correct":0,"explain":"Past simple: gifted."},
+    {"id":"q13","type":"fillgap","time":146,"sentence":"They _____ 3,000 more trees.","answer":"sent","explain":"Past simple: send → sent."},
+    {"id":"q14","type":"mcq","time":146,"question":"Which sentence is correct?","options":["They sent 3,000 more trees.","They send 3,000 more trees.","They are sent 3,000 more trees.","They sending 3,000 more trees."],"correct":0,"explain":"Past simple: sent."},
+    {"id":"q15","type":"order","time":39,"words":["Last","March,","Pat","and","I","had","had","enough"],"correct":"Last March, Pat and I had had enough.","explain":"Past perfect: had + had."}
+  ],
+  "vocab": [
+    {"w":"cherry blossom","d":"the pink flowers of a cherry tree"},
+    {"w":"festival","d":"a special event or celebration"},
+    {"w":"indicator tree","d":"a tree that blooms before the others"},
+    {"w":"bloom","d":"to produce flowers"},
+    {"w":"petal","d":"one of the colored parts of a flower"},
+    {"w":"pollination","d":"how plants make seeds"},
+    {"w":"Tidal Basin","d":"a body of water in Washington D.C."}
+  ]
+}
