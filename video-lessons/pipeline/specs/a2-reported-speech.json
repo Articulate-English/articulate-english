@@ -1,0 +1,35 @@
+{
+  "slug": "a2-reported-speech",
+  "title": "Teaching Baby Meerkats at Survival School",
+  "level": "A2",
+  "grammar": "Reported speech",
+  "source": "Animal Card Quest",
+  "emoji": "🐾",
+  "videoId": "9hADH1YQn08",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":16,"sentence":"The narrator says _____ meerkats learn everything they need to know.","answer":"that","explain":"Say + that + clause."},
+    {"id":"q2","type":"mcq","time":16,"question":"Which sentence is correct?","options":["The narrator says that meerkats learn everything.","The narrator says meerkats learns everything.","The narrator say that meerkats learn everything.","The narrator says that meerkat learn everything."],"correct":0,"explain":"Say + that + clause (meerkats learn)."},
+    {"id":"q3","type":"fillgap","time":30,"sentence":"The video tells us _____ meerkats live in groups called a mob.","answer":"that","explain":"Tell + object + that + clause."},
+    {"id":"q4","type":"mcq","time":30,"question":"Which sentence is correct?","options":["The video tells us that meerkats live in groups.","The video tells us meerkats lives in groups.","The video tell us that meerkats live in groups.","The video tells that meerkats live in group."],"correct":0,"explain":"Tell + us + that + clause."},
+    {"id":"q5","type":"fillgap","time":56,"sentence":"The adults teach the pups _____ to feed themselves.","answer":"how","explain":"Teach + object + how to + verb."},
+    {"id":"q6","type":"mcq","time":56,"question":"Which sentence is correct?","options":["The adults teach the pups how to feed themselves.","The adults teach the pups what to feed themselves.","The adults teach the pups why to feed themselves.","The adults teach the pups when to feed themselves."],"correct":0,"explain":"'How to feed' is correct."},
+    {"id":"q7","type":"fillgap","time":72,"sentence":"The video says the pups develop their skills _____ watching and imitating.","answer":"by","explain":"By + verb-ing."},
+    {"id":"q8","type":"mcq","time":72,"question":"Which sentence is correct?","options":["The pups develop skills by watching the adults.","The pups develop skills from watching the adults.","The pups develop skills with watching the adults.","The pups develop skills at watching the adults."],"correct":0,"explain":"'By + verb-ing' shows method."},
+    {"id":"q9","type":"fillgap","time":112,"sentence":"The narrator says the homework is _____ watch carefully.","answer":"to","explain":"Is + to + verb."},
+    {"id":"q10","type":"mcq","time":112,"question":"Which sentence is correct?","options":["The homework is to watch carefully.","The homework is watch carefully.","The homework is watching carefully.","The homework is watched carefully."],"correct":0,"explain":"Is + to + verb."},
+    {"id":"q11","type":"fillgap","time":117,"sentence":"The video tells us the entire meerkat mob _____ the teachers.","answer":"are","explain":"The mob (plural sense) + are."},
+    {"id":"q12","type":"mcq","time":117,"question":"Which sentence is correct?","options":["The entire meerkat mob are the teachers.","The entire meerkat mob is the teachers.","The entire meerkat mob am the teachers.","The entire meerkat mob be the teachers."],"correct":0,"explain":"Plural sense: mob are."},
+    {"id":"q13","type":"order","time":30,"words":["The","video","tells","us","that","meerkats","live","in","groups"],"correct":"The video tells us that meerkats live in groups.","explain":"Tell + object + that + clause."},
+    {"id":"q14","type":"mcq","time":16,"question":"Which reporting verb is correct?","options":["The narrator says that...","The narrator tells that...","The narrator talks that...","The narrator speaks that..."],"correct":0,"explain":"'Say that' is correct; 'tell' needs an object."},
+    {"id":"q15","type":"fillgap","time":100,"sentence":"The pups learn by watching what the adults _____.","answer":"are doing","explain":"Present continuous in reported clause."}
+  ],
+  "vocab": [
+    {"w":"meerkat","d":"a small animal that lives in groups in Africa"},
+    {"w":"pup","d":"a baby animal"},
+    {"w":"mob","d":"a group of meerkats"},
+    {"w":"helper","d":"an older meerkat that looks after the young"},
+    {"w":"sentinel","d":"the meerkat that watches for danger"},
+    {"w":"lookout","d":"a person or animal that watches for danger"},
+    {"w":"termite mound","d":"a large hill built by termites"}
+  ]
+}
