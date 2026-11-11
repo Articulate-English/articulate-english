@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.youtube.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self' blob: https://www.youtube.com; frame-src https://www.youtube.com; object-src 'none'; frame-ancestors 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christmas Tree Farm — Articulate Video Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b1220;--card:#16223c;--line:rgba(255,255,255,.09);--text:#f5f8ff;--dim:#9fb0d0;--yellow:#ffd23f;--cyan:#22d3ee;--green:#34d399;--red:#f87171;--violet:#a78bfa}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 50% -10%,#1b2a4d 0%,var(--bg) 55%);color:var(--text);font-family:'Nunito',system-ui,sans-serif;line-height:1.6;min-height:100vh;padding:20px}
+.app{max-width:960px;margin:0 auto}
+header{margin-bottom:16px}
+h1{font-family:'Baloo 2',system-ui,sans-serif;font-size:clamp(1.5rem,4vw,2.3rem);font-weight:800;letter-spacing:-.02em}
+.meta{color:var(--dim);font-size:.9rem;margin-top:4px}
+.meta .tag{display:inline-block;background:rgba(255,210,63,.15);color:var(--yellow);font-weight:700;border-radius:99px;padding:2px 10px;margin-right:6px;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.progress{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
+.progress .seg{height:8px;flex:1;min-width:12px;border-radius:99px;background:rgba(255,255,255,.08)}
+.progress .seg.ok{background:var(--green)}.progress .seg.bad{background:var(--red)}
+.stage{position:relative;border-radius:20px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.video-wrap{aspect-ratio:16/9;width:100%}
+.video-wrap iframe{width:100%;height:100%;border:0;display:block}
+.overlay{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(6,10,22,.80);backdrop-filter:blur(6px)}
+.overlay.show{display:flex}
+.q-card{width:100%;max-width:660px;max-height:100%;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.q-badge{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:rgba(34,211,238,.15);color:var(--cyan);padding:4px 10px;border-radius:99px;margin-bottom:10px}
+.q-text{font-family:'Baloo 2',system-ui,sans-serif;font-size:1.22rem;font-weight:700;margin-bottom:14px;line-height:1.35}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{text-align:left;font-family:inherit;font-size:.98rem;font-weight:700;color:var(--text);background:rgba(255,255,255,.05);border:2px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;transition:.15s}
+.opt:hover{background:rgba(255,255,255,.1);border-color:var(--cyan)}
+.opt.correct{border-color:var(--green);background:rgba(52,211,153,.15);color:var(--green)}
+.opt.wrong{border-color:var(--red);background:rgba(248,113,113,.15);color:var(--red)}
+.opt:disabled{cursor:default}
+.fillrow{display:flex;gap:10px;flex-wrap:wrap}
+.fillrow input{flex:1;min-width:160px;font-family:inherit;font-size:1.05rem;color:var(--yellow);background:rgba(255,255,255,.05);border:2px solid var(--yellow);border-radius:12px;padding:12px 14px;outline:none}
+.fillrow input:disabled{opacity:.6}
+.check-btn,.big-btn{font-family:'Baloo 2',system-ui,sans-serif;font-size:1rem;font-weight:800;color:#0b1220;background:var(--yellow);border:0;border-radius:12px;padding:12px 20px;cursor:pointer;transition:.15s}
+.check-btn:hover,.big-btn:hover{filter:brightness(1.08)}
+.order-answer{min-height:56px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:rgba(255,255,255,.04);border:2px dashed var(--line);border-radius:12px;padding:10px;margin-bottom:10px}
+.order-bank{display:flex;flex-wrap:wrap;gap:8px}
+.word{font-family:inherit;font-size:.95rem;font-weight:700;color:var(--text);background:rgba(167,139,250,.15);border:2px solid rgba(167,139,250,.5);border-radius:10px;padding:9px 13px;cursor:pointer;transition:.15s}
+.word:hover{background:rgba(167,139,250,.28)}
+.word.used{opacity:.35;cursor:not-allowed}
+.in-answer{background:rgba(52,211,153,.15);border-color:rgba(52,211,153,.6)}
+.fb{margin-top:12px;font-weight:700;border-radius:12px;padding:12px 14px;font-size:.95rem}
+.fb.ok{background:rgba(52,211,153,.15);color:var(--green)}
+.fb.bad{background:rgba(248,113,113,.15);color:var(--red)}
+.q-actions{margin-top:16px;display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.start-screen,.end-screen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(6,10,22,.92);text-align:center;padding:20px}
+.start-screen.hide,.end-screen.hide{display:none}
+.end-screen h2{font-family:'Baloo 2',system-ui,sans-serif;font-size:2rem}
+.stars{font-size:1.6rem;letter-spacing:.05em;line-height:1.4}
+.list{margin-top:22px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.list h2{font-family:'Baloo 2',system-ui,sans-serif;font-size:1.1rem;margin-bottom:10px}
+.list ol{margin-left:20px;color:var(--dim);font-size:.9rem}
+.list li{margin-bottom:6px}
+.list .st-ok{color:var(--green)}.list .st-bad{color:var(--red)}
+.vocab{margin-top:18px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.vocab h2{font-family:'Baloo 2',system-ui,sans-serif;font-size:1.1rem;margin-bottom:10px}
+.vocab ul{margin-left:20px;color:var(--dim);font-size:.9rem;columns:2}
+.vocab li{margin-bottom:6px}
+.vocab .w{color:var(--cyan);font-weight:700}
+.teacher{margin-top:18px;color:var(--dim);font-size:.85rem;text-align:center}
+@media(max-width:560px){.opts{grid-template-columns:1fr}.q-text{font-size:1.08rem}.vocab ul{columns:1}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>🎄 Christmas Tree Farm</h1>
+    <p class="meta"><span class="tag">B1</span>Nature Boom Time · <span id="qcount">15</span> questions · Grammar: Second conditional</p>
+    <div class="progress" id="progress"></div>
+  </header>
+  <div class="stage">
+    <div class="video-wrap"><div id="player"></div></div>
+    <div class="overlay" id="overlay">
+      <div class="q-card">
+        <span class="q-badge" id="qbadge"></span>
+        <div class="q-text" id="qtext"></div>
+        <div id="qbody"></div>
+        <div id="qfeedback"></div>
+        <div class="q-actions" id="qactions"></div>
+      </div>
+    </div>
+    <div class="start-screen" id="startScreen">
+      <div style="font-size:3rem">🎄</div>
+      <h2>Ready to watch and learn?</h2>
+      <p style="color:var(--dim);max-width:440px">Watch the video and answer the questions. The video pauses when a question appears — press Continue to keep watching.</p>
+      <button class="big-btn" id="startBtn">▶ Start lesson</button>
+    </div>
+    <div class="end-screen hide" id="endScreen">
+      <h2>🎉 Lesson complete!</h2>
+      <div class="stars" id="endStars"></div>
+      <p id="endText"></p>
+      <button class="big-btn" onclick="location.reload()">↻ Play again</button>
+    </div>
+  </div>
+  <section class="list">
+    <h2>Questions in this lesson</h2>
+    <ol id="qlist"></ol>
+  </section>
+  <section class="vocab"><h2>Key words to remember</h2><ul><li><span class="w">Christmas tree farm</span> — a farm that grows trees for Christmas</li><li><span class="w">fir</span> — a type of Christmas tree with soft needles</li><li><span class="w">spruce</span> — a type of Christmas tree with sharp needles</li><li><span class="w">pine</span> — a type of Christmas tree with needles in packs</li><li><span class="w">needle</span> — the thin leaf of a tree</li><li><span class="w">harvest</span> — the time when crops are collected</li><li><span class="w">seedling</span> — a young plant</li><li><span class="w">helicopter</span> — a flying machine with spinning blades on top</li></ul></section>
+  <p class="teacher">Grammar target: Second conditional · Level B1 · Questions generated from the real video dialogue.</p>
+</div>
+<script>
+var LESSON = { videoId: 'AActlpcf-9E', questions: [{"id": "q1", "type": "fillgap", "time": 163, "sentence": "If you _____ a million Christmas trees, what would you do with them?", "answer": "had", "explain": "Second conditional: if + past simple, would + base verb."}, {"id": "q2", "type": "mcq", "time": 163, "question": "Which sentence is correct?", "options": ["If you had a million trees, what would you do?", "If you have a million trees, what will you do?", "If you had a million trees, what will you do?", "If you would have a million trees, what would you do?"], "correct": 0, "explain": "If + had, would + base verb."}, {"id": "q3", "type": "fillgap", "time": 170, "sentence": "If the needles _____ in a pack, you're looking at a pine.", "answer": "are", "explain": "First conditional: if + present, present."}, {"id": "q4", "type": "mcq", "time": 170, "question": "Which sentence is correct?", "options": ["If the needles are in a pack, it's a pine.", "If the needles were in a pack, it's a pine.", "If the needles are in a pack, it would be a pine.", "If the needles would be in a pack, it's a pine."], "correct": 0, "explain": "If + present, present."}, {"id": "q5", "type": "fillgap", "time": 185, "sentence": "If I _____ a Christmas tree, I'd pick a grand fir.", "answer": "had", "explain": "Second conditional: if + past, would + base verb."}, {"id": "q6", "type": "mcq", "time": 185, "question": "Which sentence is correct?", "options": ["If I had a tree, I'd pick a grand fir.", "If I have a tree, I'll pick a grand fir.", "If I had a tree, I'll pick a grand fir.", "If I would have a tree, I'd pick a grand fir."], "correct": 0, "explain": "If + had, I'd (would) + base verb."}, {"id": "q7", "type": "fillgap", "time": 203, "sentence": "If you _____ a spruce, the needles would hurt to touch.", "answer": "had", "explain": "Second conditional."}, {"id": "q8", "type": "mcq", "time": 203, "question": "Which sentence is correct?", "options": ["If you had a spruce, the needles would hurt.", "If you have a spruce, the needles would hurt.", "If you had a spruce, the needles will hurt.", "If you would have a spruce, the needles hurt."], "correct": 0, "explain": "If + had, would + base verb."}, {"id": "q9", "type": "fillgap", "time": 175, "sentence": "If the needles were pretty soft, then you _____ a fir.", "answer": "had", "explain": "Second conditional (if + were, would have)."}, {"id": "q10", "type": "mcq", "time": 175, "question": "Which sentence is correct?", "options": ["If the needles were soft, you had a fir.", "If the needles are soft, you would have a fir.", "If the needles were soft, you would have a fir.", "If the needles were soft, you will have a fir."], "correct": 2, "explain": "If + were, would have."}, {"id": "q11", "type": "fillgap", "time": 183, "sentence": "If that needle _____, it's a spruce.", "answer": "rolls", "explain": "First conditional: if + present, present."}, {"id": "q12", "type": "mcq", "time": 183, "question": "Which sentence is correct?", "options": ["If that needle rolls, it's a spruce.", "If that needle rolled, it's a spruce.", "If that needle rolls, it would be a spruce.", "If that needle would roll, it's a spruce."], "correct": 0, "explain": "If + present, present."}, {"id": "q13", "type": "fillgap", "time": 195, "sentence": "If I _____ you, I would choose a grand fir.", "answer": "were", "explain": "If I were you (second conditional)."}, {"id": "q14", "type": "mcq", "time": 195, "question": "Which sentence is correct?", "options": ["If I were you, I would choose a grand fir.", "If I was you, I will choose a grand fir.", "If I am you, I would choose a grand fir.", "If I were you, I will choose a grand fir."], "correct": 0, "explain": "If I were you, I would + base verb."}, {"id": "q15", "type": "order", "time": 163, "words": ["If", "you", "had", "a", "million", "trees,", "what", "would", "you", "do?"], "correct": "If you had a million trees, what would you do?", "explain": "If + past, would + base verb."}] };
+(function(){
+  var QS = LESSON.questions;
+  var player = null, active = null, results = {}, orderAnswer = [], orderBank = [];
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function norm(s){ return String(s).toLowerCase().replace(/[^a-z0-9 ]/g,'').replace(/\s+/g,' ').trim(); }
+  function fmt(t){ t=Math.round(t); var m=Math.floor(t/60), s=t%60; return m+':'+(s<10?'0':'')+s; }
+  function buildList(){
+    var ol=document.getElementById('qlist'); ol.innerHTML='';
+    QS.forEach(function(q,i){
+      var li=document.createElement('li'); li.id='li-'+q.id;
+      var label=q.type==='mcq'?q.question:(q.type==='fillgap'?q.sentence.replace(/_____/g,'______'):q.correct);
+      q._label=label; li.textContent=(i+1)+'. '+label+'  ·  '+fmt(q.time); ol.appendChild(li);
+    });
+    document.getElementById('qcount').textContent=QS.length;
+  }
+  function buildProgress(){
+    var p=document.getElementById('progress'); p.innerHTML='';
+    QS.forEach(function(q){ var s=document.createElement('div'); s.className='seg'; s.id='seg-'+q.id; p.appendChild(s); });
+  }
+  function updateList(i,ok){
+    var q=QS[i], li=document.getElementById('li-'+q.id);
+    if(li){ li.innerHTML=(ok?'<span class="st-ok">✔ </span>':'<span class="st-bad">✘ </span>')+esc(q._label); }
+    var seg=document.getElementById('seg-'+q.id); if(seg){ seg.classList.add(ok?'ok':'bad'); }
+  }
+  function loadAPI(){ var t=document.createElement('script'); t.src='https://www.youtube.com/iframe_api'; document.head.appendChild(t); }
+  window.onYouTubeIframeAPIReady=function(){
+    player=new YT.Player('player',{videoId:LESSON.videoId,width:'100%',height:'100%',playerVars:{rel:0,modestbranding:1,playsinline:1},events:{onReady:function(){},onStateChange:function(e){ if(e.data===YT.PlayerState.ENDED){ showEnd(); } }}});
+  };
+  document.getElementById('startBtn').addEventListener('click',function(){
+    document.getElementById('startScreen').classList.add('hide');
+    if(player&&player.playVideo){ player.playVideo(); }
+  });
+  setInterval(function(){
+    if(!player||!player.getCurrentTime||player.getPlayerState()!==YT.PlayerState.PLAYING) return;
+    if(active!==null) return;
+    var t=player.getCurrentTime();
+    for(var i=0;i<QS.length;i++){ var q=QS[i]; if(results[q.id]===undefined&&t>=q.time&&t<q.time+30){ ask(i); return; } }
+  },250);
+  function ask(i){
+    var q=QS[i]; active=i; orderAnswer=[]; orderBank=[];
+    player.pauseVideo();
+    document.getElementById('qbadge').textContent=q.type.toUpperCase()+' · '+fmt(q.time);
+    var text=q.type==='mcq'?q.question:(q.type==='fillgap'?q.sentence:'Put the words in the correct order.');
+    document.getElementById('qtext').innerHTML=esc(text).replace(/_____/g,'<span style="color:var(--yellow)">______</span>');
+    document.getElementById('qfeedback').innerHTML=''; document.getElementById('qactions').innerHTML='';
+    renderBody(q); document.getElementById('overlay').classList.add('show');
+  }
+  function renderBody(q){
+    var body=document.getElementById('qbody'); body.innerHTML='';
+    if(q.type==='mcq'){
+      var d=document.createElement('div'); d.className='opts';
+      q.options.forEach(function(o,i){ var b=document.createElement('button'); b.className='opt'; b.textContent=o; b.onclick=function(){ checkMcq(i,b); }; d.appendChild(b); });
+      body.appendChild(d);
+    } else if(q.type==='fillgap'){
+      var r=document.createElement('div'); r.className='fillrow';
+      var inp=document.createElement('input'); inp.id='fillinput'; inp.type='text'; inp.placeholder='Type your answer…'; inp.autocomplete='off';
+      var btn=document.createElement('button'); btn.className='check-btn'; btn.textContent='Check';
+      btn.onclick=function(){ checkFill(inp); };
+      inp.addEventListener('keydown',function(e){ if(e.key==='Enter'){ checkFill(inp); } });
+      r.appendChild(inp); r.appendChild(btn); body.appendChild(r); setTimeout(function(){ inp.focus(); },50);
+    } else {
+      var ans=document.createElement('div'); ans.className='order-answer'; ans.id='orderAnswer';
+      var bank=document.createElement('div'); bank.className='order-bank'; bank.id='orderBank';
+      body.appendChild(ans); body.appendChild(bank);
+      var words=q.words.slice();
+      for(var i=words.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var tmp=words[i];words[i]=words[j];words[j]=tmp; }
+      words.forEach(function(w){ orderBank.push({text:w,used:false}); });
+      renderOrder();
+      var actions=document.getElementById('qactions');
+      var clear=document.createElement('button'); clear.className='big-btn'; clear.textContent='Clear';
+      clear.style.background='rgba(255,255,255,.12)'; clear.style.color='#fff';
+      clear.onclick=function(){ orderAnswer=[]; orderBank.forEach(function(o){ o.used=false; }); renderOrder(); };
+      var check=document.createElement('button'); check.className='check-btn'; check.textContent='Check'; check.onclick=checkOrder;
+      actions.appendChild(clear); actions.appendChild(check);
+    }
+  }
+  function renderOrder(){
+    var ans=document.getElementById('orderAnswer'), bank=document.getElementById('orderBank'); if(!ans||!bank) return;
+    ans.innerHTML=''; bank.innerHTML='';
+    if(!orderAnswer.length){ ans.innerHTML='<span style="color:var(--dim);font-size:.9rem">Click the words below to build the sentence.</span>'; }
+    orderAnswer.forEach(function(o){ var b=document.createElement('button'); b.className='word in-answer'; b.textContent=o.text;
+      b.onclick=function(){ var idx=orderAnswer.indexOf(o); if(idx>-1){ orderAnswer.splice(idx,1); } o.used=false; renderOrder(); }; ans.appendChild(b); });
+    orderBank.forEach(function(o){ var b=document.createElement('button'); b.className='word'+(o.used?' used':''); b.textContent=o.text;
+      b.onclick=function(){ if(o.used) return; o.used=true; orderAnswer.push(o); renderOrder(); }; bank.appendChild(b); });
+  }
+  function checkMcq(i,btn){
+    var q=QS[active], ok=(i===q.correct);
+    document.querySelectorAll('#qbody .opt').forEach(function(o,j){ o.disabled=true; if(j===q.correct){ o.classList.add('correct'); } });
+    if(!ok){ btn.classList.add('wrong'); }
+    finish(ok, ok?'✅ Correct! '+esc(q.explain||''):'❌ Not quite. The answer is “'+esc(q.options[q.correct])+'”. '+esc(q.explain||''));
+  }
+  function checkFill(inp){
+    var q=QS[active], v=inp.value.trim(); if(!v){ inp.focus(); return; }
+    var ok=norm(v)===norm(q.answer); inp.disabled=true;
+    finish(ok, ok?'✅ Correct!':'❌ The answer is “'+esc(q.answer)+'”.');
+  }
+  function checkOrder(){
+    var q=QS[active];
+    var guess=orderAnswer.map(function(o){ return o.text; }).join(' ').replace(/\s+$/,'');
+    var target=String(q.correct).replace(/\s+$/,'');
+    var ok=guess===target;
+    finish(ok, ok?'✅ Correct!':'❌ The sentence is: “'+esc(q.correct)+'”.');
+  }
+  function finish(ok,msg){
+    var q=QS[active]; results[q.id]=ok;
+    document.getElementById('qfeedback').innerHTML='<div class="fb '+(ok?'ok':'bad')+'">'+msg+'</div>';
+    var actions=document.getElementById('qactions'); actions.innerHTML='';
+    var btn=document.createElement('button'); btn.id='continueBtn'; btn.className='big-btn'; btn.textContent='Continue ▶';
+    btn.onclick=function(){ document.getElementById('overlay').classList.remove('show'); active=null; if(player&&player.playVideo){ player.playVideo(); } };
+    actions.appendChild(btn); updateList(active,ok);
+  }
+  function showEnd(){
+    if(active!==null){ document.getElementById('overlay').classList.remove('show'); active=null; }
+    var total=QS.length, done=0, correct=0;
+    QS.forEach(function(q){ if(results[q.id]!==undefined){ done++; if(results[q.id]){ correct++; } } });
+    var stars=''; QS.forEach(function(q){ stars+=(results[q.id]===true)?'⭐':'☆'; });
+    document.getElementById('endStars').textContent=stars;
+    document.getElementById('endText').textContent='You got '+correct+' out of '+done+' questions right.'+(done<total?' ('+(total-done)+' not reached)':'');
+    document.getElementById('endScreen').classList.remove('hide');
+  }
+  buildList(); buildProgress(); loadAPI();
+})();
+</script>
+</body>
+</html>

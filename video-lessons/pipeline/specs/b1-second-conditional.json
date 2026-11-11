@@ -1,0 +1,36 @@
+{
+  "slug": "b1-second-conditional",
+  "title": "Christmas Tree Farm",
+  "level": "B1",
+  "grammar": "Second conditional",
+  "source": "Nature Boom Time",
+  "emoji": "🎄",
+  "videoId": "AActlpcf-9E",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":163,"sentence":"If you _____ a million Christmas trees, what would you do with them?","answer":"had","explain":"Second conditional: if + past simple, would + base verb."},
+    {"id":"q2","type":"mcq","time":163,"question":"Which sentence is correct?","options":["If you had a million trees, what would you do?","If you have a million trees, what will you do?","If you had a million trees, what will you do?","If you would have a million trees, what would you do?"],"correct":0,"explain":"If + had, would + base verb."},
+    {"id":"q3","type":"fillgap","time":170,"sentence":"If the needles _____ in a pack, you're looking at a pine.","answer":"are","explain":"First conditional: if + present, present."},
+    {"id":"q4","type":"mcq","time":170,"question":"Which sentence is correct?","options":["If the needles are in a pack, it's a pine.","If the needles were in a pack, it's a pine.","If the needles are in a pack, it would be a pine.","If the needles would be in a pack, it's a pine."],"correct":0,"explain":"If + present, present."},
+    {"id":"q5","type":"fillgap","time":185,"sentence":"If I _____ a Christmas tree, I'd pick a grand fir.","answer":"had","explain":"Second conditional: if + past, would + base verb."},
+    {"id":"q6","type":"mcq","time":185,"question":"Which sentence is correct?","options":["If I had a tree, I'd pick a grand fir.","If I have a tree, I'll pick a grand fir.","If I had a tree, I'll pick a grand fir.","If I would have a tree, I'd pick a grand fir."],"correct":0,"explain":"If + had, I'd (would) + base verb."},
+    {"id":"q7","type":"fillgap","time":203,"sentence":"If you _____ a spruce, the needles would hurt to touch.","answer":"had","explain":"Second conditional."},
+    {"id":"q8","type":"mcq","time":203,"question":"Which sentence is correct?","options":["If you had a spruce, the needles would hurt.","If you have a spruce, the needles would hurt.","If you had a spruce, the needles will hurt.","If you would have a spruce, the needles hurt."],"correct":0,"explain":"If + had, would + base verb."},
+    {"id":"q9","type":"fillgap","time":175,"sentence":"If the needles were pretty soft, then you _____ a fir.","answer":"had","explain":"Second conditional (if + were, would have)."},
+    {"id":"q10","type":"mcq","time":175,"question":"Which sentence is correct?","options":["If the needles were soft, you had a fir.","If the needles are soft, you would have a fir.","If the needles were soft, you would have a fir.","If the needles were soft, you will have a fir."],"correct":2,"explain":"If + were, would have."},
+    {"id":"q11","type":"fillgap","time":183,"sentence":"If that needle _____, it's a spruce.","answer":"rolls","explain":"First conditional: if + present, present."},
+    {"id":"q12","type":"mcq","time":183,"question":"Which sentence is correct?","options":["If that needle rolls, it's a spruce.","If that needle rolled, it's a spruce.","If that needle rolls, it would be a spruce.","If that needle would roll, it's a spruce."],"correct":0,"explain":"If + present, present."},
+    {"id":"q13","type":"fillgap","time":195,"sentence":"If I _____ you, I would choose a grand fir.","answer":"were","explain":"If I were you (second conditional)."},
+    {"id":"q14","type":"mcq","time":195,"question":"Which sentence is correct?","options":["If I were you, I would choose a grand fir.","If I was you, I will choose a grand fir.","If I am you, I would choose a grand fir.","If I were you, I will choose a grand fir."],"correct":0,"explain":"If I were you, I would + base verb."},
+    {"id":"q15","type":"order","time":163,"words":["If","you","had","a","million","trees,","what","would","you","do?"],"correct":"If you had a million trees, what would you do?","explain":"If + past, would + base verb."}
+  ],
+  "vocab": [
+    {"w":"Christmas tree farm","d":"a farm that grows trees for Christmas"},
+    {"w":"fir","d":"a type of Christmas tree with soft needles"},
+    {"w":"spruce","d":"a type of Christmas tree with sharp needles"},
+    {"w":"pine","d":"a type of Christmas tree with needles in packs"},
+    {"w":"needle","d":"the thin leaf of a tree"},
+    {"w":"harvest","d":"the time when crops are collected"},
+    {"w":"seedling","d":"a young plant"},
+    {"w":"helicopter","d":"a flying machine with spinning blades on top"}
+  ]
+}
