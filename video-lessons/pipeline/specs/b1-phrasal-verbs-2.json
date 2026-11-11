@@ -1,0 +1,35 @@
+{
+  "slug": "b1-phrasal-verbs-2",
+  "title": "Twisting Trees",
+  "level": "B1",
+  "grammar": "Phrasal verbs 2 (on, off, over, away)",
+  "source": "Nature Boom Time",
+  "emoji": "🌳",
+  "videoId": "9ta1Oq6nKVk",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":24,"sentence":"We went to a theme park to _____ their awesome circus trees.","answer":"check out","explain":"Check out = look at/examine."},
+    {"id":"q2","type":"mcq","time":24,"question":"Which sentence is correct?","options":["We went to check out the trees.","We went to checking out the trees.","We went to check the trees.","We went to check out it."],"correct":0,"explain":"Check out + object."},
+    {"id":"q3","type":"fillgap","time":56,"sentence":"We did some research and we _____ it out.","answer":"figured","explain":"Figure out = understand/solve."},
+    {"id":"q4","type":"mcq","time":56,"question":"Which sentence is correct?","options":["We figured it out.","We figured out it.","We figuring it out.","We figure it out."],"correct":0,"explain":"Figure out + object (figured it out)."},
+    {"id":"q5","type":"fillgap","time":72,"sentence":"Earl thought it would be a good idea to _____ into tree sculpture.","answer":"get","explain":"Get into = start doing/enjoying."},
+    {"id":"q6","type":"mcq","time":72,"question":"Which sentence is correct?","options":["He decided to get into tree sculpture.","He decided to get in tree sculpture.","He decided to getting into tree sculpture.","He decided to gets into tree sculpture."],"correct":0,"explain":"Get into + noun."},
+    {"id":"q7","type":"fillgap","time":88,"sentence":"He would _____ in, real close, and whisper.","answer":"lean","explain":"Lean in = move closer."},
+    {"id":"q8","type":"mcq","time":88,"question":"Which sentence is correct?","options":["He would lean in and whisper.","He would leaning in and whisper.","He would leans in and whisper.","He would leaned in and whisper."],"correct":0,"explain":"Lean in (base verb)."},
+    {"id":"q9","type":"fillgap","time":278,"sentence":"Spiral Staircase Number Two _____ Spiral Staircase Number One out of the water.","answer":"blows","explain":"Blow out of the water = beat completely."},
+    {"id":"q10","type":"mcq","time":278,"question":"Which sentence is correct?","options":["Number Two blows Number One out of the water.","Number Two blow Number One out of the water.","Number Two blowing Number One out of the water.","Number Two is blow Number One out of the water."],"correct":0,"explain":"Blows out of the water."},
+    {"id":"q11","type":"fillgap","time":323,"sentence":"Pat will _____ us home with our favorite tree.","answer":"bring","explain":"Bring back/home = return."},
+    {"id":"q12","type":"mcq","time":323,"question":"Which sentence is correct?","options":["Pat will bring us home.","Pat will brings us home.","Pat will bringing us home.","Pat will brought us home."],"correct":0,"explain":"Will + base verb (bring)."},
+    {"id":"q13","type":"fillgap","time":308,"sentence":"Earl _____ three European ashes and mangled them all together.","answer":"took","explain":"Take (past: took)."},
+    {"id":"q14","type":"mcq","time":308,"question":"Which sentence is correct?","options":["Earl took three ashes and mangled them together.","Earl takes three ashes and mangled them together.","Earl taking three ashes and mangled them together.","Earl taked three ashes and mangled them together."],"correct":0,"explain":"Past simple: took."},
+    {"id":"q15","type":"order","time":24,"words":["We","went","to","check","out","their","awesome","circus","trees"],"correct":"We went to check out their awesome circus trees.","explain":"Check out + object."}
+  ],
+  "vocab": [
+    {"w":"circus trees","d":"trees grown into unusual shapes"},
+    {"w":"inosculation","d":"when two trees grow together and fuse"},
+    {"w":"grafting","d":"joining two plants so they grow as one"},
+    {"w":"sycamore","d":"a large tree with smooth bark"},
+    {"w":"prune","d":"to cut a plant to help it grow"},
+    {"w":"bonsai","d":"the art of growing tiny trees"},
+    {"w":"espalier","d":"training a tree to grow flat against a wall"}
+  ]
+}
