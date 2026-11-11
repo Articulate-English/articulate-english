@@ -1,0 +1,35 @@
+{
+  "slug": "b1-third-conditional",
+  "title": "The Green Moray Eel",
+  "level": "B1",
+  "grammar": "Third conditional",
+  "source": "Scuba Sam's World",
+  "emoji": "🐍",
+  "videoId": "jaibHLbcgb8",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":1,"sentence":"If we _____ not gone diving, we would not have seen the eel.","answer":"had","explain":"Third conditional: if + had + not + past participle, would + not + have + past participle."},
+    {"id":"q2","type":"mcq","time":1,"question":"Which sentence is correct?","options":["If we had not gone diving, we would not have seen it.","If we did not go diving, we would not have seen it.","If we had not gone diving, we will not have seen it.","If we would not go diving, we had not seen it."],"correct":0,"explain":"If + had not gone, would not have seen."},
+    {"id":"q3","type":"fillgap","time":81,"sentence":"If Holly _____ fed the eel, we would not have seen it up close.","answer":"hadn't","explain":"If + hadn't + past participle."},
+    {"id":"q4","type":"mcq","time":81,"question":"Which sentence is correct?","options":["If Holly hadn't fed it, we wouldn't have seen it.","If Holly didn't feed it, we wouldn't have seen it.","If Holly hadn't fed it, we won't have seen it.","If Holly wouldn't feed it, we hadn't seen it."],"correct":0,"explain":"If + hadn't fed, wouldn't have seen."},
+    {"id":"q5","type":"fillgap","time":50,"sentence":"If the eel _____ been hiding, we would not have found it.","answer":"hadn't","explain":"If + hadn't been."},
+    {"id":"q6","type":"mcq","time":50,"question":"Which sentence is correct?","options":["If the eel hadn't been hiding, we would not have found it.","If the eel wasn't hiding, we would not have found it.","If the eel hadn't been hiding, we will not have found it.","If the eel wouldn't be hiding, we had not found it."],"correct":0,"explain":"If + hadn't been hiding, would not have found."},
+    {"id":"q7","type":"fillgap","time":100,"sentence":"If Oscar _____ been larger, we would not have told them apart.","answer":"hadn't","explain":"If + hadn't been."},
+    {"id":"q8","type":"mcq","time":100,"question":"Which sentence is correct?","options":["If Oscar hadn't been larger, we would not have told them apart.","If Oscar wasn't larger, we would not have told them apart.","If Oscar hadn't been larger, we will not have told them apart.","If Oscar wouldn't be larger, we had not told them apart."],"correct":0,"explain":"If + hadn't been larger, would not have told."},
+    {"id":"q9","type":"fillgap","time":195,"sentence":"If Sam _____ visited the aquarium, she would not have seen the moray eel.","answer":"hadn't","explain":"If + hadn't + past participle."},
+    {"id":"q10","type":"mcq","time":195,"question":"Which sentence is correct?","options":["If Sam hadn't visited the aquarium, she would not have seen it.","If Sam didn't visit the aquarium, she would not have seen it.","If Sam hadn't visited the aquarium, she will not have seen it.","If Sam wouldn't visit the aquarium, she had not seen it."],"correct":0,"explain":"If + hadn't visited, would not have seen."},
+    {"id":"q11","type":"fillgap","time":200,"sentence":"If the eels _____ opened their mouths, we would not have known how they breathe.","answer":"hadn't","explain":"If + hadn't + past participle."},
+    {"id":"q12","type":"mcq","time":200,"question":"Which sentence is correct?","options":["If they hadn't opened their mouths, we would not have known.","If they didn't open their mouths, we would not have known.","If they hadn't opened their mouths, we will not have known.","If they wouldn't open their mouths, we had not known."],"correct":0,"explain":"If + hadn't opened, would not have known."},
+    {"id":"q13","type":"fillgap","time":15,"sentence":"If we _____ played hide and seek, we would not have found the eel.","answer":"hadn't","explain":"If + hadn't + past participle."},
+    {"id":"q14","type":"mcq","time":15,"question":"Which sentence is correct?","options":["If we hadn't played hide and seek, we would not have found it.","If we didn't play hide and seek, we would not have found it.","If we hadn't played hide and seek, we will not have found it.","If we wouldn't play hide and seek, we had not found it."],"correct":0,"explain":"If + hadn't played, would not have found."},
+    {"id":"q15","type":"order","time":1,"words":["If","we","had","not","gone","diving,","we","would","not","have","seen","the","eel."],"correct":"If we had not gone diving, we would not have seen the eel.","explain":"If + had not + past participle, would not have + past participle."}
+  ],
+  "vocab": [
+    {"w":"green moray eel","d":"a large eel that lives in warm seas"},
+    {"w":"aquarium","d":"a place where fish and sea animals are kept"},
+    {"w":"dive","d":"to swim under water with special equipment"},
+    {"w":"nocturnal","d":"awake at night, asleep during the day"},
+    {"w":"squid","d":"a sea animal with ten arms"},
+    {"w":"gills","d":"the body part fish use to breathe in water"},
+    {"w":"hiding spot","d":"a place where an animal hides"}
+  ]
+}
