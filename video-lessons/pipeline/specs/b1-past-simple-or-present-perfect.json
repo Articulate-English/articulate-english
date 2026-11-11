@@ -1,0 +1,34 @@
+{
+  "slug": "b1-past-simple-or-present-perfect",
+  "title": "Get Up Close to Sharks: A Photographer's Story",
+  "level": "B1",
+  "grammar": "Past simple or present perfect?",
+  "source": "Book Club",
+  "emoji": "🦈",
+  "videoId": "6vutQ1_EvB4",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":1,"sentence":"When Brian was a kid, he _____ fascinated by sharks.","answer":"was","explain":"Past simple for a finished time (when he was a kid)."},
+    {"id":"q2","type":"mcq","time":1,"question":"Which sentence is correct?","options":["When he was a kid, he was fascinated.","When he was a kid, he has been fascinated.","When he was a kid, he is fascinated.","When he was a kid, he had been fascinated."],"correct":0,"explain":"Past simple (finished time)."},
+    {"id":"q3","type":"fillgap","time":15,"sentence":"Since then he _____ on assignment for National Geographic dozens of times.","answer":"has been","explain":"Present perfect with 'since then'."},
+    {"id":"q4","type":"mcq","time":15,"question":"Which sentence is correct?","options":["Since then he has been on assignment.","Since then he was on assignment.","Since then he is on assignment.","Since then he had been on assignment."],"correct":0,"explain":"Present perfect (period up to now)."},
+    {"id":"q5","type":"fillgap","time":22,"sentence":"One of his favorite encounters _____ photographing tiger sharks.","answer":"was","explain":"Past simple for a finished event."},
+    {"id":"q6","type":"mcq","time":22,"question":"Which sentence is correct?","options":["One encounter was photographing tiger sharks.","One encounter has been photographing tiger sharks.","One encounter is photographing tiger sharks.","One encounter had been photographing tiger sharks."],"correct":0,"explain":"Past simple (a finished encounter)."},
+    {"id":"q7","type":"fillgap","time":27,"sentence":"He _____ so many years trying to find a place where he could see tiger sharks.","answer":"had spent","explain":"Past perfect for an earlier past."},
+    {"id":"q8","type":"mcq","time":27,"question":"Which sentence is correct?","options":["He had spent many years trying.","He has spent many years trying.","He spends many years trying.","He was spending many years trying."],"correct":0,"explain":"Past perfect (earlier past)."},
+    {"id":"q9","type":"fillgap","time":36,"sentence":"A friend _____ him about a place in the Bahamas.","answer":"told","explain":"Past simple for a finished event."},
+    {"id":"q10","type":"mcq","time":36,"question":"Which sentence is correct?","options":["A friend told him about a place.","A friend has told him about a place.","A friend tells him about a place.","A friend is telling him about a place."],"correct":0,"explain":"Past simple (a finished action)."},
+    {"id":"q11","type":"fillgap","time":116,"sentence":"He _____ there dozens of times and had extraordinary experiences.","answer":"has dived","explain":"Present perfect for life experience."},
+    {"id":"q12","type":"mcq","time":116,"question":"Which sentence is correct?","options":["He has dived there dozens of times.","He have dived there dozens of times.","He has dive there dozens of times.","He has diving there dozens of times."],"correct":0,"explain":"Present perfect: has + past participle."},
+    {"id":"q13","type":"fillgap","time":20,"sentence":"Sharks _____ chase after you the minute you put a toe in the ocean.","answer":"don't","explain":"Present simple for a general truth."},
+    {"id":"q14","type":"mcq","time":20,"question":"Which sentence is correct?","options":["Sharks don't chase after you.","Sharks doesn't chase after you.","Sharks aren't chase after you.","Sharks haven't chase after you."],"correct":0,"explain":"Present simple negative: don't."},
+    {"id":"q15","type":"order","time":15,"words":["Since","then","he","has","been","on","assignment","dozens","of","times"],"correct":"Since then he has been on assignment dozens of times.","explain":"Present perfect with 'since'."}
+  ],
+  "vocab": [
+    {"w":"shark","d":"a large fish with sharp teeth"},
+    {"w":"photographer","d":"a person who takes photos"},
+    {"w":"assignment","d":"a job or task"},
+    {"w":"tiger shark","d":"a large shark with dark stripes"},
+    {"w":"Bahamas","d":"a group of islands in the Caribbean"},
+    {"w":"underwater","d":"below the surface of the water"}
+  ]
+}
