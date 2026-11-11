@@ -1,0 +1,36 @@
+{
+  "slug": "a2-present-perfect",
+  "title": "Baby Penguins: From Fluff to Champion Diver",
+  "level": "A2",
+  "grammar": "Present perfect: form and use",
+  "source": "Nat Geo Kids",
+  "emoji": "🐧",
+  "videoId": "ziUQS2I_Lco",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":16,"sentence":"The chick has never _____ the ocean.","answer":"seen","explain":"Use 'has + past participle' (seen)."},
+    {"id":"q2","type":"mcq","time":16,"question":"Which sentence is in the present perfect?","options":["The chick has never seen the ocean.","The chick never saw the ocean.","The chick sees the ocean every day.","The chick is seeing the ocean now."],"correct":0,"explain":"'Has seen' is has + past participle."},
+    {"id":"q3","type":"mcq","time":16,"question":"Which auxiliary do we use with 'he / she / it' in the present perfect?","options":["has","have","is","are"],"correct":0,"explain":"He/she/it → has."},
+    {"id":"q4","type":"mcq","time":16,"question":"Which auxiliary do we use with 'I / you / we / they' in the present perfect?","options":["have","has","is","am"],"correct":0,"explain":"I/you/we/they → have."},
+    {"id":"q5","type":"fillgap","time":156,"sentence":"The chick has _____ out of the shell.","answer":"broken","explain":"Past participle of 'break' is 'broken'."},
+    {"id":"q6","type":"mcq","time":156,"question":"Which sentence is correct?","options":["The chick has broken out of the shell.","The chick have broken out of the shell.","The chick has break out of the shell.","The chick is broken out of the shell."],"correct":0,"explain":"'Has broken' is the correct form."},
+    {"id":"q7","type":"fillgap","time":185,"sentence":"Mom has _____ back from the sea.","answer":"come","explain":"Past participle of 'come' is 'come'."},
+    {"id":"q8","type":"mcq","time":185,"question":"What is the past participle of 'come'?","options":["came","come","coming","comes"],"correct":1,"explain":"Come → came → come."},
+    {"id":"q9","type":"fillgap","time":249,"sentence":"The chick has _____ to the size of an adult.","answer":"grown","explain":"Past participle of 'grow' is 'grown'."},
+    {"id":"q10","type":"mcq","time":249,"question":"What is the past participle of 'grow'?","options":["grew","grown","growing","grows"],"correct":1,"explain":"Grow → grew → grown."},
+    {"id":"q11","type":"fillgap","time":257,"sentence":"The chick has _____ its baby fluff for waterproof feathers.","answer":"traded","explain":"Past participle of 'trade' is 'traded'."},
+    {"id":"q12","type":"mcq","time":257,"question":"What is the past participle of 'trade'?","options":["traded","trade","trading","trades"],"correct":0,"explain":"Regular verb: trade → traded."},
+    {"id":"q13","type":"fillgap","time":341,"sentence":"The penguin has _____ its breath for up to 20 minutes.","answer":"held","explain":"Past participle of 'hold' is 'held'."},
+    {"id":"q14","type":"mcq","time":341,"question":"What is the past participle of 'hold'?","options":["held","hold","holding","holds"],"correct":0,"explain":"Hold → held → held."},
+    {"id":"q15","type":"mcq","time":341,"question":"Which is the correct present perfect question?","options":["Has the penguin held its breath for 20 minutes?","Have the penguin held its breath for 20 minutes?","Do the penguin held its breath for 20 minutes?","Is the penguin held its breath for 20 minutes?"],"correct":0,"explain":"'Has + subject + past participle?'"},
+    {"id":"q16","type":"order","time":360,"words":["The","ocean","has","been","waiting","for","it"],"correct":"The ocean has been waiting for it.","explain":"Has + been + verb-ing (present perfect continuous)."},
+    {"id":"q17","type":"fillgap","time":360,"sentence":"The ocean has _____ waiting for it from day one.","answer":"been","explain":"Has been + verb-ing."}
+  ],
+  "vocab": [
+    {"w":"chick","d":"a baby bird"},
+    {"w":"hatch","d":"to come out of an egg"},
+    {"w":"molt","d":"to lose old feathers and grow new ones"},
+    {"w":"colony","d":"a group of animals that live together"},
+    {"w":"dive","d":"to go deep under the water"},
+    {"w":"wetsuit","d":"clothes that keep you warm in water"}
+  ]
+}

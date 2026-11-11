@@ -1,0 +1,34 @@
+{
+  "slug": "a2-question-forms",
+  "title": "How Does a Beaver Build a Dam?",
+  "level": "A2",
+  "grammar": "Asking questions: question forms",
+  "source": "Nat Geo Kids",
+  "emoji": "🦫",
+  "videoId": "PZ5ZJYuD1vw",
+  "questions": [
+    {"id":"q1","type":"mcq","time":16,"question":"Which is the correct question form?","options":["How does one small animal turn a pile of sticks into something this big?","How one small animal turns a pile of sticks into something this big?","How does one small animal turns a pile of sticks into something this big?","How do one small animal turn a pile of sticks into something this big?"],"correct":0,"explain":"Question word + do/does + subject + base verb."},
+    {"id":"q2","type":"fillgap","time":29,"sentence":"_____ you ever seen a tree that looks like someone took a big chunk out of it?","answer":"Have","explain":"'Have you ever + past participle?'"},
+    {"id":"q3","type":"mcq","time":29,"question":"Which sentence is correct?","options":["Have you ever seen a tree like that?","Have you ever saw a tree like that?","Has you ever seen a tree like that?","Do you ever seen a tree like that?"],"correct":0,"explain":"Have + subject + past participle (seen)."},
+    {"id":"q4","type":"fillgap","time":51,"sentence":"How does a beaver go from a few chewed-up trees to an entire _____?","answer":"dam","explain":"The video is about building a dam."},
+    {"id":"q5","type":"mcq","time":151,"question":"Which is the correct question?","options":["How does a beaver build a dam?","How a beaver builds a dam?","How does a beaver builds a dam?","How do a beaver build a dam?"],"correct":0,"explain":"How + does + subject + base verb?"},
+    {"id":"q6","type":"fillgap","time":151,"sentence":"How does one small animal turn a pile of sticks and mud into something this _____?","answer":"big","explain":"From the video's opening question."},
+    {"id":"q7","type":"fillgap","time":231,"sentence":"What do you _____?","answer":"notice","explain":"'What do you notice?' is a common question."},
+    {"id":"q8","type":"mcq","time":231,"question":"What is the correct word order?","options":["What do you notice?","What you do notice?","What notice do you?","Do what you notice?"],"correct":0,"explain":"Question word + do + subject + verb."},
+    {"id":"q9","type":"fillgap","time":252,"sentence":"How does a beaver see clearly underwater for that _____?","answer":"long","explain":"'For that long' means for so much time."},
+    {"id":"q10","type":"mcq","time":252,"question":"Which question word asks about the way something happens?","options":["How","What","Who","When"],"correct":0,"explain":"How asks about manner or method."},
+    {"id":"q11","type":"fillgap","time":400,"sentence":"Why do beavers _____ to all this trouble?","answer":"go","explain":"'Go to trouble' = make an effort."},
+    {"id":"q12","type":"mcq","time":400,"question":"Which question word asks about a reason?","options":["Why","What","How","Where"],"correct":0,"explain":"Why asks for a reason."},
+    {"id":"q13","type":"mcq","time":530,"question":"Which is the correct question?","options":["Can you see the dam from space?","You can see the dam from space?","Can you see the dam from space.","Do you can see the dam from space?"],"correct":0,"explain":"Modal questions start with the modal (Can)."},
+    {"id":"q14","type":"order","time":252,"words":["How","does","a","beaver","see","clearly","underwater"],"correct":"How does a beaver see clearly underwater?","explain":"How + does + subject + verb."},
+    {"id":"q15","type":"mcq","time":530,"question":"Which is the correct question about the dam?","options":["Is the dam so big that you can see it from space?","The dam is so big that you can see it from space?","Does the dam is so big that you can see it from space?","Is the dam so big that you can see it from space."],"correct":0,"explain":"Yes/no questions start with the verb 'be'."}
+  ],
+  "vocab": [
+    {"w":"dam","d":"a wall built across a river to stop the water"},
+    {"w":"lodge","d":"a beaver's home"},
+    {"w":"branches","d":"the arms of a tree"},
+    {"w":"rudder","d":"something that steers a boat"},
+    {"w":"goggles","d":"glasses that protect your eyes in water"},
+    {"w":"kits","d":"baby beavers"}
+  ]
+}

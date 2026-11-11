@@ -1,0 +1,36 @@
+{
+  "slug": "a2-will-vs-going-to",
+  "title": "Epic Animal Migrations",
+  "level": "A2",
+  "grammar": "Will vs be going to",
+  "source": "Nat Geo Kids",
+  "emoji": "🦋",
+  "videoId": "adABRbEs4G4",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":73,"sentence":"When autumn comes, it _____ soar farther than some birds ever will.","answer":"'ll","explain":"'It'll' = it will."},
+    {"id":"q2","type":"mcq","time":73,"question":"Which is the short form of 'it will'?","options":["it'll","it's","its","it'd"],"correct":0,"explain":"Will → 'll."},
+    {"id":"q3","type":"fillgap","time":78,"sentence":"But it _____ do that on its own.","answer":"won't","explain":"Won't = will not."},
+    {"id":"q4","type":"mcq","time":78,"question":"What is the negative short form of 'will'?","options":["won't","willn't","wouldn't","don't"],"correct":0,"explain":"Will not = won't."},
+    {"id":"q5","type":"fillgap","time":203,"sentence":"They _____ do this together.","answer":"will","explain":"Will + base verb for the future."},
+    {"id":"q6","type":"mcq","time":209,"question":"Which sentence is correct?","options":["They will do this together.","They will does this together.","They will doing this together.","They will to do this together."],"correct":0,"explain":"Will + base verb (do)."},
+    {"id":"q7","type":"fillgap","time":203,"sentence":"And these whales are about to _____ up to 5,000 miles north.","answer":"swim","explain":"'Be about to + verb'."},
+    {"id":"q8","type":"mcq","time":209,"question":"Which phrase means something is going to happen very soon?","options":["be about to","be going to be","used to","will be"],"correct":0,"explain":"'Be about to' = very soon."},
+    {"id":"q9","type":"fillgap","time":129,"sentence":"But that's _____ to change.","answer":"about","explain":"'Be about to' = going to happen soon."},
+    {"id":"q10","type":"mcq","time":73,"question":"Which sentence uses 'will' to talk about the future?","options":["It'll soar farther than some birds.","It soars farther than some birds.","It is soaring farther than some birds.","It soared farther than some birds."],"correct":0,"explain":"It'll = it will."},
+    {"id":"q11","type":"order","time":73,"words":["When","autumn","comes,","it'll","soar","farther","than","some","birds"],"correct":"When autumn comes, it'll soar farther than some birds.","explain":"Time clause + will clause."},
+    {"id":"q12","type":"fillgap","time":78,"sentence":"Monarch butterflies migrate from Canada to Mexico. But they won't do it on their _____.","answer":"own","explain":"On their own = by themselves."},
+    {"id":"q13","type":"mcq","time":203,"question":"Which is the correct question?","options":["Will they do this together?","Do they will do this together?","Will they does this together?","Are they will do this together?"],"correct":0,"explain":"Will + subject + base verb?"},
+    {"id":"q14","type":"fillgap","time":223,"sentence":"The whales are about to swim up to 5,000 miles north without stopping to _____ along the way.","answer":"eat","explain":"Without stopping to eat."},
+    {"id":"q15","type":"mcq","time":229,"question":"Which is the correct sentence?","options":["The whales are about to swim north.","The whales are about swim north.","The whales about to swim north.","The whales are about to swimming north."],"correct":0,"explain":"Be about to + base verb."}
+  ],
+  "vocab": [
+    {"w":"migrate","d":"to travel a long distance every year"},
+    {"w":"journey","d":"a long trip"},
+    {"w":"monarch butterfly","d":"an orange and black butterfly that migrates"},
+    {"w":"wildebeest","d":"a large African antelope"},
+    {"w":"humpback whale","d":"a large whale with long fins"},
+    {"w":"pod","d":"a group of whales"},
+    {"w":"blubber","d":"the thick fat under a whale's skin"},
+    {"w":"kaleidoscope","d":"a group of butterflies flying together"}
+  ]
+}

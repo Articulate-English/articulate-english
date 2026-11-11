@@ -1,0 +1,34 @@
+{
+  "slug": "a2-conjunctions",
+  "title": "Sea Otters: Tiny Guardians of the Kelp Forest",
+  "level": "A2",
+  "grammar": "However, although, because, so",
+  "source": "Nat Geo Kids",
+  "emoji": "🦦",
+  "videoId": "DLRdkTUJ-kY",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":44,"sentence":"_____ they're such social animals, they often hang out together.","answer":"Because","explain":"'Because' introduces a reason."},
+    {"id":"q2","type":"mcq","time":44,"question":"Which word introduces a reason?","options":["Because","But","So","However"],"correct":0,"explain":"Because = for a reason."},
+    {"id":"q3","type":"fillgap","time":151,"sentence":"Mama sea otters have to keep a very close eye on their pups, _____ they don't float away.","answer":"so","explain":"'So' introduces a result."},
+    {"id":"q4","type":"mcq","time":151,"question":"Which word introduces a result?","options":["so","because","although","but"],"correct":0,"explain":"So = therefore / as a result."},
+    {"id":"q5","type":"mcq","time":132,"question":"Which word introduces a contrast?","options":["But","Because","So","And"],"correct":0,"explain":"But shows a difference or contrast."},
+    {"id":"q6","type":"fillgap","time":313,"sentence":"_____ urchins love kelp so much, they can wipe out entire underwater forests.","answer":"Because","explain":"Because introduces the reason."},
+    {"id":"q7","type":"fillgap","time":313,"sentence":"Because urchins love kelp so much, they can wipe out entire underwater forests if their populations get too _____.","answer":"big","explain":"'Too big' = excessively large."},
+    {"id":"q8","type":"mcq","time":336,"question":"In 'But, otters aren't the only ones at the buffet', which word shows contrast?","options":["But","So","Because","And"],"correct":0,"explain":"But contrasts with the previous idea."},
+    {"id":"q9","type":"fillgap","time":434,"sentence":"Why do sea otters float in seaweed? _____ the kelp keeps them safe.","answer":"Because","explain":"Answer a 'why' question with 'because'."},
+    {"id":"q10","type":"mcq","time":434,"question":"Which is the correct sentence?","options":["Why do sea otters float in seaweed? Because the kelp keeps them safe.","Why do sea otters float in seaweed? So the kelp keeps them safe.","Why do sea otters float in seaweed? But the kelp keeps them safe.","Why do sea otters float in seaweed? Although the kelp keeps them safe."],"correct":0,"explain":"Use 'because' to answer 'why'."},
+    {"id":"q11","type":"fillgap","time":56,"sentence":"They float in kelp forests _____ they don't drift too far out to sea.","answer":"so","explain":"So = in order that / therefore."},
+    {"id":"q12","type":"mcq","time":44,"question":"Which sentence is correct?","options":["Because they are social animals, they hang out together.","Because they are social animals, so they hang out together.","They hang out together because they are social animals, but they don't.","Because they are social animals, they hang out together, so they are."],"correct":0,"explain":"Don't use 'because' and 'so' together."},
+    {"id":"q13","type":"mcq","time":151,"question":"Which sentence is correct?","options":["Mama otters watch their pups so they don't float away.","Mama otters watch their pups because they don't float away.","Mama otters watch their pups but they don't float away.","Mama otters watch their pups although they don't float away."],"correct":0,"explain":"'So' shows the result of watching."},
+    {"id":"q14","type":"order","time":44,"words":["Because","they're","such","social","animals,","they","often","hang","out","together"],"correct":"Because they're such social animals, they often hang out together.","explain":"Because + reason clause, + main clause."},
+    {"id":"q15","type":"fillgap","time":434,"sentence":"So, why do sea otters float in seaweed? _____ the kelp keeps them safe and they help do the same in return.","answer":"Because","explain":"Because gives the reason."}
+  ],
+  "vocab": [
+    {"w":"kelp","d":"large brown seaweed"},
+    {"w":"raft","d":"a group of sea otters floating together"},
+    {"w":"pup","d":"a baby animal"},
+    {"w":"sea urchin","d":"a round, spiny sea creature"},
+    {"w":"ecosystem","d":"all the living things in one place"},
+    {"w":"keystone species","d":"an animal that holds an ecosystem together"}
+  ]
+}

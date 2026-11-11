@@ -1,0 +1,39 @@
+{
+  "slug": "elephants-nat-geo-kids",
+  "title": "Elephants: Giants of Africa and Asia",
+  "level": "A2",
+  "grammar": "Present simple: habits and facts",
+  "source": "National Geographic Kids",
+  "emoji": "🐘",
+  "videoId": "lLAyDRLHKXY",
+  "questions": [
+    {"id":"q1","type":"mcq","time":22,"question":"What animal is this video about?","options":["Elephants","Lions","Penguins","Sharks"],"correct":0,"explain":"The video is all about elephants!"},
+    {"id":"q2","type":"mcq","time":31,"question":"How heavy is the heaviest elephant?","options":["24,000 lb","13,000 lb","200 lb","6 lb"],"correct":0,"explain":"The heaviest elephant tips the scales at 24,000 lb."},
+    {"id":"q3","type":"mcq","time":34,"question":"What is the largest land animal ever?","options":["The elephant","The lion","The giraffe","The whale"],"correct":0,"explain":"One species of elephant is officially the largest land animal ever."},
+    {"id":"q4","type":"fillgap","time":46,"sentence":"Elephants _____ all day, basically nonstop.","answer":"eat","explain":"Elephants eat all day, basically nonstop."},
+    {"id":"q5","type":"mcq","time":58,"question":"What does 'an elephant never forgets' mean?","options":["Elephants remember things well","Elephants are sad","Elephants are slow","Elephants sleep a lot"],"correct":0,"explain":"Elephants have very good memories."},
+    {"id":"q6","type":"fillgap","time":79,"sentence":"Their trunks _____ basically super tools.","answer":"are","explain":"Their trunks are basically super tools."},
+    {"id":"q7","type":"fillgap","time":213,"sentence":"Baby elephants _____ called calves.","answer":"are","explain":"Baby elephants are called calves."},
+    {"id":"q8","type":"fillgap","time":230,"sentence":"They _____ jump at all.","answer":"can't","explain":"Elephants can't jump at all."},
+    {"id":"q9","type":"fillgap","time":238,"sentence":"The forest elephant _____ small and sneaky.","answer":"is","explain":"The forest elephant is small and sneaky."},
+    {"id":"q10","type":"fillgap","time":241,"sentence":"A baby elephant _____ up 20 minutes after birth.","answer":"stands","explain":"A baby elephant can stand up 20 minutes after it is born."},
+    {"id":"q11","type":"fillgap","time":256,"sentence":"African elephants _____ huge ears.","answer":"have","explain":"African elephants have huge ears."},
+    {"id":"q12","type":"mcq","time":122,"question":"When elephants meet, what do they do?","options":["Wrap their trunks together like a handshake","Hit each other with their trunks","Hide their trunks","Wash their trunks"],"correct":0,"explain":"Elephants wrap their trunks together like a handshake."},
+    {"id":"q13","type":"mcq","time":176,"question":"What shape are African elephants' ears?","options":["Shaped like Africa","Round","Small","Square"],"correct":0,"explain":"African elephants have huge ears shaped like Africa."},
+    {"id":"q14","type":"mcq","time":187,"question":"Why do African elephants have big ears?","options":["To stay cool","To hear better","To look scary","To fly"],"correct":0,"explain":"The big ears help African elephants stay cool."},
+    {"id":"q15","type":"mcq","time":241,"question":"When can a baby elephant stand up?","options":["20 minutes after birth","One week after birth","One year after birth","Only when it's five"],"correct":0,"explain":"A baby elephant can stand up 20 minutes after it is born."},
+    {"id":"q16","type":"fillgap","time":278,"sentence":"Elephants _____ in groups led by females.","answer":"live","explain":"Elephants live in groups led by females."},
+    {"id":"q17","type":"mcq","time":278,"question":"Who leads an elephant group?","options":["The grandma (a female)","The baby","The dad","The lion"],"correct":0,"explain":"Elephants live in groups led by females — the grandma runs the show."},
+    {"id":"q18","type":"order","time":288,"words":["Elephants","live","in","groups","led","by","females"],"correct":"Elephants live in groups led by females.","explain":"Elephants live in groups led by females."}
+  ],
+  "vocab": [
+    {"w":"trunk","d":"the elephant's long nose"},
+    {"w":"tusks","d":"the big teeth that stick out"},
+    {"w":"savanna","d":"a big, flat grassland"},
+    {"w":"calf","d":"a baby elephant (calves = more than one)"},
+    {"w":"herd / group","d":"a family of elephants"},
+    {"w":"nonstop","d":"without stopping"},
+    {"w":"pinch","d":"to hold something gently between fingers"},
+    {"w":"giant","d":"very, very big"}
+  ]
+}
