@@ -1,0 +1,34 @@
+{
+  "slug": "a2-auxiliary-verbs",
+  "title": "Snake Trivia",
+  "level": "A2",
+  "grammar": "Auxiliary verbs: do, be, have",
+  "source": "Snake City",
+  "emoji": "🐍",
+  "videoId": "bKoluMsYEZQ",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":4,"sentence":"If you find a snake, _____ not approach it.","answer":"do","explain":"Do + not (imperative negative)."},
+    {"id":"q2","type":"mcq","time":4,"question":"Which sentence is correct?","options":["Do not approach it.","Does not approach it.","Is not approach it.","Has not approach it."],"correct":0,"explain":"'Do not' for the negative imperative."},
+    {"id":"q3","type":"fillgap","time":34,"sentence":"Snakes _____ anywhere between 200 and 400 vertebrae.","answer":"have","explain":"Have = possess."},
+    {"id":"q4","type":"mcq","time":34,"question":"Which sentence is correct?","options":["Snakes have 200 to 400 vertebrae.","Snakes has 200 to 400 vertebrae.","Snakes do 200 to 400 vertebrae.","Snakes are 200 to 400 vertebrae."],"correct":0,"explain":"Snakes (plural) + have."},
+    {"id":"q5","type":"fillgap","time":38,"sentence":"A human being only _____ approximately 33 vertebrae.","answer":"has","explain":"He/she/it + has."},
+    {"id":"q6","type":"mcq","time":38,"question":"Which sentence is correct?","options":["A human being only has 33.","A human being only have 33.","A human being only does 33.","A human being only is 33."],"correct":0,"explain":"Singular subject + has."},
+    {"id":"q7","type":"fillgap","time":42,"sentence":"Snakes' eyes don't actually _____ eyelids.","answer":"have","explain":"Don't + base verb (have)."},
+    {"id":"q8","type":"mcq","time":42,"question":"Which sentence is correct?","options":["Snakes don't have eyelids.","Snakes doesn't have eyelids.","Snakes don't has eyelids.","Snakes not have eyelids."],"correct":0,"explain":"Don't + base verb (have)."},
+    {"id":"q9","type":"fillgap","time":44,"sentence":"Snakes actually sleep _____ their eyes open.","answer":"with","explain":"With + noun (accompaniment)."},
+    {"id":"q10","type":"mcq","time":44,"question":"Which sentence is correct?","options":["They sleep with their eyes open.","They sleep by their eyes open.","They sleep in their eyes open.","They sleep on their eyes open."],"correct":0,"explain":"'With their eyes open'."},
+    {"id":"q11","type":"fillgap","time":50,"sentence":"Snakes _____ eggs, but not all snakes.","answer":"lay","explain":"Lay eggs (present simple)."},
+    {"id":"q12","type":"mcq","time":50,"question":"Which sentence is correct?","options":["Snakes lay eggs.","Snakes lays eggs.","Snakes lie eggs.","Snakes are lay eggs."],"correct":0,"explain":"Snakes (plural) + lay."},
+    {"id":"q13","type":"fillgap","time":58,"sentence":"The boa constrictor _____ birth to live young.","answer":"gives","explain":"Give birth (third person: gives)."},
+    {"id":"q14","type":"mcq","time":58,"question":"Which sentence is correct?","options":["It gives birth to live young.","It give birth to live young.","It is give birth to live young.","It has give birth to live young."],"correct":0,"explain":"It + gives."},
+    {"id":"q15","type":"order","time":25,"words":["They","are","extremely","flexible"],"correct":"They are extremely flexible.","explain":"Be + adverb + adjective."}
+  ],
+  "vocab": [
+    {"w":"snake","d":"a long reptile with no legs"},
+    {"w":"vertebrae","d":"the bones of the spine"},
+    {"w":"eyelids","d":"the skin that covers the eyes"},
+    {"w":"basking","d":"sitting in the sun to get warm"},
+    {"w":"constrictor","d":"a snake that squeezes its prey"},
+    {"w":"snake catcher","d":"a person who safely removes snakes"}
+  ]
+}
