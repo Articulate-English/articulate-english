@@ -8,6 +8,7 @@ dist/
 server/certs/
 .env
 .secrets/
+.wrangler/
 
 # junk / backups
 nul
