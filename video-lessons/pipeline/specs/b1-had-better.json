@@ -1,0 +1,36 @@
+{
+  "slug": "b1-had-better",
+  "title": "Petrified Forest National Park",
+  "level": "B1",
+  "grammar": "Had better / it's time",
+  "source": "Nature Boom Time",
+  "emoji": "🪨",
+  "videoId": "rt7p6s6IKSk",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":346,"sentence":"You'd _____ not steal the rocks from the park.","answer":"better","explain":"Had better + base verb (advice/warning)."},
+    {"id":"q2","type":"mcq","time":346,"question":"Which sentence is correct?","options":["You'd better not steal the rocks.","You'd better to not steal the rocks.","You'd better not stealing the rocks.","You had better not to steal the rocks."],"correct":0,"explain":"Had better + not + base verb."},
+    {"id":"q3","type":"fillgap","time":344,"sentence":"It's time to _____ a little restraint.","answer":"exercise","explain":"It's time + to + base verb."},
+    {"id":"q4","type":"mcq","time":344,"question":"Which sentence is correct?","options":["It's time to exercise restraint.","It's time exercising restraint.","It's time for exercise restraint.","It's time exercise restraint."],"correct":0,"explain":"It's time + to + verb."},
+    {"id":"q5","type":"fillgap","time":42,"sentence":"If you want to find petrified wood, you _____ better come to eastern Arizona.","answer":"had","explain":"Had better + base verb."},
+    {"id":"q6","type":"mcq","time":42,"question":"Which sentence is correct?","options":["You had better come to Arizona.","You had better to come to Arizona.","You had better coming to Arizona.","You have better come to Arizona."],"correct":0,"explain":"Had better + base verb (come)."},
+    {"id":"q7","type":"fillgap","time":337,"sentence":"It's time _____ the park to take better care of the rocks.","answer":"for","explain":"It's time for + object + to + verb."},
+    {"id":"q8","type":"mcq","time":337,"question":"Which sentence is correct?","options":["It's time for the park to take care.","It's time the park to take care.","It's time for the park taking care.","It's time to the park take care."],"correct":0,"explain":"It's time for + object + to + verb."},
+    {"id":"q9","type":"fillgap","time":39,"sentence":"Visitors had better _____ the rocks alone.","answer":"leave","explain":"Had better + base verb (leave)."},
+    {"id":"q10","type":"mcq","time":39,"question":"Which sentence is correct?","options":["Visitors had better leave the rocks alone.","Visitors had better leaving the rocks alone.","Visitors had better to leave the rocks alone.","Visitors have better leave the rocks alone."],"correct":0,"explain":"Had better + base verb."},
+    {"id":"q11","type":"fillgap","time":334,"sentence":"It's time _____ a stand against stealing rocks.","answer":"to take","explain":"It's time + to + verb."},
+    {"id":"q12","type":"mcq","time":334,"question":"Which sentence is correct?","options":["It's time to take a stand.","It's time taking a stand.","It's time for take a stand.","It's time take a stand."],"correct":0,"explain":"It's time + to + verb."},
+    {"id":"q13","type":"fillgap","time":349,"sentence":"You'd better _____ petrified wood where you find it.","answer":"leave","explain":"Had better + base verb (leave)."},
+    {"id":"q14","type":"mcq","time":349,"question":"Which sentence is correct?","options":["You'd better leave it where you find it.","You'd better to leave it where you find it.","You'd better leaving it where you find it.","You'd better left it where you find it."],"correct":0,"explain":"Had better + base verb."},
+    {"id":"q15","type":"order","time":346,"words":["You'd","better","not","steal","the","rocks"],"correct":"You'd better not steal the rocks.","explain":"Had better + not + base verb."}
+  ],
+  "vocab": [
+    {"w":"petrified wood","d":"wood turned into stone over millions of years"},
+    {"w":"fossil","d":"the remains of a living thing from long ago"},
+    {"w":"Pangea","d":"the single continent that existed millions of years ago"},
+    {"w":"silica","d":"a mineral found in sand and quartz"},
+    {"w":"quartz","d":"a hard, clear mineral"},
+    {"w":"extinct","d":"no longer existing"},
+    {"w":"souvenir","d":"something you keep to remember a place"},
+    {"w":"restraint","d":"self-control"}
+  ]
+}
