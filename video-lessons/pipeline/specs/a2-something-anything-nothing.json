@@ -1,0 +1,35 @@
+{
+  "slug": "a2-something-anything-nothing",
+  "title": "Spiders vs. Beetles vs. Ants: Battle of the Bugs",
+  "level": "A2",
+  "grammar": "Something, anything, nothing",
+  "source": "Whoa Factor",
+  "emoji": "🐞",
+  "videoId": "9q3uiSeT80M",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":27,"sentence":"Spiders and insects belong to one big family. There is _____ amazing about them.","answer":"something","explain":"'Something' in positive sentences."},
+    {"id":"q2","type":"mcq","time":27,"question":"Which sentence is correct?","options":["There is something amazing about them.","There is anything amazing about them.","There is nothing amazing about them.","There is some amazing about them."],"correct":0,"explain":"Use 'something' in positive statements."},
+    {"id":"q3","type":"fillgap","time":84,"sentence":"Most spiders are chill. There is _____ to worry about.","answer":"nothing","explain":"'Nothing' = not anything."},
+    {"id":"q4","type":"mcq","time":84,"question":"Which sentence is correct?","options":["There is nothing to worry about.","There is anything to worry about.","There is something to worry about.","There is nothing worry about."],"correct":0,"explain":"Nothing + to + verb."},
+    {"id":"q5","type":"fillgap","time":103,"sentence":"I don't know _____ about wasps. Please tell me they are impressive.","answer":"anything","explain":"'Anything' in negative sentences."},
+    {"id":"q6","type":"mcq","time":103,"question":"Which sentence is correct?","options":["I don't know anything about wasps.","I don't know something about wasps.","I don't know nothing about wasps.","I know anything about wasps."],"correct":0,"explain":"Not + anything (avoid double negative)."},
+    {"id":"q7","type":"fillgap","time":46,"sentence":"_____ beetles are helpful; they clean up waste and eat pests.","answer":"Some","explain":"'Some' in positive sentences."},
+    {"id":"q8","type":"mcq","time":46,"question":"Which sentence is correct?","options":["Some beetles are helpful.","Any beetles are helpful.","Nothing beetles are helpful.","No beetles are helpful."],"correct":0,"explain":"'Some' for an unspecified part."},
+    {"id":"q9","type":"fillgap","time":112,"sentence":"Bees and wasps are MVP pollinators. Without them, there would be _____ to eat.","answer":"nothing","explain":"'Nothing' = no food."},
+    {"id":"q10","type":"mcq","time":112,"question":"Which sentence is correct?","options":["Without them, there would be nothing to eat.","Without them, there would be anything to eat.","Without them, there would be something to eat.","Without them, there would nothing to eat."],"correct":0,"explain":"Nothing + to + verb."},
+    {"id":"q11","type":"fillgap","time":128,"sentence":"There isn't _____ I don't like about bugs.","answer":"anything","explain":"Not + anything."},
+    {"id":"q12","type":"mcq","time":128,"question":"Which sentence is correct?","options":["There isn't anything I don't like about bugs.","There isn't something I don't like about bugs.","There isn't nothing I don't like about bugs.","There is anything I don't like about bugs."],"correct":0,"explain":"Not + anything (no double negative)."},
+    {"id":"q13","type":"order","time":84,"words":["There","is","nothing","to","worry","about"],"correct":"There is nothing to worry about.","explain":"Nothing + to + verb."},
+    {"id":"q14","type":"fillgap","time":2,"sentence":"If you were itty bitty, would you rather change bodies as you grow up? Or is there _____ else you would rather do?","answer":"anything","explain":"'Anything' in questions."},
+    {"id":"q15","type":"mcq","time":2,"question":"Which sentence is correct?","options":["Is there anything else you would rather do?","Is there something else you would rather do?","Is there nothing else you would rather do?","There is anything else you would rather do?"],"correct":0,"explain":"Use 'anything' in most questions."}
+  ],
+  "vocab": [
+    {"w":"bug","d":"a small insect"},
+    {"w":"insect","d":"a small animal with six legs"},
+    {"w":"arachnid","d":"a spider-like animal with eight legs"},
+    {"w":"beetle","d":"a hard-shelled insect"},
+    {"w":"caterpillar","d":"a small creature that becomes a butterfly"},
+    {"w":"pollinator","d":"an animal that helps plants make fruit"},
+    {"w":"colony","d":"a large group of insects living together"}
+  ]
+}
