@@ -1,0 +1,35 @@
+{
+  "slug": "a2-too-enough",
+  "title": "Grizzly vs. Panda vs. Polar Bear",
+  "level": "A2",
+  "grammar": "Too, too much, too many, enough",
+  "source": "Whoa Factor",
+  "emoji": "🐻",
+  "videoId": "6Eyz9qUAYRg",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":69,"sentence":"Polar bear males can weigh as much as ten men. They are _____ heavy for a human to lift.","answer":"too","explain":"Too + adjective."},
+    {"id":"q2","type":"mcq","time":69,"question":"Which sentence is correct?","options":["They are too heavy for a human to lift.","They are enough heavy for a human to lift.","They are too much heavy for a human to lift.","They are many heavy for a human to lift."],"correct":0,"explain":"Too + adjective (heavy)."},
+    {"id":"q3","type":"fillgap","time":99,"sentence":"Pandas eat up to 50 pounds of bamboo a day. That's _____ bamboo for a person.","answer":"too much","explain":"Too much + uncountable noun."},
+    {"id":"q4","type":"mcq","time":99,"question":"Which sentence is correct?","options":["That's too much bamboo for a person.","That's too many bamboo for a person.","That's too much bamboos for a person.","That's enough bamboo for a person."],"correct":0,"explain":"Too much + uncountable noun (bamboo)."},
+    {"id":"q5","type":"fillgap","time":127,"sentence":"A sun bear's tongue can be up to 10 inches long — that's _____ long to reach into a beehive.","answer":"long enough","explain":"Adjective + enough."},
+    {"id":"q6","type":"mcq","time":127,"question":"Which sentence is correct?","options":["Its tongue is long enough to reach into a beehive.","Its tongue is too long to reach into a beehive.","Its tongue is enough long to reach into a beehive.","Its tongue is long too to reach into a beehive."],"correct":0,"explain":"Adjective + enough (long enough)."},
+    {"id":"q7","type":"fillgap","time":106,"sentence":"Pandas spend 16 hours a day eating. They don't have _____ time to sleep.","answer":"enough","explain":"Enough + noun."},
+    {"id":"q8","type":"mcq","time":106,"question":"Which sentence is correct?","options":["They don't have enough time to sleep.","They don't have too time to sleep.","They don't have enough time sleeping.","They have enough not time to sleep."],"correct":0,"explain":"Enough + noun (time)."},
+    {"id":"q9","type":"fillgap","time":70,"sentence":"The polar bear is the largest land carnivore. It is _____ big to be a pet.","answer":"too","explain":"Too + adjective (big)."},
+    {"id":"q10","type":"mcq","time":70,"question":"Which sentence is correct?","options":["It is too big to be a pet.","It is enough big to be a pet.","It is too much big to be a pet.","It is big enough to be a pet."],"correct":0,"explain":"Too big + to + verb."},
+    {"id":"q11","type":"fillgap","time":123,"sentence":"The sun bear is the smallest bear. It is small _____ to climb trees easily.","answer":"enough","explain":"Adjective + enough."},
+    {"id":"q12","type":"mcq","time":123,"question":"Which sentence is correct?","options":["It is small enough to climb trees easily.","It is too small to climb trees easily.","It is enough small to climb trees easily.","It is small too to climb trees easily."],"correct":0,"explain":"Small enough + to + verb."},
+    {"id":"q13","type":"fillgap","time":26,"sentence":"Most bears are faster than they look. They are _____ fast to catch easily.","answer":"too","explain":"Too + adjective (fast)."},
+    {"id":"q14","type":"mcq","time":26,"question":"Which sentence is correct?","options":["They are too fast to catch easily.","They are fast enough to catch easily.","They are too much fast to catch easily.","They are enough fast to catch easily."],"correct":0,"explain":"Too fast + to + verb."},
+    {"id":"q15","type":"order","time":99,"words":["Pandas","eat","too","much","bamboo","for","a","person"],"correct":"Pandas eat too much bamboo for a person.","explain":"Too much + uncountable noun."}
+  ],
+  "vocab": [
+    {"w":"bear","d":"a large animal with thick fur"},
+    {"w":"grizzly","d":"a type of brown bear"},
+    {"w":"polar bear","d":"a white bear that lives in the Arctic"},
+    {"w":"panda","d":"a black and white bear that eats bamboo"},
+    {"w":"bamboo","d":"a tall plant that pandas eat"},
+    {"w":"carnivore","d":"an animal that eats meat"},
+    {"w":"sun bear","d":"the smallest bear, with a long tongue"}
+  ]
+}
