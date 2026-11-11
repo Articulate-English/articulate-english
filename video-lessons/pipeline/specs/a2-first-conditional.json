@@ -1,0 +1,34 @@
+{
+  "slug": "a2-first-conditional",
+  "title": "Octopus Showdown",
+  "level": "A2",
+  "grammar": "First conditional",
+  "source": "Whoa Factor",
+  "emoji": "🐙",
+  "videoId": "YBGPMztHR4Y",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":92,"sentence":"If we're trying to figure out who has the most whoa factor, I'm gonna _____ with a big one.","answer":"start","explain":"Gonna = going to; first conditional context."},
+    {"id":"q2","type":"mcq","time":92,"question":"Which sentence is a first conditional?","options":["If an octopus meets a predator, it will copy another animal.","If an octopus met a predator, it would copy another animal.","If an octopus meets a predator, it copies another animal.","If an octopus will meet a predator, it copies another animal."],"correct":0,"explain":"First conditional: if + present simple, will + base verb."},
+    {"id":"q3","type":"fillgap","time":121,"sentence":"If you touch an octopus, it _____ taste you.","answer":"will","explain":"If + present, will + base verb."},
+    {"id":"q4","type":"mcq","time":121,"question":"Which is the correct first conditional form?","options":["If it is attacked, it will change shape.","If it will be attacked, it changes shape.","If it is attacked, it changes shape.","If it was attacked, it will change shape."],"correct":0,"explain":"If + present simple, will + base verb."},
+    {"id":"q5","type":"fillgap","time":178,"sentence":"If a mimic octopus is attacked, it _____ copy the animal that is trying to eat it.","answer":"will","explain":"If + present, will + base verb."},
+    {"id":"q6","type":"mcq","time":178,"question":"Which sentence is correct?","options":["If a mimic octopus is attacked, it will copy another animal.","If a mimic octopus is attacked, it would copy another animal.","If a mimic octopus will be attacked, it copies another animal.","If a mimic octopus was attacked, it will copy another animal."],"correct":0,"explain":"First conditional = real/possible situation."},
+    {"id":"q7","type":"fillgap","time":113,"sentence":"If you get too close to a Giant Pacific Octopus, it _____ vanish in a blink.","answer":"will","explain":"Will + base verb for a likely result."},
+    {"id":"q8","type":"mcq","time":113,"question":"Which sentence is correct?","options":["If you get too close, it will vanish.","If you got too close, it will vanish.","If you get too close, it would vanish.","If you will get too close, it vanishes."],"correct":0,"explain":"If + present simple (get), will + base verb."},
+    {"id":"q9","type":"fillgap","time":208,"sentence":"The veined octopus carries shells around like a portable _____.","answer":"fortress","explain":"A portable fortress."},
+    {"id":"q10","type":"fillgap","time":224,"sentence":"It walks on two arms like it's on _____.","answer":"stilts","explain":"On stilts."},
+    {"id":"q11","type":"mcq","time":224,"question":"Which sentence is correct?","options":["It walks on two arms like it's on stilts.","It walk on two arms like it's on stilts.","It walking on two arms like it's on stilts.","It is walk on two arms like it's on stilts."],"correct":0,"explain":"It walks (third person)."},
+    {"id":"q12","type":"fillgap","time":48,"sentence":"Each octopus arm basically has its own mini _____.","answer":"brain","explain":"A mini brain."},
+    {"id":"q13","type":"mcq","time":48,"question":"Which sentence is correct?","options":["Each arm has its own mini brain.","Each arm have its own mini brain.","Each arm is having its own mini brain.","Each arm having its own mini brain."],"correct":0,"explain":"Each arm (singular) + has."},
+    {"id":"q14","type":"order","time":92,"words":["If","an","octopus","meets","a","predator,","it","will","copy","another","animal"],"correct":"If an octopus meets a predator, it will copy another animal.","explain":"If + present simple, will + base verb."},
+    {"id":"q15","type":"mcq","time":253,"question":"Which sentence is correct?","options":["Which octo-pal brings the most whoa factor?","Which octo-pal bring the most whoa factor?","Which octo-pal bringing the most whoa factor?","Which octo-pal is bring the most whoa factor?"],"correct":0,"explain":"Which + singular subject + verb (brings)?"}
+  ],
+  "vocab": [
+    {"w":"octopus","d":"a sea animal with eight arms"},
+    {"w":"predator","d":"an animal that hunts other animals"},
+    {"w":"camouflage","d":"colors that help an animal hide"},
+    {"w":"mimic","d":"an animal that copies other animals"},
+    {"w":"gills","d":"the body part fish use to breathe"},
+    {"w":"fortress","d":"a strong, safe place"}
+  ]
+}

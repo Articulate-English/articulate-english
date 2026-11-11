@@ -1,0 +1,34 @@
+{
+  "slug": "a2-used-to",
+  "title": "Lions and How to Save Them",
+  "level": "A2",
+  "grammar": "Used to: past habits and states",
+  "source": "Mission Animal Rescue",
+  "emoji": "🦁",
+  "videoId": "YENib6Zthh0",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":113,"sentence":"Over the past 100 years, lion populations have shrunk from hundreds of thousands to only about 35,000. Lions _____ be much more common.","answer":"used to","explain":"Used to + base verb for past states."},
+    {"id":"q2","type":"mcq","time":113,"question":"Which sentence is correct?","options":["Lions used to live in large numbers.","Lions use to live in large numbers.","Lions used to lived in large numbers.","Lions are used to live in large numbers."],"correct":0,"explain":"Used to + base verb (live)."},
+    {"id":"q3","type":"mcq","time":113,"question":"'Used to' talks about...","options":["past habits and states","future plans","present abilities","permission"],"correct":0,"explain":"Used to = past habits/states that are not true now."},
+    {"id":"q4","type":"mcq","time":117,"question":"What is the negative of 'used to'?","options":["didn't use to","didn't used to","usedn't to","not used to"],"correct":0,"explain":"Didn't use to + base verb."},
+    {"id":"q5","type":"fillgap","time":106,"sentence":"Lions are driven out of their habitats by hunters, poachers and humans _____ on their land.","answer":"encroaching","explain":"Encroaching on their land."},
+    {"id":"q6","type":"mcq","time":106,"question":"Which sentence is correct?","options":["Lions are driven out of their habitats by hunters.","Lions are drive out of their habitats by hunters.","Lions driven out of their habitats by hunters.","Lions are driving out of their habitats by hunters."],"correct":0,"explain":"Passive: are + driven (past participle)."},
+    {"id":"q7","type":"fillgap","time":41,"sentence":"A pride can include 40 or more of their _____ friends.","answer":"feline","explain":"Feline = cat family."},
+    {"id":"q8","type":"fillgap","time":47,"sentence":"Lions spend about 20 hours of their day _____ and lounging.","answer":"sleeping","explain":"Spend time + verb-ing."},
+    {"id":"q9","type":"mcq","time":47,"question":"Which sentence is correct?","options":["Lions spend about 20 hours sleeping.","Lions spends about 20 hours sleeping.","Lions spending about 20 hours sleeping.","Lions are spend about 20 hours sleeping."],"correct":0,"explain":"Lions (plural) + spend."},
+    {"id":"q10","type":"fillgap","time":129,"sentence":"People are making a difference in helping to save lions by _____ fences to protect livestock.","answer":"building","explain":"By + verb-ing."},
+    {"id":"q11","type":"mcq","time":129,"question":"Which sentence is correct?","options":["People are building fences to protect livestock.","People is building fences to protect livestock.","People are build fences to protect livestock.","People are building fences for protect livestock."],"correct":0,"explain":"Present continuous: are building."},
+    {"id":"q12","type":"order","time":113,"words":["Lions","used","to","live","in","large","numbers"],"correct":"Lions used to live in large numbers.","explain":"Used to + base verb."},
+    {"id":"q13","type":"fillgap","time":23,"sentence":"Lions have razor sharp, retractable _____.","answer":"claws","explain":"Retractable claws."},
+    {"id":"q14","type":"mcq","time":23,"question":"Which sentence is correct?","options":["Lions have retractable claws.","Lions has retractable claws.","Lions having retractable claws.","Lions are have retractable claws."],"correct":0,"explain":"Lions (plural) + have."},
+    {"id":"q15","type":"fillgap","time":178,"sentence":"You can write a letter to the company and suggest that they _____ a donation to help save the lions.","answer":"make","explain":"Suggest that + subject + base verb."}
+  ],
+  "vocab": [
+    {"w":"pride","d":"a family of lions"},
+    {"w":"claws","d":"the sharp nails on an animal's feet"},
+    {"w":"feline","d":"an animal of the cat family"},
+    {"w":"predator","d":"an animal that hunts other animals"},
+    {"w":"habitat","d":"the natural home of an animal"},
+    {"w":"poacher","d":"someone who hunts animals illegally"}
+  ]
+}

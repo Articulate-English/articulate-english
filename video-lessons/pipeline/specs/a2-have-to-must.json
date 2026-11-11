@@ -1,0 +1,34 @@
+{
+  "slug": "a2-have-to-must",
+  "title": "Elephants and How to Save Them",
+  "level": "A2",
+  "grammar": "Have to, must, mustn't",
+  "source": "Mission Animal Rescue",
+  "emoji": "🐘",
+  "videoId": "QKteCYr5uuI",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":53,"sentence":"Baby elephants have to _____ to use their trunks.","answer":"learn","explain":"Have to + base verb."},
+    {"id":"q2","type":"mcq","time":53,"question":"Which sentence is correct?","options":["Baby elephants have to learn to use their trunks.","Baby elephants has to learn to use their trunks.","Baby elephants have to learns to use their trunks.","Baby elephants must to learn to use their trunks."],"correct":0,"explain":"Have to + base verb (learn)."},
+    {"id":"q3","type":"fillgap","time":24,"sentence":"Elephants can _____ water from miles away.","answer":"smell","explain":"Can + base verb for ability."},
+    {"id":"q4","type":"mcq","time":24,"question":"Which modal expresses ability?","options":["can","must","have to","should"],"correct":0,"explain":"Can = ability."},
+    {"id":"q5","type":"fillgap","time":184,"sentence":"We _____ do something to help elephants.","answer":"must","explain":"Must + base verb for obligation."},
+    {"id":"q6","type":"mcq","time":184,"question":"Which sentence is correct?","options":["We must do something to help.","We must to do something to help.","We must doing something to help.","We must does something to help."],"correct":0,"explain":"Must + base verb (do)."},
+    {"id":"q7","type":"fillgap","time":132,"sentence":"Poachers kill elephants just to take their tusks. We _____ let that happen.","answer":"mustn't","explain":"Mustn't = prohibition."},
+    {"id":"q8","type":"mcq","time":132,"question":"Which word expresses prohibition?","options":["mustn't","don't have to","shouldn't","can't"],"correct":0,"explain":"Mustn't = it is forbidden."},
+    {"id":"q9","type":"mcq","time":112,"question":"Elephants' tusks are made of ivory. Buying ivory is illegal. We _____ buy ivory.","options":["mustn't","don't have to","should","can"],"correct":0,"explain":"Mustn't = it is not allowed."},
+    {"id":"q10","type":"fillgap","time":156,"sentence":"We're going to trumpet as loud as a herd of elephants to _____ the word.","answer":"spread","explain":"Spread the word = tell everyone."},
+    {"id":"q11","type":"mcq","time":146,"question":"Which sentence is correct?","options":["If nothing is done, elephants will disappear.","If nothing is done, elephants disappear.","If nothing was done, elephants will disappear.","If nothing is done, elephants would disappear."],"correct":0,"explain":"First conditional: if + present, will + base verb."},
+    {"id":"q12","type":"order","time":184,"words":["We","must","protect","elephants"],"correct":"We must protect elephants.","explain":"Must + base verb."},
+    {"id":"q13","type":"fillgap","time":104,"sentence":"The two tusks can _____ over 200 pounds.","answer":"weigh","explain":"Can + base verb (weigh)."},
+    {"id":"q14","type":"mcq","time":104,"question":"'Have to' and 'must' both express...","options":["obligation","ability","permission","possibility"],"correct":0,"explain":"Both express obligation/necessity."},
+    {"id":"q15","type":"mcq","time":176,"question":"Which sentence is correct?","options":["Dylan got over 300 signatures on her petition to make selling ivory illegal.","Dylan get over 300 signatures on her petition to make selling ivory illegal.","Dylan got over 300 signatures on her petition for make selling ivory illegal.","Dylan got over 300 signatures in her petition to make selling ivory illegal."],"correct":0,"explain":"'Got' (past) and 'to make' (purpose) are correct."}
+  ],
+  "vocab": [
+    {"w":"trunk","d":"the elephant's long nose"},
+    {"w":"tusks","d":"the big teeth that stick out"},
+    {"w":"ivory","d":"the hard white material of tusks"},
+    {"w":"poaching","d":"the illegal hunting of animals"},
+    {"w":"endangered","d":"at risk of disappearing"},
+    {"w":"petition","d":"a written request signed by many people"}
+  ]
+}

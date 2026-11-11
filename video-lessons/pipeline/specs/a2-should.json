@@ -1,0 +1,34 @@
+{
+  "slug": "a2-should",
+  "title": "Polar Bears and How to Save Them",
+  "level": "A2",
+  "grammar": "Should / shouldn't",
+  "source": "Mission Animal Rescue",
+  "emoji": "🐻‍❄️",
+  "videoId": "mEFASpHL9nM",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":128,"sentence":"We _____ save energy and protect the environment.","answer":"should","explain":"Should + base verb for advice."},
+    {"id":"q2","type":"mcq","time":128,"question":"Which sentence is correct?","options":["We should save energy.","We should to save energy.","We should saving energy.","We should saves energy."],"correct":0,"explain":"Should + base verb (save)."},
+    {"id":"q3","type":"mcq","time":128,"question":"What is the negative of 'should'?","options":["shouldn't","shouldn't to","don't should","doesn't should"],"correct":0,"explain":"Should not = shouldn't."},
+    {"id":"q4","type":"fillgap","time":92,"sentence":"People _____ hunt polar bears.","answer":"shouldn't","explain":"Shouldn't = it is not a good idea."},
+    {"id":"q5","type":"mcq","time":92,"question":"'Should' is used to give...","options":["advice","orders","permission","ability"],"correct":0,"explain":"Should gives advice."},
+    {"id":"q6","type":"fillgap","time":26,"sentence":"Polar bears have fur and layers of fat so they can swim in icy cold Arctic _____.","answer":"waters","explain":"Arctic waters."},
+    {"id":"q7","type":"fillgap","time":88,"sentence":"Researchers predict that in 50 years, two-thirds of them will be _____.","answer":"gone","explain":"Will be + adjective (gone)."},
+    {"id":"q8","type":"mcq","time":88,"question":"Which sentence is correct?","options":["Two-thirds of them will be gone.","Two-thirds of them will be go.","Two-thirds of them will gone.","Two-thirds of them will being gone."],"correct":0,"explain":"Will be + adjective."},
+    {"id":"q9","type":"fillgap","time":143,"sentence":"We take a pledge to do whatever we can to _____ save the planet.","answer":"help","explain":"Help + base verb."},
+    {"id":"q10","type":"mcq","time":143,"question":"Which sentence is correct?","options":["We should do whatever we can to help.","We should do whatever we can for help.","We should do whatever we can helping.","We should do whatever we can to helping."],"correct":0,"explain":"'To help' (purpose) is correct."},
+    {"id":"q11","type":"fillgap","time":30,"sentence":"They can stay under water for as long as two _____.","answer":"minutes","explain":"Two minutes."},
+    {"id":"q12","type":"mcq","time":37,"question":"One female polar bear was tracked swimming for 9 days straight. She _____ a medal!","options":["deserves","deserve","deserved","deserving"],"correct":0,"explain":"She deserves (present simple, third person)."},
+    {"id":"q13","type":"order","time":128,"words":["We","should","protect","the","environment"],"correct":"We should protect the environment.","explain":"Should + base verb."},
+    {"id":"q14","type":"fillgap","time":113,"sentence":"Many of the 21,000 species who live in the Arctic would be _____ by the loss of the polar bear.","answer":"affected","explain":"Would be + past participle (affected)."},
+    {"id":"q15","type":"mcq","time":113,"question":"Which sentence is correct?","options":["The health of their population indicates the health of the ecosystem.","The health of their population indicate the health of the ecosystem.","The health of their population indicating the health of the ecosystem.","The health of their population are indicating the health of the ecosystem."],"correct":0,"explain":"'The health ... indicates' (singular subject)."}
+  ],
+  "vocab": [
+    {"w":"polar bear","d":"a large white bear that lives in the Arctic"},
+    {"w":"fur","d":"the thick hair on an animal"},
+    {"w":"Arctic","d":"the area around the North Pole"},
+    {"w":"global warming","d":"the Earth getting hotter"},
+    {"w":"ecosystem","d":"all the living things in one place"},
+    {"w":"marine mammal","d":"an animal that lives in the sea"}
+  ]
+}
