@@ -1,0 +1,36 @@
+{
+  "slug": "a2-comparatives-superlatives",
+  "title": "Lion vs. Giraffe vs. Zebra",
+  "level": "A2",
+  "grammar": "Comparative and superlative adjectives",
+  "source": "Whoa Factor",
+  "emoji": "🦒",
+  "videoId": "7IVHtph87pw",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":54,"sentence":"Baby giraffes are already _____ than you the day they're born.","answer":"taller","explain":"Comparative: tall → taller + than."},
+    {"id":"q2","type":"mcq","time":54,"question":"Which sentence is correct?","options":["Baby giraffes are already taller than you.","Baby giraffes are already taller as you.","Baby giraffes are already more tall than you.","Baby giraffes are already tallest than you."],"correct":0,"explain":"Taller + than."},
+    {"id":"q3","type":"fillgap","time":64,"sentence":"A newborn giraffe is as _____ as my dad.","answer":"tall","explain":"As + adjective + as."},
+    {"id":"q4","type":"mcq","time":64,"question":"Which sentence is correct?","options":["It is as tall as my dad.","It is as taller as my dad.","It is as tallest as my dad.","It is so tall as my dad."],"correct":0,"explain":"As tall as."},
+    {"id":"q5","type":"fillgap","time":70,"sentence":"Giraffes have _____ tongues than most animals.","answer":"longer","explain":"Comparative: long → longer."},
+    {"id":"q6","type":"mcq","time":70,"question":"Which sentence is correct?","options":["Giraffes have longer tongues than most animals.","Giraffes have longer tongues as most animals.","Giraffes have more long tongues than most animals.","Giraffes have longest tongues than most animals."],"correct":0,"explain":"Longer + than."},
+    {"id":"q7","type":"fillgap","time":126,"sentence":"Hyenas can solve problems _____ than chimps.","answer":"better","explain":"Irregular comparative: good → better."},
+    {"id":"q8","type":"mcq","time":126,"question":"Which sentence is correct?","options":["Hyenas solve problems better than chimps.","Hyenas solve problems gooder than chimps.","Hyenas solve problems more better than chimps.","Hyenas solve problems best than chimps."],"correct":0,"explain":"Better than (irregular)."},
+    {"id":"q9","type":"fillgap","time":206,"sentence":"Lions are the second _____ cats in the world.","answer":"biggest","explain":"Superlative: big → biggest."},
+    {"id":"q10","type":"mcq","time":206,"question":"Which sentence is correct?","options":["Lions are the second biggest cats.","Lions are the second bigger cats.","Lions are the second most big cats.","Lions are the second big cats."],"correct":0,"explain":"Second + superlative (biggest)."},
+    {"id":"q11","type":"fillgap","time":208,"sentence":"Only tigers are _____ than lions.","answer":"bigger","explain":"Comparative: big → bigger + than."},
+    {"id":"q12","type":"mcq","time":208,"question":"Which sentence is correct?","options":["Only tigers are bigger than lions.","Only tigers are bigger as lions.","Only tigers are biggest than lions.","Only tigers are more big than lions."],"correct":0,"explain":"Bigger + than."},
+    {"id":"q13","type":"fillgap","time":46,"sentence":"The giraffe has the _____ neck ever.","answer":"best","explain":"Superlative: good → best."},
+    {"id":"q14","type":"mcq","time":46,"question":"Which sentence is correct?","options":["The giraffe has the best neck ever.","The giraffe has the better neck ever.","The giraffe has the most good neck ever.","The giraffe has the goodest neck ever."],"correct":0,"explain":"The best (superlative)."},
+    {"id":"q15","type":"order","time":54,"words":["Baby","giraffes","are","taller","than","you"],"correct":"Baby giraffes are taller than you.","explain":"Comparative + than."}
+  ],
+  "vocab": [
+    {"w":"giraffe","d":"a tall African animal with a long neck"},
+    {"w":"hyena","d":"an African animal that makes a laughing sound"},
+    {"w":"zebra","d":"an African horse with black and white stripes"},
+    {"w":"lion","d":"a large African cat, the king of beasts"},
+    {"w":"wildebeest","d":"a large African antelope"},
+    {"w":"Serengeti","d":"a large grassland in Africa"},
+    {"w":"roar","d":"the loud sound a lion makes"},
+    {"w":"stripe","d":"a long narrow band of colour"}
+  ]
+}
