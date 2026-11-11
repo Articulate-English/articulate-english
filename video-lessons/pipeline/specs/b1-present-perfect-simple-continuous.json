@@ -1,0 +1,35 @@
+{
+  "slug": "b1-present-perfect-simple-continuous",
+  "title": "Epic Animal Migrations (B1)",
+  "level": "B1",
+  "grammar": "Present perfect simple and continuous",
+  "source": "Nat Geo Kids",
+  "emoji": "🦋",
+  "videoId": "adABRbEs4G4",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":189,"sentence":"All summer, humpback whales in Antarctica _____ been feeding in cold waters.","answer":"have","explain":"Present perfect continuous: have + been + verb-ing."},
+    {"id":"q2","type":"mcq","time":189,"question":"Which sentence is correct?","options":["Whales have been feeding all summer.","Whales has been feeding all summer.","Whales have being feeding all summer.","Whales are been feeding all summer."],"correct":0,"explain":"Have + been + feeding."},
+    {"id":"q3","type":"fillgap","time":189,"sentence":"They have been _____ in cold waters packed with food.","answer":"feeding","explain":"Been + verb-ing."},
+    {"id":"q4","type":"mcq","time":189,"question":"Which sentence is correct?","options":["They have been feeding for months.","They have been feed for months.","They have being feeding for months.","They has been feeding for months."],"correct":0,"explain":"Have been + feeding."},
+    {"id":"q5","type":"fillgap","time":120,"sentence":"Monarch butterflies have been _____ for 3,000 miles.","answer":"flying","explain":"Have been + verb-ing."},
+    {"id":"q6","type":"mcq","time":120,"question":"Which sentence is correct?","options":["They have been flying for 3,000 miles.","They have being flying for 3,000 miles.","They has been flying for 3,000 miles.","They are flying for 3,000 miles."],"correct":0,"explain":"Have been + flying."},
+    {"id":"q7","type":"fillgap","time":200,"sentence":"The humpback whales have _____ more than half the distance around the planet.","answer":"travelled","explain":"Present perfect simple: have + past participle."},
+    {"id":"q8","type":"mcq","time":200,"question":"Which sentence is correct?","options":["They have travelled more than half the distance.","They have travel more than half the distance.","They have travelling more than half the distance.","They has travelled more than half the distance."],"correct":0,"explain":"Have + past participle (travelled)."},
+    {"id":"q9","type":"fillgap","time":60,"sentence":"The monarch butterfly has _____ from a caterpillar into a butterfly.","answer":"changed","explain":"Has + past participle (changed)."},
+    {"id":"q10","type":"mcq","time":60,"question":"Which sentence is correct?","options":["It has changed from a caterpillar into a butterfly.","It have changed from a caterpillar into a butterfly.","It has change from a caterpillar into a butterfly.","It has changing from a caterpillar into a butterfly."],"correct":0,"explain":"Has + changed."},
+    {"id":"q11","type":"fillgap","time":240,"sentence":"The wildebeest have _____ across the Mara River.","answer":"crossed","explain":"Have + past participle (crossed)."},
+    {"id":"q12","type":"mcq","time":240,"question":"Which sentence is correct?","options":["The wildebeest have crossed the river.","The wildebeest has crossed the river.","The wildebeest have cross the river.","The wildebeest are crossed the river."],"correct":0,"explain":"Have + crossed."},
+    {"id":"q13","type":"fillgap","time":150,"sentence":"The wildebeest have _____ an incredible trek chasing the rain.","answer":"begun","explain":"Begin → began → begun."},
+    {"id":"q14","type":"mcq","time":150,"question":"Which sentence is correct?","options":["They have begun a long trek.","They have begin a long trek.","They has begun a long trek.","They have beginning a long trek."],"correct":0,"explain":"Have + begun."},
+    {"id":"q15","type":"order","time":189,"words":["The","whales","have","been","feeding","all","summer"],"correct":"The whales have been feeding all summer.","explain":"Present perfect continuous."}
+  ],
+  "vocab": [
+    {"w":"migrate","d":"to travel a long distance every year"},
+    {"w":"humpback whale","d":"a large whale with long fins"},
+    {"w":"wildebeest","d":"a large African antelope"},
+    {"w":"monarch butterfly","d":"an orange and black butterfly that migrates"},
+    {"w":"blubber","d":"the thick fat under a whale's skin"},
+    {"w":"pod","d":"a group of whales"},
+    {"w":"kaleidoscope","d":"a group of butterflies flying together"}
+  ]
+}
