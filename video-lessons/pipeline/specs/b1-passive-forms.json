@@ -1,0 +1,35 @@
+{
+  "slug": "b1-passive-forms",
+  "title": "Swimming With a Small Shark",
+  "level": "B1",
+  "grammar": "Passive forms",
+  "source": "Scuba Sam's World",
+  "emoji": "🦈",
+  "videoId": "Uav4iZsm-KY",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":68,"sentence":"The bonnet head _____ kept in a large tank.","answer":"is","explain":"Present passive: is + past participle."},
+    {"id":"q2","type":"mcq","time":68,"question":"Which sentence is correct?","options":["The bonnet head is kept in a tank.","The bonnet head are kept in a tank.","The bonnet head kept in a tank.","The bonnet head is keep in a tank."],"correct":0,"explain":"Is + kept."},
+    {"id":"q3","type":"fillgap","time":168,"sentence":"The exhibit gets its name _____ the blacktip reef shark.","answer":"from","explain":"Gets its name from (passive-like)."},
+    {"id":"q4","type":"mcq","time":168,"question":"Which sentence is correct?","options":["The exhibit gets its name from the shark.","The exhibit get its name from the shark.","The exhibit is get its name from the shark.","The exhibit getting its name from the shark."],"correct":0,"explain":"Gets its name from."},
+    {"id":"q5","type":"fillgap","time":245,"sentence":"Sharks _____ in all shapes and sizes.","answer":"are found","explain":"Present passive: are + past participle."},
+    {"id":"q6","type":"mcq","time":245,"question":"Which sentence is correct?","options":["Sharks are found in all shapes and sizes.","Sharks is found in all shapes and sizes.","Sharks are find in all shapes and sizes.","Sharks found in all shapes and sizes."],"correct":0,"explain":"Are found."},
+    {"id":"q7","type":"fillgap","time":198,"sentence":"More diversity _____ by more species.","answer":"is created","explain":"Present passive: is + past participle."},
+    {"id":"q8","type":"mcq","time":198,"question":"Which sentence is correct?","options":["More diversity is created by more species.","More diversity are created by more species.","More diversity is create by more species.","More diversity created by more species."],"correct":0,"explain":"Is created."},
+    {"id":"q9","type":"fillgap","time":208,"sentence":"More space will be _____ by other animals.","answer":"occupied","explain":"Future passive: will be + past participle."},
+    {"id":"q10","type":"mcq","time":208,"question":"Which sentence is correct?","options":["More space will be occupied by animals.","More space will be occupies by animals.","More space will occupied by animals.","More space will be occupy by animals."],"correct":0,"explain":"Will be occupied."},
+    {"id":"q11","type":"fillgap","time":245,"sentence":"The sharks _____ by Sam in the tank.","answer":"were seen","explain":"Past passive: were + past participle."},
+    {"id":"q12","type":"mcq","time":245,"question":"Which sentence is correct?","options":["The sharks were seen by Sam.","The sharks was seen by Sam.","The sharks are seen by Sam.","The sharks seen by Sam."],"correct":0,"explain":"Were seen."},
+    {"id":"q13","type":"fillgap","time":68,"sentence":"The tank _____ cleaned by the divers.","answer":"is","explain":"Present passive: is + past participle."},
+    {"id":"q14","type":"mcq","time":68,"question":"Which sentence is correct?","options":["The tank is cleaned by the divers.","The tank are cleaned by the divers.","The tank cleaned by the divers.","The tank is clean by the divers."],"correct":0,"explain":"Is cleaned."},
+    {"id":"q15","type":"order","time":68,"words":["The","bonnet","head","is","kept","in","a","large","tank."],"correct":"The bonnet head is kept in a large tank.","explain":"Present passive."}
+  ],
+  "vocab": [
+    {"w":"bonnet head shark","d":"a small hammerhead shark"},
+    {"w":"hammerhead","d":"a shark with a flat, wide head"},
+    {"w":"coral reef","d":"a structure built by tiny sea animals"},
+    {"w":"blacktip reef shark","d":"a shark with black tips on its fins"},
+    {"w":"wobbegong","d":"a type of carpet shark"},
+    {"w":"zebra shark","d":"a shark with stripes"},
+    {"w":"ecosystem","d":"a community of living things and their environment"}
+  ]
+}
