@@ -1,0 +1,35 @@
+{
+  "slug": "b1-usually-used-to",
+  "title": "Coastal Redwoods vs. Giant Sequoias",
+  "level": "B1",
+  "grammar": "Usually, used to, be used to, get used to",
+  "source": "Nature Boom Time",
+  "emoji": "🌲",
+  "videoId": "Hmhb2vmEnvA",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":1,"sentence":"Coastal redwoods usually _____ near the Pacific Ocean.","answer":"grow","explain":"Usually + present simple for habits."},
+    {"id":"q2","type":"mcq","time":1,"question":"Which sentence is correct?","options":["Redwoods usually grow near the ocean.","Redwoods usually grows near the ocean.","Redwoods are usually grow near the ocean.","Redwoods usually growing near the ocean."],"correct":0,"explain":"Usually + base verb."},
+    {"id":"q3","type":"fillgap","time":128,"sentence":"Giant sequoias _____ to dry conditions; they need mild, dry slopes.","answer":"are used","explain":"Be used to + noun = accustomed to."},
+    {"id":"q4","type":"mcq","time":128,"question":"Which sentence is correct?","options":["Giant sequoias are used to dry conditions.","Giant sequoias are use to dry conditions.","Giant sequoias used to dry conditions.","Giant sequoias are used too dry conditions."],"correct":0,"explain":"Be used to + noun."},
+    {"id":"q5","type":"fillgap","time":120,"sentence":"It takes time to _____ used to the height of these trees.","answer":"get","explain":"Get used to = become accustomed to."},
+    {"id":"q6","type":"mcq","time":120,"question":"Which sentence is correct?","options":["It takes time to get used to the height.","It takes time to be used to the height.","It takes time to used to the height.","It takes time to get use to the height."],"correct":0,"explain":"Get used to + noun."},
+    {"id":"q7","type":"fillgap","time":138,"sentence":"Redwoods _____ to grow only near the coast, but now they are planted in many places.","answer":"used","explain":"Used to + base verb = past habit/state."},
+    {"id":"q8","type":"mcq","time":138,"question":"Which sentence is correct?","options":["Redwoods used to grow only near the coast.","Redwoods use to grow only near the coast.","Redwoods are used to grow only near the coast.","Redwoods were used to grow only near the coast."],"correct":0,"explain":"Used to + base verb."},
+    {"id":"q9","type":"fillgap","time":141,"sentence":"Giant sequoias _____ to a dry, mild climate on the western slopes.","answer":"are used","explain":"Be used to + noun."},
+    {"id":"q10","type":"mcq","time":141,"question":"Which sentence is correct?","options":["They are used to a dry climate.","They are use to a dry climate.","They used to a dry climate.","They are used too a dry climate."],"correct":0,"explain":"Be used to + noun."},
+    {"id":"q11","type":"fillgap","time":414,"sentence":"Visitors _____ get used to the size of the trees after a few minutes.","answer":"usually","explain":"Usually + base verb."},
+    {"id":"q12","type":"mcq","time":414,"question":"Which sentence is correct?","options":["Visitors usually get used to the size.","Visitors usually gets used to the size.","Visitors are usually get used to the size.","Visitors usual get used to the size."],"correct":0,"explain":"Usually + base verb."},
+    {"id":"q13","type":"fillgap","time":121,"sentence":"Coastal redwoods _____ to the fog and wet conditions.","answer":"are used","explain":"Be used to + noun."},
+    {"id":"q14","type":"mcq","time":121,"question":"Which sentence is correct?","options":["They are used to the fog.","They are use to the fog.","They used to the fog.","They are used too the fog."],"correct":0,"explain":"Be used to + noun."},
+    {"id":"q15","type":"order","time":1,"words":["Redwoods","usually","grow","near","the","Pacific","Ocean"],"correct":"Redwoods usually grow near the Pacific Ocean.","explain":"Usually + base verb."}
+  ],
+  "vocab": [
+    {"w":"redwood","d":"a very tall tree from California"},
+    {"w":"sequoia","d":"a very large tree from California"},
+    {"w":"coast","d":"the edge of the land by the sea"},
+    {"w":"fog","d":"a cloud close to the ground"},
+    {"w":"bark","d":"the outer covering of a tree"},
+    {"w":"trunk","d":"the main woody part of a tree"},
+    {"w":"volume","d":"the amount of space something fills"}
+  ]
+}
