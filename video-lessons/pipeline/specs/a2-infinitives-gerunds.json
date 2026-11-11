@@ -1,0 +1,35 @@
+{
+  "slug": "a2-infinitives-gerunds",
+  "title": "Wild World of Squirrels",
+  "level": "A2",
+  "grammar": "Infinitives and gerunds: verb patterns",
+  "source": "Animal Card Quest",
+  "emoji": "🐿️",
+  "videoId": "z29spc041dM",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":28,"sentence":"A squirrel needs to _____ a lot to prepare for winter.","answer":"eat","explain":"Need + to + base verb."},
+    {"id":"q2","type":"mcq","time":28,"question":"Which sentence is correct?","options":["A squirrel needs to eat a lot.","A squirrel needs eating a lot.","A squirrel needs eat a lot.","A squirrel need to eat a lot."],"correct":0,"explain":"Need + to + base verb."},
+    {"id":"q3","type":"fillgap","time":42,"sentence":"Eating a lot will help the squirrel _____ up its fat reserves.","answer":"build","explain":"Help + object + base verb."},
+    {"id":"q4","type":"mcq","time":42,"question":"Which sentence is correct?","options":["Eating helps the squirrel build up fat.","Eating helps the squirrel to building up fat.","Eating helps the squirrel building up fat.","Eating help the squirrel build up fat."],"correct":0,"explain":"Help + object + base verb (build)."},
+    {"id":"q5","type":"fillgap","time":56,"sentence":"It's not only foraging for food, it's _____ them.","answer":"storing","explain":"Verb-ing after 'it's'."},
+    {"id":"q6","type":"fillgap","time":60,"sentence":"Have you ever heard of scatter _____?","answer":"hoarding","explain":"Hear of + noun/gerund."},
+    {"id":"q7","type":"mcq","time":60,"question":"Which sentence is correct?","options":["Have you heard of scatter hoarding?","Have you heard of scatter hoard?","Have you heard of scatter to hoard?","Have you heard of scatter hoarded?"],"correct":0,"explain":"'Scatter hoarding' is a noun phrase."},
+    {"id":"q8","type":"fillgap","time":62,"sentence":"Some squirrels use it to _____ their food extra safe.","answer":"keep","explain":"Use + object + to + base verb."},
+    {"id":"q9","type":"mcq","time":62,"question":"Which sentence is correct?","options":["Squirrels use it to keep their food safe.","Squirrels use it keeping their food safe.","Squirrels use it keep their food safe.","Squirrels use it for keep their food safe."],"correct":0,"explain":"Use + object + to + base verb."},
+    {"id":"q10","type":"fillgap","time":74,"sentence":"Instead of cooking all their snacks in one big pile, they _____ their hidden treasure.","answer":"bury","explain":"Instead of + gerund; main verb 'bury'."},
+    {"id":"q11","type":"mcq","time":74,"question":"Which sentence is correct?","options":["Instead of cooking, they bury their treasure.","Instead of cook, they bury their treasure.","Instead of to cook, they bury their treasure.","Instead of cooked, they bury their treasure."],"correct":0,"explain":"Instead of + gerund (cooking)."},
+    {"id":"q12","type":"fillgap","time":82,"sentence":"Some tree squirrels focus on reinforcing or _____ new nests.","answer":"building","explain":"Focus on + gerund."},
+    {"id":"q13","type":"mcq","time":82,"question":"Which sentence is correct?","options":["They focus on building new nests.","They focus on build new nests.","They focus on to build new nests.","They focus on built new nests."],"correct":0,"explain":"Focus on + gerund (building)."},
+    {"id":"q14","type":"fillgap","time":90,"sentence":"Ground squirrels build their homes underground, _____ under rocks and trees.","answer":"burrowing","explain":"Verb-ing for an accompanying action."},
+    {"id":"q15","type":"order","time":42,"words":["Eating","a","lot","helps","the","squirrel","build","up","fat"],"correct":"Eating a lot helps the squirrel build up fat.","explain":"Gerund subject + help + object + base verb."}
+  ],
+  "vocab": [
+    {"w":"squirrel","d":"a small animal with a long bushy tail"},
+    {"w":"forage","d":"to search for food"},
+    {"w":"scatter hoarding","d":"hiding food in many different places"},
+    {"w":"bury","d":"to put something under the ground"},
+    {"w":"drey","d":"a squirrel's nest"},
+    {"w":"burrow","d":"a hole in the ground where an animal lives"},
+    {"w":"stash","d":"a hidden store of food"}
+  ]
+}
