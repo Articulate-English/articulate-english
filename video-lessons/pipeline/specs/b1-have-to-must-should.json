@@ -1,0 +1,35 @@
+{
+  "slug": "b1-have-to-must-should",
+  "title": "Florida Everglades: The Mangrove Forest",
+  "level": "B1",
+  "grammar": "Have to, must, should",
+  "source": "Nature Boom Time",
+  "emoji": "🌴",
+  "videoId": "uGmaeRIk5JU",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":79,"sentence":"Trees _____ have oxygen to survive.","answer":"must","explain":"Must + base verb for necessity."},
+    {"id":"q2","type":"mcq","time":79,"question":"Which sentence is correct?","options":["Trees must have oxygen to survive.","Trees must has oxygen to survive.","Trees must having oxygen to survive.","Trees must to have oxygen to survive."],"correct":0,"explain":"Must + base verb (have)."},
+    {"id":"q3","type":"fillgap","time":107,"sentence":"Mangroves _____ get oxygen from the dirt because they live in water.","answer":"can't","explain":"Can't = not able to."},
+    {"id":"q4","type":"mcq","time":107,"question":"Which sentence is correct?","options":["Mangroves can't get oxygen from the dirt.","Mangroves mustn't get oxygen from the dirt.","Mangroves don't have to get oxygen from the dirt.","Mangroves shouldn't get oxygen from the dirt."],"correct":0,"explain":"Can't = inability."},
+    {"id":"q5","type":"fillgap","time":119,"sentence":"The roots _____ get the oxygen they need.","answer":"can't","explain":"Can't = not able to."},
+    {"id":"q6","type":"mcq","time":119,"question":"Which sentence is correct?","options":["The roots can't get the oxygen they need.","The roots mustn't get the oxygen they need.","The roots don't have to get the oxygen they need.","The roots shouldn't get the oxygen they need."],"correct":0,"explain":"Can't = inability."},
+    {"id":"q7","type":"fillgap","time":127,"sentence":"We _____ get oxygen to those underwater roots somehow.","answer":"must","explain":"Must + base verb."},
+    {"id":"q8","type":"mcq","time":127,"question":"Which sentence is correct?","options":["We must get oxygen to the roots.","We must gets oxygen to the roots.","We must to get oxygen to the roots.","We must getting oxygen to the roots."],"correct":0,"explain":"Must + base verb (get)."},
+    {"id":"q9","type":"fillgap","time":148,"sentence":"We _____ talk about mangroves without mentioning vivipary.","answer":"can't","explain":"Can't = impossible/not right."},
+    {"id":"q10","type":"mcq","time":148,"question":"Which sentence is correct?","options":["We can't talk about mangroves without mentioning vivipary.","We mustn't talk about mangroves without mentioning vivipary.","We don't have to talk about mangroves without mentioning vivipary.","We shouldn't talk about mangroves without mentioning vivipary."],"correct":0,"explain":"Can't = it is impossible not to."},
+    {"id":"q11","type":"fillgap","time":55,"sentence":"We _____ protect the mangroves because they protect the coast.","answer":"should","explain":"Should + base verb for advice."},
+    {"id":"q12","type":"mcq","time":55,"question":"Which sentence is correct?","options":["We should protect the mangroves.","We should to protect the mangroves.","We should protecting the mangroves.","We should protects the mangroves."],"correct":0,"explain":"Should + base verb (protect)."},
+    {"id":"q13","type":"fillgap","time":53,"sentence":"Without prop roots, red mangroves _____ survive.","answer":"can't","explain":"Can't = not able to."},
+    {"id":"q14","type":"mcq","time":53,"question":"Which sentence is correct?","options":["Without prop roots, they can't survive.","Without prop roots, they mustn't survive.","Without prop roots, they don't have to survive.","Without prop roots, they shouldn't survive."],"correct":0,"explain":"Can't = inability."},
+    {"id":"q15","type":"order","time":79,"words":["Trees","must","have","oxygen","to","survive"],"correct":"Trees must have oxygen to survive.","explain":"Must + base verb."}
+  ],
+  "vocab": [
+    {"w":"Everglades","d":"a large wetland in Florida"},
+    {"w":"mangrove","d":"a tree that grows in salt water"},
+    {"w":"prop roots","d":"roots that grow above the ground for support"},
+    {"w":"oxygen","d":"the gas that living things need to breathe"},
+    {"w":"coastline","d":"the edge of the land by the sea"},
+    {"w":"vivipary","d":"when a seed starts growing before it leaves the tree"},
+    {"w":"seed pod","d":"a plant container with seeds"}
+  ]
+}
