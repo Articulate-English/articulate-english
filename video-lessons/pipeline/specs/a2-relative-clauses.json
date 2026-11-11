@@ -1,0 +1,35 @@
+{
+  "slug": "a2-relative-clauses",
+  "title": "Tree Clones: The Largest Living Thing on Earth",
+  "level": "A2",
+  "grammar": "Defining relative clauses: who, which, that, where",
+  "source": "Nature Boom Time",
+  "emoji": "🌳",
+  "videoId": "P22BZXXquJ4",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":21,"sentence":"The largest living thing in the world is a tree _____ is called Pando.","answer":"that","explain":"'That' (or 'which') for things."},
+    {"id":"q2","type":"mcq","time":21,"question":"Which relative pronoun do we use for things?","options":["which / that","who","where","when"],"correct":0,"explain":"Use who for people, which/that for things."},
+    {"id":"q3","type":"fillgap","time":25,"sentence":"Pando is a quaking aspen tree _____ reproduces differently.","answer":"that","explain":"'That' for things."},
+    {"id":"q4","type":"mcq","time":25,"question":"Which sentence is correct?","options":["Pando is a tree that reproduces differently.","Pando is a tree who reproduces differently.","Pando is a tree where reproduces differently.","Pando is a tree when reproduces differently."],"correct":0,"explain":"'That' for a tree (a thing)."},
+    {"id":"q5","type":"fillgap","time":78,"sentence":"There are some mycologists _____ might claim that a fungal mat is the largest living thing.","answer":"who","explain":"'Who' for people."},
+    {"id":"q6","type":"mcq","time":78,"question":"Which relative pronoun do we use for people?","options":["who","which","where","that"],"correct":0,"explain":"Who for people."},
+    {"id":"q7","type":"fillgap","time":34,"sentence":"The trees _____ make up Pando cover 106 acres.","answer":"that","explain":"'That' for things (trees)."},
+    {"id":"q8","type":"mcq","time":34,"question":"Which sentence is correct?","options":["The trees that make up Pando cover 106 acres.","The trees who make up Pando cover 106 acres.","The trees where make up Pando cover 106 acres.","The trees when make up Pando cover 106 acres."],"correct":0,"explain":"'That' for trees."},
+    {"id":"q9","type":"fillgap","time":36,"sentence":"Fish Lake National Forest is the place _____ Pando lives.","answer":"where","explain":"'Where' for places."},
+    {"id":"q10","type":"mcq","time":36,"question":"Which sentence is correct?","options":["This is the forest where Pando lives.","This is the forest which Pando lives.","This is the forest who Pando lives.","This is the forest when Pando lives."],"correct":0,"explain":"'Where' for a place."},
+    {"id":"q11","type":"fillgap","time":47,"sentence":"Pando has a root system _____ shoots up new trees.","answer":"that","explain":"'That' for a thing (root system)."},
+    {"id":"q12","type":"mcq","time":47,"question":"Which sentence is correct?","options":["The roots that shoot up create new trees.","The roots who shoot up create new trees.","The roots where shoot up create new trees.","The roots when shoot up create new trees."],"correct":0,"explain":"'That' for roots (things)."},
+    {"id":"q13","type":"fillgap","time":100,"sentence":"Pando is dying. Forest rangers _____ work here are trying to save him.","answer":"who","explain":"'Who' for people (rangers)."},
+    {"id":"q14","type":"mcq","time":100,"question":"Which sentence is correct?","options":["The rangers who work here are trying to save Pando.","The rangers which work here are trying to save Pando.","The rangers where work here are trying to save Pando.","The rangers when work here are trying to save Pando."],"correct":0,"explain":"'Who' for rangers (people)."},
+    {"id":"q15","type":"order","time":21,"words":["The","largest","living","thing","is","a","tree","called","Pando"],"correct":"The largest living thing is a tree called Pando.","explain":"Superlative + relative idea (called Pando)."}
+  ],
+  "vocab": [
+    {"w":"organism","d":"a living thing"},
+    {"w":"Pando","d":"a giant group of cloned aspen trees in Utah"},
+    {"w":"quaking aspen","d":"a type of tree with leaves that shake"},
+    {"w":"clone","d":"a living thing copied from another"},
+    {"w":"root system","d":"all the roots of a plant"},
+    {"w":"acre","d":"a unit of land area"},
+    {"w":"fungal mat","d":"a large flat fungus"}
+  ]
+}
