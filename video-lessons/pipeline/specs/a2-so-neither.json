@@ -1,0 +1,35 @@
+{
+  "slug": "a2-so-neither",
+  "title": "Cool Facts About Snakes, Lizards & Dragons",
+  "level": "A2",
+  "grammar": "So / neither",
+  "source": "Things You Wanna Know",
+  "emoji": "🐍",
+  "videoId": "eCGw4JuCw_M",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":30,"sentence":"Snakes and lizards are reptiles. _____ are turtles.","answer":"So","explain":"'So + auxiliary + subject' for agreement."},
+    {"id":"q2","type":"mcq","time":30,"question":"Which sentence is correct?","options":["Turtles are reptiles. So are snakes.","Turtles are reptiles. Neither are snakes.","Turtles are reptiles. So do snakes.","Turtles are reptiles. Neither snakes are."],"correct":0,"explain":"So are snakes (= snakes are too)."},
+    {"id":"q3","type":"fillgap","time":40,"sentence":"Some lizards are legless and slither just like snakes. _____ do some snakes.","answer":"So","explain":"So + auxiliary + subject."},
+    {"id":"q4","type":"mcq","time":40,"question":"Which sentence is correct?","options":["Lizards slither. So do snakes.","Lizards slither. Neither do snakes.","Lizards slither. So snakes do.","Lizards slither. Neither snakes do."],"correct":0,"explain":"So do snakes (= snakes slither too)."},
+    {"id":"q5","type":"fillgap","time":36,"sentence":"Snakes don't have arms. _____ do lizards.","answer":"Neither","explain":"'Neither + auxiliary + subject' for negative agreement."},
+    {"id":"q6","type":"mcq","time":36,"question":"Which sentence is correct?","options":["Snakes don't have arms. Neither do lizards.","Snakes don't have arms. So do lizards.","Snakes don't have arms. Neither lizards do.","Snakes don't have arms. So have lizards."],"correct":0,"explain":"Neither do lizards (= lizards don't either)."},
+    {"id":"q7","type":"fillgap","time":56,"sentence":"Chameleons can blend into their backgrounds. _____ can some snakes.","answer":"So","explain":"So + auxiliary + subject."},
+    {"id":"q8","type":"mcq","time":56,"question":"Which sentence is correct?","options":["Chameleons can blend in. So can some snakes.","Chameleons can blend in. Neither can some snakes.","Chameleons can blend in. So snakes can.","Chameleons can blend in. Neither snakes can."],"correct":0,"explain":"So can some snakes."},
+    {"id":"q9","type":"fillgap","time":68,"sentence":"Snakes use camouflage to hide from predators. _____ do chameleons.","answer":"So","explain":"So + auxiliary + subject."},
+    {"id":"q10","type":"mcq","time":68,"question":"Which sentence is correct?","options":["Snakes hide from predators. So do chameleons.","Snakes hide from predators. Neither do chameleons.","Snakes hide from predators. So chameleons do.","Snakes hide from predators. Neither chameleons."],"correct":0,"explain":"So do chameleons."},
+    {"id":"q11","type":"fillgap","time":72,"sentence":"Snakes don't hide away in the sun. _____ do lizards.","answer":"Neither","explain":"Neither + auxiliary + subject (negative)."},
+    {"id":"q12","type":"mcq","time":72,"question":"Which word completes the sentence?","options":["Neither","So","Also","Too"],"correct":0,"explain":"'Neither do lizards' for negative agreement."},
+    {"id":"q13","type":"fillgap","time":149,"sentence":"It's their unique skills that make lizards fantastic. _____ it is for snakes.","answer":"So","explain":"'So it is' = the same is true."},
+    {"id":"q14","type":"mcq","time":149,"question":"Which sentence is correct?","options":["Their skills make them fantastic. So it is for snakes.","Their skills make them fantastic. Neither it is for snakes.","Their skills make them fantastic. So is it for snakes.","Their skills make them fantastic. Neither is it for snakes."],"correct":0,"explain":"'So it is for snakes' = the same is true."},
+    {"id":"q15","type":"order","time":36,"words":["Snakes","don't","have","arms.","Neither","do","lizards."],"correct":"Snakes don't have arms. Neither do lizards.","explain":"Neither + auxiliary + subject."}
+  ],
+  "vocab": [
+    {"w":"reptile","d":"a cold-blooded animal like a snake or lizard"},
+    {"w":"squamata","d":"the largest group of reptiles"},
+    {"w":"slither","d":"to slide along like a snake"},
+    {"w":"camouflage","d":"colors that help an animal hide"},
+    {"w":"lizard","d":"a reptile with four legs and a long tail"},
+    {"w":"chameleon","d":"a lizard that can change colour"},
+    {"w":"predator","d":"an animal that hunts other animals"}
+  ]
+}
