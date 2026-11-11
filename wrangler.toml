@@ -1,0 +1,8 @@
+name = "ae-lesson-requests"
+main = "lesson-request-worker.js"
+compatibility_date = "2026-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "lesson-requests"
+database_id = "88c71d45-505e-4963-be7f-81b8fe5c1330"

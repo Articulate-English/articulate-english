@@ -6,6 +6,8 @@ dist/
 
 # secrets
 server/certs/
+.env
+.secrets/
 
 # junk / backups
 nul

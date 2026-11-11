@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://ae-lesson-requests.billiethomasonsound.workers.dev; media-src 'self'; object-src 'none'; frame-ancestors 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request a lesson — Articulate English</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b1220;--card:#16223c;--line:rgba(255,255,255,.09);--text:#f5f8ff;--dim:#9fb0d0;--yellow:#ffd23f;--cyan:#22d3ee;--green:#34d399;--red:#f87171}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 50% -10%,#1b2a4d 0%,var(--bg) 55%);color:var(--text);font-family:'Nunito',system-ui,sans-serif;line-height:1.6;min-height:100vh;padding:24px}
+.wrap{max-width:640px;margin:0 auto}
+header{margin-bottom:22px}
+h1{font-family:'Baloo 2',system-ui,sans-serif;font-size:clamp(1.6rem,4vw,2.3rem);font-weight:800;letter-spacing:-.02em}
+.sub{color:var(--dim);margin-top:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+label{display:block;font-weight:700;font-size:.9rem;margin:16px 0 6px;color:var(--text)}
+input,select{width:100%;font-family:inherit;font-size:1rem;color:var(--text);background:rgba(255,255,255,.05);border:2px solid var(--line);border-radius:12px;padding:12px 14px;outline:none}
+input:focus,select:focus{border-color:var(--cyan)}
+select option{background:var(--card);color:var(--text)}
+button{margin-top:22px;width:100%;font-family:'Baloo 2',system-ui,sans-serif;font-size:1.05rem;font-weight:800;color:#0b1220;background:var(--yellow);border:0;border-radius:12px;padding:14px;cursor:pointer;transition:.15s}
+button:hover:not(:disabled){filter:brightness(1.05)}
+button:disabled{opacity:.6;cursor:default}
+.msg{margin-top:16px;padding:14px;border-radius:12px;font-size:.95rem;display:none}
+.msg.ok{display:block;background:rgba(52,211,153,.15);color:var(--green)}
+.msg.bad{display:block;background:rgba(248,113,113,.15);color:var(--red)}
+.note{margin-top:18px;color:var(--dim);font-size:.82rem;text-align:center}
+.back{margin-top:14px;text-align:center}
+.back a{color:var(--yellow);font-weight:800;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>+ Request a lesson</h1>
+    <p class="sub">Found a great nature video? Send us the link and tell us the level and grammar topic. We'll build the lesson and email you when it's live.</p>
+  </header>
+
+  <div class="card">
+    <form id="reqform" novalidate>
+      <label for="url">YouTube link</label>
+      <input id="url" type="url" placeholder="https://www.youtube.com/watch?v=..." required>
+
+      <label for="level">Level</label>
+      <select id="level" required>
+        <option value="">Choose a level</option>
+        <option value="A2">A2 (elementary)</option>
+        <option value="B1">B1 (intermediate)</option>
+      </select>
+
+      <label for="topic">Grammar topic</label>
+      <input id="topic" type="text" placeholder="e.g. present perfect" required>
+
+      <label for="email">Your email</label>
+      <input id="email" type="email" placeholder="you@example.com" required>
+
+      <button id="submit" type="submit">Send request</button>
+      <div id="msg" class="msg"></div>
+    </form>
+  </div>
+
+  <p class="note">We only use your email to send you the lesson link.</p>
+  <p class="back"><a href="index.html">&larr; Back to the lessons</a></p>
+</div>
+
+<script>
+(function () {
+  var ENDPOINT = 'https://ae-lesson-requests.billiethomasonsound.workers.dev/api/submit';
+  var form = document.getElementById('reqform');
+  var btn = document.getElementById('submit');
+  var msg = document.getElementById('msg');
+
+  function show(ok, text) {
+    msg.className = 'msg ' + (ok ? 'ok' : 'bad');
+    msg.textContent = text;
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var url = document.getElementById('url').value.trim();
+    var level = document.getElementById('level').value;
+    var topic = document.getElementById('topic').value.trim();
+    var email = document.getElementById('email').value.trim();
+
+    if (!url) { show(false, 'Please paste a YouTube link.'); return; }
+    if (!level) { show(false, 'Please choose a level.'); return; }
+    if (!topic) { show(false, 'Please tell us the grammar topic.'); return; }
+    if (!email) { show(false, 'Please add your email so we can send you the link.'); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url: url, level: level, topic: topic, email: email })
+    })
+      .then(function (r) {
+        return r.json().then(function (d) { return { ok: r.ok, d: d }; });
+      })
+      .then(function (res) {
+        if (res.ok && res.d.ok) {
+          show(true, 'Thanks! Your request is in. We\'ll email you when the lesson is live.');
+          form.reset();
+        } else {
+          show(false, res.d.error || 'Something went wrong. Please try again.');
+        }
+      })
+      .catch(function () { show(false, 'Network error. Please try again.'); })
+      .finally(function () {
+        btn.disabled = false;
+        btn.textContent = 'Send request';
+      });
+  });
+})();
+</script>
+</body>
+</html>

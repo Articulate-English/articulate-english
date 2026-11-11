@@ -303,6 +303,7 @@ h1{font-family:'Baloo 2',system-ui,sans-serif;font-size:clamp(1.7rem,4vw,2.6rem)
   <header>
     <h1>🎬 Video Lessons</h1>
     <p class="sub">Watch real nature videos, answer questions, and learn English. Each lesson targets one grammar point from the test-english.com A2 / B1 syllabus. @@COUNT@@ lessons.</p>
+    <p class="sub" style="margin-top:10px"><a href="request.html" style="color:var(--yellow);font-weight:800;text-decoration:none">+ Request a lesson &rarr;</a> <span style="opacity:.8">&middot; We'll email you when it's live.</span></p>
   </header>
   @@CARDS@@
   <p class="note">Made with the Articulate Video Lesson pipeline · Questions are generated from the real video dialogue.</p>
