@@ -1,0 +1,34 @@
+{
+  "slug": "a2-past-simple",
+  "title": "Get Up Close to Sharks",
+  "level": "A2",
+  "grammar": "Past simple: form and use",
+  "source": "Book Club",
+  "emoji": "🦈",
+  "videoId": "6vutQ1_EvB4",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":1,"sentence":"Brian _____ fascinated by sharks as a kid.","answer":"was","explain":"Past of 'be': was."},
+    {"id":"q2","type":"mcq","time":1,"question":"Which sentence is correct?","options":["Brian was fascinated by sharks.","Brian is fascinated by sharks.","Brian were fascinated by sharks.","Brian be fascinated by sharks."],"correct":0,"explain":"Singular subject + was."},
+    {"id":"q3","type":"fillgap","time":6,"sentence":"When he became a photographer, he _____ wait to get in the water.","answer":"couldn't","explain":"Past of 'can': could / couldn't."},
+    {"id":"q4","type":"mcq","time":6,"question":"Which sentence is correct?","options":["He couldn't wait to get in the water.","He can't wait to get in the water.","He couldn't waited to get in the water.","He could not waits to get in the water."],"correct":0,"explain":"Couldn't + base verb."},
+    {"id":"q5","type":"fillgap","time":22,"sentence":"One of his favorite encounters _____ photographing tiger sharks.","answer":"was","explain":"Past of 'be': was."},
+    {"id":"q6","type":"mcq","time":22,"question":"Which sentence is correct?","options":["One encounter was photographing tiger sharks.","One encounter were photographing tiger sharks.","One encounter is photographing tiger sharks.","One encounter did photographing tiger sharks."],"correct":0,"explain":"One (singular) + was."},
+    {"id":"q7","type":"fillgap","time":31,"sentence":"He _____ no success finding tiger sharks at first.","answer":"had","explain":"Past of 'have': had."},
+    {"id":"q8","type":"mcq","time":31,"question":"Which sentence is correct?","options":["He had no success.","He has no success.","He did no success.","He was no success."],"correct":0,"explain":"Had = past of have."},
+    {"id":"q9","type":"fillgap","time":36,"sentence":"A friend _____ him about a place in the Bahamas.","answer":"told","explain":"Past of 'tell': told."},
+    {"id":"q10","type":"mcq","time":36,"question":"Which sentence is correct?","options":["A friend told him about a place.","A friend telled him about a place.","A friend did told him about a place.","A friend was told him about a place."],"correct":0,"explain":"Tell → told (irregular)."},
+    {"id":"q11","type":"fillgap","time":51,"sentence":"He was only in about 20 _____ of water.","answer":"feet","explain":"Foot → feet (irregular plural)."},
+    {"id":"q12","type":"mcq","time":51,"question":"Which sentence is correct?","options":["He was in 20 feet of water.","He was in 20 foot of water.","He is in 20 feet of water.","He were in 20 feet of water."],"correct":0,"explain":"20 feet (plural)."},
+    {"id":"q13","type":"fillgap","time":119,"sentence":"He _____ just extraordinary experiences with the sharks.","answer":"had","explain":"Past of 'have': had."},
+    {"id":"q14","type":"mcq","time":119,"question":"Which sentence is correct?","options":["He had extraordinary experiences.","He has extraordinary experiences.","He did extraordinary experiences.","He was extraordinary experiences."],"correct":0,"explain":"Had = past of have."},
+    {"id":"q15","type":"order","time":36,"words":["A","friend","told","him","about","a","place","in","the","Bahamas"],"correct":"A friend told him about a place in the Bahamas.","explain":"Past simple: told."}
+  ],
+  "vocab": [
+    {"w":"shark","d":"a large fish with sharp teeth"},
+    {"w":"photographer","d":"a person who takes photos"},
+    {"w":"assignment","d":"a job or task"},
+    {"w":"tiger shark","d":"a large shark with dark stripes"},
+    {"w":"Bahamas","d":"a group of islands in the Caribbean"},
+    {"w":"underwater","d":"below the surface of the water"}
+  ]
+}
