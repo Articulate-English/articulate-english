@@ -1,0 +1,35 @@
+{
+  "slug": "b1-phrasal-verbs-1",
+  "title": "Fire Lookouts in a Box",
+  "level": "B1",
+  "grammar": "Phrasal verbs 1 (up, down, in, out)",
+  "source": "Nature Boom Time",
+  "emoji": "🔥",
+  "videoId": "os_ilvt_otc",
+  "questions": [
+    {"id":"q1","type":"fillgap","time":29,"sentence":"We're here to _____ this guy, the McCart Fire Tower.","answer":"check out","explain":"Check out = look at/examine."},
+    {"id":"q2","type":"mcq","time":29,"question":"Which sentence is correct?","options":["We're here to check out the tower.","We're here to checking out the tower.","We're here to check the tower.","We're here to check out it."],"correct":0,"explain":"Check out + object."},
+    {"id":"q3","type":"fillgap","time":37,"sentence":"Wait, _____ a minute.","answer":"back up","explain":"Back up = stop and reconsider."},
+    {"id":"q4","type":"mcq","time":37,"question":"Which sentence is correct?","options":["Back up a minute.","Backing up a minute.","Backs up a minute.","Backed up a minute."],"correct":0,"explain":"Back up (imperative)."},
+    {"id":"q5","type":"fillgap","time":71,"sentence":"They started _____ with possible solutions.","answer":"coming up","explain":"Come up with = think of/produce."},
+    {"id":"q6","type":"mcq","time":71,"question":"Which sentence is correct?","options":["They started coming up with solutions.","They started come up with solutions.","They started coming up solutions.","They started comes up with solutions."],"correct":0,"explain":"Come up with + object."},
+    {"id":"q7","type":"fillgap","time":124,"sentence":"A small fire _____ out in Montana.","answer":"broke","explain":"Break out = start suddenly."},
+    {"id":"q8","type":"mcq","time":124,"question":"Which sentence is correct?","options":["A fire broke out in Montana.","A fire broke in Montana out.","A fire broken out in Montana.","A fire breaking out in Montana."],"correct":0,"explain":"Broke out (past of break out)."},
+    {"id":"q9","type":"fillgap","time":145,"sentence":"So the fires could be _____ out before any massive destruction occurred.","answer":"put","explain":"Put out = extinguish."},
+    {"id":"q10","type":"mcq","time":145,"question":"Which sentence is correct?","options":["The fires could be put out.","The fires could be puts out.","The fires could be putting out.","The fires could be putted out."],"correct":0,"explain":"Put out (past participle: put)."},
+    {"id":"q11","type":"fillgap","time":249,"sentence":"Put it all together to _____ out where the fire is.","answer":"find","explain":"Find out = discover."},
+    {"id":"q12","type":"mcq","time":249,"question":"Which sentence is correct?","options":["Put it together to find out where the fire is.","Put it together to finding out where the fire is.","Put it together to finds out where the fire is.","Put it together to find where out the fire is."],"correct":0,"explain":"Find out + clause."},
+    {"id":"q13","type":"fillgap","time":335,"sentence":"They had to do nothing but _____ for forest fires all day.","answer":"look","explain":"Look for = search for."},
+    {"id":"q14","type":"mcq","time":335,"question":"Which sentence is correct?","options":["They had to look for fires all day.","They had to look fires all day.","They had to looking for fires all day.","They had to looks for fires all day."],"correct":0,"explain":"Look for + object."},
+    {"id":"q15","type":"order","time":29,"words":["We're","here","to","check","out","the","fire","tower"],"correct":"We're here to check out the fire tower.","explain":"Check out + object."}
+  ],
+  "vocab": [
+    {"w":"fire tower","d":"a tall structure used to watch for forest fires"},
+    {"w":"lookout","d":"a person who watches for danger"},
+    {"w":"forest fire","d":"a fire in a forest or woodland"},
+    {"w":"smoke","d":"the gray gas that comes from fire"},
+    {"w":"Osborne Fire Finder","d":"an old instrument used to locate fires"},
+    {"w":"compass","d":"an instrument that shows direction"},
+    {"w":"satellite","d":"a machine sent into space to send information"}
+  ]
+}
