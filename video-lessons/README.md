@@ -10,6 +10,26 @@ video dialogue, targeting one grammar point from the test-english.com A2 / B1 sy
 2. `python pipeline/build.py` — generates `lessons/<slug>.html` and rebuilds `index.html`.
 3. Commit and push; GitHub Pages deploys.
 
+## Remove a faulty card
+
+A card that is wrong, unfair, or not supported by the video can be pulled from the
+published lesson without deleting it from the spec:
+
+```
+python pipeline/remove_card.py remove <slug> <id-or-text> --reason "why"
+python pipeline/remove_card.py list
+python pipeline/remove_card.py restore <slug> <id>
+```
+
+`<id-or-text>` is the question id (`q3`) or any unique text from the card, so a
+card can be pulled without opening the spec first. The removal is recorded in
+`pipeline/removed-cards.json` and the lessons + index are rebuilt immediately.
+
+Removing never edits the spec: the spec stays the source of truth for content and
+the registry is the "do not publish" list, so `restore` puts the card back. A
+removal whose id no longer exists in the spec makes `build.py` print a warning
+instead of failing silently.
+
 ## Request a lesson (public form)
 
 `request.html` lets a visitor submit a YouTube link + level + grammar topic + their

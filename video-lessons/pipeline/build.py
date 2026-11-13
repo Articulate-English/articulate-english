@@ -31,6 +31,7 @@ ROOT = os.path.dirname(BASE)
 SPECS_DIR = os.path.join(BASE, 'specs')
 LESSONS_DIR = os.path.join(ROOT, 'lessons')
 INDEX_PATH = os.path.join(ROOT, 'index.html')
+REMOVED_PATH = os.path.join(BASE, 'removed-cards.json')
 
 LESSON_TEMPLATE = r'''<!DOCTYPE html>
 <html lang="en">
@@ -317,6 +318,34 @@ def esc(s):
     return html.escape(str(s), quote=True)
 
 
+def load_removed():
+    """Cards pulled from publication: {slug: {question_id: reason}}.
+
+    Removing a card never deletes it from the spec — the spec stays the single
+    source of truth for content, and this registry is the "do not publish" list.
+    A missing file means nothing has been removed yet.
+    """
+    if not os.path.exists(REMOVED_PATH):
+        return {}
+    with open(REMOVED_PATH, encoding='utf-8') as f:
+        return json.load(f)
+
+
+def kept_questions(spec, removed):
+    """Questions to publish for one spec, minus removed cards.
+
+    Returns (kept, skipped_ids) in original order.
+    """
+    dropped = removed.get(spec['slug'], {})
+    kept, skipped = [], []
+    for q in spec['questions']:
+        if q.get('id') in dropped:
+            skipped.append(q.get('id'))
+        else:
+            kept.append(q)
+    return kept, skipped
+
+
 def load_specs():
     specs = []
     for p in sorted(glob.glob(os.path.join(SPECS_DIR, '*.json'))):
@@ -325,7 +354,10 @@ def load_specs():
     return specs
 
 
-def build_lesson(spec):
+def build_lesson(spec, removed=None):
+    if removed is None:
+        removed = load_removed()
+    questions, skipped = kept_questions(spec, removed)
     out = LESSON_TEMPLATE
     out = out.replace('@@TITLE@@', esc(spec['title']))
     out = out.replace('@@LEVEL@@', esc(spec['level']))
@@ -333,8 +365,8 @@ def build_lesson(spec):
     out = out.replace('@@SOURCE@@', esc(spec.get('source', '')))
     out = out.replace('@@EMOJI@@', esc(spec.get('emoji', '🎬')))
     out = out.replace('@@VIDEO_ID@@', spec['videoId'])
-    out = out.replace('@@QCOUNT@@', str(len(spec['questions'])))
-    qjson = json.dumps(spec['questions'], ensure_ascii=False).replace('<', '\\u003c')
+    out = out.replace('@@QCOUNT@@', str(len(questions)))
+    qjson = json.dumps(questions, ensure_ascii=False).replace('<', '\\u003c')
     out = out.replace('@@QUESTIONS@@', qjson)
     vocab = ''.join('<li><span class="w">%s</span> — %s</li>' % (esc(v['w']), esc(v['d']))
                     for v in spec.get('vocab', []))
@@ -343,10 +375,12 @@ def build_lesson(spec):
     path = os.path.join(LESSONS_DIR, spec['slug'] + '.html')
     with open(path, 'w', encoding='utf-8') as f:
         f.write(out)
-    return path
+    return path, questions, skipped
 
 
-def build_index(specs):
+def build_index(specs, removed=None):
+    if removed is None:
+        removed = load_removed()
     by_level = {}
     for s in specs:
         by_level.setdefault(s['level'], []).append(s)
@@ -354,6 +388,7 @@ def build_index(specs):
     for level in sorted(by_level.keys()):
         cards += '<h2 class="lvl">Level %s</h2><div class="grid">' % esc(level)
         for s in by_level[level]:
+            kept, _ = kept_questions(s, removed)
             cards += ('<a class="card" href="lessons/%s.html">'
                       '<div class="thumb">%s</div>'
                       '<h3>%s</h3>'
@@ -361,7 +396,7 @@ def build_index(specs):
                       '<p class="m">%s · %d questions</p>'
                       '<span class="cta">Start lesson →</span></a>') % (
                       esc(s['slug']), esc(s.get('emoji', '🎬')), esc(s['title']),
-                      esc(s.get('grammar', '')), esc(s.get('source', '')), len(s['questions']))
+                      esc(s.get('grammar', '')), esc(s.get('source', '')), len(kept))
         cards += '</div>'
     out = INDEX_TEMPLATE.replace('@@CARDS@@', cards).replace('@@COUNT@@', str(len(specs)))
     with open(INDEX_PATH, 'w', encoding='utf-8') as f:
@@ -375,11 +410,28 @@ def main():
     if not specs:
         print('No specs found in', SPECS_DIR)
         return 1
+    removed = load_removed()
+    total_removed = 0
     for s in specs:
-        p = build_lesson(s)
-        print('built', p, '(%d questions)' % len(s['questions']))
-    build_index(specs)
+        p, kept, skipped = build_lesson(s, removed)
+        total_removed += len(skipped)
+        note = ''
+        if skipped:
+            note = '  [removed cards: %s]' % ', '.join(skipped)
+        print('built', p, '(%d questions)' % len(kept) + note)
+    build_index(specs, removed)
     print('built', INDEX_PATH, '(%d lessons)' % len(specs))
+    # A removal pointing at an id that no longer exists is almost always a typo
+    # or a rebuilt spec — say so instead of silently doing nothing.
+    stale = []
+    for s in specs:
+        ids = set(q.get('id') for q in s['questions'])
+        for rid in removed.get(s['slug'], {}):
+            if rid not in ids:
+                stale.append('%s:%s' % (s['slug'], rid))
+    if stale:
+        print('WARNING: removed cards not found in specs:', ', '.join(stale))
+    print('removed cards in registry:', total_removed)
     return 0
 
 
