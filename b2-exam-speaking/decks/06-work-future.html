@@ -56,7 +56,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 .tooltip:hover::after{opacity:1}
 .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
 .photo-box{position:relative;min-height:180px;border-radius:10px;border:1px solid var(--cs-border);background-size:cover;background-position:center;background-color:rgba(0,0,0,.35);overflow:hidden;display:flex;align-items:flex-end}
-.photo-box .cap{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;background:color-mix(in srgb,var(--cs-bg) 80%,transparent);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);color:var(--cs-text);font-size:.82rem;line-height:1.4;text-align:left;text-shadow:0 1px 2px rgba(0,0,0,.6)}
 .nav-btns{display:flex;align-items:center;justify-content:center;gap:1.2em;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:200;background:color-mix(in srgb,color-mix(in srgb,var(--cs-bg) 62%,var(--cs-accent) 38%) 85%,transparent);border:1px solid var(--cs-accent-glow);border-radius:40px;padding:10px 24px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .nav-btns button{font-family:'Inter',sans-serif;font-size:1rem;padding:8px 18px;border-radius:24px;border:1px solid var(--cs-accent);background:var(--cs-accent-dim);color:var(--cs-accent);cursor:pointer;min-width:44px;min-height:44px;transition:transform .15s ease,box-shadow .2s}
 .nav-btns button:hover{background:var(--cs-accent-glow);box-shadow:0 0 15px var(--cs-accent-glow);transform:scale(1.05)}
@@ -113,9 +112,8 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 2 — Photo Comparison</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Talk for 1 minute. Compare the photos and answer the question.</p>
 <div class="question">What is more important when choosing a job: money or job satisfaction?</div>
-<div class="photo-grid"><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80')"><span class="cap">Photo A:<br>A person looking happy while working in a creative studio</span></div><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80')"><span class="cap">Photo B:<br>A person in a formal office with a high salary but looking stressed</span></div></div>
-<button class="reveal-btn">Show model answer</button>
-<div class="hidden-answer">In photo A, the person seems to enjoy their work in a creative environment. In photo B, the person probably earns more but looks stressed and unhappy. I think job satisfaction is more important in the long term because money cannot fix burnout or unhappiness. However, everyone needs enough money to live comfortably. I would say the ideal job balances both: fair pay and work you actually enjoy.</div>
+<div class="photo-grid"><div class="photo-box" role="img" aria-label="A smiling young woman in an apron among easels and canvases in a bright art studio" style="background-image:url('https://images.pexels.com/photos/15870647/pexels-photo-15870647.jpeg?auto=compress&w=800&q=80')"></div><div class="photo-box" role="img" aria-label="A businessman in a suit at an office desk pinching the bridge of his nose, looking stressed" style="background-image:url('https://images.pexels.com/photos/8428065/pexels-photo-8428065.jpeg?auto=compress&w=800&q=80')"></div></div>
+<div class="hidden-answer">In one photo, a young woman in an apron is smiling in a bright art studio surrounded by easels and canvases. In the other photo, a businessman in a suit sits at an office desk pinching the bridge of his nose, looking stressed. I think job satisfaction matters more in the long term, because a high salary cannot make up for burnout or unhappiness. That said, everyone needs enough money to live comfortably, so the ideal job pays fairly and is also rewarding.</div>
 
   </div>
 </section>
@@ -126,7 +124,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Discuss with your partner for 2–3 minutes, then decide.</p>
 <div class="question">A school is designing a programme to help students prepare for work. Discuss the ideas and decide which two would be most useful.</div>
 <ul style="margin:12px 0 16px 18px;color:var(--cs-text-muted);font-size:.95rem"><li>Career talks from professionals</li><li>Work experience placements</li><li>CV writing workshops</li><li>Interview practice sessions</li><li>Entrepreneurship competitions</li></ul>
-<button class="reveal-btn">Show model discussion</button>
 <div class="hidden-answer">A: I think work <span class='tooltip' data-def='knowledge or skill gained from doing a job or activity'>experience</span> placements are the most useful because students see what real jobs are like.<br>B: That's a good point, but they can be difficult to organise for everyone.<br>A: True. <span class='tooltip' data-def='the series of jobs that a person has during their working life'>Career</span> talks from professionals are easier to arrange and expose students to many different jobs.<br>B: I agree. And interview practice would help students feel confident when they actually apply for jobs.<br>A: So let's choose <span class='tooltip' data-def='the series of jobs that a person has during their working life'>career</span> talks and interview practice.<br>B: Yes, I agree with you.</div>
 
   </div>
@@ -137,16 +134,12 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 4 — Follow-up Discussion</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Answer these deeper questions.</p>
 <div class="question">1. Is it better to have one <span class='tooltip' data-def='the series of jobs that a person has during their working life'>career</span> or change jobs many times?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I think changing jobs can be positive because it gives you new experiences and skills. However, staying in one <span class='tooltip' data-def='the series of jobs that a person has during their working life'>career</span> can lead to deeper expertise and promotions.</div>
 <div class="question">2. Should work-life balance be more important than salary?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I believe work-life balance is crucial. A high salary is nice, but it means nothing if you are too stressed or tired to enjoy life.</div>
 <div class="question">3. How will technology change jobs in the future?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">Technology will automate many routine jobs, so people will need to learn new skills. Jobs that require creativity and emotional intelligence will probably grow.</div>
 <div class="question">4. What advice would you give someone choosing a <span class='tooltip' data-def='the series of jobs that a person has during their working life'>career</span>?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I would advise them to choose something they are genuinely interested in, not just what pays well. Passion usually leads to better long-term success.</div>
 
   </div>
@@ -244,7 +237,10 @@ function goTo(n){
   slides[current].classList.remove('active');
   current=n;
   slides[current].classList.add('active');
-  document.getElementById('modelAnswersBtn').classList.toggle('show',n===1);
+  var hasAns=slides[n].querySelectorAll('.hidden-answer').length>0;
+  var mab=document.getElementById('modelAnswersBtn');
+  mab.classList.toggle('show',hasAns);
+  mab.textContent=slides[n].querySelectorAll('.hidden-answer.open').length?'Hide model answers':'Reveal model answers';
   document.getElementById('slideCounter').textContent=(current+1)+' / '+slides.length;
   document.getElementById('progressFill').style.width=((current+1)/slides.length*100)+'%';
   document.getElementById('prevBtn').disabled=current===0;
@@ -264,13 +260,6 @@ document.getElementById('modelAnswersBtn').addEventListener('click',function(){
   for(var i=0;i<ans.length;i++){ if(!ans[i].classList.contains('open')){ allOpen=false; break; } }
   for(var i=0;i<ans.length;i++){ ans[i].classList.toggle('open',!allOpen); }
   this.textContent=allOpen?'Reveal model answers':'Hide model answers';
-});
-document.addEventListener('click',function(e){
-  var btn=e.target.closest('.reveal-btn');
-  if(btn){
-    var ans=btn.parentElement.querySelector('.hidden-answer');
-    if(ans){ ans.classList.toggle('open'); btn.textContent=ans.classList.contains('open')?'Hide answer':'Show answer'; }
-  }
 });
 document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); next(); }

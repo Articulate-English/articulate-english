@@ -56,7 +56,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 .tooltip:hover::after{opacity:1}
 .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
 .photo-box{position:relative;min-height:180px;border-radius:10px;border:1px solid var(--cs-border);background-size:cover;background-position:center;background-color:rgba(0,0,0,.35);overflow:hidden;display:flex;align-items:flex-end}
-.photo-box .cap{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;background:color-mix(in srgb,var(--cs-bg) 80%,transparent);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);color:var(--cs-text);font-size:.82rem;line-height:1.4;text-align:left;text-shadow:0 1px 2px rgba(0,0,0,.6)}
 .nav-btns{display:flex;align-items:center;justify-content:center;gap:1.2em;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:200;background:color-mix(in srgb,color-mix(in srgb,var(--cs-bg) 62%,var(--cs-accent) 38%) 85%,transparent);border:1px solid var(--cs-accent-glow);border-radius:40px;padding:10px 24px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .nav-btns button{font-family:'Inter',sans-serif;font-size:1rem;padding:8px 18px;border-radius:24px;border:1px solid var(--cs-accent);background:var(--cs-accent-dim);color:var(--cs-accent);cursor:pointer;min-width:44px;min-height:44px;transition:transform .15s ease,box-shadow .2s}
 .nav-btns button:hover{background:var(--cs-accent-glow);box-shadow:0 0 15px var(--cs-accent-glow);transform:scale(1.05)}
@@ -113,9 +112,8 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 2 — Photo Comparison</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Talk for 1 minute. Compare the photos and answer the question.</p>
 <div class="question">Why do some people prefer shopping online to shopping in stores?</div>
-<div class="photo-grid"><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80')"><span class="cap">Photo A:<br>A busy high street with people carrying shopping bags</span></div><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80')"><span class="cap">Photo B:<br>A person browsing products on a laptop at home</span></div></div>
-<button class="reveal-btn">Show model answer</button>
-<div class="hidden-answer">In photo A, people are shopping in physical stores, which allows them to try things on and enjoy the atmosphere. In photo B, someone is shopping online from home, which is more convenient and often cheaper. I think online shopping is popular because it saves time and you can compare prices easily. On the other hand, in-store shopping lets you see the <span class='tooltip' data-def='how good or bad something is'>quality</span> of products before you buy them. I personally prefer online shopping for clothes but in-store for shoes because fit is important.</div>
+<div class="photo-grid"><div class="photo-box" role="img" aria-label="Two smiling women walking along a city street carrying several shopping bags" style="background-image:url('https://images.pexels.com/photos/6567189/pexels-photo-6567189.jpeg?auto=compress&w=800&q=80')"></div><div class="photo-box" role="img" aria-label="A person on a sofa at home browsing an online shop on a laptop while holding a payment card" style="background-image:url('https://images.pexels.com/photos/7007174/pexels-photo-7007174.jpeg?auto=compress&w=800&q=80')"></div></div>
+<div class="hidden-answer">In one photo, two smiling women are walking along a city street carrying shopping bags. In the other photo, someone is browsing an online shop on a laptop at home, holding a payment card. I think online shopping is popular because it saves time and lets you compare prices easily. On the other hand, physical stores let you try things on and check the <span class='tooltip' data-def='how good or bad something is'>quality</span> before you buy. Personally, I prefer shopping online for everyday items.</div>
 
   </div>
 </section>
@@ -126,7 +124,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Discuss with your partner for 2–3 minutes, then decide.</p>
 <div class="question">A school wants to teach students how to manage money better. Discuss the ideas and decide which two would be most useful.</div>
 <ul style="margin:12px 0 16px 18px;color:var(--cs-text-muted);font-size:.95rem"><li>Lessons on budgeting</li><li>A school savings challenge</li><li>Talks from local business owners</li><li>Practice with online banking tools</li><li>A pretend shop to practise buying and selling</li></ul>
-<button class="reveal-btn">Show model discussion</button>
 <div class="hidden-answer">A: I think budgeting lessons are essential because every student will need that skill in adult life.<br>B: That's a good point, but a savings challenge could make it fun and competitive.<br>A: I see what you mean. However, the challenge might only motivate students for a short time.<br>B: True. Talks from business owners could show real-world examples, but not every student wants to run a business.<br>A: So budgeting lessons and practice with online banking tools seem the most practical for everyone.<br>B: Yes, I agree with you.</div>
 
   </div>
@@ -137,16 +134,12 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 4 — Follow-up Discussion</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Answer these deeper questions.</p>
 <div class="question">1. Should young people get pocket money?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I think pocket money is a good idea because it teaches young people how to manage money. However, it should be connected to responsibilities, not just given freely.</div>
 <div class="question">2. Is it better to buy cheap products or expensive ones?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">It depends on the product. For everyday items, cheap is fine, but for things you use a lot, like shoes or a laptop, <span class='tooltip' data-def='how good or bad something is'>quality</span> matters more.</div>
 <div class="question">3. How has online shopping changed town centres?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">Online shopping has damaged many town centres because fewer people visit physical shops. Some high streets now have more cafes and services instead of shops.</div>
 <div class="question">4. What advice would you give someone who wants to save money?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I would advise them to track their spending, set a clear goal, and avoid impulse purchases. Even small amounts saved regularly add up over time.</div>
 
   </div>
@@ -244,7 +237,10 @@ function goTo(n){
   slides[current].classList.remove('active');
   current=n;
   slides[current].classList.add('active');
-  document.getElementById('modelAnswersBtn').classList.toggle('show',n===1);
+  var hasAns=slides[n].querySelectorAll('.hidden-answer').length>0;
+  var mab=document.getElementById('modelAnswersBtn');
+  mab.classList.toggle('show',hasAns);
+  mab.textContent=slides[n].querySelectorAll('.hidden-answer.open').length?'Hide model answers':'Reveal model answers';
   document.getElementById('slideCounter').textContent=(current+1)+' / '+slides.length;
   document.getElementById('progressFill').style.width=((current+1)/slides.length*100)+'%';
   document.getElementById('prevBtn').disabled=current===0;
@@ -264,13 +260,6 @@ document.getElementById('modelAnswersBtn').addEventListener('click',function(){
   for(var i=0;i<ans.length;i++){ if(!ans[i].classList.contains('open')){ allOpen=false; break; } }
   for(var i=0;i<ans.length;i++){ ans[i].classList.toggle('open',!allOpen); }
   this.textContent=allOpen?'Reveal model answers':'Hide model answers';
-});
-document.addEventListener('click',function(e){
-  var btn=e.target.closest('.reveal-btn');
-  if(btn){
-    var ans=btn.parentElement.querySelector('.hidden-answer');
-    if(ans){ ans.classList.toggle('open'); btn.textContent=ans.classList.contains('open')?'Hide answer':'Show answer'; }
-  }
 });
 document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); next(); }

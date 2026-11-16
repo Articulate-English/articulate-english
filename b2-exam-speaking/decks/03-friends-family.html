@@ -56,7 +56,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 .tooltip:hover::after{opacity:1}
 .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
 .photo-box{position:relative;min-height:180px;border-radius:10px;border:1px solid var(--cs-border);background-size:cover;background-position:center;background-color:rgba(0,0,0,.35);overflow:hidden;display:flex;align-items:flex-end}
-.photo-box .cap{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;background:color-mix(in srgb,var(--cs-bg) 80%,transparent);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);color:var(--cs-text);font-size:.82rem;line-height:1.4;text-align:left;text-shadow:0 1px 2px rgba(0,0,0,.6)}
 .nav-btns{display:flex;align-items:center;justify-content:center;gap:1.2em;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:200;background:color-mix(in srgb,color-mix(in srgb,var(--cs-bg) 62%,var(--cs-accent) 38%) 85%,transparent);border:1px solid var(--cs-accent-glow);border-radius:40px;padding:10px 24px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .nav-btns button{font-family:'Inter',sans-serif;font-size:1rem;padding:8px 18px;border-radius:24px;border:1px solid var(--cs-accent);background:var(--cs-accent-dim);color:var(--cs-accent);cursor:pointer;min-width:44px;min-height:44px;transition:transform .15s ease,box-shadow .2s}
 .nav-btns button:hover{background:var(--cs-accent-glow);box-shadow:0 0 15px var(--cs-accent-glow);transform:scale(1.05)}
@@ -113,9 +112,8 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 2 — Photo Comparison</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Talk for 1 minute. Compare the photos and answer the question.</p>
 <div class="question">What is important for a strong friendship?</div>
-<div class="photo-grid"><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800&q=80')"><span class="cap">Photo A:<br>Two friends laughing together while having coffee</span></div><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=800&q=80')"><span class="cap">Photo B:<br>Two friends supporting each other during a difficult moment</span></div></div>
-<button class="reveal-btn">Show model answer</button>
-<div class="hidden-answer">In photo A, two friends are enjoying themselves and laughing over coffee. This suggests that fun and shared interests are important in a friendship. In photo B, one friend is clearly supporting the other, which shows that trust and emotional support matter too. I think both elements are essential. A strong friendship needs laughter, but it also needs someone you can <span class='tooltip' data-def='to depend on someone for help or support'>rely on</span> when life is hard. Personally, I value trust more because a fun friend is not enough if they disappear when you need them.</div>
+<div class="photo-grid"><div class="photo-box" role="img" aria-label="Two friends laughing together at an outdoor cafe table, holding takeaway coffee cups" style="background-image:url('https://images.pexels.com/photos/5047002/pexels-photo-5047002.jpeg?w=800&q=80')"></div><div class="photo-box" role="img" aria-label="One friend comforting another who looks upset, sitting close together on a sofa at home" style="background-image:url('https://images.pexels.com/photos/6135041/pexels-photo-6135041.jpeg?w=800&q=80')"></div></div>
+<div class="hidden-answer">In one photo, two friends are laughing together over coffee at an outdoor cafe, which shows how important it is to share enjoyable moments. In the other photo, one friend is comforting another who looks upset, sitting close together on a sofa. This shows that support during difficult times matters just as much as having fun. I believe trust and being there for each other are the most important qualities. A strong friendship needs both laughter and the feeling that you can rely on the other person when life is hard.</div>
 
   </div>
 </section>
@@ -126,7 +124,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Discuss with your partner for 2–3 minutes, then decide.</p>
 <div class="question">A youth club wants to help teenagers build better friendships. Discuss the ideas and decide which two would be most useful.</div>
 <ul style="margin:12px 0 16px 18px;color:var(--cs-text-muted);font-size:.95rem"><li>Group sports activities</li><li>Workshops on communication skills</li><li>Team-building trips</li><li>Online discussion groups</li><li>Volunteering projects</li></ul>
-<button class="reveal-btn">Show model discussion</button>
 <div class="hidden-answer">A: I think group sports would be great because people <span class='tooltip' data-def='a close connection or relationship between people'>bond</span> when they work towards a common goal.<br>B: That's a good point, but not everyone likes sport. Workshops on communication skills could help shy students make friends more easily.<br>A: I agree. And team-building trips might create strong memories, although they are expensive.<br>B: Volunteering projects are also powerful because people connect when they help others together.<br>A: So maybe communication workshops and volunteering would reach the most people.<br>B: Yes, I agree with you.</div>
 
   </div>
@@ -137,16 +134,12 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 4 — Follow-up Discussion</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Answer these deeper questions.</p>
 <div class="question">1. Is it better to have a few close friends or many acquaintances?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I would say a few close friends are better because quality matters more than quantity. Close friends are the ones who really know you and support you.</div>
 <div class="question">2. Should parents choose their children's friends?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I don't think parents should choose their children's friends. Teenagers need to learn how to judge people themselves, although parents can give advice.</div>
 <div class="question">3. How has social media changed friendships?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">Social media has made it easier to stay in touch, but I think it can also make friendships more shallow. Real connection needs face-to-face time.</div>
 <div class="question">4. What role should family play in a teenager's life?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">Family should provide a safe base and emotional support, but they also need to give teenagers freedom to become independent.</div>
 
   </div>
@@ -244,7 +237,10 @@ function goTo(n){
   slides[current].classList.remove('active');
   current=n;
   slides[current].classList.add('active');
-  document.getElementById('modelAnswersBtn').classList.toggle('show',n===1);
+  var hasAns=slides[n].querySelectorAll('.hidden-answer').length>0;
+  var mab=document.getElementById('modelAnswersBtn');
+  mab.classList.toggle('show',hasAns);
+  mab.textContent=slides[n].querySelectorAll('.hidden-answer.open').length?'Hide model answers':'Reveal model answers';
   document.getElementById('slideCounter').textContent=(current+1)+' / '+slides.length;
   document.getElementById('progressFill').style.width=((current+1)/slides.length*100)+'%';
   document.getElementById('prevBtn').disabled=current===0;
@@ -264,13 +260,6 @@ document.getElementById('modelAnswersBtn').addEventListener('click',function(){
   for(var i=0;i<ans.length;i++){ if(!ans[i].classList.contains('open')){ allOpen=false; break; } }
   for(var i=0;i<ans.length;i++){ ans[i].classList.toggle('open',!allOpen); }
   this.textContent=allOpen?'Reveal model answers':'Hide model answers';
-});
-document.addEventListener('click',function(e){
-  var btn=e.target.closest('.reveal-btn');
-  if(btn){
-    var ans=btn.parentElement.querySelector('.hidden-answer');
-    if(ans){ ans.classList.toggle('open'); btn.textContent=ans.classList.contains('open')?'Hide answer':'Show answer'; }
-  }
 });
 document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); next(); }

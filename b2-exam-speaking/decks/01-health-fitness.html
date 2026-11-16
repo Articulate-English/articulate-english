@@ -56,7 +56,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 .tooltip:hover::after{opacity:1}
 .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
 .photo-box{position:relative;min-height:180px;border-radius:10px;border:1px solid var(--cs-border);background-size:cover;background-position:center;background-color:rgba(0,0,0,.35);overflow:hidden;display:flex;align-items:flex-end}
-.photo-box .cap{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;background:color-mix(in srgb,var(--cs-bg) 80%,transparent);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);color:var(--cs-text);font-size:.82rem;line-height:1.4;text-align:left;text-shadow:0 1px 2px rgba(0,0,0,.6)}
 .nav-btns{display:flex;align-items:center;justify-content:center;gap:1.2em;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:200;background:color-mix(in srgb,color-mix(in srgb,var(--cs-bg) 62%,var(--cs-accent) 38%) 85%,transparent);border:1px solid var(--cs-accent-glow);border-radius:40px;padding:10px 24px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .nav-btns button{font-family:'Inter',sans-serif;font-size:1rem;padding:8px 18px;border-radius:24px;border:1px solid var(--cs-accent);background:var(--cs-accent-dim);color:var(--cs-accent);cursor:pointer;min-width:44px;min-height:44px;transition:transform .15s ease,box-shadow .2s}
 .nav-btns button:hover{background:var(--cs-accent-glow);box-shadow:0 0 15px var(--cs-accent-glow);transform:scale(1.05)}
@@ -113,9 +112,8 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 2 — Photo Comparison</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Talk for 1 minute. Compare the photos and answer the question.</p>
 <div class="question">What kinds of exercise might appeal to young people?</div>
-<div class="photo-grid"><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&q=80')"><span class="cap">Photo A:<br>A group of teenagers playing basketball together in an indoor court</span></div><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80')"><span class="cap">Photo B:<br>A young person doing yoga alone at home while following an online video</span></div></div>
-<button class="reveal-btn">Show model answer</button>
-<div class="hidden-answer">In photo A, a group of teenagers are playing basketball together in what looks like an indoor court. This kind of exercise is social and competitive, which might appeal to young people who enjoy teamwork. In photo B, someone is doing yoga at home while following an online video. This is more flexible and private, and it might suit people who prefer a calm atmosphere. I think team sports are better for building friendships, whereas yoga helps with flexibility and mental <span class='tooltip' data-def='the state of being comfortable, healthy, or happy'>wellbeing</span>. Overall, both photos show that exercise can fit different personalities.</div>
+<div class="photo-grid"><div class="photo-box" role="img" aria-label="Three basketball players on an indoor court, one holding a ball near the hoop" style="background-image:url('https://images.pexels.com/photos/974525/pexels-photo-974525.jpeg?w=800&q=80')"></div><div class="photo-box" role="img" aria-label="A woman doing a yoga pose on a mat in a living room, with an open laptop on the floor beside her" style="background-image:url('https://images.pexels.com/photos/6599017/pexels-photo-6599017.jpeg?w=800&q=80')"></div></div>
+<div class="hidden-answer">In one photo, a group of players are training together on an indoor basketball court, which looks energetic and competitive. In the other photo, a woman is doing yoga alone in her living room, following a class on her laptop. Team sports may appeal to young people who enjoy being social and working with others, while home workouts suit those who prefer flexibility and privacy. I think group activities are more motivating because you encourage each other, but exercising at home is cheaper and easier to fit into a busy day.</div>
 
   </div>
 </section>
@@ -126,7 +124,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Discuss with your partner for 2–3 minutes, then decide.</p>
 <div class="question">A school wants to encourage students to be healthier. Here are some ideas. Discuss the advantages and disadvantages of each and decide which two would be most effective.</div>
 <ul style="margin:12px 0 16px 18px;color:var(--cs-text-muted);font-size:.95rem"><li>Free gym memberships</li><li>Healthy food in the cafeteria</li><li>A school running club</li><li>Mindfulness lessons</li><li>Banning mobile phones during breaks</li></ul>
-<button class="reveal-btn">Show model discussion</button>
 <div class="hidden-answer">A: I think free gym memberships would motivate some students, but not everyone enjoys the gym. It could also be expensive for the school.<br>B: Yes, but healthy food in the cafeteria would affect every student. If the food tastes good too, it would be really effective.<br>A: That's true. What about a running club? It's free and social.<br>B: I agree, but it might only attract students who already like sport. Mindfulness lessons could help people manage stress, which is also part of health.<br>A: So maybe healthy food and mindfulness lessons would help the widest range of students.<br>B: Yes, I agree with you.</div>
 
   </div>
@@ -137,16 +134,12 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 4 — Follow-up Discussion</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Answer these deeper questions.</p>
 <div class="question">1. Do you think young people today are less healthy than in the past?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I wouldn't say they are less healthy overall, but their lifestyles are different. Many young people have access to better information about nutrition, yet they also spend a lot of time in <span class='tooltip' data-def='involving little or no physical activity'>sedentary</span> activities like gaming or scrolling on social media.</div>
 <div class="question">2. Should governments tax unhealthy food?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I think it's a good idea, but with caution. Taxing sugary drinks could reduce consumption, but it shouldn't punish people on low incomes. The money could fund public sports facilities.</div>
 <div class="question">3. How important is mental health compared to physical health?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">In my opinion, mental health is equally important. If your mental <span class='tooltip' data-def='the state of being comfortable, healthy, or happy'>wellbeing</span> is poor, it's hard to stay motivated to exercise or eat well.</div>
 <div class="question">4. What role should schools play in keeping students healthy?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">Schools should educate students about balanced diets and exercise without making anyone feel ashamed. They can also create a supportive environment where <span class='tooltip' data-def='the state of being comfortable, healthy, or happy'>wellbeing</span> is taken seriously.</div>
 
   </div>
@@ -244,7 +237,10 @@ function goTo(n){
   slides[current].classList.remove('active');
   current=n;
   slides[current].classList.add('active');
-  document.getElementById('modelAnswersBtn').classList.toggle('show',n===1);
+  var hasAns=slides[n].querySelectorAll('.hidden-answer').length>0;
+  var mab=document.getElementById('modelAnswersBtn');
+  mab.classList.toggle('show',hasAns);
+  mab.textContent=slides[n].querySelectorAll('.hidden-answer.open').length?'Hide model answers':'Reveal model answers';
   document.getElementById('slideCounter').textContent=(current+1)+' / '+slides.length;
   document.getElementById('progressFill').style.width=((current+1)/slides.length*100)+'%';
   document.getElementById('prevBtn').disabled=current===0;
@@ -264,13 +260,6 @@ document.getElementById('modelAnswersBtn').addEventListener('click',function(){
   for(var i=0;i<ans.length;i++){ if(!ans[i].classList.contains('open')){ allOpen=false; break; } }
   for(var i=0;i<ans.length;i++){ ans[i].classList.toggle('open',!allOpen); }
   this.textContent=allOpen?'Reveal model answers':'Hide model answers';
-});
-document.addEventListener('click',function(e){
-  var btn=e.target.closest('.reveal-btn');
-  if(btn){
-    var ans=btn.parentElement.querySelector('.hidden-answer');
-    if(ans){ ans.classList.toggle('open'); btn.textContent=ans.classList.contains('open')?'Hide answer':'Show answer'; }
-  }
 });
 document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); next(); }

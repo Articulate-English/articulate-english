@@ -56,7 +56,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 .tooltip:hover::after{opacity:1}
 .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
 .photo-box{position:relative;min-height:180px;border-radius:10px;border:1px solid var(--cs-border);background-size:cover;background-position:center;background-color:rgba(0,0,0,.35);overflow:hidden;display:flex;align-items:flex-end}
-.photo-box .cap{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;background:color-mix(in srgb,var(--cs-bg) 80%,transparent);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);color:var(--cs-text);font-size:.82rem;line-height:1.4;text-align:left;text-shadow:0 1px 2px rgba(0,0,0,.6)}
 .nav-btns{display:flex;align-items:center;justify-content:center;gap:1.2em;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:200;background:color-mix(in srgb,color-mix(in srgb,var(--cs-bg) 62%,var(--cs-accent) 38%) 85%,transparent);border:1px solid var(--cs-accent-glow);border-radius:40px;padding:10px 24px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .nav-btns button{font-family:'Inter',sans-serif;font-size:1rem;padding:8px 18px;border-radius:24px;border:1px solid var(--cs-accent);background:var(--cs-accent-dim);color:var(--cs-accent);cursor:pointer;min-width:44px;min-height:44px;transition:transform .15s ease,box-shadow .2s}
 .nav-btns button:hover{background:var(--cs-accent-glow);box-shadow:0 0 15px var(--cs-accent-glow);transform:scale(1.05)}
@@ -113,9 +112,8 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 2 — Photo Comparison</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Talk for 1 minute. Compare the photos and answer the question.</p>
 <div class="question">Why do you think some people prefer cooking at home to eating in restaurants?</div>
-<div class="photo-grid"><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80')"><span class="cap">Photo A:<br>A busy restaurant with elegant lighting and a waiter serving food</span></div><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80')"><span class="cap">Photo B:<br>A person preparing a fresh meal in a cosy kitchen</span></div></div>
-<button class="reveal-btn">Show model answer</button>
-<div class="hidden-answer">In photo A, people are eating in a restaurant which looks convenient and special, perhaps for a celebration. In photo B, someone is cooking at home in a relaxed environment. I think many people prefer home cooking because it is cheaper and healthier, and they can control the ingredients. Restaurants are nice for treats or social occasions, but cooking at home gives you a sense of achievement. Also, sharing a homemade meal with family can feel more personal than a restaurant dinner.</div>
+<div class="photo-grid"><div class="photo-box" role="img" aria-label="A waiter in a white shirt serving a plated dish at a linen-covered table in an elegant restaurant" style="background-image:url('https://images.pexels.com/photos/17086341/pexels-photo-17086341.jpeg?auto=compress&w=800&q=80')"></div><div class="photo-box" role="img" aria-label="A young man mixing ingredients in a bowl at the stove of a bright home kitchen" style="background-image:url('https://images.pexels.com/photos/7696494/pexels-photo-7696494.jpeg?auto=compress&w=800&q=80')"></div></div>
+<div class="hidden-answer">In one photo, a waiter is serving an elegantly plated dish at a linen-covered restaurant table. In the other photo, a young man is mixing ingredients at the stove of a bright home kitchen. I think many people prefer cooking at home because it is cheaper and healthier, and they can choose exactly what goes into the food. Restaurants are lovely for celebrations, but a homemade meal feels more personal, and cooking it yourself can be relaxing.</div>
 
   </div>
 </section>
@@ -126,7 +124,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Discuss with your partner for 2–3 minutes, then decide.</p>
 <div class="question">A school wants to encourage healthier eating habits. Discuss the ideas and decide which two would work best.</div>
 <ul style="margin:12px 0 16px 18px;color:var(--cs-text-muted);font-size:.95rem"><li>Cooking classes for all students</li><li>Only healthy food in the cafeteria</li><li>Free fruit at break time</li><li>Information campaigns about sugar</li><li>Gardening club to grow vegetables</li></ul>
-<button class="reveal-btn">Show model discussion</button>
 <div class="hidden-answer">A: I think cooking classes would be useful because students learn skills they can use for life.<br>B: That's true, but banning unhealthy food might make students rebel and buy junk food outside school.<br>B: What about free fruit? It's simple and gives everyone a healthy option.<br>A: I agree, and a gardening club could also teach students where food comes from, which might make them eat more vegetables.<br>B: So let's choose cooking classes and the gardening club.<br>A: Yes, I agree with you.</div>
 
   </div>
@@ -137,16 +134,12 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 4 — Follow-up Discussion</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Answer these deeper questions.</p>
 <div class="question">1. Should schools teach cooking as a compulsory subject?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I think cooking should be taught in schools because it is a life skill. However, I would not make it compulsory at exam level; it could be a practical workshop instead.</div>
 <div class="question">2. Is fast food always bad for you?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">Fast food is not always bad if you choose wisely. Salads or grilled options can be healthy, but burgers and fried food eaten every day are definitely harmful.</div>
 <div class="question">3. How important is it to eat meals together as a family?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">Eating together is very important because it strengthens family bonds. It also encourages slower, healthier eating habits.</div>
 <div class="question">4. What food trends are popular in your country?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">In my country, plant-based and gluten-free options are becoming popular. People are also more interested in local, organic ingredients.</div>
 
   </div>
@@ -244,7 +237,10 @@ function goTo(n){
   slides[current].classList.remove('active');
   current=n;
   slides[current].classList.add('active');
-  document.getElementById('modelAnswersBtn').classList.toggle('show',n===1);
+  var hasAns=slides[n].querySelectorAll('.hidden-answer').length>0;
+  var mab=document.getElementById('modelAnswersBtn');
+  mab.classList.toggle('show',hasAns);
+  mab.textContent=slides[n].querySelectorAll('.hidden-answer.open').length?'Hide model answers':'Reveal model answers';
   document.getElementById('slideCounter').textContent=(current+1)+' / '+slides.length;
   document.getElementById('progressFill').style.width=((current+1)/slides.length*100)+'%';
   document.getElementById('prevBtn').disabled=current===0;
@@ -264,13 +260,6 @@ document.getElementById('modelAnswersBtn').addEventListener('click',function(){
   for(var i=0;i<ans.length;i++){ if(!ans[i].classList.contains('open')){ allOpen=false; break; } }
   for(var i=0;i<ans.length;i++){ ans[i].classList.toggle('open',!allOpen); }
   this.textContent=allOpen?'Reveal model answers':'Hide model answers';
-});
-document.addEventListener('click',function(e){
-  var btn=e.target.closest('.reveal-btn');
-  if(btn){
-    var ans=btn.parentElement.querySelector('.hidden-answer');
-    if(ans){ ans.classList.toggle('open'); btn.textContent=ans.classList.contains('open')?'Hide answer':'Show answer'; }
-  }
 });
 document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); next(); }

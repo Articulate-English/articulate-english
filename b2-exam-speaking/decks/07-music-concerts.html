@@ -56,7 +56,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 .tooltip:hover::after{opacity:1}
 .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
 .photo-box{position:relative;min-height:180px;border-radius:10px;border:1px solid var(--cs-border);background-size:cover;background-position:center;background-color:rgba(0,0,0,.35);overflow:hidden;display:flex;align-items:flex-end}
-.photo-box .cap{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;background:color-mix(in srgb,var(--cs-bg) 80%,transparent);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);color:var(--cs-text);font-size:.82rem;line-height:1.4;text-align:left;text-shadow:0 1px 2px rgba(0,0,0,.6)}
 .nav-btns{display:flex;align-items:center;justify-content:center;gap:1.2em;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:200;background:color-mix(in srgb,color-mix(in srgb,var(--cs-bg) 62%,var(--cs-accent) 38%) 85%,transparent);border:1px solid var(--cs-accent-glow);border-radius:40px;padding:10px 24px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .nav-btns button{font-family:'Inter',sans-serif;font-size:1rem;padding:8px 18px;border-radius:24px;border:1px solid var(--cs-accent);background:var(--cs-accent-dim);color:var(--cs-accent);cursor:pointer;min-width:44px;min-height:44px;transition:transform .15s ease,box-shadow .2s}
 .nav-btns button:hover{background:var(--cs-accent-glow);box-shadow:0 0 15px var(--cs-accent-glow);transform:scale(1.05)}
@@ -113,9 +112,8 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 2 — Photo Comparison</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Talk for 1 minute. Compare the photos and answer the question.</p>
 <div class="question">Why do people enjoy going to live concerts?</div>
-<div class="photo-grid"><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800&q=80')"><span class="cap">Photo A:<br>A huge crowd at an outdoor music festival with bright lights</span></div><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=800&q=80')"><span class="cap">Photo B:<br>A small, intimate concert in a cosy club</span></div></div>
-<button class="reveal-btn">Show model answer</button>
-<div class="hidden-answer">In photo A, there is a massive crowd at a festival, which shows the excitement of sharing music with thousands of people. In photo B, the concert is small and intimate, so the audience feels closer to the performer. I think people enjoy live concerts because the <span class='tooltip' data-def='the feeling or mood in a place'>atmosphere</span> is completely different from listening to a recording. There is something special about hearing music with other fans and feeling the energy in the room. Personally, I prefer smaller venues because you can see the artist better.</div>
+<div class="photo-grid"><div class="photo-box" role="img" aria-label="A huge crowd at a live concert with bright stage lights" style="background-image:url('https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800&q=80')"></div><div class="photo-box" role="img" aria-label="A small band playing to a few people in a cosy club" style="background-image:url('https://images.pexels.com/photos/9419405/pexels-photo-9419405.jpeg?auto=compress&cs=tysrgb&w=800')"></div></div>
+<div class="hidden-answer">In one photo, a huge crowd is standing in front of a brightly lit stage, watching the same performance. In the other photo, a small band is playing in a cosy club, with the audience sitting at tables nearby. I think people enjoy live concerts because the <span class='tooltip' data-def='the feeling or mood in a place'>atmosphere</span> is shared with others and the music feels more powerful in person. At a big concert there is excitement and energy, while a small club feels personal and relaxed. Personally, I prefer smaller venues because the artists are closer.</div>
 
   </div>
 </section>
@@ -126,7 +124,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Discuss with your partner for 2–3 minutes, then decide.</p>
 <div class="question">A school wants to encourage more students to enjoy music. Discuss the ideas and decide which two would be most effective.</div>
 <ul style="margin:12px 0 16px 18px;color:var(--cs-text-muted);font-size:.95rem"><li>Free tickets to local concerts</li><li>After-school music clubs</li><li>Inviting musicians to perform at school</li><li>Music appreciation lessons</li><li>A student battle of the bands</li></ul>
-<button class="reveal-btn">Show model discussion</button>
 <div class="hidden-answer">A: I think inviting musicians to perform would inspire students who are interested in music.<br>B: That's true, but it might only appeal to students who already like music.<br>A: I see what you mean. Music appreciation lessons could help everyone understand different genres.<br>B: Yes, but after-school music clubs give students a chance to actually play and create music.<br>A: So maybe music clubs and live performances at school would work best together.<br>B: Yes, I agree with you.</div>
 
   </div>
@@ -137,16 +134,12 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 4 — Follow-up Discussion</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Answer these deeper questions.</p>
 <div class="question">1. Is live music better than recorded music?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I think live music is more emotional and exciting, but recorded music is more convenient because you can listen anytime. Both have their place.</div>
 <div class="question">2. Should music lessons be compulsory in schools?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I believe music lessons should be available to everyone, but not necessarily compulsory. Some students have no interest in music and should not be forced.</div>
 <div class="question">3. How has streaming changed the music industry?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">Streaming has made music more accessible, but artists earn less money per stream. It has also changed how people discover new songs.</div>
 <div class="question">4. What makes a song popular?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">A popular song usually has a catchy melody, relatable <span class='tooltip' data-def='the words of a song'>lyrics</span>, and good production. Social media trends can also make a song famous very quickly.</div>
 
   </div>
@@ -244,7 +237,10 @@ function goTo(n){
   slides[current].classList.remove('active');
   current=n;
   slides[current].classList.add('active');
-  document.getElementById('modelAnswersBtn').classList.toggle('show',n===1);
+  var hasAns=slides[n].querySelectorAll('.hidden-answer').length>0;
+  var mab=document.getElementById('modelAnswersBtn');
+  mab.classList.toggle('show',hasAns);
+  mab.textContent=slides[n].querySelectorAll('.hidden-answer.open').length?'Hide model answers':'Reveal model answers';
   document.getElementById('slideCounter').textContent=(current+1)+' / '+slides.length;
   document.getElementById('progressFill').style.width=((current+1)/slides.length*100)+'%';
   document.getElementById('prevBtn').disabled=current===0;
@@ -264,13 +260,6 @@ document.getElementById('modelAnswersBtn').addEventListener('click',function(){
   for(var i=0;i<ans.length;i++){ if(!ans[i].classList.contains('open')){ allOpen=false; break; } }
   for(var i=0;i<ans.length;i++){ ans[i].classList.toggle('open',!allOpen); }
   this.textContent=allOpen?'Reveal model answers':'Hide model answers';
-});
-document.addEventListener('click',function(e){
-  var btn=e.target.closest('.reveal-btn');
-  if(btn){
-    var ans=btn.parentElement.querySelector('.hidden-answer');
-    if(ans){ ans.classList.toggle('open'); btn.textContent=ans.classList.contains('open')?'Hide answer':'Show answer'; }
-  }
 });
 document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); next(); }

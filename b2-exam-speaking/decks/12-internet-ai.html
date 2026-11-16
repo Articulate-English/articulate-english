@@ -56,7 +56,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 .tooltip:hover::after{opacity:1}
 .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
 .photo-box{position:relative;min-height:180px;border-radius:10px;border:1px solid var(--cs-border);background-size:cover;background-position:center;background-color:rgba(0,0,0,.35);overflow:hidden;display:flex;align-items:flex-end}
-.photo-box .cap{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;background:color-mix(in srgb,var(--cs-bg) 80%,transparent);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);color:var(--cs-text);font-size:.82rem;line-height:1.4;text-align:left;text-shadow:0 1px 2px rgba(0,0,0,.6)}
 .nav-btns{display:flex;align-items:center;justify-content:center;gap:1.2em;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:200;background:color-mix(in srgb,color-mix(in srgb,var(--cs-bg) 62%,var(--cs-accent) 38%) 85%,transparent);border:1px solid var(--cs-accent-glow);border-radius:40px;padding:10px 24px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .nav-btns button{font-family:'Inter',sans-serif;font-size:1rem;padding:8px 18px;border-radius:24px;border:1px solid var(--cs-accent);background:var(--cs-accent-dim);color:var(--cs-accent);cursor:pointer;min-width:44px;min-height:44px;transition:transform .15s ease,box-shadow .2s}
 .nav-btns button:hover{background:var(--cs-accent-glow);box-shadow:0 0 15px var(--cs-accent-glow);transform:scale(1.05)}
@@ -113,9 +112,8 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 2 — Photo Comparison</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Talk for 1 minute. Compare the photos and answer the question.</p>
 <div class="question">How might AI change the way students learn in the future?</div>
-<div class="photo-grid"><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=80')"><span class="cap">Photo A:<br>A student studying alone with books and handwritten notes</span></div><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80')"><span class="cap">Photo B:<br>A student using a tablet with an AI learning assistant</span></div></div>
-<button class="reveal-btn">Show model answer</button>
-<div class="hidden-answer">In photo A, a student is learning in a traditional way with books and notes, which helps develop independent thinking. In photo B, a student is using AI on a tablet, which can give instant feedback and personalised exercises. I think AI will change learning by making it more flexible, but it could also make students lazy if they rely on it too much. The best approach is probably a balance: students use AI for support but still do their own thinking and writing.</div>
+<div class="photo-grid"><div class="photo-box" role="img" aria-label="A student studying alone at a table with an open textbook and a handwritten notebook" style="background-image:url('https://images.pexels.com/photos/6929276/pexels-photo-6929276.jpeg?auto=compress&cs=tinysrgb&w=800')"></div><div class="photo-box" role="img" aria-label="A student writing in a notebook while using an open laptop at a table" style="background-image:url('https://images.pexels.com/photos/5905878/pexels-photo-5905878.jpeg?auto=compress&cs=tinysrgb&w=800')"></div></div>
+<div class="hidden-answer">In one photo, a student is studying alone at a table with books and handwritten notes. In the other photo, a student is working on a laptop with a notebook beside her. I think AI could change learning by offering instant feedback, personalised exercises and help whenever students need it. This makes studying more flexible, but students may come to rely on AI too much and stop thinking for themselves. The best approach is probably to use AI as support while still doing your own reading and writing.</div>
 
   </div>
 </section>
@@ -126,7 +124,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Discuss with your partner for 2–3 minutes, then decide.</p>
 <div class="question">A school is deciding how students should use AI responsibly. Discuss the ideas and decide which two rules would be most important.</div>
 <ul style="margin:12px 0 16px 18px;color:var(--cs-text-muted);font-size:.95rem"><li>AI can only be used for checking grammar</li><li>Students must declare when they use AI</li><li>AI is banned for homework</li><li>Teachers must explain how AI works</li><li>AI can be used for research but not writing essays</li></ul>
-<button class="reveal-btn">Show model discussion</button>
 <div class="hidden-answer">A: I think students should have to declare when they use AI. That makes them honest and responsible.<br>B: That's a good point, but teachers also need to explain how AI works so students understand its limits.<br>A: I agree. Banning AI completely is unrealistic because students will use it anyway.<br>B: Yes. Allowing AI for research but not for writing essays seems fair. It helps students learn without doing the work for them.<br>A: So let's choose declaring AI use and limiting it to research.<br>B: Yes, I agree with you.</div>
 
   </div>
@@ -137,16 +134,12 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 4 — Follow-up Discussion</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Answer these deeper questions.</p>
 <div class="question">1. Is social media good for young people?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">Social media can be good for connecting with friends, but it can also harm mental health. It depends on how much time you spend and what content you follow.</div>
 <div class="question">2. Should AI replace teachers?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I do not think AI should replace teachers. It can help with marking and explanations, but teachers understand emotions and motivate students.</div>
 <div class="question">3. How can people avoid <span class='tooltip' data-def='false information that is spread, whether or not the person knows it is false'>misinformation</span> online?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">People should check information from multiple sources and avoid trusting headlines without reading the full article. Critical thinking is essential.</div>
 <div class="question">4. What laws should exist for AI?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">There should be laws about data <span class='tooltip' data-def='the right to keep your personal information secret'>privacy</span>, transparent AI decisions, and clear rules about who is responsible when AI causes harm.</div>
 
   </div>
@@ -244,7 +237,10 @@ function goTo(n){
   slides[current].classList.remove('active');
   current=n;
   slides[current].classList.add('active');
-  document.getElementById('modelAnswersBtn').classList.toggle('show',n===1);
+  var hasAns=slides[n].querySelectorAll('.hidden-answer').length>0;
+  var mab=document.getElementById('modelAnswersBtn');
+  mab.classList.toggle('show',hasAns);
+  mab.textContent=slides[n].querySelectorAll('.hidden-answer.open').length?'Hide model answers':'Reveal model answers';
   document.getElementById('slideCounter').textContent=(current+1)+' / '+slides.length;
   document.getElementById('progressFill').style.width=((current+1)/slides.length*100)+'%';
   document.getElementById('prevBtn').disabled=current===0;
@@ -264,13 +260,6 @@ document.getElementById('modelAnswersBtn').addEventListener('click',function(){
   for(var i=0;i<ans.length;i++){ if(!ans[i].classList.contains('open')){ allOpen=false; break; } }
   for(var i=0;i<ans.length;i++){ ans[i].classList.toggle('open',!allOpen); }
   this.textContent=allOpen?'Reveal model answers':'Hide model answers';
-});
-document.addEventListener('click',function(e){
-  var btn=e.target.closest('.reveal-btn');
-  if(btn){
-    var ans=btn.parentElement.querySelector('.hidden-answer');
-    if(ans){ ans.classList.toggle('open'); btn.textContent=ans.classList.contains('open')?'Hide answer':'Show answer'; }
-  }
 });
 document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); next(); }

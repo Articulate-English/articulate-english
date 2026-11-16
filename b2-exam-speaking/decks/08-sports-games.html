@@ -56,7 +56,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 .tooltip:hover::after{opacity:1}
 .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
 .photo-box{position:relative;min-height:180px;border-radius:10px;border:1px solid var(--cs-border);background-size:cover;background-position:center;background-color:rgba(0,0,0,.35);overflow:hidden;display:flex;align-items:flex-end}
-.photo-box .cap{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;background:color-mix(in srgb,var(--cs-bg) 80%,transparent);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);color:var(--cs-text);font-size:.82rem;line-height:1.4;text-align:left;text-shadow:0 1px 2px rgba(0,0,0,.6)}
 .nav-btns{display:flex;align-items:center;justify-content:center;gap:1.2em;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:200;background:color-mix(in srgb,color-mix(in srgb,var(--cs-bg) 62%,var(--cs-accent) 38%) 85%,transparent);border:1px solid var(--cs-accent-glow);border-radius:40px;padding:10px 24px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .nav-btns button{font-family:'Inter',sans-serif;font-size:1rem;padding:8px 18px;border-radius:24px;border:1px solid var(--cs-accent);background:var(--cs-accent-dim);color:var(--cs-accent);cursor:pointer;min-width:44px;min-height:44px;transition:transform .15s ease,box-shadow .2s}
 .nav-btns button:hover{background:var(--cs-accent-glow);box-shadow:0 0 15px var(--cs-accent-glow);transform:scale(1.05)}
@@ -113,9 +112,8 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 2 — Photo Comparison</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Talk for 1 minute. Compare the photos and answer the question.</p>
 <div class="question">Why do you think some people prefer watching sport to playing it?</div>
-<div class="photo-grid"><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=800&q=80')"><span class="cap">Photo A:<br>A group of friends watching a football match in a crowded stadium</span></div><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=800&q=80')"><span class="cap">Photo B:<br>A person running alone early in the morning</span></div></div>
-<button class="reveal-btn">Show model answer</button>
-<div class="hidden-answer">In photo A, people are watching a sport together in a stadium, which looks exciting and social. In photo B, a person is running alone, which is more personal and requires self-motivation. I think some people prefer watching because it is easier and more entertaining, especially when the match is tense. Playing sport takes more effort and time. However, doing sport is better for your health. I enjoy both, but watching is definitely less tiring.</div>
+<div class="photo-grid"><div class="photo-box" role="img" aria-label="Spectators watching a football match in a crowded stadium" style="background-image:url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=800&q=80')"></div><div class="photo-box" role="img" aria-label="A person running alone in a foggy park early in the morning" style="background-image:url('https://images.pexels.com/photos/11920624/pexels-photo-11920624.jpeg?auto=compress&cs=tysrgb&w=800')"></div></div>
+<div class="hidden-answer">In one photo, a football match is taking place in a crowded stadium, with thousands of spectators watching together. In the other photo, a person is running alone in a foggy park early in the morning. I think some people prefer watching because it is exciting and social, and they can enjoy it without any physical effort. Playing sport requires time, fitness and self-motivation, especially when you train alone. Watching is also cheaper and more relaxing. Personally, I would rather play sport, but I understand why many people prefer watching.</div>
 
   </div>
 </section>
@@ -126,7 +124,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Discuss with your partner for 2–3 minutes, then decide.</p>
 <div class="question">A school wants to get more students involved in sport. Discuss the ideas and decide which two would be most effective.</div>
 <ul style="margin:12px 0 16px 18px;color:var(--cs-text-muted);font-size:.95rem"><li>More PE lessons</li><li>Inter-school competitions</li><li>Free sports equipment</li><li>A wider variety of sports</li><li>Rewards for participation</li></ul>
-<button class="reveal-btn">Show model discussion</button>
 <div class="hidden-answer">A: I think a wider variety of sports would help because not everyone likes football or basketball. Some students might prefer yoga or climbing.<br>B: That's a good point, but inter-school competitions could motivate students who are already sporty.<br>A: Yes, but they might put less confident students off. Free sports equipment would remove the cost barrier for everyone.<br>B: I agree. So maybe a wider variety of sports and free equipment would include the most students.<br>A: Yes, I agree with you.</div>
 
   </div>
@@ -137,16 +134,12 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 4 — Follow-up Discussion</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Answer these deeper questions.</p>
 <div class="question">1. Should sport be compulsory at school?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I think sport should be compulsory because physical health is important. However, schools should offer different options so every student can find something they enjoy.</div>
 <div class="question">2. Are professional athletes paid too much?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I would say some athletes earn far too much, especially in football. On the other hand, their careers are short and their success brings money to many people.</div>
 <div class="question">3. How important are sports fans to a team?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">Fans are very important because they create atmosphere and support the team financially. Without fans, many clubs would struggle to survive.</div>
 <div class="question">4. Do video games count as a sport?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">Some video games are professional and require skill, but I would not call them a sport in the traditional sense. They involve mental, not physical, effort.</div>
 
   </div>
@@ -244,7 +237,10 @@ function goTo(n){
   slides[current].classList.remove('active');
   current=n;
   slides[current].classList.add('active');
-  document.getElementById('modelAnswersBtn').classList.toggle('show',n===1);
+  var hasAns=slides[n].querySelectorAll('.hidden-answer').length>0;
+  var mab=document.getElementById('modelAnswersBtn');
+  mab.classList.toggle('show',hasAns);
+  mab.textContent=slides[n].querySelectorAll('.hidden-answer.open').length?'Hide model answers':'Reveal model answers';
   document.getElementById('slideCounter').textContent=(current+1)+' / '+slides.length;
   document.getElementById('progressFill').style.width=((current+1)/slides.length*100)+'%';
   document.getElementById('prevBtn').disabled=current===0;
@@ -264,13 +260,6 @@ document.getElementById('modelAnswersBtn').addEventListener('click',function(){
   for(var i=0;i<ans.length;i++){ if(!ans[i].classList.contains('open')){ allOpen=false; break; } }
   for(var i=0;i<ans.length;i++){ ans[i].classList.toggle('open',!allOpen); }
   this.textContent=allOpen?'Reveal model answers':'Hide model answers';
-});
-document.addEventListener('click',function(e){
-  var btn=e.target.closest('.reveal-btn');
-  if(btn){
-    var ans=btn.parentElement.querySelector('.hidden-answer');
-    if(ans){ ans.classList.toggle('open'); btn.textContent=ans.classList.contains('open')?'Hide answer':'Show answer'; }
-  }
 });
 document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); next(); }

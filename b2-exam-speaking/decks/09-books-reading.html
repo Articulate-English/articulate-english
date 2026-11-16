@@ -56,7 +56,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 .tooltip:hover::after{opacity:1}
 .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
 .photo-box{position:relative;min-height:180px;border-radius:10px;border:1px solid var(--cs-border);background-size:cover;background-position:center;background-color:rgba(0,0,0,.35);overflow:hidden;display:flex;align-items:flex-end}
-.photo-box .cap{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;background:color-mix(in srgb,var(--cs-bg) 80%,transparent);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);color:var(--cs-text);font-size:.82rem;line-height:1.4;text-align:left;text-shadow:0 1px 2px rgba(0,0,0,.6)}
 .nav-btns{display:flex;align-items:center;justify-content:center;gap:1.2em;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:200;background:color-mix(in srgb,color-mix(in srgb,var(--cs-bg) 62%,var(--cs-accent) 38%) 85%,transparent);border:1px solid var(--cs-accent-glow);border-radius:40px;padding:10px 24px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .nav-btns button{font-family:'Inter',sans-serif;font-size:1rem;padding:8px 18px;border-radius:24px;border:1px solid var(--cs-accent);background:var(--cs-accent-dim);color:var(--cs-accent);cursor:pointer;min-width:44px;min-height:44px;transition:transform .15s ease,box-shadow .2s}
 .nav-btns button:hover{background:var(--cs-accent-glow);box-shadow:0 0 15px var(--cs-accent-glow);transform:scale(1.05)}
@@ -113,9 +112,8 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 2 — Photo Comparison</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Talk for 1 minute. Compare the photos and answer the question.</p>
 <div class="question">Why do some young people prefer reading online articles to books?</div>
-<div class="photo-grid"><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80')"><span class="cap">Photo A:<br>A teenager reading a long novel in a quiet library</span></div><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80')"><span class="cap">Photo B:<br>A teenager scrolling through short articles on a phone</span></div></div>
-<button class="reveal-btn">Show model answer</button>
-<div class="hidden-answer">In photo A, a student is reading a long book in a library, which takes concentration and time. In photo B, someone is looking at short articles on a phone, which is quicker and more interactive. I think young people prefer online articles because they are short and easy to access. Books require more patience. On the other hand, books usually offer deeper stories and better language development. I think both are useful, but for serious reading, books are still better.</div>
+<div class="photo-grid"><div class="photo-box" role="img" aria-label="A woman reading a printed book in front of bookshelves" style="background-image:url('https://images.pexels.com/photos/17548877/pexels-photo-17548877.jpeg?auto=compress&cs=tysrgb&w=800')"></div><div class="photo-box" role="img" aria-label="A person reading a news article on a smartphone" style="background-image:url('https://images.pexels.com/photos/4048091/pexels-photo-4048091.jpeg?auto=compress&cs=tysrgb&w=800')"></div></div>
+<div class="hidden-answer">In one photo, a woman is standing in front of a bookshelf and reading a printed book. In the other photo, a person is sitting on a sofa and reading a news article on a smartphone. I think many young people prefer online articles because they are short, free and always available on a phone, so you can read them quickly anywhere. Books, on the other hand, require more time and concentration, although they usually offer a deeper story. Personally, I still enjoy printed books, but I read online every day.</div>
 
   </div>
 </section>
@@ -126,7 +124,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Discuss with your partner for 2–3 minutes, then decide.</p>
 <div class="question">A school wants to encourage more students to read. Discuss the ideas and decide which two would be most effective.</div>
 <ul style="margin:12px 0 16px 18px;color:var(--cs-text-muted);font-size:.95rem"><li>A school library with comfortable spaces</li><li>Book clubs during lunch</li><li>Recommended reading lists</li><li>Author visits</li><li>Reading challenges with prizes</li></ul>
-<button class="reveal-btn">Show model discussion</button>
 <div class="hidden-answer">A: I think book clubs are great because reading becomes social and students can discuss what they think.<br>B: That's a good point, but some students need a comfortable place to read first. A nice library space could make reading more appealing.<br>A: I agree. Author visits might be inspiring, but they only happen occasionally and might not reach everyone.<br>B: What about reading challenges? Prizes could motivate competitive students.<br>A: So let's choose book clubs and a comfortable library.<br>B: Yes, I agree with you.</div>
 
   </div>
@@ -137,16 +134,12 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 4 — Follow-up Discussion</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Answer these deeper questions.</p>
 <div class="question">1. Should reading be taught differently in schools?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I think reading should include more choice. If students can pick books they enjoy, they are more likely to read outside school.</div>
 <div class="question">2. Are printed books going to disappear?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I do not think printed books will disappear completely. Many people still love physical books, even if e-books are popular.</div>
 <div class="question">3. How does reading help language learning?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">Reading helps you learn vocabulary in context and understand grammar naturally. It also improves your imagination and concentration.</div>
 <div class="question">4. What makes a good story?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">A good story needs interesting characters, a strong <span class='tooltip' data-def='the series of events that form the main story'>plot</span>, and some emotion. If the reader cares about what happens, the story works.</div>
 
   </div>
@@ -244,7 +237,10 @@ function goTo(n){
   slides[current].classList.remove('active');
   current=n;
   slides[current].classList.add('active');
-  document.getElementById('modelAnswersBtn').classList.toggle('show',n===1);
+  var hasAns=slides[n].querySelectorAll('.hidden-answer').length>0;
+  var mab=document.getElementById('modelAnswersBtn');
+  mab.classList.toggle('show',hasAns);
+  mab.textContent=slides[n].querySelectorAll('.hidden-answer.open').length?'Hide model answers':'Reveal model answers';
   document.getElementById('slideCounter').textContent=(current+1)+' / '+slides.length;
   document.getElementById('progressFill').style.width=((current+1)/slides.length*100)+'%';
   document.getElementById('prevBtn').disabled=current===0;
@@ -264,13 +260,6 @@ document.getElementById('modelAnswersBtn').addEventListener('click',function(){
   for(var i=0;i<ans.length;i++){ if(!ans[i].classList.contains('open')){ allOpen=false; break; } }
   for(var i=0;i<ans.length;i++){ ans[i].classList.toggle('open',!allOpen); }
   this.textContent=allOpen?'Reveal model answers':'Hide model answers';
-});
-document.addEventListener('click',function(e){
-  var btn=e.target.closest('.reveal-btn');
-  if(btn){
-    var ans=btn.parentElement.querySelector('.hidden-answer');
-    if(ans){ ans.classList.toggle('open'); btn.textContent=ans.classList.contains('open')?'Hide answer':'Show answer'; }
-  }
 });
 document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); next(); }

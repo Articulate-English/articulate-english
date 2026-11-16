@@ -56,7 +56,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 .tooltip:hover::after{opacity:1}
 .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
 .photo-box{position:relative;min-height:180px;border-radius:10px;border:1px solid var(--cs-border);background-size:cover;background-position:center;background-color:rgba(0,0,0,.35);overflow:hidden;display:flex;align-items:flex-end}
-.photo-box .cap{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;background:color-mix(in srgb,var(--cs-bg) 80%,transparent);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);color:var(--cs-text);font-size:.82rem;line-height:1.4;text-align:left;text-shadow:0 1px 2px rgba(0,0,0,.6)}
 .nav-btns{display:flex;align-items:center;justify-content:center;gap:1.2em;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:200;background:color-mix(in srgb,color-mix(in srgb,var(--cs-bg) 62%,var(--cs-accent) 38%) 85%,transparent);border:1px solid var(--cs-accent-glow);border-radius:40px;padding:10px 24px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .nav-btns button{font-family:'Inter',sans-serif;font-size:1rem;padding:8px 18px;border-radius:24px;border:1px solid var(--cs-accent);background:var(--cs-accent-dim);color:var(--cs-accent);cursor:pointer;min-width:44px;min-height:44px;transition:transform .15s ease,box-shadow .2s}
 .nav-btns button:hover{background:var(--cs-accent-glow);box-shadow:0 0 15px var(--cs-accent-glow);transform:scale(1.05)}
@@ -113,9 +112,8 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 2 — Photo Comparison</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Talk for 1 minute. Compare the photos and answer the question.</p>
 <div class="question">What are the advantages of cycling compared to driving?</div>
-<div class="photo-grid"><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800&q=80')"><span class="cap">Photo A:<br>A busy city street full of cars stuck in traffic</span></div><div class="photo-box" style="background-image:url('https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=800&q=80')"><span class="cap">Photo B:<br>A cyclist moving quickly through a bike lane in a park</span></div></div>
-<button class="reveal-btn">Show model answer</button>
-<div class="hidden-answer">In photo A, cars are stuck in heavy traffic in a city centre, which looks stressful and slow. In photo B, a cyclist is moving freely along a dedicated lane near a park. I think cycling has many advantages over driving in cities. It is healthier, cheaper, and better for the environment. However, it is not practical in bad weather or for long distances. Overall, I believe cities should invest in bike lanes to make cycling safer and more <span class='tooltip' data-def='easy and suitable for a particular purpose'>convenient</span>.</div>
+<div class="photo-grid"><div class="photo-box" role="img" aria-label="A busy city street at dusk with cars, taxis and a bus queuing in heavy traffic" style="background-image:url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800&q=80')"></div><div class="photo-box" role="img" aria-label="A cyclist riding along a red bike lane on a tree-lined city street, with cars on the road" style="background-image:url('https://images.pexels.com/photos/33202880/pexels-photo-33202880.jpeg?auto=compress&cs=tinysrgb&w=800')"></div></div>
+<div class="hidden-answer">In one photo, cars, taxis and a bus are stuck in heavy traffic on a busy city street. In the other photo, a cyclist is riding quickly along a dedicated bike lane. I think cycling has several advantages over driving in cities. It is faster in congested areas, cheaper, healthier and better for the environment. However, cycling is less practical in bad weather or over long distances. Overall, I believe cities should invest in more bike lanes so cycling becomes a safe and convenient alternative.</div>
 
   </div>
 </section>
@@ -126,7 +124,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Discuss with your partner for 2–3 minutes, then decide.</p>
 <div class="question">A city wants to reduce traffic problems. Discuss the ideas and decide which two would be most effective.</div>
 <ul style="margin:12px 0 16px 18px;color:var(--cs-text-muted);font-size:.95rem"><li>More cycle lanes</li><li>Cheaper public transport tickets</li><li>Higher parking charges</li><li>Car-free zones in the centre</li><li>Better park-and-ride services</li></ul>
-<button class="reveal-btn">Show model discussion</button>
 <div class="hidden-answer">A: I think cheaper public transport would encourage many people to leave their cars at home.<br>B: That's a good point, but car-free zones in the centre could immediately reduce <span class='tooltip' data-def='too much traffic making movement difficult'>congestion</span>.<br>A: I see what you mean. However, car-free zones might hurt businesses if customers cannot drive there.<br>B: More cycle lanes are also a long-term solution because they make cycling safer and more popular.<br>A: So let's choose cheaper public transport and more cycle lanes.<br>B: Yes, I agree with you.</div>
 
   </div>
@@ -137,16 +134,12 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
     <h2 class="glow-text">Part 4 — Follow-up Discussion</h2>
 <p style="color:var(--cs-text-muted);font-size:.85rem;margin-bottom:14px">Answer these deeper questions.</p>
 <div class="question">1. Should cities ban cars from their centres?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">I think cars should be limited in city centres, not completely banned. Public transport and deliveries still need access.</div>
 <div class="question">2. Is flying the best way to travel long distances?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">Flying is fast for long distances, but it is not the best in every way. Trains are more comfortable for medium journeys and produce less pollution.</div>
 <div class="question">3. How can public transport be improved?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">Public transport could be improved with more frequent services, cleaner vehicles, and better connections between buses, trains, and metro systems.</div>
 <div class="question">4. Will electric cars solve pollution problems?</div>
-<button class="reveal-btn">Show answer</button>
 <div class="hidden-answer">Electric cars will help reduce air pollution in cities, but they are not a perfect solution. Making batteries still has environmental costs.</div>
 
   </div>
@@ -244,7 +237,10 @@ function goTo(n){
   slides[current].classList.remove('active');
   current=n;
   slides[current].classList.add('active');
-  document.getElementById('modelAnswersBtn').classList.toggle('show',n===1);
+  var hasAns=slides[n].querySelectorAll('.hidden-answer').length>0;
+  var mab=document.getElementById('modelAnswersBtn');
+  mab.classList.toggle('show',hasAns);
+  mab.textContent=slides[n].querySelectorAll('.hidden-answer.open').length?'Hide model answers':'Reveal model answers';
   document.getElementById('slideCounter').textContent=(current+1)+' / '+slides.length;
   document.getElementById('progressFill').style.width=((current+1)/slides.length*100)+'%';
   document.getElementById('prevBtn').disabled=current===0;
@@ -264,13 +260,6 @@ document.getElementById('modelAnswersBtn').addEventListener('click',function(){
   for(var i=0;i<ans.length;i++){ if(!ans[i].classList.contains('open')){ allOpen=false; break; } }
   for(var i=0;i<ans.length;i++){ ans[i].classList.toggle('open',!allOpen); }
   this.textContent=allOpen?'Reveal model answers':'Hide model answers';
-});
-document.addEventListener('click',function(e){
-  var btn=e.target.closest('.reveal-btn');
-  if(btn){
-    var ans=btn.parentElement.querySelector('.hidden-answer');
-    if(ans){ ans.classList.toggle('open'); btn.textContent=ans.classList.contains('open')?'Hide answer':'Show answer'; }
-  }
 });
 document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); next(); }
