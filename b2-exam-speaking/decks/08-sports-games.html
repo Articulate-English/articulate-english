@@ -26,10 +26,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 .theme-btn:hover{transform:scale(1.1);background:rgba(255,255,255,.08)}
 .theme-btn:active{transform:scale(.93)}
 .theme-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 6px var(--cs-accent-glow))}
-.model-answers-btn{position:fixed;bottom:1em;right:1em;z-index:290;display:none;font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;padding:8px 16px;border-radius:24px;border:1px solid var(--cs-accent);background:var(--cs-accent-dim);color:var(--cs-accent);cursor:pointer;transition:all .2s;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
-.model-answers-btn:hover{background:var(--cs-accent-glow);box-shadow:0 0 15px var(--cs-accent-glow);transform:scale(1.05)}
-.model-answers-btn:active{transform:scale(.94)}
-.model-answers-btn.show{display:inline-block}
 .loading{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:var(--cs-bg);color:var(--cs-accent);font-family:'Montserrat',sans-serif;font-size:1rem;letter-spacing:1px}
 .loading.hidden{display:none}
 #slides{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:30px 16px 100px;min-height:100vh}
@@ -64,7 +60,7 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 .progress-bar{position:fixed;top:0;left:0;right:0;height:3px;background:rgba(255,255,255,.06);z-index:200}
 .progress-fill{height:100%;width:0;background:var(--cs-accent);transition:width .3s;box-shadow:0 0 10px var(--cs-accent-glow)}
 .timer{font-family:'Inter',monospace;font-size:.85rem;color:var(--cs-text-muted)}
-@media(max-width:640px){.slide h2{font-size:1.25rem}.card{padding:16px}.photo-grid{grid-template-columns:1fr}.nav-btns{bottom:12px;padding:8px 16px;gap:.6em}.nav-btns button{padding:6px 12px;font-size:.95rem}.model-answers-btn{bottom:5.5em;right:.5em}}
+@media(max-width:640px){.slide h2{font-size:1.25rem}.card{padding:16px}.photo-grid{grid-template-columns:1fr}.nav-btns{bottom:12px;padding:8px 16px;gap:.6em}.nav-btns button{padding:6px 12px;font-size:.95rem}}
 </style>
 </head>
 <body>
@@ -75,7 +71,6 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 <button class="theme-btn" id="themeCycleBtn" title="Cycle theme" aria-label="Cycle color theme">
   <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
 </button>
-<button class="model-answers-btn" id="modelAnswersBtn" title="Reveal model answers" aria-label="Reveal model answers">Reveal model answers</button>
 
 <main id="slides" class="hidden">
   <section class="slide active" data-slide="0">
@@ -102,6 +97,7 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 <div class="hidden-answer">I prefer individual sports because I can practise whenever I want. Team sports are fun, but they depend on everyone being available.</div>
 <div class="question">5. How do you think sport helps people?</div>
 <div class="hidden-answer">I think sport helps people physically and mentally. It improves <span class='tooltip' data-def='the condition of being physically strong and healthy'>fitness</span>, reduces stress, and teaches discipline and <span class='tooltip' data-def='working cooperatively with a group of people'>teamwork</span>.</div>
+<button class="reveal-btn reveal-all">Reveal model answers</button>
 <div style="margin-top:18px"><strong style="color:var(--cs-accent)">Useful phrases:</strong><br><span class="phrase-chip">I would say that...</span><span class="phrase-chip">From my point of view...</span><span class="phrase-chip">That's a tricky question because...</span><span class="phrase-chip">On the one hand... on the other hand...</span><span class="phrase-chip">I tend to...</span><span class="phrase-chip">It depends on the situation.</span></div>
 
   </div>
@@ -114,6 +110,7 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 <div class="question">Why do you think some people prefer watching sport to playing it?</div>
 <div class="photo-grid"><div class="photo-box" role="img" aria-label="Spectators watching a football match in a crowded stadium" style="background-image:url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=800&q=80')"></div><div class="photo-box" role="img" aria-label="A person running alone in a foggy park early in the morning" style="background-image:url('https://images.pexels.com/photos/11920624/pexels-photo-11920624.jpeg?auto=compress&cs=tysrgb&w=800')"></div></div>
 <div class="hidden-answer">In one photo, a football match is taking place in a crowded stadium, with thousands of spectators watching together. In the other photo, a person is running alone in a foggy park early in the morning. I think some people prefer watching because it is exciting and social, and they can enjoy it without any physical effort. Playing sport requires time, fitness and self-motivation, especially when you train alone. Watching is also cheaper and more relaxing. Personally, I would rather play sport, but I understand why many people prefer watching.</div>
+<button class="reveal-btn reveal-all">Reveal model answers</button>
 
   </div>
 </section>
@@ -125,6 +122,7 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 <div class="question">A school wants to get more students involved in sport. Discuss the ideas and decide which two would be most effective.</div>
 <ul style="margin:12px 0 16px 18px;color:var(--cs-text-muted);font-size:.95rem"><li>More PE lessons</li><li>Inter-school competitions</li><li>Free sports equipment</li><li>A wider variety of sports</li><li>Rewards for participation</li></ul>
 <div class="hidden-answer">A: I think a wider variety of sports would help because not everyone likes football or basketball. Some students might prefer yoga or climbing.<br>B: That's a good point, but inter-school competitions could motivate students who are already sporty.<br>A: Yes, but they might put less confident students off. Free sports equipment would remove the cost barrier for everyone.<br>B: I agree. So maybe a wider variety of sports and free equipment would include the most students.<br>A: Yes, I agree with you.</div>
+<button class="reveal-btn reveal-all">Reveal model answers</button>
 
   </div>
 </section>
@@ -141,6 +139,7 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 <div class="hidden-answer">Fans are very important because they create atmosphere and support the team financially. Without fans, many clubs would struggle to survive.</div>
 <div class="question">4. Do video games count as a sport?</div>
 <div class="hidden-answer">Some video games are professional and require skill, but I would not call them a sport in the traditional sense. They involve mental, not physical, effort.</div>
+<button class="reveal-btn reveal-all">Reveal model answers</button>
 
   </div>
 </section>
@@ -237,10 +236,6 @@ function goTo(n){
   slides[current].classList.remove('active');
   current=n;
   slides[current].classList.add('active');
-  var hasAns=slides[n].querySelectorAll('.hidden-answer').length>0;
-  var mab=document.getElementById('modelAnswersBtn');
-  mab.classList.toggle('show',hasAns);
-  mab.textContent=slides[n].querySelectorAll('.hidden-answer.open').length?'Hide model answers':'Reveal model answers';
   document.getElementById('slideCounter').textContent=(current+1)+' / '+slides.length;
   document.getElementById('progressFill').style.width=((current+1)/slides.length*100)+'%';
   document.getElementById('prevBtn').disabled=current===0;
@@ -253,13 +248,14 @@ function goTo(n){
 }
 function next(){goTo(current+1);}
 function prev(){goTo(current-1);}
-document.getElementById('modelAnswersBtn').addEventListener('click',function(){
-  var slide=slides[current]; if(!slide) return;
-  var ans=slide.querySelectorAll('.hidden-answer');
-  var allOpen=true;
-  for(var i=0;i<ans.length;i++){ if(!ans[i].classList.contains('open')){ allOpen=false; break; } }
-  for(var i=0;i<ans.length;i++){ ans[i].classList.toggle('open',!allOpen); }
-  this.textContent=allOpen?'Reveal model answers':'Hide model answers';
+document.addEventListener('click',function(e){
+  var btn=e.target.closest('.reveal-all');
+  if(!btn) return;
+  var s=btn.closest('.slide'); if(!s) return;
+  var ans=s.querySelectorAll('.hidden-answer'), allOpen=true, i;
+  for(i=0;i<ans.length;i++){ if(!ans[i].classList.contains('open')){ allOpen=false; break; } }
+  for(i=0;i<ans.length;i++){ ans[i].classList.toggle('open',!allOpen); }
+  btn.textContent=allOpen?'Reveal model answers':'Hide model answers';
 });
 document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); next(); }
