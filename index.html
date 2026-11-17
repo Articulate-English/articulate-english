@@ -804,9 +804,10 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
   var PAYPAL_URL   = A.paypalUrl || '';
 
   function honestAlert(msg) {
-    alert((msg || 'Payment is being configured.') + ' Please email ' +
+    alert((msg || 'Online checkout is not set up yet.') + '\n\nEmail ' +
           (A.email || 'hello@articulate.ee') +
-          ' to enquire and we will send payment details.');
+          ' and we will send you a secure PayPal link or our bank-transfer details ' +
+          'for the same package. Nothing is charged until you agree.');
   }
 
   document.addEventListener('click', function (e) {
