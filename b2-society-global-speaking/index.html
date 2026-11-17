@@ -36,6 +36,7 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 .hero h1{font-size:2.6rem;margin-bottom:12px;background:linear-gradient(135deg,var(--cs-accent),#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 2px 14px var(--cs-accent-glow)) drop-shadow(0 1px 2px rgba(0,0,0,.6))}
 .hero p{color:var(--cs-text-muted);font-size:1rem;max-width:560px;margin:0 auto;text-shadow:0 1px 3px rgba(0,0,0,.5)}
 .section{max-width:1000px;margin:0 auto;padding:0 24px 56px}
+.glass-section{padding:8px 24px 28px}
 .section-title{font-family:'Montserrat',sans-serif;font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--cs-text-muted);margin-bottom:18px}
 .deck-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
 .deck-card{position:relative;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .15s ease,box-shadow .3s ease,border-color .3s ease}
@@ -61,12 +62,12 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
   </button>
 </nav>
 
-<header class="hero">
+<header class="hero glass">
   <h1>Society, Culture & Global Issues</h1>
   <p>12 topic-based practice decks on society and global issues, covering Part 1 interview, Part 2 photo comparison, Part 3 collaborative task, and reading/listening/writing homework.</p>
 </header>
 
-<section class="section">
+<section class="section glass-section">
   <div class="section-title">Choose a topic</div>
   <div class="deck-grid" id="deckGrid"></div>
 </section>
