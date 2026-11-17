@@ -1,4 +1,4 @@
-// Site config for B2 First Speaking portal.
+// Site config for English Speaking Practice (B2) portal.
 // Fill in Lemon Squeezy checkout URLs (hosted checkout) to enable payments.
 // Single deck: €9, Bundle: €49 for all 12 decks.
 window.ARTICULATE = {
