@@ -1,0 +1,12 @@
+name = "ae-sliding-in"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "sliding-in"
+database_id = "0e64f34e-a47b-4ae1-a118-722cb3381360"
+
+[[kv_namespaces]]
+binding = "PAYLOADS"
+id = "3a5dd32abb634362a5661cd926e1d7a3"
