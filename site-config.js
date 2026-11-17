@@ -64,7 +64,7 @@ window.ARTICULATE = {
    empty for the honest on-request state.                                 */
   paypalUrl:          '',
   paystackUrl:        '',
-  paystackPublicKey:  '',
+  paystackPublicKey:  'pk_test_8373ee5f0e47b5da3189e8bff1d9e1edd0859662',
   stripePublishableKey: '',
 
   /* ── Pricing (multi-currency for Swiss/EU/US) ──────────────────────
