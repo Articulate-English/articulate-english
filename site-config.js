@@ -63,6 +63,12 @@ window.ARTICULATE = {
    At least one payment key is needed to take live payments. Leave all
    empty for the honest on-request state.                                 */
   paypalUrl:          '',
+  /* One PayPal.Me link per currency — a single link serves every deck and
+     every package in that currency, because the amount is appended to the
+     URL. Only needed if the links differ by currency. */
+  paypalUrls: {
+    usd: '', eur: '', chf: '', zar: ''
+  },
   paystackUrl:        '',
   paystackPublicKey:  'pk_test_8373ee5f0e47b5da3189e8bff1d9e1edd0859662',
   stripePublishableKey: '',
@@ -160,13 +166,20 @@ window.ARTICULATE = {
   };
 
   A.paypalLink = function (amount, note) {
-    if (!A.paypalUrl) return '';
+    // Currency-specific PayPal.Me link wins; the single paypalUrl is the
+    // fallback. One link per currency serves every deck and every package,
+    // because the amount is appended to the URL.
+    var url = '';
+    var cur = A.detectCurrency();
+    if (A.paypalUrls && A.paypalUrls[cur]) url = A.paypalUrls[cur];
+    else if (A.paypalUrl) url = A.paypalUrl;
+    if (!url) return '';
     // PayPal.Me links accept /<amount>; hosted buttons do not. Append only
     // when the URL is a paypal.me link and no amount is already present.
-    if (/\/paypal\.me\//i.test(A.paypalUrl) && amount && !/\d\.\d\d\/?$/.test(A.paypalUrl)) {
-      return A.paypalUrl.replace(/\/?$/, '/') + amount;
+    if (/\/paypal\.me\//i.test(url) && amount && !/\d\.\d\d\/?$/.test(url)) {
+      return url.replace(/\/?$/, '/') + amount;
     }
-    return A.paypalUrl;
+    return url;
   };
 
   A.paystackLink = function () { return A.paystackUrl || ''; };
@@ -271,18 +284,24 @@ window.ARTICULATE = {
       if (!tier) return;
       var p = A.currency();
 
-      // Update the per-session price-amount span
-      var amountSpan = document.querySelector('[data-tier-amount="' + tierName + '"]');
-      if (amountSpan) {
+      // Update every per-session price-amount span (pricing cards + comparison table)
+      var amountSpans = document.querySelectorAll('[data-tier-amount="' + tierName + '"]');
+      Array.prototype.forEach.call(amountSpans, function (amountSpan) {
         var perSession = tier.sessions ? (tier.amount / tier.sessions) : tier.amount;
         amountSpan.textContent = perSession.toFixed(p.code === 'CHF' ? 0 : 2).replace(/\.00$/, '');
-      }
+      });
 
       // Update the currency symbol inside the price-amount .currency span
       var symSpan = document.querySelector('.price-card[data-tier-card="' + tierName + '"] .price-amount .currency');
       if (symSpan) {
         symSpan.textContent = p.symbol;
         if (p.symbol === 'CHF') symSpan.style.marginRight = '0.25em';
+      }
+      // Comparison-table currency symbol follows the selected currency too
+      var compSym = document.querySelector('.comp-currency');
+      if (compSym) {
+        compSym.textContent = p.symbol;
+        if (p.symbol === 'CHF') compSym.style.marginRight = '0.25em';
       }
 
       // Update the price total span inside the price-note
