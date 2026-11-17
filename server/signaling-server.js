@@ -48,6 +48,63 @@ function handleRequest(req, res) {
   // Skip /signal - handled by WS upgrade
   if (req.url === '/signal') { res.writeHead(400); res.end(); return; }
 
+  // ═══ PAYMENT: Paystack verification (USD / ZA rail) ═══════════════════════
+  // The Paystack inline modal runs in the browser, so its callback is not proof
+  // of payment — anyone can visit ?paid=1 by hand. Confirm the transaction
+  // server-side with the secret key before sending the customer off to book a
+  // pre-paid session.
+  if (req.url === '/api/paystack/verify' && req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => body += chunk);
+    req.on('end', async () => {
+      const json = (code, obj) => {
+        res.writeHead(code, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(obj));
+      };
+      const secret = process.env.PAYSTACK_SECRET_KEY || '';
+      if (!secret) {
+        console.error('[paystack] verify hit but PAYSTACK_SECRET_KEY is not set');
+        json(503, { verified: false, error: 'Paystack is not configured on the server (set PAYSTACK_SECRET_KEY in .env).' });
+        return;
+      }
+      let payload;
+      try { payload = JSON.parse(body); } catch (e) { json(400, { verified: false, error: 'Invalid request.' }); return; }
+      const reference = String(payload.reference || '').trim();
+      if (!reference) { json(400, { verified: false, error: 'Missing transaction reference.' }); return; }
+      try {
+        const r = await fetch('https://api.paystack.co/transaction/verify/' + encodeURIComponent(reference), {
+          headers: { Authorization: 'Bearer ' + secret, Accept: 'application/json' }
+        });
+        const data = await r.json().catch(() => ({}));
+        if (!r.ok || !data.status) {
+          console.error('[paystack] verify failed for', reference, r.status, (data && data.message) || '');
+          json(502, { verified: false, error: 'Payment could not be confirmed with Paystack. Please contact us before booking.' });
+          return;
+        }
+        const tx = data.data || {};
+        const expected = Number(payload.amount);   // kobo / cents, optional
+        const amountOk = !expected || Number(tx.amount) === expected;
+        const currencyOk = !payload.currency || !tx.currency ||
+                           String(tx.currency).toLowerCase() === String(payload.currency).toLowerCase();
+        const verified = tx.status === 'success' && amountOk && currencyOk;
+        console.log('[paystack] verify', reference, tx.status, tx.amount, tx.currency, '->', verified ? 'VERIFIED' : 'REJECTED');
+        json(200, {
+          verified: verified,
+          reference: reference,
+          status: tx.status,
+          amount: tx.amount,
+          currency: tx.currency,
+          paidAt: tx.paid_at || tx.transaction_date || '',
+          email: (tx.customer && tx.customer.email) || ''
+        });
+      } catch (e) {
+        console.error('[paystack] verify error:', e.message);
+        json(502, { verified: false, error: 'Payment confirmation failed. Please contact us before booking.' });
+      }
+    });
+    return;
+  }
+
   let filePath = path.join(STATIC_DIR, req.url === '/' ? 'landing.html' : req.url);
   const ext = path.extname(filePath).toLowerCase();
   const contentType = MIME[ext] || 'application/octet-stream';
