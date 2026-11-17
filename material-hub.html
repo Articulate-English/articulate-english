@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Material Hub · Articulate English</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060a14;--cyan:#22d3ee;--purple:#a78bfa;--gold:#fbbf24;--green:#34d399;--text:#e2e8f0;--text-dim:#b0bec5;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100vh;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;}
+body{padding:0 4vw 4em;}
+.top-bar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:.7em 1.2em;gap:1em;background:rgba(6,10,20,.75);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);}
+.top-title{font-family:'Roboto Flex',sans-serif;font-weight:600;font-size:clamp(.9rem,2vw,1.15rem);color:var(--cyan);letter-spacing:.02em;}
+.top-nav a{color:var(--text-dim);text-decoration:none;font-size:.85rem;font-weight:600;padding:6px 12px;border-radius:999px;transition:color .2s;}
+.top-nav a:hover{color:var(--cyan);}
+.top-nav a.active{color:var(--cyan);background:rgba(34,211,238,.1);}
+.hero{position:relative;z-index:2;text-align:center;padding:22vh 4vw 2em;}
+.hero-title{font-family:'Roboto Flex',sans-serif;font-weight:900;font-size:clamp(2rem,7vw,4.5rem);line-height:1.05;margin:0 0 .3em;background:linear-gradient(120deg,var(--cyan),var(--purple),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero-title .blur-char{display:inline-block;opacity:0;filter:blur(12px);transform:translateY(8px);animation:blurIn .7s cubic-bezier(.2,.8,.2,1) forwards;color:#fff;-webkit-text-fill-color:#fff;background:none;}
+@keyframes blurIn{to{opacity:1;filter:blur(0);transform:translateY(0);}}
+.hero-sub{color:var(--text-dim);font-size:clamp(1rem,2vw,1.25rem);}
+#varprox{position:fixed;top:0;left:0;right:0;height:24vh;z-index:1;display:flex;align-items:center;justify-content:center;pointer-events:none;overflow:hidden;}
+#varprox .variable-proximity{font-family:'Roboto Flex',sans-serif;font-size:clamp(1.5rem,6vw,7.5rem);white-space:nowrap;font-weight:400;letter-spacing:.02em;line-height:1.2;text-align:center;color:rgba(226,232,240,.12);user-select:none;-webkit-user-select:none;}
+.course-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5em;max-width:1200px;margin:2em auto;}
+.course-card{background:#0d1220;border:1.5px solid rgba(255,255,255,.12);border-radius:28px;overflow:hidden;text-decoration:none;color:var(--text);display:block;transition:transform .15s ease,border-color .3s ease,box-shadow .3s ease;min-height:44px;}
+.course-card:hover{transform:scale(1.03);border-color:rgba(34,211,238,.55);box-shadow:0 12px 40px rgba(34,211,238,.22);}
+.course-card:active{transform:scale(.97);}
+.course-card .card-img{width:100%;height:150px;object-fit:cover;display:block;}
+.course-card .card-body{padding:1.1em 1.3em 1.2em;}
+.course-card h2{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.15rem;color:var(--cyan);margin-bottom:.3em;}
+.course-card .card-desc{font-size:.85rem;color:var(--text-dim);line-height:1.4;}
+.course-card .badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-top:.6em;}
+.badge-b1{background:rgba(34,211,238,.15);color:var(--cyan);}
+.badge-b2{background:rgba(167,139,250,.15);color:var(--purple);}
+@media(max-width:768px){.course-grid{grid-template-columns:1fr;}.hero{padding:24vh 4vw 1.6em;}}
+#dotfield{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;}
+#dotfield canvas{position:absolute;inset:0;width:100%;height:100%;}
+</style></head>
+<body>
+<div id="dotfield"></div>
+<div id="varprox" aria-hidden="true"></div>
+<div class="top-bar">
+  <span class="top-title">Articulate English</span>
+  <nav class="top-nav">
+    <a href="#" class="active">Material</a>
+    <a href="#">Courses</a>
+    <a href="#">About</a>
+  </nav>
+</div>
+<header class="hero">
+  <h1 class="hero-title" id="heroTitle">Material Hub</h1>
+  <p class="hero-sub">All courses in one place · B1 &amp; B2 English</p>
+</header>
+<div class="course-grid">
+  <a class="course-card" href="#"><img class="card-img" src="https://cdn.pixabay.com/photo/2014/07/09/12/17/live-concert-388160_1280.jpg" alt="Music"><div class="card-body"><h2>Music &amp; Entertainment</h2><p class="card-desc">Concerts, genres, listening habits</p><span class="badge badge-b1">B1</span></div></a>
+  <a class="course-card" href="#"><img class="card-img" src="https://cdn.pixabay.com/photo/2012/11/06/20/14/luggage-64354_1280.jpg" alt="Travel"><div class="card-body"><h2>Travel &amp; Tourism</h2><p class="card-desc">Holiday destinations, journeys</p><span class="badge badge-b1">B1</span></div></a>
+  <a class="course-card" href="#"><img class="card-img" src="https://cdn.pixabay.com/photo/2015/05/31/13/59/rain-791893_1280.jpg" alt="Weather"><div class="card-body"><h2>Weather &amp; Seasons</h2><p class="card-desc">Weather, favourite seasons</p><span class="badge badge-b1">B1</span></div></a>
+  <a class="course-card" href="b2-fce-speaking/index.html"><img class="card-img" src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=940&q=80" alt="B2 Speaking"><div class="card-body"><h2>B2 Speaking Practice</h2><p class="card-desc">12 topic decks for Cambridge B2 First (FCE) speaking — Part 1/2/3 + homework. 3 free, rest €9 each or €49 all.</p><span class="badge badge-b2">B2</span></div></a>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('heroTitle');
+  if(!el)return;
+  var text=el.textContent; el.textContent='';
+  var chars=[];
+  text.split('').forEach(function(ch,i){
+    var s=document.createElement('span'); s.className='blur-char';
+    s.textContent=ch===' '?'\\u00a0':ch; s.style.animationDelay=(i*.04)+'s';
+    el.appendChild(s); chars.push(s);
+  });
+  var radius=200;
+  function upd(mx,my){ chars.forEach(function(c){ var r=c.getBoundingClientRect(); var cx=r.left+r.width/2,cy=r.top+r.height/2; var d=Math.hypot(mx-cx,my-cy); var t=Math.max(0,1-d/radius); t=t*t*(3-2*t); var w=400+(1000-400)*t, o=9+(40-9)*t; c.style.fontVariationSettings="'wght' "+Math.round(w)+", 'opsz' "+Math.round(o); }); }
+  window.addEventListener('mousemove',function(e){upd(e.clientX,e.clientY);},{passive:true});
+  upd(window.innerWidth/2,window.innerHeight/2);
+})();
+// Variable proximity background
+(function(){
+  var ctn=document.getElementById('varprox'); if(!ctn)return;
+  var label='Material Hub';
+  var rootSpan=document.createElement('span'); rootSpan.className='variable-proximity'; ctn.appendChild(rootSpan);
+  rootSpan.textContent=label;
+})();
+</script>
+<script>
+// DOTFIELD BACKGROUND — swell + bigger radius
+(function(){
+  var ctn=document.getElementById('dotfield'); if(!ctn) return;
+  function hexToRgba(hex,a){var h=(hex||'#22d3ee').replace('#','');if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];var n=parseInt(h,16);return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')';}
+  var TWO_PI=Math.PI*2;
+  var dotRadius=8, dotSpacing=24, cursorRadius=1400, cursorForce=.1;
+  var bulgeOnly=true, bulgeStrength=90, glowRadius=420, sparkle=false, waveAmplitude=0;
+  var acc=getComputedStyle(document.documentElement).getPropertyValue('--cyan').trim()||'#22d3ee';
+  var gradientFrom=hexToRgba(acc,.6), gradientTo=hexToRgba(acc,.35), glowColor='#0d1220';
+  var canvas=document.createElement('canvas'); ctn.appendChild(canvas);
+  var ctx=canvas.getContext('2d',{alpha:true});
+  var svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  var defs=document.createElementNS('http://www.w3.org/2000/svg','defs');
+  var gid='dotfield-glow-'+Math.random().toString(36).slice(2,9);
+  var rg=document.createElementNS('http://www.w3.org/2000/svg','radialGradient'); rg.setAttribute('id',gid);
+  var s0=document.createElementNS('http://www.w3.org/2000/svg','stop'); s0.setAttribute('offset','0%'); s0.setAttribute('stop-color',glowColor);
+  var s1=document.createElementNS('http://www.w3.org/2000/svg','stop'); s1.setAttribute('offset','100%'); s1.setAttribute('stop-color','transparent');
+  rg.appendChild(s0); rg.appendChild(s1); defs.appendChild(rg); svg.appendChild(defs);
+  var glow=document.createElementNS('http://www.w3.org/2000/svg','circle'); glow.setAttribute('cx','-9999'); glow.setAttribute('cy','-9999'); glow.setAttribute('r',glowRadius); glow.setAttribute('fill','url(#'+gid+')'); glow.style.opacity='0'; svg.appendChild(glow); ctn.appendChild(svg);
+  var dots=[], mouse={x:-9999,y:-9999,prevX:-9999,prevY:-9999,speed:0}, size={w:0,h:0}, glowOpacity=0, engagement=0;
+  var dpr=Math.min(window.devicePixelRatio||1,2);
+  function buildDots(w,h){var step=dotRadius+dotSpacing;var cols=Math.floor(w/step),rows=Math.floor(h/step);var padX=(w%step)/2,padY=(h%step)/2;var arr=new Array(rows*cols),idx=0;for(var row=0;row<rows;row++){for(var col=0;col<cols;col++){var ax=padX+col*step+step/2, ay=padY+row*step+step/2; arr[idx++]={ax:ax,ay:ay,sx:ax,sy:ay,vx:0,vy:0,x:ax,y:ay};}} dots=arr;}
+  function doResize(){var rect=ctn.getBoundingClientRect();var w=rect.width,h=rect.height;canvas.width=w*dpr;canvas.height=h*dpr;canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);size.w=w;size.h=h;buildDots(w,h);}
+  var resizeTimer=null; function onResize(){clearTimeout(resizeTimer);resizeTimer=setTimeout(doResize,100);} doResize(); window.addEventListener('resize',onResize);
+  window.addEventListener('mousemove',function(e){mouse.x=e.clientX;mouse.y=e.clientY;},{passive:true});
+  setInterval(function(){var dx=mouse.prevX-mouse.x,dy=mouse.prevY-mouse.y;var dist=Math.sqrt(dx*dx+dy*dy);mouse.speed+=(dist-mouse.speed)*.5;if(mouse.speed<.001)mouse.speed=0;mouse.prevX=mouse.x;mouse.prevY=mouse.y;},20);
+  var frameCount=0;
+  function tick(){frameCount++;var len=dots.length;var t=frameCount*.02;var targetEng=Math.min(mouse.speed/5,1);engagement+=(targetEng-engagement)*.06;if(engagement<.001)engagement=0;var eng=engagement;glowOpacity+=(eng-glowOpacity)*.08;glow.setAttribute('cx',mouse.x);glow.setAttribute('cy',mouse.y);glow.style.opacity=glowOpacity;ctx.clearRect(0,0,size.w,size.h);var grad=ctx.createLinearGradient(0,0,size.w,size.h);grad.addColorStop(0,gradientFrom);grad.addColorStop(1,gradientTo);ctx.fillStyle=grad;var cr=cursorRadius,crSq=cr*cr,rad=dotRadius/2;ctx.beginPath();for(var i=0;i<len;i++){var d=dots[i];var dx=mouse.x-d.ax,dy=mouse.y-d.ay;var distSq=dx*dx+dy*dy;if(distSq<crSq&&eng>.01){var dist=Math.sqrt(distSq);if(bulgeOnly){var bt=1-dist/cr;var push=bt*bt*bulgeStrength*eng;var angle=Math.atan2(dy,dx);d.sx+=(d.ax-Math.cos(angle)*push-d.sx)*.15;d.sy+=(d.ay-Math.sin(angle)*push-d.sy)*.15;}else{var angle2=Math.atan2(dy,dx);var move=(500/dist)*(mouse.speed*cursorForce);d.vx+=Math.cos(angle2)*-move;d.vy+=Math.sin(angle2)*-move;}}else if(bulgeOnly){d.sx+=(d.ax-d.sx)*.1;d.sy+=(d.ay-d.sy)*.1;}if(!bulgeOnly){d.vx*=.9;d.vy*=.9;d.x=d.ax+d.vx;d.y=d.ay+d.vy;d.sx+=(d.x-d.sx)*.1;d.sy+=(d.y-d.sy)*.1;}var drawX=d.sx,drawY=d.sy;if(waveAmplitude>0){drawY+=Math.sin(d.ax*.03+t)*waveAmplitude;drawX+=Math.cos(d.ay*.03+t*.7)*waveAmplitude*.5;}ctx.moveTo(drawX+rad,drawY);ctx.arc(drawX,drawY,rad,0,TWO_PI);}ctx.fill();requestAnimationFrame(tick);}
+  requestAnimationFrame(tick);
+})();
+</script>
+</body></html>

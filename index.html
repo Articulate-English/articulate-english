@@ -95,6 +95,11 @@ body{font-family:'Inter',system-ui,sans-serif;background:transparent;color:var(-
 .nav-links{display:flex;gap:24px;align-items:center}
 .nav-links a:not(.nav-cta){color:var(--text-muted);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .15s}
 .nav-links a:not(.nav-cta):hover{color:var(--text)}
+.nav-dropdown{position:relative;display:inline-block}
+.nav-dropdown .dropdown-menu{display:none;position:absolute;top:100%;left:0;background:var(--bg-card, #142e35);border:1px solid var(--border);border-radius:8px;padding:6px 0;min-width:200px;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.nav-dropdown:hover .dropdown-menu,.nav-dropdown:focus-within .dropdown-menu{display:block}
+.nav-dropdown .dropdown-menu a{display:block;padding:8px 16px;color:var(--text-muted);text-decoration:none;font-size:.85rem;font-weight:500;white-space:nowrap}
+.nav-dropdown .dropdown-menu a:hover{color:var(--text);background:var(--accent-dim)}
 .nav-cta{padding:8px 20px;border-radius:8px;background:var(--accent);color:var(--accent-text);text-decoration:none;font-size:.8rem;font-weight:700;transition:background .15s;white-space:nowrap}
 .nav-cta:hover{filter:brightness(1.15)}
 .hero{padding:80px 40px 60px;text-align:center;max-width:860px;margin:0 auto}
@@ -215,6 +220,14 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
   <a href="index.html" class="nav-logo"><svg aria-hidden="true" focusable="false" width="30" height="30" viewBox="0 0 100 100"><circle cx="50" cy="50" r="47" fill="var(--accent)" stroke="rgba(255,255,255,.85)" stroke-width="3.5"/><path d="M50 26 L74 72 L61 72 L50 48 L39 72 L26 72 Z" fill="#ffffff"/><rect x="37" y="52" width="26" height="8" rx="2" fill="#ffffff" opacity=".72"/></svg>ARTICULATE<span>ENGLISH</span></a>
   <div class="nav-links">
     <a href="#offer">What We Offer</a>
+    <div class="nav-dropdown">
+      <a href="material-hub.html">Learn ▾</a>
+      <div class="dropdown-menu">
+        <a href="b2-fce-speaking/index.html">B2 Speaking Practice (Cambridge B2 First)</a>
+        <a href="IELTS-Speaking-Complete/index.html">IELTS Speaking</a>
+        <a href="ielts-writing-essays/index.html">IELTS Writing</a>
+      </div>
+    </div>
     <a href="#why">Why Us</a>
     <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
