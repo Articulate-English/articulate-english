@@ -439,6 +439,15 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
 
     <div class="price-note" style="text-align:center;margin:12px 0 24px;max-width:720px;margin-left:auto;margin-right:auto;">Prices are in EUR. Swiss clients can be billed in CHF on request. All prices include applicable taxes. Sessions are 30 minutes of focused 1-on-1 time — no group classes, no filler. Works on any browser, including Linux and older machines. 12-month commitment: 2 months free (code LOCK12).</div>
 
+    <div id="pay-consent" style="max-width:720px;margin:0 auto 24px;padding:14px 18px;border:1px solid var(--border);border-radius:10px;background:var(--card)">
+      <style>#pay-consent.consent-needed{border-color:#fbbf24;box-shadow:0 0 0 2px rgba(251,191,36,.35)}</style>
+      <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer">
+        <input type="checkbox" id="withdraw-consent" style="margin-top:5px;flex-shrink:0">
+        <span style="font-size:.9rem">I want my lesson to take place before the 14-day withdrawal period ends, and I understand that once the lesson has been fully performed I lose my right of withdrawal.</span>
+      </label>
+      <p style="margin:8px 0 0;font-size:.8rem;opacity:.75">EU/UK consumers: you can always wait 14 days instead. <a href="consumer-rights.html">Read your right to withdraw</a>.</p>
+    </div>
+
     <div class="corporate-box">
       <div class="corporate-info">
         <h3>Corporate &amp; Enterprise</h3>
@@ -516,6 +525,7 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
     <a href="https://cal.com/williamthomason/15-30-45-or-60-minute-sessions" class="cta-primary" target="_blank" rel="noopener">Book a Session</a>
     <a href="mailto:hello@articulate.ee?subject=General%20enquiry" class="cta-secondary">Email Us</a>
   </div>
+  <p style="margin-top:16px;font-size:.85rem;opacity:.75">By booking you confirm you want the lesson to start before the 14-day withdrawal period ends where applicable. EU/UK consumers: <a href="consumer-rights.html">your right to withdraw</a> · <a href="delivery-refunds.html">delivery &amp; refunds</a>.</p>
 </div>
 
 <div class="footer">
@@ -526,6 +536,9 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
     <a href="impressum.html">Impressum</a>
     <a href="privacy.html">Privacy</a>
     <a href="terms.html">Terms</a>
+    <a href="consumer-rights.html">Consumer rights</a>
+    <a href="delivery-refunds.html">Delivery &amp; refunds</a>
+    <a href="safeguarding.html">Safeguarding</a>
     <label for="currencySelect" class="currency-label">Currency:</label>
     <select id="currencySelect" class="currency-select">
       <option value="auto">Auto</option>
@@ -733,6 +746,40 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
 </script>
 
 <script src="site-config.js"></script>
+<script>
+/* --- EU/UK withdrawal consent gate -----------------------------------------
+   Directive 2011/83/EU art 16(a): a service contract's 14-day withdrawal
+   right is lost only if performance began with the consumer's prior express
+   consent and acknowledgement. This gate blocks the pay/book flow until that
+   consent is ticked, then steps aside and lets the payment gate run. */
+(function () {
+  'use strict';
+  var KEY = 'articulate_withdraw_consent';
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-pay]');
+    if (!btn) return;
+    var box = document.getElementById('withdraw-consent');
+    if (!box) return;                    /* no consent UI on this page */
+    if (box.checked) {
+      try { localStorage.setItem(KEY, '1'); } catch (err) {}
+      return;                            /* consent given: payment gate proceeds */
+    }
+    e.preventDefault();
+    e.stopPropagation();
+    var wrap = document.getElementById('pay-consent');
+    if (wrap) {
+      wrap.classList.add('consent-needed');
+      wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      box.focus();
+    }
+  }, true);   /* capture phase: runs ahead of the bubble-phase payment gate */
+  document.addEventListener('DOMContentLoaded', function () {
+    var box = document.getElementById('withdraw-consent');
+    if (!box) return;
+    try { if (localStorage.getItem(KEY) === '1') box.checked = true; } catch (err) {}
+  });
+})();
+</script>
 <script src="https://js.paystack.co/v1.7.0/paystack.min.js"></script>
 <script>
 /* --- pay-to-book: multi-currency payment gate ------------------------------
