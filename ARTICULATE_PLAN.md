@@ -64,7 +64,7 @@ CHANGES:
 
 3. SERVICES (section-num "01"): Reframe 4 cards for B2B:
    - Business English for Teams — "Industry-specific training. Meetings, presentations, emails, negotiations."
-   - Exam Preparation Programs — "IELTS, TOEFL, Cambridge — for employees needing certification."
+   - Exam Preparation Programs — "IELTS, TOEFL, PTE — for employees needing certification."
    - Accent Training for Client-Facing Roles — "Help your sales and support teams communicate clearly with international clients."
    - English for Employee Onboarding — "Fast-track English proficiency for new international hires."
 
