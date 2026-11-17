@@ -166,39 +166,39 @@ body {
   overflow-x: hidden;
 }
 
-|/* Animated mesh canvas background */
-|#meshBg {
-|  position: fixed;
-|  inset: 0;
-|  width: 100%;
-|  height: 100%;
-|  z-index: 0;
-|  opacity: 0.5;
-|  pointer-events: none;
-|}
-|
-|/* Nature background image */
-|#natureBg {
-|  position: fixed;
-|  inset: 0;
-|  width: 100%;
-|  height: 100%;
-|  z-index: 0;
-|  background-size: cover;
-|  background-position: center;
-|  background-repeat: no-repeat;
-|  opacity: 0.5;
-|  pointer-events: none;
-|  transition: background-image 1.5s ease-in-out;
-|}
-|
-|#natureBg::after {
-|  content: "";
-|  position: absolute;
-|  inset: 0;
-|  background: var(--bg);
-|  opacity: 0.5;
-|}
+/* Animated mesh canvas background */
+#meshBg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Nature background image */
+#natureBg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  pointer-events: none;
+  transition: background-image 1.5s ease-in-out;
+}
+
+#natureBg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  opacity: 0.5;
+}
 
 /* Theme toggle */
 .theme-toggle {
@@ -229,14 +229,14 @@ body {
   transition: background 0.3s ease;
 }
 
-|/* Content overlay */
-|.portal {
-|  position: relative;
-|  z-index: 1;
-|  max-width: 1200px;
-|  margin: 0 auto;
-|  padding: 40px 20px;
-|}
+/* Content overlay */
+.portal {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
 
 /* Header */
 .header {
@@ -390,8 +390,8 @@ body {
 </head>
 <body>
 
-|<canvas id="meshBg"></canvas>
-|<div id="natureBg"></div>
+<canvas id="meshBg"></canvas>
+<div id="natureBg"></div>
 
 <button class="theme-toggle" id="themeToggle" onclick="cycleTheme()" title="Cycle theme"><span class="dot"></span>🎨</button>
 
@@ -716,142 +716,142 @@ function setNatureBackground() {
   document.documentElement.style.setProperty('--bg', color);
 }
 
-|setNatureBackground();
-|
-|// === Animated Mesh Background ===
-|(function initMeshBg() {
-|  const canvas = document.getElementById('meshBg');
-|  if (!canvas) return;
-|  
-|  const ctx = canvas.getContext('2d');
-|  let width, height;
-|  let mouse = { x: 0, y: 0 };
-|  let animationId;
-|  
-|  // Mesh configuration
-|  const config = {
-|    gridSize: 60,
-|    pointRadius: 1.5,
-|    lineWidth: 0.5,
-|    waveSpeed: 0.001,
-|    waveAmplitude: 15,
-|    connectionDistance: 100,
-|    mouseRadius: 150
-|  };
-|  
-|  let points = [];
-|  let time = 0;
-|  
-|  function resize() {
-|    width = canvas.width = window.innerWidth;
-|    height = canvas.height = window.innerHeight;
-|    initPoints();
-|  }
-|  
-|  function initPoints() {
-|    points = [];
-|    const cols = Math.ceil(width / config.gridSize) + 2;
-|    const rows = Math.ceil(height / config.gridSize) + 2;
-|    
-|    for (let i = -1; i < cols; i++) {
-|      for (let j = -1; j < rows; j++) {
-|        points.push({
-|          x: i * config.gridSize,
-|          y: j * config.gridSize,
-|          baseX: i * config.gridSize,
-|          baseY: j * config.gridSize,
-|          phase: Math.random() * Math.PI * 2,
-|          speed: 0.5 + Math.random() * 0.5
-|        });
-|      }
-|    }
-|  }
-|  
-|  function updatePoints() {
-|    time += config.waveSpeed;
-|    
-|    points.forEach(p => {
-|      // Wave motion
-|      const waveX = Math.sin(time * p.speed + p.phase) * config.waveAmplitude;
-|      const waveY = Math.cos(time * p.speed + p.phase * 0.7) * config.waveAmplitude * 0.6;
-|      
-|      p.x = p.baseX + waveX;
-|      p.y = p.baseY + waveY;
-|      
-|      // Mouse interaction
-|      const dx = mouse.x - p.x;
-|      const dy = mouse.y - p.y;
-|      const dist = Math.sqrt(dx * dx + dy * dy);
-|      
-|      if (dist < config.mouseRadius) {
-|        const force = (config.mouseRadius - dist) / config.mouseRadius;
-|        const angle = Math.atan2(dy, dx);
-|        p.x -= Math.cos(angle) * force * 20;
-|        p.y -= Math.sin(angle) * force * 20;
-|      }
-|    });
-|  }
-|  
-|  function draw() {
-|    ctx.clearRect(0, 0, width, height);
-|    
-|    // Get current accent color from CSS
-|    const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#fbbf24';
-|    const cyan = getComputedStyle(document.documentElement).getPropertyValue('--cyan').trim() || '#22d3ee';
-|    
-|    // Draw connections
-|    ctx.lineWidth = config.lineWidth;
-|    
-|    for (let i = 0; i < points.length; i++) {
-|      const p1 = points[i];
-|      
-|      // Connect to nearby points
-|      for (let j = i + 1; j < points.length; j++) {
-|        const p2 = points[j];
-|        const dx = p2.x - p1.x;
-|        const dy = p2.y - p1.y;
-|        const dist = Math.sqrt(dx * dx + dy * dy);
-|        
-|        if (dist < config.connectionDistance) {
-|          const alpha = (1 - dist / config.connectionDistance) * 0.4;
-|          ctx.strokeStyle = `rgba(34, 211, 238, ${alpha})`;
-|          ctx.beginPath();
-|          ctx.moveTo(p1.x, p1.y);
-|          ctx.lineTo(p2.x, p2.y);
-|          ctx.stroke();
-|        }
-|      }
-|    }
-|    
-|    // Draw points
-|    points.forEach(p => {
-|      const alpha = 0.3 + (Math.sin(time + p.phase) + 1) * 0.2;
-|      ctx.fillStyle = accent;
-|      ctx.globalAlpha = alpha;
-|      ctx.beginPath();
-|      ctx.arc(p.x, p.y, config.pointRadius, 0, Math.PI * 2);
-|      ctx.fill();
-|    });
-|    ctx.globalAlpha = 1;
-|  }
-|  
-|  function animate() {
-|    updatePoints();
-|    draw();
-|    animationId = requestAnimationFrame(animate);
-|  }
-|  
-|  // Event listeners
-|  window.addEventListener('resize', resize);
-|  window.addEventListener('mousemove', (e) => {
-|    mouse.x = e.clientX;
-|    mouse.y = e.clientY;
-|  });
-|  
-|  // Initialize
-|  resize();
-|  animate();
-|})();
+setNatureBackground();
+
+// === Animated Mesh Background ===
+(function initMeshBg() {
+  const canvas = document.getElementById('meshBg');
+  if (!canvas) return;
+  
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let mouse = { x: 0, y: 0 };
+  let animationId;
+  
+  // Mesh configuration
+  const config = {
+    gridSize: 60,
+    pointRadius: 1.5,
+    lineWidth: 0.5,
+    waveSpeed: 0.001,
+    waveAmplitude: 15,
+    connectionDistance: 100,
+    mouseRadius: 150
+  };
+  
+  let points = [];
+  let time = 0;
+  
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+    initPoints();
+  }
+  
+  function initPoints() {
+    points = [];
+    const cols = Math.ceil(width / config.gridSize) + 2;
+    const rows = Math.ceil(height / config.gridSize) + 2;
+    
+    for (let i = -1; i < cols; i++) {
+      for (let j = -1; j < rows; j++) {
+        points.push({
+          x: i * config.gridSize,
+          y: j * config.gridSize,
+          baseX: i * config.gridSize,
+          baseY: j * config.gridSize,
+          phase: Math.random() * Math.PI * 2,
+          speed: 0.5 + Math.random() * 0.5
+        });
+      }
+    }
+  }
+  
+  function updatePoints() {
+    time += config.waveSpeed;
+    
+    points.forEach(p => {
+      // Wave motion
+      const waveX = Math.sin(time * p.speed + p.phase) * config.waveAmplitude;
+      const waveY = Math.cos(time * p.speed + p.phase * 0.7) * config.waveAmplitude * 0.6;
+      
+      p.x = p.baseX + waveX;
+      p.y = p.baseY + waveY;
+      
+      // Mouse interaction
+      const dx = mouse.x - p.x;
+      const dy = mouse.y - p.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      
+      if (dist < config.mouseRadius) {
+        const force = (config.mouseRadius - dist) / config.mouseRadius;
+        const angle = Math.atan2(dy, dx);
+        p.x -= Math.cos(angle) * force * 20;
+        p.y -= Math.sin(angle) * force * 20;
+      }
+    });
+  }
+  
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+    
+    // Get current accent color from CSS
+    const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#fbbf24';
+    const cyan = getComputedStyle(document.documentElement).getPropertyValue('--cyan').trim() || '#22d3ee';
+    
+    // Draw connections
+    ctx.lineWidth = config.lineWidth;
+    
+    for (let i = 0; i < points.length; i++) {
+      const p1 = points[i];
+      
+      // Connect to nearby points
+      for (let j = i + 1; j < points.length; j++) {
+        const p2 = points[j];
+        const dx = p2.x - p1.x;
+        const dy = p2.y - p1.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        
+        if (dist < config.connectionDistance) {
+          const alpha = (1 - dist / config.connectionDistance) * 0.4;
+          ctx.strokeStyle = `rgba(34, 211, 238, ${alpha})`;
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.stroke();
+        }
+      }
+    }
+    
+    // Draw points
+    points.forEach(p => {
+      const alpha = 0.3 + (Math.sin(time + p.phase) + 1) * 0.2;
+      ctx.fillStyle = accent;
+      ctx.globalAlpha = alpha;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, config.pointRadius, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+  }
+  
+  function animate() {
+    updatePoints();
+    draw();
+    animationId = requestAnimationFrame(animate);
+  }
+  
+  // Event listeners
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+  
+  // Initialize
+  resize();
+  animate();
+})();
 
 // === Theme cycle ===
 const THEMES = ['default','red-dark','red-light','orange-dark','orange-light','yellow-dark','yellow-light','green-dark','green-light','blue-dark','blue-light','indigo-dark','indigo-light','violet-dark','violet-light'];
