@@ -74,19 +74,24 @@ window.ARTICULATE = {
      Currency auto-detects from browser locale; URL ?cur= overrides.        */
   prices: {
     usd: { symbol: '$',   code: 'USD', rail: 'paystack', tiers: {
-      starter:      { label: 'Starter',      amount: 200,  cents: 20000,  sessions: 4,  note: '4 lessons per month' },
-      professional: { label: 'Professional', amount: 600,  cents: 60000,  sessions: 8,  note: '8 lessons per month' },
-      intensive:    { label: 'Intensive',    amount: 1600, cents: 160000, sessions: 16, note: 'accelerated progress' }
+      starter:      { label: 'Starter',      amount: 120,  cents: 12000,  sessions: 4,  note: '4 lessons per month' },
+      professional: { label: 'Professional', amount: 312,  cents: 31200,  sessions: 8,  note: '8 lessons per month' },
+      intensive:    { label: 'Intensive',    amount: 768,  cents: 76800,  sessions: 16, note: 'accelerated progress' }
     }},
     eur: { symbol: '€',   code: 'EUR', rail: 'stripe',  tiers: {
-      starter:      { label: 'Starter',      amount: 160,  cents: 16000,  sessions: 4,  note: '4 lessons per month' },
-      professional: { label: 'Professional', amount: 480,  cents: 48000,  sessions: 8,  note: '8 lessons per month' },
-      intensive:    { label: 'Intensive',    amount: 1040, cents: 104000, sessions: 16, note: 'accelerated progress' }
+      starter:      { label: 'Starter',      amount: 120,  cents: 12000,  sessions: 4,  note: '4 lessons per month' },
+      professional: { label: 'Professional', amount: 312,  cents: 31200,  sessions: 8,  note: '8 lessons per month' },
+      intensive:    { label: 'Intensive',    amount: 768,  cents: 76800,  sessions: 16, note: 'accelerated progress' }
     }},
     chf: { symbol: 'CHF', code: 'CHF', rail: 'stripe',  tiers: {
-      starter:      { label: 'Starter',      amount: 400,  cents: 40000,  sessions: 4,  note: '4 lessons per month' },
-      professional: { label: 'Professional', amount: 880,  cents: 88000,  sessions: 8,  note: '8 lessons per month' },
-      intensive:    { label: 'Intensive',    amount: 1650, cents: 165000, sessions: 16, note: 'accelerated progress' }
+      starter:      { label: 'Starter',      amount: 168,  cents: 16800,  sessions: 4,  note: '4 lessons per month' },
+      professional: { label: 'Professional', amount: 432,  cents: 43200,  sessions: 8,  note: '8 lessons per month' },
+      intensive:    { label: 'Intensive',    amount: 1056, cents: 105600, sessions: 16, note: 'accelerated progress' }
+    }},
+    zar: { symbol: 'R',   code: 'ZAR', rail: 'paystack', tiers: {
+      starter:      { label: 'Starter',      amount: 720,  cents: 72000,  sessions: 4,  note: '4 lessons per month' },
+      professional: { label: 'Professional', amount: 1840, cents: 184000, sessions: 8,  note: '8 lessons per month' },
+      intensive:    { label: 'Intensive',    amount: 4480, cents: 448000, sessions: 16, note: 'accelerated progress' }
     }}
   },
 
@@ -152,6 +157,8 @@ window.ARTICULATE = {
     var loc = (navigator.language || 'en-US').toLowerCase();
     // de-CH, fr-CH, it-CH, rm-CH → Swiss franc
     if (loc.indexOf('-ch') > 0) return 'chf';
+    // South African locales → rand (Paystack SA rail)
+    if (loc.indexOf('-za') > 0) return 'zar';
     // EU locales → Euro
     var eu = ['-de','-at','-fr','-es','-it','-nl','-be','-pt','-fi','-ie','-sk','-si','-lv','-lt','-ee','-cy','-gr','-lu'];
     if (eu.some(function(e){ return loc.indexOf(e) > 0; })) return 'eur';
@@ -168,6 +175,7 @@ window.ARTICULATE = {
     var amount = (cents / 100).toFixed(p.code === 'CHF' ? 0 : 2).replace(/\.00$/, '');
     if (p.symbol === '$')    return '$' + amount;
     if (p.symbol === '€')    return amount + '€';
+    if (p.symbol === 'R')    return 'R ' + amount;
     return p.symbol + ' ' + amount;            // CHF 400
   };
 
