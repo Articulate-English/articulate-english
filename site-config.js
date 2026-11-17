@@ -34,7 +34,7 @@ window.ARTICULATE = {
   /* ── Brand ─────────────────────────────────────────────────────────── */
   brand:        'Articulate English',
   email:        'hello@articulate.ee',
-  phoneDisplay: '',              // e.g. '+27 82 123 4567' — shown on the Impressum
+  phoneDisplay: '+27 67 177 6770',  // shown on the Impressum
 
   /* ── BOOKING ─────────────────────────────────────────────────────────
      Your Cal.com booking link. Find it in the Cal.com dashboard:
