@@ -67,6 +67,16 @@ window.ARTICULATE = {
   paystackPublicKey:  'pk_test_8373ee5f0e47b5da3189e8bff1d9e1edd0859662',
   stripePublishableKey: '',
 
+  /* ── Bank transfer (Wise EUR account) ───────────────────────────────
+     Shown on the pricing page as a zero-fee alternative to PayPal.
+     Fill these from your Wise account → EUR → "Account details".       */
+  bankDetails: {
+    name:      '',   // account holder, e.g. "William Gray Thomason"
+    iban:      '',   // EUR IBAN
+    swift:     '',   // SWIFT/BIC
+    reference: ''    // what the client should put in the transfer reference
+  },
+
   /* ── Pricing (multi-currency for Swiss/EU/US) ──────────────────────
      Each currency has: symbol, ISO code, payment rail, and three tiers.
      Cents = smallest unit (cents for USD/EUR, Rappen for CHF).
@@ -287,6 +297,38 @@ window.ARTICULATE = {
         btn.setAttribute('data-amount', tier.cents);
       }
     });
+
+    /* Render the "Ways to pay" block (PayPal + bank transfer) if present. */
+    var po = document.getElementById('pay-options-body');
+    if (po) {
+      var esc = function (s) {
+        return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      };
+      var email = A.email || '';
+      var html = '';
+      if (A.paypalUrl) {
+        html += '<div class="po"><div><h3>PayPal</h3><p>Card or PayPal balance — <a href="' +
+                esc(A.paypalUrl) + '" target="_blank" rel="noopener">open PayPal</a>.</p></div></div>';
+      } else {
+        html += '<div class="po"><div><h3>PayPal</h3><p>On request — email <a href="mailto:' +
+                esc(email) + '">' + esc(email) + '</a> and we will send a secure payment link.</p></div></div>';
+      }
+      var bd = A.bankDetails || {};
+      if (bd.iban) {
+        html += '<div class="po"><div><h3>Bank transfer (EUR, via Wise)</h3><p>' +
+                '<strong>' + esc(bd.name || 'Articulate English') + '</strong><br>' +
+                'IBAN: <code>' + esc(bd.iban) + '</code><br>' +
+                'SWIFT/BIC: <code>' + esc(bd.swift) + '</code>' +
+                (bd.reference ? '<br>Reference: <code>' + esc(bd.reference) + '</code>' : '') +
+                '<br><span style="opacity:.75">Email <a href="mailto:' + esc(email) + '">' + esc(email) +
+                '</a> your transfer receipt and we will book your first lesson.</span></p></div></div>';
+      } else {
+        html += '<div class="po"><div><h3>Bank transfer (EUR, via Wise)</h3><p>On request — we will send our EUR account details by email.</p></div></div>';
+      }
+      po.innerHTML = html;
+    }
 
     /* Initialise currency selector in footer */
     var currSelect = document.getElementById('currencySelect');
