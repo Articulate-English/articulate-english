@@ -70,7 +70,7 @@ window.ARTICULATE = {
   /* ── Pricing (multi-currency for Swiss/EU/US) ──────────────────────
      Each currency has: symbol, ISO code, payment rail, and three tiers.
      Cents = smallest unit (cents for USD/EUR, Rappen for CHF).
-     Rail: 'paystack' = inline modal | 'stripe' = redirect Checkout
+     Rail: 'paystack' = inline modal | 'mor' = hosted checkout (Merchant of Record) | 'stripe' = redirect Checkout
      Currency auto-detects from browser locale; URL ?cur= overrides.        */
   prices: {
     usd: { symbol: '$',   code: 'USD', rail: 'paystack', tiers: {
@@ -78,12 +78,12 @@ window.ARTICULATE = {
       professional: { label: 'Professional', amount: 312,  cents: 31200,  sessions: 8,  note: '8 lessons per month' },
       intensive:    { label: 'Intensive',    amount: 768,  cents: 76800,  sessions: 16, note: 'accelerated progress' }
     }},
-    eur: { symbol: '€',   code: 'EUR', rail: 'stripe',  tiers: {
+    eur: { symbol: '€',   code: 'EUR', rail: 'mor',    tiers: {
       starter:      { label: 'Starter',      amount: 120,  cents: 12000,  sessions: 4,  note: '4 lessons per month' },
       professional: { label: 'Professional', amount: 312,  cents: 31200,  sessions: 8,  note: '8 lessons per month' },
       intensive:    { label: 'Intensive',    amount: 768,  cents: 76800,  sessions: 16, note: 'accelerated progress' }
     }},
-    chf: { symbol: 'CHF', code: 'CHF', rail: 'stripe',  tiers: {
+    chf: { symbol: 'CHF', code: 'CHF', rail: 'mor',    tiers: {
       starter:      { label: 'Starter',      amount: 168,  cents: 16800,  sessions: 4,  note: '4 lessons per month' },
       professional: { label: 'Professional', amount: 432,  cents: 43200,  sessions: 8,  note: '8 lessons per month' },
       intensive:    { label: 'Intensive',    amount: 1056, cents: 105600, sessions: 16, note: 'accelerated progress' }
@@ -95,7 +95,21 @@ window.ARTICULATE = {
     }}
   },
 
-  /* ── Lock-in discount (12-month commitment) ────────────────────────
+  /* ── Hosted checkouts (Merchant of Record) ──────────────────────────
+     EUR and CHF are routed to a Merchant of Record so the platform is the
+     seller of record and handles EU/Swiss VAT. Paste one checkout URL per
+     tier per currency; empty string = honest "on request" fallback.
+
+     NOTE: most MoR platforms (Paddle, Lemon Squeezy, Polar, Creem, Dodo)
+     restrict sellers to software/digital products and do NOT accept 1:1
+     tutoring or coaching services. If yours rejects services, the realistic
+     routes are an EU/UK entity with Stripe, or invoicing EUR clients.
+     Wiring is here so either route works.                              */
+  hostedCheckouts: {
+    eur: { starter: '', professional: '', intensive: '' },
+    chf: { starter: '', professional: '', intensive: '' }
+  },
+     /* ── Lock-in discount (12-month commitment) ────────────────────────
      SaaS-norm: 2 months free (~16.7% off). Applied as a coupon code until
      Paystack/Stripe coupon wiring lands. Code is informational for now.     */
   lockInCoupon:   'LOCK12',
@@ -184,11 +198,25 @@ window.ARTICULATE = {
     return A.currency().tiers[tierName] || null;
   };
 
+  /* Hosted checkout URL (Merchant of Record) for a currency + tier.      */
+  A.hostedCheckout = function (tierName) {
+    var cur = A.detectCurrency();
+    var map = A.hostedCheckouts || {};
+    return (map[cur] && map[cur][tierName]) || '';
+  };
+
   /* Determine which payment provider to use for the current currency.
-     Returns: 'paystack' | 'stripe' | 'paypal' | 'none'                */
+     Returns: 'paystack' | 'mor' | 'stripe' | 'paypal' | 'none'          */
   A.paymentRail = function () {
     var p = A.currency();
     if (p.rail === 'paystack' && A.paystackPublicKey) return 'paystack';
+    if (p.rail === 'mor') {
+      var any = ['starter', 'professional', 'intensive'].some(function (t) {
+        return !!A.hostedCheckout(t);
+      });
+      if (any)                                          return 'mor';
+      if (A.paypalUrl)                                  return 'paypal';
+    }
     if (p.rail === 'stripe') {
       if (A.paypalUrl)                              return 'paypal';
       if (A.stripePublishableKey)                   return 'stripe';

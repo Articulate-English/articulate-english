@@ -824,6 +824,10 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
     var tierData = tierName ? A.tier(tierName) : null;
     var tierLabel = tierData ? tierData.label : 'package';
 
+    /* Merchant-of-Record hosted checkout (EUR/CHF) */
+    var morUrl = A.hostedCheckout ? A.hostedCheckout(tierName) : '';
+    if (morUrl) { window.location.href = morUrl; return; }
+
     /* PayPal redirect (highest priority for EUR/CHF) */
     if (rail === 'paypal') {
       var paypalHref = A.paypalLink((cents / 100).toFixed(2));
