@@ -79,9 +79,9 @@ window.ARTICULATE = {
       intensive:    { label: 'Intensive',    amount: 1600, cents: 160000, sessions: 16, note: 'accelerated progress' }
     }},
     eur: { symbol: '€',   code: 'EUR', rail: 'stripe',  tiers: {
-      starter:      { label: 'Starter',      amount: 180,  cents: 18000,  sessions: 4,  note: '4 lessons per month' },
-      professional: { label: 'Professional', amount: 540,  cents: 54000,  sessions: 8,  note: '8 lessons per month' },
-      intensive:    { label: 'Intensive',    amount: 1500, cents: 150000, sessions: 16, note: 'accelerated progress' }
+      starter:      { label: 'Starter',      amount: 160,  cents: 16000,  sessions: 4,  note: '4 lessons per month' },
+      professional: { label: 'Professional', amount: 480,  cents: 48000,  sessions: 8,  note: '8 lessons per month' },
+      intensive:    { label: 'Intensive',    amount: 1040, cents: 104000, sessions: 16, note: 'accelerated progress' }
     }},
     chf: { symbol: 'CHF', code: 'CHF', rail: 'stripe',  tiers: {
       starter:      { label: 'Starter',      amount: 400,  cents: 40000,  sessions: 4,  note: '4 lessons per month' },
@@ -90,7 +90,15 @@ window.ARTICULATE = {
     }}
   },
 
-  /* ── Corporate tiers (also multi-currency) ──────────────────────────
+  /* ── Lock-in discount (12-month commitment) ────────────────────────
+     SaaS-norm: 2 months free (~16.7% off). Applied as a coupon code until
+     Paystack/Stripe coupon wiring lands. Code is informational for now.     */
+  lockInCoupon:   'LOCK12',
+  lockInMonths:   12,
+  lockInFreeMonths: 2,
+
+
+/* ── Corporate tiers (also multi-currency) ──────────────────────────
      Per-session corporate rates. cents = per-session in smallest unit. */
   corporate: {
     usd: { symbol: '$',   code: 'USD', tiers: {
