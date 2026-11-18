@@ -62,7 +62,7 @@ window.ARTICULATE = {
               for Swiss and EU clients (Paystack settles ZAR only).
    At least one payment key is needed to take live payments. Leave all
    empty for the honest on-request state.                                 */
-  paypalUrl:          '',
+  paypalUrl:          'https://paypal.me/ArticulateEnglish',
   /* One PayPal.Me link per currency — a single link serves every deck and
      every package in that currency, because the amount is appended to the
      URL. Only needed if the links differ by currency. */
@@ -89,7 +89,7 @@ window.ARTICULATE = {
      Rail: 'paystack' = inline modal | 'mor' = hosted checkout (Merchant of Record) | 'stripe' = redirect Checkout
      Currency auto-detects from browser locale; URL ?cur= overrides.        */
   prices: {
-    usd: { symbol: '$',   code: 'USD', rail: 'paystack', tiers: {
+    usd: { symbol: '$',   code: 'USD', rail: 'paypal',  tiers: {
       starter:      { label: 'Starter',      amount: 120,  cents: 12000,  sessions: 4,  note: '4 lessons per month' },
       professional: { label: 'Professional', amount: 312,  cents: 31200,  sessions: 8,  note: '8 lessons per month' },
       intensive:    { label: 'Intensive',    amount: 768,  cents: 76800,  sessions: 16, note: 'accelerated progress' }
