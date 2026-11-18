@@ -176,8 +176,12 @@ window.ARTICULATE = {
     if (!url) return '';
     // PayPal.Me links accept /<amount>; hosted buttons do not. Append only
     // when the URL is a paypal.me link and no amount is already present.
-    if (/\/paypal\.me\//i.test(url) && amount && !/\d\.\d\d\/?$/.test(url)) {
-      return url.replace(/\/?$/, '/') + amount;
+    if (/\/paypal\.me\//i.test(url) && amount && !/\d([A-Z]{3})?\/?$/.test(url)) {
+      /* PayPal.Me accepts /<amount><currency>, e.g. /39EUR — so ONE link
+         serves every currency we quote, and the client is charged in their
+         own currency instead of a converted default. */
+      var cur=(A.detectCurrency()||'').toUpperCase();
+      return url.replace(/\/?$/, '/') + amount + cur;
     }
     return url;
   };
