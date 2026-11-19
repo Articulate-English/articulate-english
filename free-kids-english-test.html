@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; manifest-src 'self'; base-uri 'self'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.workers.dev; manifest-src 'self'; base-uri 'self'; form-action 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#0a0e1a">
 <title>Free Kids English Test (Ages 7–12) — Fun, No Sign-up | Articulate English</title>
@@ -13,7 +13,7 @@
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Is this test for children free?","acceptedAnswer":{"@type":"Answer","text":"Yes. It takes about ten minutes and the result is shown on screen for the parent. No account and no payment."}},
 {"@type":"Question","name":"What age is it for?","acceptedAnswer":{"@type":"Answer","text":"Children aged roughly 7 to 12, at pre-A1 to A2 level."}},
-{"@type":"Question","name":"Do you collect my child's data?","acceptedAnswer":{"@type":"Answer","text":"No. This test collects nothing at all — no name, no email, no answers are stored or sent anywhere."}},
+{"@type":"Question","name":"Do you collect my child's data?","acceptedAnswer":{"@type":"Answer","text":"We never ask for your child's name or contact details, and the child's answers are not stored or sent anywhere. At the end you may give the parent's own email address to receive the result; that address is stored only so we can send it."}},
 {"@type":"Question","name":"Can my child take lessons with Articulate English?","acceptedAnswer":{"@type":"Answer","text":"Yes. Under-18 students are booked by a parent or guardian, and lessons follow our safeguarding policy."}}
 ]}
 </script>
@@ -50,10 +50,17 @@ button.go:disabled{opacity:.45;cursor:not-allowed}
 .faq details{border-bottom:1px solid var(--border);padding:10px 0}
 .faq summary{cursor:pointer;font-weight:600;font-size:.95rem}
 .faq p{font-size:.9rem;color:var(--muted);margin:8px 0 0}
+label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
+input[type=email]{width:100%;background:var(--card2);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:13px 14px;font-size:1rem;font-family:inherit}
+input:focus{outline:none;border-color:var(--accent)}
+.chk{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:.88rem;color:var(--muted)}
+.chk input{margin-top:4px;width:17px;height:17px;flex-shrink:0}
+.err{color:var(--bad);font-size:.9rem;margin-top:10px}
+.okmsg{color:var(--ok);font-size:.95rem;margin-top:12px}
 .cheer{font-size:1.05rem;margin:0 0 4px}
 </style>
 </head>
-<body>
+<body data-test="kids">
 <div class="wrap">
   <p class="top"><a href="index.html">&larr; Articulate English</a> &middot; <a href="english-tests.html">All free tests</a></p>
 
@@ -66,9 +73,10 @@ button.go:disabled{opacity:.45;cursor:not-allowed}
       <li><span>Level</span><span>Pre-A1 to A2</span></li>
       <li><span>Questions</span><span>20</span></li>
       <li><span>Time</span><span>About 10 minutes</span></li>
-      <li><span>Data collected</span><span>Nothing at all</span></li>
+      <li><span>Data collected</span><span>Parent's email only, and only if you ask for the result</span></li>
     </ul>
     <p class="muted" style="font-size:.88rem">Please sit with your child for the first few questions so they know what to do. After that, let them try on their own — wrong answers tell us more than right ones.</p>
+    <p class="muted" style="font-size:.88rem">We never ask for your child's name or contact details. If you want the result sent to you, you can give your own email at the end.</p>
   </div>
 
   <div class="card" id="quiz">
@@ -90,12 +98,28 @@ button.go:disabled{opacity:.45;cursor:not-allowed}
     <p class="muted" id="rdesc" style="font-size:.95rem"></p>
 
     <div class="note">
-      This test collects nothing — no name, no email, no answers are stored or sent anywhere.
+      This test collects your child's answers in the browser only — nothing about your child is stored or sent anywhere.
+      If you give your email at the end, we store that so we can send you the result and, only if you tick the box, occasional tips.
       It is a friendly snapshot, not a school report.
     </div>
 
     <h3 style="margin-top:22px;font-size:1rem">For parents</h3>
     <p class="muted" style="font-size:.92rem">Children learn fastest when lessons feel like play and still have structure. If your child enjoyed the test, we offer 1:1 online lessons for under-18 students, always booked by a parent or guardian. Read our <a href="safeguarding.html">safeguarding policy</a> before getting in touch.</p>
+
+    <div class="card" style="background:var(--card2);margin-top:20px">
+      <h3 style="margin-top:0;font-size:1rem">Get the result by email</h3>
+      <div id="formbox">
+        <label for="email">Parent's email address</label>
+        <input type="email" id="email" autocomplete="email" placeholder="parent@example.com">
+        <label class="chk"><input type="checkbox" id="c_result"><span>Send the result to this address. <em>(required to send it)</em></span></label>
+        <label class="chk"><input type="checkbox" id="c_market"><span>I would like occasional English tips and offers from Articulate English — about 1–2 emails a month, about lessons, exam practice materials and courses. You can unsubscribe at any time.</span></label>
+        <div class="note" style="margin-top:12px">We ask only for the parent's address. We never ask for your child's name or contact details. See our <a href="privacy.html">privacy policy</a>.</div>
+        <div style="margin-top:14px"><button class="go" id="send">Send the result</button></div>
+        <div class="err hidden" id="ferr"></div>
+        <div class="okmsg hidden" id="fok"></div>
+      </div>
+    </div>
+
     <p style="margin-top:16px"><a class="go" style="text-decoration:none;display:inline-block" href="mailto:hello@articulate.ee">Ask about lessons for children</a></p>
   </div>
 
@@ -108,8 +132,9 @@ button.go:disabled{opacity:.45;cursor:not-allowed}
 
   <h2>FAQ</h2>
   <div class="faq card">
-    <details><summary>Is this test free?</summary><p>Yes. No account, no payment, no email.</p></details>
-    <details><summary>Do you keep my child's answers?</summary><p>No. The test runs entirely in your browser and nothing is stored or sent anywhere.</p></details>
+    <details><summary>Is this test free?</summary><p>Yes. No account, no payment. Your child's result is on screen; if you want it sent to you, you can give the parent's email address at the end.</p></details>
+    <details><summary>Do you keep my child's answers?</summary><p>Your child's answers stay in your browser and are never stored or sent to us. We never ask for your child's name or contact details.</p></details>
+    <details><summary>Can I get the result by email?</summary><p>Yes. At the end you can give your own (the parent's) email address and we will send the result to you. That is the only address we ask for, and both email boxes start unticked.</p></details>
     <details><summary>Is it an official exam?</summary><p>No. It is a friendly indicator to show where your child is comfortable. It is not a Cambridge Young Learners or equivalent result.</p></details>
     <details><summary>My child is younger than 7 or older than 12. Can they try?</summary><p>Yes — the questions are just a guide. If they find it too hard or too easy, that itself is useful information.</p></details>
     <details><summary>Can my child take lessons with you?</summary><p>Yes. Under-18 students are booked by a parent or guardian. Email <a href="mailto:hello@articulate.ee">hello@articulate.ee</a> to ask.</p></details>
@@ -226,6 +251,53 @@ button.go:disabled{opacity:.45;cursor:not-allowed}
   }
 
   render();
+
+  /* Parent email — only ever the parent's address, never the child's. */
+  var ENDPOINT = (window.ARTICULATE && ARTICULATE.workerEndpoint) || '';
+  var TEST = document.body.getAttribute('data-test') || 'kids';
+
+  document.getElementById('send').addEventListener('click', function () {
+    var err = document.getElementById('ferr');
+    var okm = document.getElementById('fok');
+    err.classList.add('hidden'); okm.classList.add('hidden');
+    var email = document.getElementById('email').value.trim();
+    var wantResult = document.getElementById('c_result').checked;
+    var wantMarketing = document.getElementById('c_market').checked;
+
+    if (!wantResult) { err.textContent = 'Please tick “Send the result to this address”, or just read the result above.'; err.classList.remove('hidden'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { err.textContent = 'That email address does not look right — please check it.'; err.classList.remove('hidden'); return; }
+    if (!ENDPOINT) { err.textContent = 'The result email is not set up yet. Your result is above, and you can email hello@articulate.ee any time.'; err.classList.remove('hidden'); return; }
+
+    var btn = document.getElementById('send');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        wantResult: wantResult,
+        wantMarketing: wantMarketing,
+        test: TEST,
+        level: document.getElementById('rband').textContent,
+        score: document.getElementById('rscore').textContent,
+        breaks: document.getElementById('rbreaks').innerText.replace(/\n+/g, ', ')
+      })
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; });
+    }).then(function (res) {
+      if (res.ok) {
+        document.getElementById('formbox').innerHTML = '<div class="okmsg">Done — the result is on its way to ' + email.replace(/</g, '&lt;') + '.</div>';
+      } else {
+        err.textContent = (res.j && res.j.error) || 'Something went wrong sending the email. Your result is above — please try again in a moment.';
+        err.classList.remove('hidden');
+        btn.disabled = false; btn.textContent = 'Send the result';
+      }
+    }).catch(function () {
+      err.textContent = 'Network problem sending the email. Your result is above — please try again in a moment.';
+      err.classList.remove('hidden');
+      btn.disabled = false; btn.textContent = 'Send the result';
+    });
+  });
 })();
 </script>
 </body>
