@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.workers.dev; manifest-src 'self'; base-uri 'self'; form-action 'none'">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#0a0e1a">
+<title>Free Business English Test (B1–C2) — 10 Minutes, Instant Result | Articulate English</title>
+<meta name="description" content="Free business English test online: 33 original questions on meetings, emails, negotiation, reports and workplace register, B1 to C2. Instant result, no sign-up.">
+<link rel="icon" type="image/png" href="assets/logo/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is this business English test free?","acceptedAnswer":{"@type":"Answer","text":"Yes. It takes about ten minutes and the result appears on screen. No account is needed."}},
+{"@type":"Question","name":"What level does it cover?","acceptedAnswer":{"@type":"Answer","text":"B1 to C2 on the CEFR scale, with 33 questions covering meetings, emails, negotiation, reports, register and a short workplace reading passage."}},
+{"@type":"Question","name":"Is it a certified business English exam?","acceptedAnswer":{"@type":"Answer","text":"No. It is an indicator to help you choose the right course. It is not a BEC or equivalent result and cannot be used as proof of level."}},
+{"@type":"Question","name":"Do I have to give my email address?","acceptedAnswer":{"@type":"Answer","text":"No. Your result is on screen. Both email boxes start unticked."}}
+]}
+</script>
+<style>
+:root{--accent:#22d3ee;--bg:#0a0e1a;--text:#e0f2fe;--card:#111827;--card2:#0d1424;--border:#1e3a5f;--muted:#8fb3c9;--ok:#34d399;--bad:#f87171}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.6;font-size:16px;padding-bottom:80px}
+.wrap{max-width:820px;margin:0 auto;padding:24px 20px 0}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;line-height:1.25}
+h1{font-size:1.8rem;margin:14px 0 8px}
+h2{font-size:1.2rem;margin:34px 0 10px}
+h3{font-size:1rem;margin:0 0 6px}
+a{color:var(--accent)}
+.muted{color:var(--muted);font-size:.9rem}
+.top{margin:14px 0 0;font-size:.9rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;margin:18px 0}
+.qtext{font-size:1.08rem;margin:0 0 14px;font-weight:500}
+.opts{display:grid;gap:9px}
+.opt{display:block;width:100%;text-align:left;background:var(--card2);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:12px 14px;font-size:.95rem;cursor:pointer;font-family:inherit}
+.opt:hover{border-color:var(--accent)}
+.opt.on{background:var(--accent);color:#04121a;border-color:var(--accent);font-weight:600}
+.bar{height:6px;background:var(--card2);border-radius:99px;overflow:hidden;margin:14px 0}
+.bar > i{display:block;height:100%;background:var(--accent);width:0;transition:width .25s}
+.meta{display:flex;justify-content:space-between;font-size:.82rem;color:var(--muted);margin-bottom:10px}
+.passage{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:16px;font-size:.95rem;margin-bottom:16px}
+button.go{display:inline-block;background:var(--accent);color:#04121a;border:none;border-radius:10px;padding:13px 24px;font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit}
+button.go:disabled{opacity:.45;cursor:not-allowed}
+.ghost{background:transparent;color:var(--text);border:1px solid var(--border);font-weight:500}
+.resultband{font-family:'Space Grotesk',sans-serif;font-size:2.4rem;font-weight:700;color:var(--accent);margin:4px 0}
+.score{font-size:.9rem;color:var(--muted)}
+.breaks{margin:14px 0 0;padding:0;list-style:none;font-size:.9rem}
+.breaks li{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border)}
+.breaks li span:last-child{font-variant-numeric:tabular-nums}
+.note{background:rgba(34,211,238,.08);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:.84rem;color:var(--muted);margin-top:14px}
+label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
+input[type=email]{width:100%;background:var(--card2);border:1px solid var(--border);border-radius:9px;color:var(--text);padding:11px 12px;font-size:.95rem;font-family:inherit}
+input:focus{outline:none;border-color:var(--accent)}
+.chk{display:flex;gap:10px;align-items:flex-start;margin-top:12px;font-size:.85rem;color:var(--muted)}
+.chk input{margin-top:3px;width:16px;height:16px;flex-shrink:0}
+.err{color:var(--bad);font-size:.85rem;margin-top:8px}
+.okmsg{color:var(--ok);font-size:.9rem;margin-top:10px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px}
+.mini{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;font-size:.88rem}
+.mini h3{color:var(--accent)}
+.hidden{display:none}
+.faq details{border-bottom:1px solid var(--border);padding:10px 0}
+.faq summary{cursor:pointer;font-weight:600;font-size:.95rem}
+.faq p{font-size:.9rem;color:var(--muted);margin:8px 0 0}
+</style>
+</head>
+<body data-test="business">
+<div class="wrap">
+  <p class="top"><a href="index.html">&larr; Articulate English</a> &middot; <a href="english-tests.html">All free tests</a></p>
+
+  <h1>Free business English test</h1>
+  <p class="muted">33 original questions on meetings, emails, negotiation, reports and workplace register, from B1 to C2. About ten minutes, result on screen. No sign-up and no payment.</p>
+
+  <div class="card">
+    <h2 style="margin-top:0">What you get</h2>
+    <ul class="breaks" style="margin-top:0">
+      <li><span>Coverage</span><span>CEFR B1 to C2</span></li>
+      <li><span>Questions</span><span>33, including a workplace reading passage</span></li>
+      <li><span>Time</span><span>About 10 minutes</span></li>
+      <li><span>Focus</span><span>Register, collocation, email and meeting language</span></li>
+      <li><span>Cost</span><span>Free</span></li>
+    </ul>
+    <p class="muted" style="font-size:.85rem">Choose the answer that sounds most natural in a professional setting. If you are not sure, guess — there is no penalty.</p>
+  </div>
+
+  <div class="card" id="quiz">
+    <div class="meta"><span id="qpos">Question 1 of 33</span><span id="qband">B1 level</span></div>
+    <div class="bar"><i id="qbar"></i></div>
+    <div id="qbody"></div>
+    <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
+      <button class="go ghost" id="prev">Back</button>
+      <button class="go" id="next" disabled>Next</button>
+    </div>
+  </div>
+
+  <div class="card hidden" id="result">
+    <h2 style="margin-top:0">Your estimated business English level</h2>
+    <div class="resultband" id="rband">—</div>
+    <div class="score" id="rscore">—</div>
+    <ul class="breaks" id="rbreaks"></ul>
+    <p class="muted" id="rdesc" style="font-size:.9rem"></p>
+    <div class="note">This is an indicator based on 33 questions, not a certified exam result. It is not a BEC or equivalent qualification and cannot be used as proof of level.</div>
+
+    <h3 style="margin-top:22px">Your next step</h3>
+    <p class="muted" style="font-size:.9rem">Most professionals at your level do best with <strong id="rpack">—</strong>. For corporate training we also build a plan around your actual meetings and documents — <a href="mailto:hello@articulate.ee">ask us for a proposal</a>.</p>
+    <p class="muted" style="font-size:.9rem">We offer <strong>two free 20-minute intro sessions each week</strong> to people we think will get real value from the course. Email <a href="mailto:hello@articulate.ee">hello@articulate.ee</a> with your result and two times that suit you.</p>
+
+    <div class="card" style="background:var(--card2);margin-top:20px">
+      <h3 style="margin-top:0">Get your result by email</h3>
+      <div id="formbox">
+        <label for="email">Email address</label>
+        <input type="email" id="email" autocomplete="email" placeholder="you@company.com">
+        <label class="chk"><input type="checkbox" id="c_result"><span>Send me my result by email. <em>(required to send it)</em></span></label>
+        <label class="chk"><input type="checkbox" id="c_market"><span>I would like occasional English tips and offers from Articulate English — about 1–2 emails a month, about online English lessons, exam practice materials and courses. You can unsubscribe at any time.</span></label>
+        <div class="note" style="margin-top:12px">Articulate English will use your address to send the result and, only if you ticked the second box, marketing. See our <a href="privacy.html">privacy policy</a>. We never sell your data.</div>
+        <div style="margin-top:14px"><button class="go" id="send">Send my result</button></div>
+        <div class="err hidden" id="ferr"></div>
+        <div class="okmsg hidden" id="fok"></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>How the test works</h2>
+  <p class="muted">Questions are grouped into four bands, B1 to C2. Starting at B1, you must get at least 60% of a band right to move on; the highest band you pass is your estimated level. If B1 feels unfamiliar, our <a href="free-english-level-test.html">general test</a> starts lower and may be a better fit.</p>
+  <p class="muted">All questions are written in-house for Articulate English. They are not taken from any published exam, textbook or past paper, including BEC.</p>
+
+  <h2>Which test should you take?</h2>
+  <div class="grid3">
+    <div class="mini"><h3>Business English</h3>Meetings, emails, negotiation and reports. <a href="free-business-english-test.html">You are here</a>.</div>
+    <div class="mini"><h3>General English</h3>Everyday grammar, vocabulary and reading, A1 to C1. <a href="free-english-level-test.html">Take the general test</a>.</div>
+    <div class="mini"><h3>Kids (7–12)</h3>A friendly first test for younger learners. <a href="free-kids-english-test.html">Take the kids' test</a>.</div>
+  </div>
+
+  <h2>Business English test — FAQ</h2>
+  <div class="faq card">
+    <details><summary>Is this business English test free?</summary><p>Yes. About ten minutes, result on screen, no account.</p></details>
+    <details><summary>Is it a BEC or official qualification?</summary><p>No. It is an indicator to help you choose a course. It is not a Cambridge BEC result and cannot be used as proof of level for an employer.</p></details>
+    <details><summary>Do I have to give my email address?</summary><p>No. Your result appears on screen. Both email boxes start unticked.</p></details>
+    <details><summary>My job uses English but I struggle with grammar. Which test is better?</summary><p>Start with the <a href="free-english-level-test.html">general test</a> — it begins at A1 and will show whether the gaps are general or specifically business.</p></details>
+    <details><summary>Can you train my team?</summary><p>Yes. We build corporate plans around your real materials and meetings. <a href="mailto:hello@articulate.ee">Email us</a> for a proposal.</p></details>
+  </div>
+
+  <p class="muted" style="font-size:.8rem">Articulate English · 1:1 online English lessons · <a href="impressum.html">Imprint</a> · <a href="privacy.html">Privacy</a></p>
+</div>
+
+<script src="site-config.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var QUESTIONS = [
+    /* B1 */
+    { b:'B1', q:'I’m writing ___ reply to your email of 3 May.', o:['in','for','as','by'], a:0 },
+    { b:'B1', q:'Could you ___ me a quick summary before the meeting?', o:['send','send to','send for','send at'], a:0 },
+    { b:'B1', q:'The figures are not ___ with last quarter’s results.', o:['comparable','compared','comparing','comparison'], a:0 },
+    { b:'B1', q:'We’ll ___ the issue at the next meeting.', o:['raise','rise','arise','raise up'], a:0 },
+    { b:'B1', q:'I’m afraid Mr Smith is ___ a meeting at the moment.', o:['in','on','at','into'], a:0 },
+    { b:'B1', q:'Please ___ the attached invoice by the end of the week.', o:['settle','settle up','settle down','settle in'], a:0 },
+    { b:'B1', q:'The meeting has been ___ until next Tuesday.', o:['put off','moved up','brought forward','called off'], a:0 },
+    { b:'B1', q:'I look forward to ___ from you.', o:['hear','hearing','heard','hears'], a:1 },
+    /* B2 */
+    { b:'B2', q:'We had to ___ the launch until the tests were finished.', o:['put off','bring forward','turn down','call off'], a:0 },
+    { b:'B2', q:'The report makes a number of ___ for improvement.', o:['recommendations','recommends','recommending','recommended'], a:0 },
+    { b:'B2', q:'It’s important to ___ expectations from the start.', o:['manage','handle','deal','run'], a:0 },
+    { b:'B2', q:'The board is unlikely to ___ the proposal without more detail.', o:['approve','agree','accept','allow'], a:0 },
+    { b:'B2', q:'The new software should help us ___ time on admin.', o:['save','spare','free','lose'], a:0 },
+    { b:'B2', q:'The two sides failed to ___ an agreement.', o:['reach','arrive','come','make'], a:0 },
+    { b:'B2', q:'The supplier’s prices are ___ to change without notice.', o:['subject','likely','due','open'], a:0 },
+    { b:'B2', q:'The contract will be reviewed ___ the end of the year.', o:['at','by','in','on'], a:1 },
+    /* C1 */
+    { b:'C1', q:'The proposal is ___ the board’s approval.', o:['subject to','subjected by','subject of','subjected to'], a:0 },
+    { b:'C1', q:'We are ___ pressure to deliver the results more quickly.', o:['under','in','on','with'], a:0 },
+    { b:'C1', q:'The company is well ___ to weather the downturn.', o:['placed','set','put','stood'], a:0 },
+    { b:'C1', q:'We should not ___ the long-term value of the relationship for a short-term gain.', o:['sacrifice','forfeit','abandon','compromise'], a:0 },
+    { b:'C1', q:'The report ___ that the market is likely to contract.', o:['concludes','finishes','ends','closes'], a:0 },
+    { b:'C1', q:'The new policy will come ___ effect next quarter.', o:['into','in','to','under'], a:0 },
+    { b:'C1', q:'The two departments remain ___ over the budget.', o:['at odds','in odds','on odds','with odds'], a:0 },
+    { b:'C1', q:'The manager’s ___ manner made the whole team anxious.', o:['brusque','courteous','affable','genial'], a:0 },
+    /* C2 */
+    { b:'C2', q:'The proposal was so ___ that the board rejected it outright.', o:['untenable','viable','workable','sound'], a:0 },
+    { b:'C2', q:'We must avoid ___ the problem; a partial fix will only delay the failure.', o:['papering over','facing up to','getting to grips with','tackling'], a:0 },
+    { b:'C2', q:'Which sentence is most appropriate in a formal complaint?', o:['Your service is rubbish and I want my money back.','I am writing to express my dissatisfaction with the service I received.','You lot have let me down badly.','I’m not happy and I want someone to sort this out.'], a:1 },
+    { b:'C2', q:'Which is the best opening for a first email to a new client?', o:['Hey there!','Dear Ms Alvarez,','Hi there Ms Alvarez,','Hi!'], a:1 },
+    { b:'C2', q:'Which phrase softens a refusal?', o:['No, that’s impossible.','I’m afraid that won’t be possible at this stage.','We can’t do that.','Absolutely not.'], a:1 },
+    { b:'C2', q:'Which sentence has the most appropriate register for a formal report?', o:['The results were totally amazing.','The results significantly exceeded our expectations.','The results were well cool.','So the results were, like, really good.'], a:1 }
+  ];
+
+  var PASSAGE = {
+    text: 'Three years after moving its entire workforce to remote working, Halden Group has announced that most employees will be expected to spend at least three days a week in the office from January. The chief executive acknowledged that collaboration had suffered, but insisted the change was not a reversal of the remote policy. “We are not returning to 2019,” she said. “We are trying to keep the flexibility people asked for while recovering something we lost.” The decision has divided staff: many welcome shorter commutes to meaningful work, while others describe the mandate as a response to falling productivity figures that the company has not published.',
+    qs: [
+      { b:'C2', q:'What does Halden Group give as the main reason for the change?', o:['Staff demanded a return to the office','Collaboration had suffered','The company wants to cut office costs','Productivity had risen sharply'], a:1 },
+      { b:'C2', q:'The chief executive says the change is not a reversal because ___.', o:['the company will keep some remote flexibility','the policy was never popular','staff will be consulted again','productivity has improved'], a:0 },
+      { b:'C2', q:'The word “mandate” in the final sentence suggests the decision is ___.', o:['voluntary','widely welcomed','imposed without consultation','temporary'], a:2 }
+    ]
+  };
+
+  var BANDS = ['B1','B2','C1','C2'];
+  var DESC = {
+    'below B1':'Your workplace English is still developing. You can manage simple exchanges, but meetings, emails and reports need support. Start with our general course before the business one.',
+    'B1':'You can handle everyday work communication — routine emails, familiar topics, straightforward meetings. Unfamiliar or sensitive situations still slow you down.',
+    'B2':'You work confidently in English across most professional situations and can hold your own in meetings and negotiations. The gaps now are precision, nuance and speed under pressure.',
+    'C1':'You operate comfortably in demanding professional contexts. Your development now is about register, persuasion and sounding natural rather than correct.',
+    'C2':'You use English with near-native flexibility. At this level the useful work is specialist: high-stakes negotiation, writing that must persuade, and presenting to senior audiences.'
+  };
+  var PACK = {
+    'below B1':'Starter package', 'B1':'Professional package', 'B2':'Professional package',
+    'C1':'Intensive package', 'C2':'Intensive package'
+  };
+
+  var order = QUESTIONS.concat(PASSAGE.qs.map(function (q) {
+    return { b: q.b, q: q.q, o: q.o, a: q.a, passage: PASSAGE.text };
+  }));
+  var idx = 0, answers = [], total = order.length;
+
+  var qbody = document.getElementById('qbody');
+  var qpos = document.getElementById('qpos');
+  var qband = document.getElementById('qband');
+  var qbar = document.getElementById('qbar');
+  var prev = document.getElementById('prev');
+  var next = document.getElementById('next');
+
+  function render() {
+    var item = order[idx];
+    qpos.textContent = 'Question ' + (idx + 1) + ' of ' + total;
+    qband.textContent = item.b + ' level';
+    qbar.style.width = Math.round((idx / total) * 100) + '%';
+    var html = '';
+    if (item.passage) { html += '<div class="passage">' + item.passage + '</div>'; }
+    html += '<p class="qtext">' + item.q + '</p><div class="opts">';
+    item.o.forEach(function (opt, i) {
+      html += '<button class="opt' + (answers[idx] === i ? ' on' : '') + '" data-i="' + i + '">' + opt + '</button>';
+    });
+    html += '</div>';
+    qbody.innerHTML = html;
+    prev.disabled = idx === 0;
+    next.disabled = answers[idx] === undefined;
+    next.textContent = idx === total - 1 ? 'See my result' : 'Next';
+  }
+
+  qbody.addEventListener('click', function (e) {
+    var b = e.target.closest('.opt');
+    if (!b) return;
+    answers[idx] = parseInt(b.getAttribute('data-i'), 10);
+    render();
+  });
+  prev.addEventListener('click', function () { if (idx > 0) { idx--; render(); } });
+  next.addEventListener('click', function () {
+    if (idx < total - 1) { idx++; render(); } else { finish(); }
+  });
+
+  function scoreBand(band) {
+    var ok = 0, n = 0;
+    order.forEach(function (q, i) {
+      if (q.b === band) { n++; if (answers[i] === q.a) ok++; }
+    });
+    return { ok: ok, total: n };
+  }
+
+  function finish() {
+    var result = 'below B1';
+    var breaks = [];
+    BANDS.forEach(function (band) {
+      var s = scoreBand(band);
+      var passed = s.total > 0 && (s.ok / s.total) >= 0.6;
+      breaks.push({ band: band, ok: s.ok, total: s.total, passed: passed });
+      if (passed) result = band;
+    });
+    var totalOk = breaks.reduce(function (n, b) { return n + b.ok; }, 0);
+    document.getElementById('rband').textContent = result === 'below B1' ? 'Below B1' : result;
+    document.getElementById('rscore').textContent = totalOk + ' of ' + total + ' questions correct';
+    document.getElementById('rbreaks').innerHTML = breaks.map(function (b) {
+      return '<li><span>' + b.band + '</span><span>' + b.ok + ' / ' + b.total + (b.passed ? ' ✓' : '') + '</span></li>';
+    }).join('');
+    document.getElementById('rdesc').textContent = DESC[result] || '';
+    document.getElementById('rpack').textContent = PACK[result] || '';
+    document.getElementById('quiz').classList.add('hidden');
+    document.getElementById('result').classList.remove('hidden');
+    document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  render();
+
+  var ENDPOINT = (window.ARTICULATE && ARTICULATE.workerEndpoint) || '';
+  var TEST = document.body.getAttribute('data-test') || 'general';
+
+  document.getElementById('send').addEventListener('click', function () {
+    var err = document.getElementById('ferr');
+    var okm = document.getElementById('fok');
+    err.classList.add('hidden'); okm.classList.add('hidden');
+    var email = document.getElementById('email').value.trim();
+    var wantResult = document.getElementById('c_result').checked;
+    var wantMarketing = document.getElementById('c_market').checked;
+
+    if (!wantResult) { err.textContent = 'Please tick “Send me my result by email”, or just read your result above.'; err.classList.remove('hidden'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { err.textContent = 'That email address does not look right — please check it.'; err.classList.remove('hidden'); return; }
+    if (!ENDPOINT) { err.textContent = 'The result email is not set up yet. Your result is above, and you can email hello@articulate.ee any time.'; err.classList.remove('hidden'); return; }
+
+    var btn = document.getElementById('send');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        wantResult: wantResult,
+        wantMarketing: wantMarketing,
+        test: TEST,
+        level: document.getElementById('rband').textContent,
+        score: document.getElementById('rscore').textContent,
+        breaks: document.getElementById('rbreaks').innerText.replace(/\n+/g, ', ')
+      })
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; });
+    }).then(function (res) {
+      if (res.ok) {
+        document.getElementById('formbox').innerHTML = '<div class="okmsg">Done — your result is on its way to ' + email.replace(/</g, '&lt;') + '.</div>';
+      } else {
+        err.textContent = (res.j && res.j.error) || 'Something went wrong sending the email. Your result is above — please try again in a moment.';
+        err.classList.remove('hidden');
+        btn.disabled = false; btn.textContent = 'Send my result';
+      }
+    }).catch(function () {
+      err.textContent = 'Network problem sending the email. Your result is above — please try again in a moment.';
+      err.classList.remove('hidden');
+      btn.disabled = false; btn.textContent = 'Send my result';
+    });
+  });
+})();
+</script>
+</body>
+</html>

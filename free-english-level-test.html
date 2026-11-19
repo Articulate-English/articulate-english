@@ -64,7 +64,7 @@ input:focus{outline:none;border-color:var(--accent)}
 .faq p{font-size:.9rem;color:var(--muted);margin:8px 0 0}
 </style>
 </head>
-<body>
+<body data-test="general">
 <div class="wrap">
   <p class="top"><a href="index.html">&larr; Articulate English</a> &middot; <a href="english-tests.html">All free tests</a></p>
 
@@ -315,7 +315,7 @@ input:focus{outline:none;border-color:var(--accent)}
       email: email,
       wantResult: wantResult,
       wantMarketing: wantMarketing,
-      test: 'general',
+      test: document.body.getAttribute('data-test') || 'general',
       level: document.getElementById('rband').textContent,
       score: document.getElementById('rscore').textContent,
       breaks: document.getElementById('rbreaks').innerText.replace(/\n+/g, ', ')
