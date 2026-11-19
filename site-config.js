@@ -41,6 +41,9 @@ window.ARTICULATE = {
      Booking Links -> your event -> "Copy link"  (looks like
      https://cal.com/<your-username>/<event-slug> )                            */
   bookingUrl:   'https://cal.com/williamthomason/15-30-45-or-60-minute-sessions',
+  /* Cloudflare Worker that records the test signup in Brevo and emails the
+     result. Empty = the form says honestly that it is not set up yet. */
+  workerEndpoint: '',
 
   /* ── WHATSAPP ────────────────────────────────────────────────────────
      Your WhatsApp number in international format, digits only.

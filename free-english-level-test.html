@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.workers.dev; manifest-src 'self'; base-uri 'self'; form-action 'none'">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#0a0e1a">
+<title>Free English Level Test (A1–C1) — 10 Minutes, Instant Result | Articulate English</title>
+<meta name="description" content="Take a free English level test online. 30 original questions across CEFR A1 to C1, an instant result, and a clear next step — no sign-up needed.">
+<link rel="icon" type="image/png" href="assets/logo/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is this English level test free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The test is free, takes about ten minutes, and the result is shown on screen. Nothing is required to see your level."}},
+{"@type":"Question","name":"What levels does it cover?","acceptedAnswer":{"@type":"Answer","text":"It covers the CEFR scale from A1 (beginner) to C1 (advanced), with five questions per band and a short reading passage."}},
+{"@type":"Question","name":"Is this a certified assessment?","acceptedAnswer":{"@type":"Answer","text":"No. It is an indicator of your current level to help you choose the right course. It is not a Cambridge, IELTS or TOEFL result and cannot be used as proof of level."}},
+{"@type":"Question","name":"Do I have to give my email address?","acceptedAnswer":{"@type":"Answer","text":"No. Your result appears on screen. You can optionally ask us to email it to you, and separately opt in to occasional tips. Both boxes start unticked."}}
+]}
+</script>
+<style>
+:root{--accent:#22d3ee;--bg:#0a0e1a;--text:#e0f2fe;--card:#111827;--card2:#0d1424;--border:#1e3a5f;--muted:#8fb3c9;--ok:#34d399;--bad:#f87171}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.6;font-size:16px;padding-bottom:80px}
+.wrap{max-width:820px;margin:0 auto;padding:24px 20px 0}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;line-height:1.25}
+h1{font-size:1.8rem;margin:14px 0 8px}
+h2{font-size:1.2rem;margin:34px 0 10px}
+h3{font-size:1rem;margin:0 0 6px}
+a{color:var(--accent)}
+.muted{color:var(--muted);font-size:.9rem}
+.top{margin:14px 0 0;font-size:.9rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;margin:18px 0}
+.qtext{font-size:1.08rem;margin:0 0 14px;font-weight:500}
+.opts{display:grid;gap:9px}
+.opt{display:block;width:100%;text-align:left;background:var(--card2);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:12px 14px;font-size:.95rem;cursor:pointer;font-family:inherit}
+.opt:hover{border-color:var(--accent)}
+.opt.on{background:var(--accent);color:#04121a;border-color:var(--accent);font-weight:600}
+.bar{height:6px;background:var(--card2);border-radius:99px;overflow:hidden;margin:14px 0}
+.bar > i{display:block;height:100%;background:var(--accent);width:0;transition:width .25s}
+.meta{display:flex;justify-content:space-between;font-size:.82rem;color:var(--muted);margin-bottom:10px}
+.passage{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:16px;font-size:.95rem;color:var(--text);margin-bottom:16px}
+button.go{display:inline-block;background:var(--accent);color:#04121a;border:none;border-radius:10px;padding:13px 24px;font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit}
+button.go:disabled{opacity:.45;cursor:not-allowed}
+.ghost{background:transparent;color:var(--text);border:1px solid var(--border);font-weight:500}
+.resultband{font-family:'Space Grotesk',sans-serif;font-size:2.4rem;font-weight:700;color:var(--accent);margin:4px 0}
+.score{font-size:.9rem;color:var(--muted)}
+.breaks{margin:14px 0 0;padding:0;list-style:none;font-size:.9rem}
+.breaks li{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border)}
+.breaks li span:last-child{font-variant-numeric:tabular-nums}
+.note{background:rgba(34,211,238,.08);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:.84rem;color:var(--muted);margin-top:14px}
+label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
+input[type=email],input[type=text]{width:100%;background:var(--card2);border:1px solid var(--border);border-radius:9px;color:var(--text);padding:11px 12px;font-size:.95rem;font-family:inherit}
+input:focus{outline:none;border-color:var(--accent)}
+.chk{display:flex;gap:10px;align-items:flex-start;margin-top:12px;font-size:.85rem;color:var(--muted)}
+.chk input{margin-top:3px;width:16px;height:16px;flex-shrink:0}
+.err{color:var(--bad);font-size:.85rem;margin-top:8px}
+.okmsg{color:var(--ok);font-size:.9rem;margin-top:10px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px}
+.mini{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;font-size:.88rem}
+.mini h3{color:var(--accent)}
+.hidden{display:none}
+.faq details{border-bottom:1px solid var(--border);padding:10px 0}
+.faq summary{cursor:pointer;font-weight:600;font-size:.95rem}
+.faq p{font-size:.9rem;color:var(--muted);margin:8px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="top"><a href="index.html">&larr; Articulate English</a> &middot; <a href="english-tests.html">All free tests</a></p>
+
+  <h1>Free English level test</h1>
+  <p class="muted">32 original questions, about ten minutes, result on screen. No sign-up and no payment — you only enter an email if you want the result sent to you.</p>
+
+  <div class="card">
+    <h2 style="margin-top:0">What you get</h2>
+    <ul class="breaks" style="margin-top:0">
+      <li><span>Coverage</span><span>CEFR A1 to C1</span></li>
+      <li><span>Questions</span><span>32, including a short reading passage</span></li>
+      <li><span>Time</span><span>About 10 minutes</span></li>
+      <li><span>Result</span><span>Level band + breakdown by band</span></li>
+      <li><span>Cost</span><span>Free</span></li>
+    </ul>
+    <p class="muted" style="font-size:.85rem">Choose the answer you think is correct. If you are not sure, guess — there is no penalty. You can stop at any time.</p>
+  </div>
+
+  <div class="card" id="quiz">
+    <div class="meta"><span id="qpos">Question 1 of 30</span><span id="qband">Warm-up</span></div>
+    <div class="bar"><i id="qbar"></i></div>
+    <div id="qbody"></div>
+    <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
+      <button class="go ghost" id="prev">Back</button>
+      <button class="go" id="next" disabled>Next</button>
+    </div>
+  </div>
+
+  <div class="card hidden" id="result">
+    <h2 style="margin-top:0">Your estimated level</h2>
+    <div class="resultband" id="rband">—</div>
+    <div class="score" id="rscore">—</div>
+    <ul class="breaks" id="rbreaks"></ul>
+    <p class="muted" id="rdesc" style="font-size:.9rem"></p>
+
+    <div class="note">
+      This is an indicator of your level based on 30 questions, not a certified assessment.
+      It is not a Cambridge, IELTS or TOEFL result and cannot be used as proof of level.
+    </div>
+
+    <h3 style="margin-top:22px">Your next step</h3>
+    <p class="muted" style="font-size:.9rem">Most people at your level do best with <strong id="rpack">—</strong>. If you have an exam date, tell us — it changes the recommendation. Not sure? <a href="advisor.html">Answer five questions</a> or <a href="index.html#pricing">see the packages</a>.</p>
+    <p class="muted" style="font-size:.9rem">We offer <strong>two free 20-minute intro sessions each week</strong> to people we think will get real value from the course. To request one, email <a href="mailto:hello@articulate.ee">hello@articulate.ee</a> with your result and a couple of times that suit you.</p>
+
+    <div class="card" style="background:var(--card2);margin-top:20px">
+      <h3 style="margin-top:0">Get your result by email</h3>
+      <div id="formbox">
+        <label for="email">Email address</label>
+        <input type="email" id="email" autocomplete="email" placeholder="you@example.com">
+        <label class="chk"><input type="checkbox" id="c_result"><span>Send me my result by email. <em>(required to send it)</em></span></label>
+        <label class="chk"><input type="checkbox" id="c_market"><span>I would like occasional English tips and offers from Articulate English — about 1–2 emails a month, about online English lessons, exam practice materials and courses. You can unsubscribe at any time.</span></label>
+        <div class="note" style="margin-top:12px">Articulate English will use your address to send the result and, only if you ticked the second box, marketing. See our <a href="privacy.html">privacy policy</a>. We never sell your data.</div>
+        <div style="margin-top:14px"><button class="go" id="send">Send my result</button></div>
+        <div class="err hidden" id="ferr"></div>
+        <div class="okmsg hidden" id="fok"></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>How the test works</h2>
+  <p class="muted">The questions are grouped into five bands, A1 to C1. Starting at A1, you must get at least 60% of a band right to move on to the next one; the highest band you pass is your estimated level. That mirrors how a real placement interview works — we stop at the point where the questions stop being comfortable.</p>
+  <p class="muted">All questions are written in-house for Articulate English. They are not taken from any published exam, textbook or past paper.</p>
+
+  <h2>Which test should you take?</h2>
+  <div class="grid3">
+    <div class="mini"><h3>General English</h3>Everyday grammar, vocabulary and reading. <a href="free-english-level-test.html">Take it — you are here</a>.</div>
+    <div class="mini"><h3>Business English</h3>Meetings, emails, negotiation and reports. In preparation.</div>
+    <div class="mini"><h3>Kids (7–12)</h3>A friendly first test for younger learners. In preparation.</div>
+  </div>
+
+  <h2>Free English level test — FAQ</h2>
+  <div class="faq card">
+    <details><summary>Is this English level test free?</summary><p>Yes. It takes about ten minutes and the result is shown on screen. You do not need an account.</p></details>
+    <details><summary>What levels does it cover?</summary><p>The CEFR scale from A1 to C1, with questions at each band plus a short reading passage.</p></details>
+    <details><summary>Is this a certified or official test?</summary><p>No. It is an indicator to help you choose the right course. It is not a Cambridge, IELTS, TOEFL or Duolingo result and cannot be used as proof of level for a university or employer.</p></details>
+    <details><summary>Do I have to give my email address?</summary><p>No. Your result is on screen either way. Both email boxes start unticked — the first only sends your result, the second only agrees to marketing.</p></details>
+    <details><summary>How accurate is it?</summary><p>It is a good indicator of grammar, vocabulary and reading, but it does not test speaking or writing. A short call gives a far better picture of spoken level.</p></details>
+    <details><summary>Can my child take a test?</summary><p>The kids' test is being prepared. For under-18 students we always book through a parent or guardian — see our <a href="safeguarding.html">safeguarding policy</a>.</p></details>
+  </div>
+
+  <p class="muted" style="font-size:.8rem">Articulate English · 1:1 online English lessons · <a href="impressum.html">Imprint</a> · <a href="privacy.html">Privacy</a></p>
+</div>
+
+<script src="site-config.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ── Question bank. Original items written for Articulate English.
+     band: A1 A2 B1 B2 C1 · a: index of the correct option */
+  var QUESTIONS = [
+    /* A1 */
+    { b:'A1', q:'___ you from Germany?', o:['Am','Is','Are','Be'], a:2 },
+    { b:'A1', q:'She ___ to work by bus every day.', o:['go','goes','going','gone'], a:1 },
+    { b:'A1', q:'I ___ a coffee this morning.', o:['drink','drank','drunk','drinking'], a:1 },
+    { b:'A1', q:'There ___ two cats in the garden.', o:['is','are','be','am'], a:1 },
+    { b:'A1', q:'___ you like pizza?', o:['Does','Do','Is','Are'], a:1 },
+    /* A2 */
+    { b:'A2', q:'I’m looking forward ___ you again.', o:['to see','to seeing','seeing','see'], a:1 },
+    { b:'A2', q:'He’s been here ___ Monday.', o:['since','for','from','at'], a:0 },
+    { b:'A2', q:'This is the woman ___ lives next door.', o:['who','which','what','where'], a:0 },
+    { b:'A2', q:'She speaks English ___ than her brother.', o:['better','best','good','more good'], a:0 },
+    { b:'A2', q:'If it rains tomorrow, we ___ at home.', o:['stay','will stay','stayed','staying'], a:1 },
+    { b:'A2', q:'I’ve lived here ___ five years.', o:['since','for','during','ago'], a:1 },
+    /* B1 */
+    { b:'B1', q:'By the time we arrived, the film ___.', o:['started','has started','had started','starts'], a:2 },
+    { b:'B1', q:'You ___ have told me earlier — I could have helped.', o:['must','should','would','might'], a:1 },
+    { b:'B1', q:'The report was written ___ a junior analyst.', o:['by','with','from','of'], a:0 },
+    { b:'B1', q:'___ the rain, the match went ahead.', o:['Although','Despite','However','Because'], a:1 },
+    { b:'B1', q:'She asked me where ___.', o:['did he live','he lived','does he live','he lives'], a:1 },
+    { b:'B1', q:'This time next week we ___ our exams.', o:['finish','will finish','will have finished','are finishing'], a:2 },
+    /* B2 */
+    { b:'B2', q:'The manager insisted that the report ___ by Friday.', o:['be finished','is finished','was finishing','finishes'], a:0 },
+    { b:'B2', q:'Scarcely ___ the door when the phone rang.', o:['I had shut','had I shut','I shut','did I shut'], a:1 },
+    { b:'B2', q:'It’s high time we ___ a decision.', o:['make','made','have made','making'], a:1 },
+    { b:'B2', q:'He denied ___ the money.', o:['to take','taking','take','took'], a:1 },
+    { b:'B2', q:'The evidence is not strong ___ to support the claim.', o:['sufficiently','enough','too','very'], a:1 },
+    { b:'B2', q:'The new regulations are unlikely to ___ small businesses much.', o:['effect','affect','effect on','be affected'], a:1 },
+    /* C1 */
+    { b:'C1', q:'The committee’s final report was criticised for being ___ rather than decisive.', o:['equivocal','unambiguous','trenchant','expedient'], a:0 },
+    { b:'C1', q:'So ___ was the evidence that the jury returned a verdict within an hour.', o:['compelling','tenuous','circumstantial','inconclusive'], a:0 },
+    { b:'C1', q:'He has a ___ for turning even the shortest briefing into a marathon.', o:['knack','propensity','faculty','aptitude'], a:1 },
+    { b:'C1', q:'The two accounts are ___; they cannot both be true.', o:['complementary','irreconcilable','analogous','interchangeable'], a:1 },
+    { b:'C1', q:'Her reply was a masterclass in ___: polite, precise, and impossible to argue with.', o:['evasion','understatement','equivocation','diplomacy'], a:3 },
+    { b:'C1', q:'The scientist’s conclusions rest on a ___ reading of data gathered over three decades.', o:['superficial','cursory','painstaking','speculative'], a:2 }
+  ];
+
+  var PASSAGE = {
+    text: 'Most of us assume that remembering and forgetting are opposites, but the two are better understood as partners. Forgetting, researchers now argue, is not a failure of memory so much as a feature of it: a system that kept every detail would be unable to generalise from one situation to the next. This is why you can recall the gist of a conversation while being unable to repeat it word for word, and why a student who memorises an entire textbook may still struggle to answer an unfamiliar question. The practical implication is awkward — the study habits that feel most productive, such as rereading and highlighting, are often the least effective, while the ones that feel hardest, such as retrieving information without notes, turn out to be the ones that build durable memory.',
+    qs: [
+      { b:'B1', q:'What is the main idea of the passage?', o:['Forgetting is usually a failure of memory','Forgetting helps memory to work efficiently','Rereading is the most effective study habit','Students should memorise entire textbooks'], a:1 },
+      { b:'B2', q:'Why can you recall the gist of a conversation but not every word?', o:['Because memory stores general meaning rather than every detail','Because you were not paying attention','Because conversations are usually too short','Because you were tired at the time'], a:0 },
+      { b:'C1', q:'The word “awkward” in the final sentence shows that the implication is ___.', o:['embarrassing','counterintuitive','controversial','impractical'], a:1 }
+    ]
+  };
+
+  var BANDS = ['A1','A2','B1','B2','C1'];
+  var DESC = {
+    'pre-A1':'You are at the very beginning of learning English. That is a fine place to start, and it means the early material will feel comfortable.',
+    'A1':'You understand familiar everyday words and simple sentences. You can introduce yourself and ask basic questions, but longer conversations still break down.',
+    'A2':'You can handle routine, predictable language — shopping, travel, work basics. You still need time to form sentences and you avoid anything unfamiliar.',
+    'B1':'You can deal with most everyday situations and express opinions, though not always precisely. This is the level where real fluency starts to build.',
+    'B2':'You can use English flexibly for work and study, follow complex arguments and express yourself clearly. The remaining gaps are nuance and speed.',
+    'C1':'You operate comfortably in demanding professional and academic contexts. Your work now is refinement — register, precision and naturalness.'
+  };
+  var PACK = {
+    'pre-A1':'Starter', 'A1':'Starter', 'A2':'Starter',
+    'B1':'Professional', 'B2':'Professional', 'C1':'Intensive'
+  };
+
+  var order = QUESTIONS.concat(PASSAGE.qs.map(function (q) {
+    return { b: q.b, q: q.q, o: q.o, a: q.a, passage: PASSAGE.text };
+  }));
+  var idx = 0, answers = [], total = order.length;
+
+  var qbody = document.getElementById('qbody');
+  var qpos = document.getElementById('qpos');
+  var qband = document.getElementById('qband');
+  var qbar = document.getElementById('qbar');
+  var prev = document.getElementById('prev');
+  var next = document.getElementById('next');
+
+  function render() {
+    var item = order[idx];
+    qpos.textContent = 'Question ' + (idx + 1) + ' of ' + total;
+    qband.textContent = item.b + ' level';
+    qbar.style.width = Math.round((idx / total) * 100) + '%';
+    var html = '';
+    if (item.passage) {
+      html += '<div class="passage">' + item.passage + '</div>';
+    }
+    html += '<p class="qtext">' + item.q + '</p><div class="opts">';
+    item.o.forEach(function (opt, i) {
+      html += '<button class="opt' + (answers[idx] === i ? ' on' : '') + '" data-i="' + i + '">' + opt + '</button>';
+    });
+    html += '</div>';
+    qbody.innerHTML = html;
+    prev.disabled = idx === 0;
+    next.disabled = answers[idx] === undefined;
+    next.textContent = idx === total - 1 ? 'See my result' : 'Next';
+  }
+
+  qbody.addEventListener('click', function (e) {
+    var b = e.target.closest('.opt');
+    if (!b) return;
+    answers[idx] = parseInt(b.getAttribute('data-i'), 10);
+    render();
+  });
+  prev.addEventListener('click', function () { if (idx > 0) { idx--; render(); } });
+  next.addEventListener('click', function () {
+    if (idx < total - 1) { idx++; render(); } else { finish(); }
+  });
+
+  function scoreBand(band) {
+    var ok = 0, n = 0;
+    order.forEach(function (q, i) {
+      if (q.b === band) { n++; if (answers[i] === q.a) ok++; }
+    });
+    return { ok: ok, total: n };
+  }
+
+  function finish() {
+    var result = 'pre-A1';
+    var breaks = [];
+    BANDS.forEach(function (band) {
+      var s = scoreBand(band);
+      var passed = s.total > 0 && (s.ok / s.total) >= 0.6;
+      breaks.push({ band: band, ok: s.ok, total: s.total, passed: passed });
+      if (passed) result = band;
+    });
+    var totalOk = breaks.reduce(function (n, b) { return n + b.ok; }, 0);
+    var bandLabel = result === 'pre-A1' ? 'Below A1' : result;
+    document.getElementById('rband').textContent = bandLabel;
+    document.getElementById('rscore').textContent = totalOk + ' of ' + total + ' questions correct';
+    document.getElementById('rbreaks').innerHTML = breaks.map(function (b) {
+      return '<li><span>' + b.band + '</span><span>' + b.ok + ' / ' + b.total + (b.passed ? ' ✓' : '') + '</span></li>';
+    }).join('');
+    document.getElementById('rdesc').textContent = DESC[result] || '';
+    document.getElementById('rpack').textContent = PACK[result] + ' package';
+    document.getElementById('quiz').classList.add('hidden');
+    document.getElementById('result').classList.remove('hidden');
+    document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  render();
+
+  /* ── Result email form ────────────────────────────────────────────────
+     Posts to a Cloudflare Worker, which writes the contact (and the
+     consent record) into Brevo and sends the result. Endpoint is set in
+     site-config (A.workerEndpoint) so the same page works before and
+     after the Worker is deployed. */
+  var ENDPOINT = (window.ARTICULATE && ARTICULATE.workerEndpoint) || '';
+
+  document.getElementById('send').addEventListener('click', function () {
+    var err = document.getElementById('ferr');
+    var okm = document.getElementById('fok');
+    err.classList.add('hidden'); okm.classList.add('hidden');
+
+    var email = document.getElementById('email').value.trim();
+    var wantResult = document.getElementById('c_result').checked;
+    var wantMarketing = document.getElementById('c_market').checked;
+
+    if (!wantResult) { err.textContent = 'Please tick “Send me my result by email”, or just read your result above.'; err.classList.remove('hidden'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { err.textContent = 'That email address does not look right — please check it.'; err.classList.remove('hidden'); return; }
+    if (!ENDPOINT) { err.textContent = 'The result email is not set up yet. Your result is above, and you can email hello@articulate.ee any time.'; err.classList.remove('hidden'); return; }
+
+    var payload = {
+      email: email,
+      wantResult: wantResult,
+      wantMarketing: wantMarketing,
+      test: 'general',
+      level: document.getElementById('rband').textContent,
+      score: document.getElementById('rscore').textContent,
+      breaks: document.getElementById('rbreaks').innerText.replace(/\n+/g, ', ')
+    };
+    var btn = document.getElementById('send');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; });
+    }).then(function (res) {
+      if (res.ok) {
+        document.getElementById('formbox').innerHTML = '<div class="okmsg">Done — your result is on its way to ' + email.replace(/</g, '&lt;') + '.</div>';
+      } else {
+        err.textContent = (res.j && res.j.error) || 'Something went wrong sending the email. Your result is above — please try again in a moment.';
+        err.classList.remove('hidden');
+        btn.disabled = false; btn.textContent = 'Send my result';
+      }
+    }).catch(function () {
+      err.textContent = 'Network problem sending the email. Your result is above — please try again in a moment.';
+      err.classList.remove('hidden');
+      btn.disabled = false; btn.textContent = 'Send my result';
+    });
+  });
+})();
+</script>
+</body>
+</html>
