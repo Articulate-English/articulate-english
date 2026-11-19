@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#0a0e1a">
+<title>Package advisor — Articulate English</title>
+<meta name="description" content="Answer five questions and the advisor recommends the Articulate English package that fits your goal, level, timetable and budget.">
+<link rel="icon" type="image/png" href="assets/logo/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#22d3ee;--bg:#0a0e1a;--text:#e0f2fe;--card:#111827;--border:#1e3a5f;--muted:#8fb3c9;--ok:#34d399}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.6;font-size:16px;padding-bottom:80px}
+.wrap{max-width:780px;margin:0 auto;padding:24px 20px 0}
+a{color:var(--accent)}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;line-height:1.25}
+h1{font-size:1.7rem;margin:14px 0 6px}
+.muted{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.top{margin:14px 0 0;font-size:.9rem}
+.q{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:14px}
+.q h3{margin:0 0 4px;font-size:1rem}
+.q .hint{font-size:.8rem;color:var(--muted);margin:0 0 12px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:9px;padding:9px 14px;font-size:.88rem;cursor:pointer;font-family:inherit}
+.opt:hover{border-color:var(--accent)}
+.opt.on{background:var(--accent);color:#04121a;border-color:var(--accent);font-weight:600}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:16px 0}
+select{background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:8px 10px;font-family:inherit;font-size:.9rem}
+button.go{background:var(--accent);color:#04121a;border:none;border-radius:9px;padding:12px 22px;font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit}
+button.go:disabled{opacity:.45;cursor:not-allowed}
+.result{background:var(--card);border:1px solid var(--accent);border-radius:14px;padding:22px;margin-top:22px}
+.result h2{margin:0 0 6px;font-size:1.35rem}
+.price{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--accent);margin:6px 0}
+.per{font-size:.9rem;color:var(--muted)}
+.why{margin:16px 0 0;padding:0;list-style:none}
+.why li{padding:7px 0 7px 26px;position:relative;border-bottom:1px solid var(--border);font-size:.9rem}
+.why li:before{content:'✓';position:absolute;left:2px;color:var(--ok)}
+.inc{margin:16px 0 0;padding:0;list-style:none;font-size:.9rem;color:var(--muted)}
+.inc li{padding:4px 0}
+.note{background:rgba(34,211,238,.08);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:.83rem;margin-top:16px;color:var(--muted)}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.cta a{display:inline-block;background:var(--accent);color:#04121a;border-radius:9px;padding:11px 18px;text-decoration:none;font-weight:700;font-size:.9rem}
+.cta a.ghost{background:transparent;color:var(--text);border:1px solid var(--border);font-weight:500}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="top"><a href="index.html">&larr; Back to Articulate English</a></p>
+  <h1>Which package fits you?</h1>
+  <p class="muted">Five questions, no sign-up, no payment. The advisor matches your goal, level, timetable and budget to a package, and tells you why.</p>
+
+  <div class="row">
+    <label for="cur" style="font-size:.85rem;color:var(--muted)">Show prices in</label>
+    <select id="cur"></select>
+  </div>
+
+  <div id="quiz">
+    <div class="q" data-q="goal">
+      <h3>1. What is the main goal?</h3>
+      <p class="hint">This decides what we work on in the sessions.</p>
+      <div class="opts">
+        <button class="opt" data-v="exam">Pass an exam (IELTS, FCE, TOEFL, OET, PTE, CELPIP, Duolingo)</button>
+        <button class="opt" data-v="work">Career &amp; business English</button>
+        <button class="opt" data-v="fluency">General fluency and confidence</button>
+        <button class="opt" data-v="young">For my child (under 18)</button>
+      </div>
+    </div>
+
+    <div class="q" data-q="level">
+      <h3>2. What is your level now?</h3>
+      <p class="hint">Honest is better than generous — we plan from where you are.</p>
+      <div class="opts">
+        <button class="opt" data-v="a">Beginner (A1–A2)</button>
+        <button class="opt" data-v="b1">Intermediate (B1)</button>
+        <button class="opt" data-v="b2">Upper-intermediate (B2)</button>
+        <button class="opt" data-v="c1">Advanced (C1+)</button>
+        <button class="opt" data-v="unknown">Not sure</button>
+      </div>
+    </div>
+
+    <div class="q" data-q="when">
+      <h3>3. Is there a deadline?</h3>
+      <p class="hint">A near deadline changes the intensity we recommend.</p>
+      <div class="opts">
+        <button class="opt" data-v="soon">Within 3 months</button>
+        <button class="opt" data-v="mid">3–6 months</button>
+        <button class="opt" data-v="later">More than 6 months</button>
+        <button class="opt" data-v="none">No deadline</button>
+      </div>
+    </div>
+
+    <div class="q" data-q="sessions">
+      <h3>4. How many 30-minute lessons a week?</h3>
+      <p class="hint">This is the biggest factor in how fast you progress.</p>
+      <div class="opts">
+        <button class="opt" data-v="1">1 per week</button>
+        <button class="opt" data-v="2">2 per week</button>
+        <button class="opt" data-v="3">3–4 per week</button>
+      </div>
+    </div>
+
+    <div class="q" data-q="budget">
+      <h3>5. How much do you want to invest each month?</h3>
+      <p class="hint">We will not recommend something that strains you.</p>
+      <div class="opts">
+        <button class="opt" data-v="low">Keep it as low as possible</button>
+        <button class="opt" data-v="mid">A fair amount for real progress</button>
+        <button class="opt" data-v="high">Whatever it takes for results</button>
+      </div>
+    </div>
+  </div>
+
+  <button class="go" id="go" disabled>Answer all five questions</button>
+
+  <div class="result hidden" id="result"></div>
+
+  <div class="note">
+    This advisor is a guide built from your answers. It is not an English assessment and it does not take payment.
+    A short free call is how we confirm your level and fit. EU/UK consumers have a statutory 14-day right to withdraw from a distance contract — see
+    <a href="consumer-rights.html">Consumer rights &amp; withdrawal</a>.
+  </div>
+</div>
+
+<script src="site-config.js"></script>
+<script>
+(function () {
+  'use strict';
+  var PRICES = (window.A && A.prices) ? A.prices : {
+    eur: { symbol: '€', code: 'EUR', tiers: { starter: { label: 'Starter', amount: 120, sessions: 4, note: '4 lessons per month' }, professional: { label: 'Professional', amount: 312, sessions: 8, note: '8 lessons per month' }, intensive: { label: 'Intensive', amount: 768, sessions: 16, note: 'accelerated progress' } } }
+  };
+  var ORDER = ['starter', 'professional', 'intensive'];
+  var state = { goal: '', level: '', when: '', sessions: '', budget: '' };
+  var cur = 'eur';
+
+  var curSel = document.getElementById('cur');
+  Object.keys(PRICES).forEach(function (code) {
+    var o = document.createElement('option');
+    o.value = code; o.textContent = PRICES[code].code + ' (' + PRICES[code].symbol + ')';
+    curSel.appendChild(o);
+  });
+  try {
+    var detected = (window.A && A.detectCurrency) ? A.detectCurrency() : 'eur';
+    cur = PRICES[detected] ? detected : 'eur';
+  } catch (e) {}
+  curSel.value = cur;
+  curSel.addEventListener('change', function () { cur = curSel.value; render(); });
+
+  var goBtn = document.getElementById('go');
+  var resultEl = document.getElementById('result');
+
+  document.getElementById('quiz').addEventListener('click', function (e) {
+    var b = e.target.closest('.opt');
+    if (!b) return;
+    var q = b.closest('.q').getAttribute('data-q');
+    Array.prototype.forEach.call(b.closest('.opts').querySelectorAll('.opt'), function (x) { x.classList.remove('on'); });
+    b.classList.add('on');
+    state[q] = b.getAttribute('data-v');
+    check();
+  });
+
+  function check() {
+    var done = Object.keys(state).every(function (k) { return !!state[k]; });
+    goBtn.disabled = !done;
+    goBtn.textContent = done ? 'Recommend a package' : 'Answer all five questions';
+  }
+
+  function pickTier() {
+    var idx = state.sessions === '1' ? 0 : state.sessions === '2' ? 1 : 2;
+    var reasons = [];
+    var base = ORDER[idx];
+    reasons.push({ t: 'sessions', text: 'You chose ' + (state.sessions === '3' ? '3–4' : state.sessions) + ' lesson(s) a week, which maps to the ' + PRICES[cur].tiers[base].label + ' package (' + PRICES[cur].tiers[base].note + ').' });
+
+    if (state.goal === 'exam' && state.when === 'soon' && idx < 2) {
+      idx += 1;
+      reasons.push({ t: 'deadline', text: 'Your exam is within 3 months, so a higher intensity gives you enough practice hours before test day.' });
+    }
+    if (state.budget === 'high' && idx < 2) {
+      idx += 1;
+      reasons.push({ t: 'invest', text: 'You asked to invest fully, and more contact hours is the single biggest driver of progress.' });
+    }
+    if (state.budget === 'low' && idx > 0) {
+      idx -= 1;
+      reasons.push({ t: 'budget', text: 'You asked to keep the monthly cost down, so we step down one tier. You can move up later without losing anything.' });
+    }
+    if (state.level === 'unknown') {
+      reasons.push({ t: 'level', text: 'You are not sure of your level — the first call includes a short placement check, and we can change tier after it.' });
+    }
+    return { idx: idx, reasons: reasons };
+  }
+
+  function render() {
+    if (resultEl.classList.contains('hidden')) { check(); return; }
+    var p = PRICES[cur];
+    var pick = pickTier();
+    var tier = p.tiers[ORDER[pick.idx]];
+    var per = tier.amount / tier.sessions;
+    var perStr = p.code === 'CHF' ? String(Math.round(per)) : per.toFixed(2).replace(/\.00$/, '');
+    var amtStr = p.code === 'CHF' ? String(tier.amount) : String(tier.amount);
+
+    var why = pick.reasons.map(function (r) { return '<li>' + r.text + '</li>'; }).join('');
+
+    var extra = '';
+    if (state.goal === 'young') {
+      extra += '<div class="note">Under-18 students are booked by a parent or guardian, and lessons follow our <a href="safeguarding.html">Safeguarding &amp; minors</a> policy.</div>';
+    }
+    if (state.level === 'unknown') {
+      extra += '<div class="note">Because you are unsure of your level, the free intro call doubles as a placement check — we will confirm the tier together.</div>';
+    }
+    if (state.budget === 'low') {
+      extra += '<div class="note">If the recommended tier still feels heavy, ask about the Starter package and a slower timetable. It is a legitimate route, not a lesser one.</div>';
+    }
+
+    resultEl.innerHTML =
+      '<h2>' + tier.label + '</h2>' +
+      '<div class="price">' + p.symbol + ' ' + amtStr + ' <span class="per">per month</span></div>' +
+      '<div class="per">' + tier.sessions + ' lessons × 30 minutes · ' + p.symbol + ' ' + perStr + ' per lesson · ' + p.code + '</div>' +
+      '<ul class="why">' + why + '</ul>' +
+      '<ul class="inc">' +
+        '<li>A named teacher — every session is taught by the same person.</li>' +
+        '<li>Structured CEFR path with placement and progress checks.</li>' +
+        '<li>Written feedback after sessions.</li>' +
+        '<li>Free rescheduling more than 24 hours ahead; unused lessons refunded within 14 days.</li>' +
+      '</ul>' + extra +
+      '<div class="cta">' +
+        '<a href="https://cal.com/williamthomason/15-30-45-or-60-minute-sessions">Book a free intro call</a>' +
+        '<a class="ghost" href="index.html#pricing">See full pricing</a>' +
+        '<a class="ghost" href="mailto:hello@articulate.ee">Email hello@articulate.ee</a>' +
+      '</div>';
+  }
+
+  goBtn.addEventListener('click', function () {
+    resultEl.classList.remove('hidden');
+    render();
+    resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  check();
+})();
+</script>
+</body>
+</html>
