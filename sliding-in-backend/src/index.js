@@ -27,6 +27,7 @@
      wrangler secret put MASTER_KEY
      wrangler secret put GRANT_SECRET
      wrangler secret put PAYHIP_SECRETS     # JSON: {"<product_key>":"<product-secret-key>"}
+     wrangler secret put PORTAL_LAB_TOKEN   # gates /portal-lab; the lab writes /portal-tune
      wrangler d1 execute sliding-in --file=schema.sql --remote
      wrangler deploy
    ========================================================================== */
@@ -34,6 +35,9 @@
 const ALLOWED_ORIGIN = /^(https:\/\/articulate-english\.github\.io|http:\/\/(localhost|127\.0\.0\.1)(:\d+)?)$/;
 const DECKS = ['1', '2', '3', '4'];
 const GRANT_TTL_SECONDS = 60 * 60 * 24 * 30; // 30 days
+
+/* the private portal tuning page, bundled at build time (wrangler ?raw import) */
+import labHtml from './lab-html.js';
 
 function corsFor(request) {
   const origin = request.headers.get('Origin') || '';
@@ -374,6 +378,44 @@ export default {
     if (path === '/sliding-in/redeem' && request.method === 'POST') return handleRedeem(request, env);
     if (path === '/sliding-in/payload' && request.method === 'POST') return handlePayload(request, env);
     if (path === '/sliding-in/admin/stats' && request.method === 'GET') return handleStats(request, env);
+
+    /* ═══ PORTAL LAB (private tuning page) ═══
+       The page is gated by a token. The tuning it writes is a public read — it is
+       only visual settings, and the public site needs it to apply a saved tune. */
+    if (path === '/portal-tune' && request.method === 'OPTIONS') {
+      return new Response(null, { status: 204, headers: corsFor(request) });
+    }
+
+    if (path === '/portal-lab' && request.method === 'GET') {
+      const token = url.searchParams.get('token') || '';
+      if (!env.PORTAL_LAB_TOKEN || token !== env.PORTAL_LAB_TOKEN) {
+        return json({ ok: false, error: 'not found' }, 404, request);
+      }
+      return new Response(labHtml, {
+        headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' }
+      });
+    }
+
+    if (path === '/portal-tune' && request.method === 'GET') {
+      const raw = await env.PAYLOADS.get('portal-tune');
+      return new Response(raw || '{}', {
+        headers: { 'Content-Type': 'application/json', ...corsFor(request) }
+      });
+    }
+
+    if (path === '/portal-tune' && request.method === 'POST') {
+      const auth = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '');
+      if (!env.PORTAL_LAB_TOKEN || auth !== env.PORTAL_LAB_TOKEN) {
+        return json({ ok: false, error: 'unauthorized' }, 401, request);
+      }
+      const body = await request.json().catch(() => null);
+      const tune = body && body.tune;
+      if (!tune || typeof tune !== 'object' || Array.isArray(tune)) {
+        return json({ ok: false, error: 'bad_request' }, 400, request);
+      }
+      await env.PAYLOADS.put('portal-tune', JSON.stringify({ tune }));
+      return json({ ok: true }, 200, request);
+    }
 
     return json({ ok: false, error: 'not found' }, 404, request);
   },
