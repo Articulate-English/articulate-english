@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self' blob:; object-src 'none'; frame-ancestors 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>WTE Placement Test — William Thomason English</title>
+<title>WTE Placement Test — English for Professionals</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#1c1c1c;--bg2:#232323;--bg3:#2a2a2a;--border:#3a3a3a;--border-light:#4a4a4a;--text:#e8e8f0;--text-dim:#8888a0;--text-muted:#55556a;--accent:#a3e635;--accent-dim:rgba(163,230,53,.12);--cyan:#22d3ee;--green:#34d399;--amber:#fbbf24;--rose:#fb7185}
@@ -434,11 +434,11 @@ function sendResults(level){
     var correct = state.levelCorrect[lvl] || 0;
     body += "  " + lvl + ": " + correct + "/" + total + "\n";
   });
-  body += "\nTake the test here: williamthomason.github.io/ESL-Edutech/William's%20Projects/web-apps/WTE-Curriculum/placement-test.html";
+  body += "\nTake the test here: articulate-english.github.io/articulate-english/free-english-level-test.html";
   
   // Open mailto link
   var subject = "WTE Placement Test - " + state.studentName + " - Level " + level;
-  var mailto = "mailto:william@williamthomason.co.za?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body).replace(/%20/g,"+").replace(/%0A/g,"%0D%0A");
+  var mailto = "mailto:hello@articulate.ee?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body).replace(/%20/g,"+").replace(/%0A/g,"%0D%0A");
   window.location.href = mailto;
   document.getElementById("email-sent").classList.add("show");
 }
@@ -469,9 +469,9 @@ function copyResults(){
     text += "  " + lvl + ": " + (state.levelCorrect[lvl]||0) + "/" + (state.levelTotal[lvl]||0) + "\n";
   });
   navigator.clipboard.writeText(text).then(function(){
-    alert("Results copied to clipboard! You can paste them into an email to william@williamthomason.co.za");
+    alert("Results copied to clipboard! You can paste them into an email to hello@articulate.ee");
   }).catch(function(){
-    prompt("Copy these results and email them to william@williamthomason.co.za:", text);
+    prompt("Copy these results and email them to hello@articulate.ee:", text);
   });
 }
 </script>

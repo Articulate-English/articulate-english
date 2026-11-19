@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.paystack.co https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self' blob:; frame-src 'self' https://checkout.paystack.com https://checkout.stripe.com https://cal.com https://*.cal.com; object-src 'none'; frame-ancestors 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.paystack.co https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self' blob:; frame-src 'self' https://checkout.paystack.com https://checkout.stripe.com https://cal.com https://*.cal.com; object-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="description" content="1-on-1 and group English lessons with live AI translation into your home language. Structured curriculum from beginner to advanced, plus exam preparation for IELTS, TOEFL, OET, PTE and more. ">
 <meta name="theme-color" content="#0d1f22">
@@ -506,7 +506,7 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
            (so it could never POST) and an onsubmit handler that printed "Sent!"
            while silently discarding the submission. Now a real Formspree form.
            TO ACTIVATE: create a free Formspree account, paste the endpoint below. -->
-      <form class="corporate-form" id="lead-form" method="POST" action="#FORM_ENDPOINT_NOT_SET" data-endpoint-set="false" data-mailto="william@williamthomason.co.za">
+      <form class="corporate-form" id="lead-form" method="POST" action="" data-endpoint-set="false" data-mailto="hello@articulate.ee">
         <input type="text" name="company" placeholder="Company name" required>
         <input type="email" name="email" placeholder="Work email" required>
         <input type="text" name="company_size" placeholder="Company size (employees)">
@@ -543,7 +543,7 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
   <h2>Begin Your Professional Programme</h2>
   <p>Every programme starts with a placement assessment and a tailored learning plan. No generic classes — just structured progress with a dedicated teacher.</p>
   <div class="cta-buttons">
-    <a href="https://cal.com/williamthomason/15-30-45-or-60-minute-sessions" class="cta-primary" target="_blank" rel="noopener">Book a Session</a>
+    <a data-book href="https://cal.com/williamthomason/15-30-45-or-60-minute-sessions" class="cta-primary" target="_blank" rel="noopener">Book a Session</a>
     <a href="mailto:hello@articulate.ee?subject=General%20enquiry" class="cta-secondary">Email Us</a>
   </div>
   <p style="margin-top:16px;font-size:.85rem;opacity:.75">By booking you confirm you want the lesson to start before the 14-day withdrawal period ends where applicable. EU/UK consumers: <a href="consumer-rights.html">your right to withdraw</a> · <a href="delivery-refunds.html">delivery &amp; refunds</a>.</p>

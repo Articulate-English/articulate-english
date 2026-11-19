@@ -85,7 +85,7 @@ input:focus{outline:none;border-color:var(--accent)}
 
   <div class="card" id="quiz">
     <div class="meta"><span id="qpos">Question 1 of 33</span><span id="qband">B1 level</span></div>
-    <div class="bar"><i id="qbar"></i></div>
+    <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="qbarwrap"><i id="qbar"></i></div>
     <div id="qbody"></div>
     <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
       <button class="go ghost" id="prev">Back</button>
@@ -110,12 +110,13 @@ input:focus{outline:none;border-color:var(--accent)}
       <div id="formbox">
         <label for="email">Email address</label>
         <input type="email" id="email" autocomplete="email" placeholder="you@company.com">
+        <input type="text" id="hpot" name="website" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="chk"><input type="checkbox" id="c_result"><span>Send me my result by email. <em>(required to send it)</em></span></label>
         <label class="chk"><input type="checkbox" id="c_market"><span>I would like occasional English tips and offers from Articulate English — about 1–2 emails a month, about online English lessons, exam practice materials and courses. You can unsubscribe at any time.</span></label>
         <div class="note" style="margin-top:12px">Articulate English will use your address to send the result and, only if you ticked the second box, marketing. See our <a href="privacy.html">privacy policy</a>. We never sell your data.</div>
         <div style="margin-top:14px"><button class="go" id="send">Send my result</button></div>
-        <div class="err hidden" id="ferr"></div>
-        <div class="okmsg hidden" id="fok"></div>
+        <div class="err hidden" id="ferr" role="alert" aria-live="assertive"></div>
+        <div class="okmsg hidden" id="fok" role="status" aria-live="polite"></div>
       </div>
     </div>
   </div>
@@ -224,6 +225,8 @@ input:focus{outline:none;border-color:var(--accent)}
     qpos.textContent = 'Question ' + (idx + 1) + ' of ' + total;
     qband.textContent = item.b + ' level';
     qbar.style.width = Math.round((idx / total) * 100) + '%';
+    var qw = document.getElementById('qbarwrap');
+    if (qw) { qw.setAttribute('aria-valuenow', String(Math.round((idx / total) * 100))); }
     var html = '';
     if (item.passage) { html += '<div class="passage">' + item.passage + '</div>'; }
     html += '<p class="qtext">' + item.q + '</p><div class="opts">';
@@ -263,8 +266,12 @@ input:focus{outline:none;border-color:var(--accent)}
       var s = scoreBand(band);
       var passed = s.total > 0 && (s.ok / s.total) >= 0.6;
       breaks.push({ band: band, ok: s.ok, total: s.total, passed: passed });
-      if (passed) result = band;
     });
+    /* staged placement: stop at the first band below 60%, so a high band
+       cannot be reached without the lower ones first */
+    for (var bi = 0; bi < BANDS.length; bi++) {
+      if (breaks[bi].passed) { result = BANDS[bi]; } else { break; }
+    }
     var totalOk = breaks.reduce(function (n, b) { return n + b.ok; }, 0);
     document.getElementById('rband').textContent = result === 'below B1' ? 'Below B1' : result;
     document.getElementById('rscore').textContent = totalOk + ' of ' + total + ' questions correct';
@@ -305,6 +312,8 @@ input:focus{outline:none;border-color:var(--accent)}
         wantResult: wantResult,
         wantMarketing: wantMarketing,
         test: TEST,
+        count: total,
+        website: document.getElementById('hpot').value,
         level: document.getElementById('rband').textContent,
         score: document.getElementById('rscore').textContent,
         breaks: document.getElementById('rbreaks').innerText.replace(/\n+/g, ', ')

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#0a0e1a">
 <title>Free Kids English Test (Ages 7–12) — Fun, No Sign-up | Articulate English</title>
-<meta name="description" content="A free, friendly English test for children aged 7 to 12. 20 questions from pre-A1 to A2, instant result for parents, and no personal data collected at all.">
+<meta name="description" content="A free, friendly English test for children aged 7 to 12. 20 questions from pre-A1 to A2 and an instant result for parents. No child data is collected; the parent's email only if you ask for the result.">
 <link rel="icon" type="image/png" href="assets/logo/favicon-32.png">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
@@ -81,7 +81,7 @@ input:focus{outline:none;border-color:var(--accent)}
 
   <div class="card" id="quiz">
     <div class="meta"><span id="qpos">Question 1 of 20</span><span id="qband">Warm-up</span></div>
-    <div class="bar"><i id="qbar"></i></div>
+    <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="qbarwrap"><i id="qbar"></i></div>
     <div id="qbody"></div>
     <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
       <button class="go ghost" id="prev">Back</button>
@@ -98,7 +98,7 @@ input:focus{outline:none;border-color:var(--accent)}
     <p class="muted" id="rdesc" style="font-size:.95rem"></p>
 
     <div class="note">
-      This test collects your child's answers in the browser only — nothing about your child is stored or sent anywhere.
+      Your child's answers stay in this browser — nothing about your child is stored or sent to us.
       If you give your email at the end, we store that so we can send you the result and, only if you tick the box, occasional tips.
       It is a friendly snapshot, not a school report.
     </div>
@@ -111,12 +111,13 @@ input:focus{outline:none;border-color:var(--accent)}
       <div id="formbox">
         <label for="email">Parent's email address</label>
         <input type="email" id="email" autocomplete="email" placeholder="parent@example.com">
+        <input type="text" id="hpot" name="website" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="chk"><input type="checkbox" id="c_result"><span>Send the result to this address. <em>(required to send it)</em></span></label>
         <label class="chk"><input type="checkbox" id="c_market"><span>I would like occasional English tips and offers from Articulate English — about 1–2 emails a month, about lessons, exam practice materials and courses. You can unsubscribe at any time.</span></label>
         <div class="note" style="margin-top:12px">We ask only for the parent's address. We never ask for your child's name or contact details. See our <a href="privacy.html">privacy policy</a>.</div>
         <div style="margin-top:14px"><button class="go" id="send">Send the result</button></div>
-        <div class="err hidden" id="ferr"></div>
-        <div class="okmsg hidden" id="fok"></div>
+        <div class="err hidden" id="ferr" role="alert" aria-live="assertive"></div>
+        <div class="okmsg hidden" id="fok" role="status" aria-live="polite"></div>
       </div>
     </div>
 
@@ -198,6 +199,8 @@ input:focus{outline:none;border-color:var(--accent)}
     qpos.textContent = 'Question ' + (idx + 1) + ' of ' + total;
     qband.textContent = item.b === 'pre-A1' ? 'First words' : item.b + ' level';
     qbar.style.width = Math.round((idx / total) * 100) + '%';
+    var qw = document.getElementById('qbarwrap');
+    if (qw) { qw.setAttribute('aria-valuenow', String(Math.round((idx / total) * 100))); }
     var html = '<p class="qtext">' + item.q + '</p><div class="opts">';
     item.o.forEach(function (opt, i) {
       html += '<button class="opt' + (answers[idx] === i ? ' on' : '') + '" data-i="' + i + '">' + opt + '</button>';
@@ -235,8 +238,12 @@ input:focus{outline:none;border-color:var(--accent)}
       var s = scoreBand(band);
       var passed = s.total > 0 && (s.ok / s.total) >= 0.6;
       breaks.push({ band: band, ok: s.ok, total: s.total, passed: passed });
-      if (passed) result = band;
     });
+    /* staged placement: stop at the first band below 60%, so a high band
+       cannot be reached without the lower ones first */
+    for (var bi = 0; bi < BANDS.length; bi++) {
+      if (breaks[bi].passed) { result = BANDS[bi]; } else { break; }
+    }
     var totalOk = breaks.reduce(function (n, b) { return n + b.ok; }, 0);
     var label = { 'start':'Just starting', 'pre-A1':'Pre-A1', 'A1':'A1', 'A2':'A2' }[result];
     document.getElementById('rband').textContent = label;
@@ -278,6 +285,8 @@ input:focus{outline:none;border-color:var(--accent)}
         wantResult: wantResult,
         wantMarketing: wantMarketing,
         test: TEST,
+        count: total,
+        website: document.getElementById('hpot').value,
         level: document.getElementById('rband').textContent,
         score: document.getElementById('rscore').textContent,
         breaks: document.getElementById('rbreaks').innerText.replace(/\n+/g, ', ')

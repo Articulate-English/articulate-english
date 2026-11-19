@@ -374,14 +374,13 @@ window.ARTICULATE = {
         }
       });
     }
+    var corpTiers = ['team', 'business', 'enterprise'];
     corpTiers.forEach(function (tierName) {
       var corp = (A.corporate && A.corporate[A.detectCurrency()] &&
                   A.corporate[A.detectCurrency()].tiers[tierName]);
       if (!corp) return;
-      var el = document.querySelector('[data-corp-price="' + tierName + '"]');
-      if (el) {
-        el.textContent = corp.symbol + ' ' + corp.amount;
-      }
+      /* Only the per-session span is updated — writing textContent on the
+         container would wipe the "/session" label next to it. */
       var perEl = document.querySelector('[data-corp-per="' + tierName + '"]');
       if (perEl) {
         perEl.textContent = A.formatPrice(corp.cents);
