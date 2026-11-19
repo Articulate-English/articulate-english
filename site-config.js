@@ -196,7 +196,7 @@ window.ARTICULATE = {
   /* Currency auto-detection from browser locale.
      Override with ?cur=usd|eur|chf in the URL.                           */
   A.detectCurrency = function () {
-    var m = location.search.match(/(?:^|&)cur=([a-z]{3})/i);
+    var m = location.search.match(/(?:^|[?&])cur=([a-z]{3})/i);
     if (m && A.prices[m[1].toLowerCase()]) return m[1].toLowerCase();
     var loc = (navigator.language || 'en-US').toLowerCase();
     // de-CH, fr-CH, it-CH, rm-CH → Swiss franc
