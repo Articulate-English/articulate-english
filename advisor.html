@@ -128,7 +128,8 @@ button.go:disabled{opacity:.45;cursor:not-allowed}
 <script>
 (function () {
   'use strict';
-  var PRICES = (window.A && A.prices) ? A.prices : {
+  var CFG = window.ARTICULATE || {};
+  var PRICES = (CFG.prices) ? CFG.prices : {
     eur: { symbol: '€', code: 'EUR', tiers: { starter: { label: 'Starter', amount: 120, sessions: 4, note: '4 lessons per month' }, professional: { label: 'Professional', amount: 312, sessions: 8, note: '8 lessons per month' }, intensive: { label: 'Intensive', amount: 768, sessions: 16, note: 'accelerated progress' } } }
   };
   var ORDER = ['starter', 'professional', 'intensive'];
@@ -142,7 +143,7 @@ button.go:disabled{opacity:.45;cursor:not-allowed}
     curSel.appendChild(o);
   });
   try {
-    var detected = (window.A && A.detectCurrency) ? A.detectCurrency() : 'eur';
+    var detected = (CFG.detectCurrency) ? CFG.detectCurrency() : 'eur';
     cur = PRICES[detected] ? detected : 'eur';
   } catch (e) {}
   curSel.value = cur;
