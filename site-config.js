@@ -77,10 +77,10 @@ window.ARTICULATE = {
      Shown on the pricing page as a zero-fee alternative to PayPal.
      Fill these from your Wise account → EUR → "Account details".       */
   bankDetails: {
-    name:      '',   // account holder, e.g. "William Gray Thomason"
-    iban:      '',   // EUR IBAN
-    swift:     '',   // SWIFT/BIC
-    reference: ''    // what the client should put in the transfer reference
+    name:      'William Thomason',
+    iban:      'BE69 9673 0036 2078',
+    swift:     'TRWIBEB1XXX',
+    reference: 'Your invoice number and full name'
   },
 
   /* ── Pricing (multi-currency for Swiss/EU/US) ──────────────────────
@@ -345,7 +345,8 @@ window.ARTICULATE = {
                 'IBAN: <code>' + esc(bd.iban) + '</code><br>' +
                 'SWIFT/BIC: <code>' + esc(bd.swift) + '</code>' +
                 (bd.reference ? '<br>Reference: <code>' + esc(bd.reference) + '</code>' : '') +
-                '<br><span style="opacity:.75">Email <a href="mailto:' + esc(email) + '">' + esc(email) +
+                '<br><span style="opacity:.75">Send in EUR from an EU bank (SEPA) and put your invoice number in the reference. ' +
+                'Email <a href="mailto:' + esc(email) + '">' + esc(email) +
                 '</a> your transfer receipt and we will book your first lesson.</span></p></div></div>';
       } else {
         html += '<div class="po"><div><h3>Bank transfer (EUR, via Wise)</h3><p>On request — we will send our EUR account details by email.</p></div></div>';
