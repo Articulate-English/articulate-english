@@ -387,15 +387,27 @@ window.ARTICULATE = {
       var corp = (A.corporate && A.corporate[A.detectCurrency()] &&
                   A.corporate[A.detectCurrency()].tiers[tierName]);
       if (!corp) return;
-      /* Only the per-session span is updated — writing textContent on the
-         container would wipe the "/session" label next to it. */
+      /* Update the per-session span plus seats/monthly figures. Never write
+         textContent on the container — that would wipe the "/session"
+         label sitting next to the span. */
       var perEl = document.querySelector('[data-corp-per="' + tierName + '"]');
       if (perEl) {
         perEl.textContent = A.formatPrice(corp.cents);
       }
+      var seatsEl = document.querySelector('[data-corp-seats="' + tierName + '"]');
+      if (seatsEl && corp.seats) {
+        seatsEl.textContent = corp.seats;
+      }
       var moEl = document.querySelector('[data-corp-mo="' + tierName + '"]');
       if (moEl) {
         moEl.textContent = corp.mo ? A.formatPrice(corp.mo * 100) : 'Custom';
+      }
+      /* FAQ cites the entry-level corporate minimum (Team tier). */
+      if (tierName === 'team') {
+        var faqMo = document.querySelector('[data-corp-mo="faq"]');
+        if (faqMo && corp.mo) {
+          faqMo.textContent = A.formatPrice(corp.mo * 100);
+        }
       }
     });
   });
