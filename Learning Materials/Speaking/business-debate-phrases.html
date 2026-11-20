@@ -715,7 +715,14 @@ var matchState = { left: null, right: null, matched: 0 };
 function selectMatch(el, side) {
   if (el.classList.contains('matched')) return;
   var col = el.closest('.match-col');
+  var wasSelected = el.classList.contains('selected');
+  // Clear this column's selection first, so clicking a different option swaps to it.
   col.querySelectorAll('.match-item').forEach(i => i.classList.remove('selected'));
+  if (wasSelected) {
+    // Second click on the already-selected option cancels the selection.
+    matchState[side] = null;
+    return;
+  }
   el.classList.add('selected');
   matchState[side] = el;
   if (matchState.left && matchState.right) {
