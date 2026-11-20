@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.paystack.co https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self' blob:; frame-src 'self' https://checkout.paystack.com https://checkout.stripe.com https://cal.com https://*.cal.com; object-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.paystack.co https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self' blob:; frame-src 'self' https://checkout.paystack.com https://checkout.stripe.com https://cal.com https://*.cal.com; object-src 'none'; frame-ancestors 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="1-on-1 and group English lessons with live AI translation into your home language. Structured curriculum from beginner to advanced, plus exam preparation for IELTS, TOEFL, OET, PTE and more. ">
+<meta name="description" content="1-on-1 and group English lessons with live AI translation into your home language. Structured curriculum from beginner to advanced, plus exam preparation for IELTS, TOEFL, OET, CAE and more. ">
 <meta name="theme-color" content="#0d1f22">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Articulate English — Professional English for Business &amp; Young Learners">
@@ -82,8 +82,6 @@ html{font-size:16px;scroll-behavior:smooth}
   }
   /* the light theme must not inherit a dark scrim */
     body.theme-light::before{mix-blend-mode:multiply;opacity:.35}
-  /* the light theme keeps a light scrim so a pale texture stays readable */
-  body.theme-light::after{background:linear-gradient(180deg,rgba(255,255,255,.45) 0%,rgba(255,255,255,.62) 38%,rgba(255,255,255,.82) 100%)}
   body>*{position:relative;z-index:3;}
 body{font-family:'Inter',system-ui,sans-serif;background:transparent;color:var(--text);line-height:1.6;overflow-x:hidden;position:relative;z-index:1;}
 .theme-cycle-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:8px;background:var(--btn-bg);border:1px solid var(--border);color:var(--accent);cursor:pointer;transition:background .15s,border-color .15s,transform .2s;}
@@ -253,7 +251,7 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
     <div class="offer-card">
       <div class="offer-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
       <h3>Exam Preparation</h3>
-      <p>Strategic preparation and support for all major language exams: IELTS, TOEFL, OET, PTE, Duolingo English and CELPIP, plus B2–C1 exam style. Proven methods, practice tests, and expert feedback.</p>
+      <p>Strategic preparation and support for all major language exams: IELTS, TOEFL, OET, CAE, CFE, IGCSE and more. Proven methods, practice tests, and expert feedback.</p>
       <span class="offer-tag">All Major Exams</span>
     </div>
     <div class="offer-card">
@@ -282,7 +280,7 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
     </div>
   </div>
   <div class="exams-bar">
-    <span class="exam-tag">IELTS</span><span class="exam-tag">TOEFL</span><span class="exam-tag">OET</span><span class="exam-tag">FCE</span><span class="exam-tag">PTE</span><span class="exam-tag">Duolingo English</span><span class="exam-tag">CELPIP</span><span class="exam-tag">B2–C1 exam style</span>
+    <span class="exam-tag">IELTS</span><span class="exam-tag">TOEFL</span><span class="exam-tag">OET</span><span class="exam-tag">CAE</span><span class="exam-tag">CFE</span><span class="exam-tag">IGCSE</span><span class="exam-tag">Cambridge</span><span class="exam-tag">PTE</span><span class="exam-tag">Duolingo English</span><span class="exam-tag">CELPIP</span>
   </div>
 </div>
 
@@ -370,9 +368,8 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
       <div class="comp-row"><span>EF Corporate</span><span>$50–85</span><span class="comp-no">—</span><span class="comp-no">—</span><span class="comp-yes">✓</span></div>
       <div class="comp-row"><span>Berlitz Corporate</span><span>$65–120</span><span class="comp-no">—</span><span class="comp-no">—</span><span class="comp-no">—</span></div>
       <div class="comp-row"><span>Wall Street English B2B</span><span>$80+</span><span class="comp-no">—</span><span class="comp-no">—</span><span class="comp-no">—</span></div>
-      <div class="comp-row highlight"><span><strong>Articulate English Professional</strong></span><span><strong><span class="currency comp-currency">€</span><span data-tier-amount="professional">39</span></strong></span><span class="comp-yes">✓</span><span class="comp-yes">✓</span><span class="comp-yes">✓</span></div>
+      <div class="comp-row highlight"><span><strong>Articulate English Professional</strong></span><span><strong>€60</strong></span><span class="comp-yes">✓</span><span class="comp-yes">✓</span><span class="comp-yes">✓</span></div>
     </div>
-    <p style="text-align:center;font-size:.7rem;opacity:.6;margin-top:8px">Corporate ranges are their published USD rates; Articulate shows your selected currency for a 30-minute 1:1 session, VAT included. Indicative only.</p>
   </div>
   <div class="pricing-wrap">
     <div class="pricing-grid">
@@ -427,7 +424,7 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
       </div>
     </div>
 
-    <div class="price-note" style="text-align:center;margin:12px 0 24px;max-width:720px;margin-left:auto;margin-right:auto;">Prices are shown in your local currency (EUR, CHF, ZAR or USD — change it below). All prices include applicable taxes. Sessions are 30 minutes of focused 1-on-1 time — no group classes, no filler. Works on any browser, including Linux and older machines. 12-month commitment: 2 months free (code LOCK12).</div>
+    <div class="price-note" style="text-align:center;margin:12px 0 24px;max-width:720px;margin-left:auto;margin-right:auto;">Prices are in EUR. Swiss clients can be billed in CHF on request. All prices include applicable taxes. Sessions are 30 minutes of focused 1-on-1 time — no group classes, no filler. Works on any browser, including Linux and older machines. 12-month commitment: 2 months free (code LOCK12).</div>
 
     <div class="corporate-box">
       <div class="corporate-info">
@@ -448,12 +445,12 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
           <div class="corp-tier">
             <div class="corp-tier-name">Team</div>
             <div class="corp-tier-price" data-corp-price="team"><span data-corp-per="team">$35</span><span>/session</span></div>
-            <div class="corp-tier-desc">Up to 10 seats · shared content · $2,500/mo</div>
+            <div class="corp-tier-desc">Up to 10 seats · shared content · <span data-corp-mo="team">$2,500</span>/mo</div>
           </div>
           <div class="corp-tier">
             <div class="corp-tier-name">Business</div>
             <div class="corp-tier-price" data-corp-price="business"><span data-corp-per="business">$45</span><span>/session</span></div>
-            <div class="corp-tier-desc">Up to 50 seats · custom content · $8,500/mo</div>
+            <div class="corp-tier-desc">Up to 50 seats · custom content · <span data-corp-mo="business">$8,500</span>/mo</div>
           </div>
           <div class="corp-tier">
             <div class="corp-tier-name">Enterprise</div>
@@ -466,7 +463,7 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
            (so it could never POST) and an onsubmit handler that printed "Sent!"
            while silently discarding the submission. Now a real Formspree form.
            TO ACTIVATE: create a free Formspree account, paste the endpoint below. -->
-      <form class="corporate-form" id="lead-form" method="POST" action="" data-endpoint-set="false" data-mailto="hello@articulate.ee">
+      <form class="corporate-form" id="lead-form" method="POST" action="#FORM_ENDPOINT_NOT_SET" data-endpoint-set="false" data-mailto="william@williamthomason.co.za">
         <input type="text" name="company" placeholder="Company name" required>
         <input type="email" name="email" placeholder="Work email" required>
         <input type="text" name="company_size" placeholder="Company size (employees)">
@@ -490,7 +487,7 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
   </div>
   <div class="faq-grid">
     <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I get started?<span class="arrow">▼</span></div><div class="faq-a">Choose a plan above and enquire by email (or book directly via Cal.com). We'll confirm your teacher, send your learning materials, and run a quick placement check so every session is targeted from day one.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What exams do you prepare for?<span class="arrow">▼</span></div><div class="faq-a">We cover IELTS, TOEFL, OET, FCE, PTE, Duolingo English Test and CELPIP, plus B2–C1 exam-style speaking practice. If it's a major English exam, we have materials and strategies for it.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What exams do you prepare for?<span class="arrow">▼</span></div><div class="faq-a">We cover IELTS, TOEFL, OET, CAE, CFE, IGCSE, Cambridge exams, PTE, Duolingo English Test, and CELPIP. If it's a major English exam, we have materials and strategies for it.</div></div>
     <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does AI translation work during lessons?<span class="arrow">▼</span></div><div class="faq-a">When a concept can't be explained in English alone, your teacher can instantly translate key terms into your home language using integrated AI tools. This saves you from having to look up words after class and keeps the lesson flowing.</div></div>
     <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I lock in my current rate?<span class="arrow">▼</span></div><div class="faq-a">Current rates are guaranteed for the duration of your plan. Commit to 12 months upfront and get 2 months free (about 17% off) — code LOCK12 when you enquire. Shorter commitments keep the walk-in rate.</div></div>
     <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do you offer corporate training?<span class="arrow">▼</span></div><div class="faq-a">Yes. We offer custom corporate contracts starting at $2,500/month with dedicated account managers, bulk pricing, custom content, and team progress dashboards. <a href="#pricing" class="faq-link">Request a proposal above</a>.</div></div>
@@ -503,7 +500,7 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
   <h2>Begin Your Professional Programme</h2>
   <p>Every programme starts with a placement assessment and a tailored learning plan. No generic classes — just structured progress with a dedicated teacher.</p>
   <div class="cta-buttons">
-    <a data-book href="https://cal.com/williamthomason/15-30-45-or-60-minute-sessions" class="cta-primary" target="_blank" rel="noopener">Book a Session</a>
+    <a href="https://cal.com/williamthomason/15-30-45-or-60-minute-sessions" class="cta-primary" target="_blank" rel="noopener">Book a Session</a>
     <a href="mailto:hello@articulate.ee?subject=General%20enquiry" class="cta-secondary">Email Us</a>
   </div>
 </div>
@@ -513,14 +510,6 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
     <a href="#offer">What We Offer</a><a href="#why">Why Us</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
   </div>
   <div class="footer-legal">
-    <a href="about.html">About</a>
-    <a href="advisor.html">Package advisor</a>
-    <a href="teach-with-us.html">Teach with us</a>
-    <a href="free-english-level-test.html">Free level test</a>
-    <a href="english-tests.html">All free tests</a>
-    <a href="consumer-rights.html">Consumer rights</a>
-    <a href="delivery-refunds.html">Delivery &amp; refunds</a>
-    <a href="safeguarding.html">Safeguarding</a>
     <a href="impressum.html">Impressum</a>
     <a href="privacy.html">Privacy</a>
     <a href="terms.html">Terms</a>
@@ -540,7 +529,7 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
    PAY-TO-BOOK GATE — 2026-10-28
    Multi-currency: USD → Paystack inline modal, EUR/CHF → Stripe Checkout.
    After payment success → redirect to Cal.com to schedule.
-   Payment keys + currency detection live in site-config.js.
+   Payment keys + currency detection live in site-config.js.               */
 
    LEAD FORM: create a free Formspree account
    (https://formspree.io/accounts/register), paste the endpoint into the
@@ -652,7 +641,7 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
       accentDim:'rgba(163,230,53,.12)',accentGlow:'rgba(163,230,53,.25)',
       navBg:'rgba(28,28,28,.95)',btnBg:'rgba(255,255,255,.12)',
       bodyClass:'theme-charlime',
-      bgImg:'https://images.unsplash.com/photo-1520034475321-cbe63696469a?w=1920&q=80',bgAlt:true,
+      bgImg:null,
     },
     light:{
       name:'Light',
@@ -663,19 +652,10 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
       accentDim:'rgba(13,148,136,.1)',accentGlow:'rgba(13,148,136,.25)',
       navBg:'rgba(248,250,252,.92)',btnBg:'rgba(0,0,0,.06)',
       bodyClass:'theme-light',
-      bgImg:'https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=1920&q=80',bgAlt:false,
+      bgImg:null,
     }
   };
   var idx=0;
-  /* remember the visitor's theme across reloads and pages */
-  var THEME_KEY='articulate_theme';
-  try{
-    var savedTheme=localStorage.getItem(THEME_KEY);
-    if(savedTheme&&THEMES[savedTheme]){
-      var savedIdx=THEME_ORDER.indexOf(savedTheme);
-      if(savedIdx>-1)idx=savedIdx;
-    }
-  }catch(err){}
   /* Icon per theme — the deck pattern: swap the SVG's innerHTML on cycle.
      Keyed by theme NAME so it survives reordering THEME_ORDER. */
   var themeIcons={
@@ -734,10 +714,9 @@ body.theme-light .corporate-form input,body.theme-light .corporate-form textarea
     if(e.target.closest('#themeCycleBtn')){
       idx=(idx+1)%THEME_ORDER.length;
       applyTheme(THEME_ORDER[idx]);
-      try{localStorage.setItem(THEME_KEY,THEME_ORDER[idx]);}catch(err){}
     }
   });
-  applyTheme(THEME_ORDER[idx]);
+  applyTheme('articulate');
   })();
 </script>
 
