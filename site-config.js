@@ -34,13 +34,16 @@ window.ARTICULATE = {
   /* ── Brand ─────────────────────────────────────────────────────────── */
   brand:        'Articulate English',
   email:        'hello@articulate.ee',
-  phoneDisplay: '',              // e.g. '+27 82 123 4567' — shown on the Impressum
+  phoneDisplay: '+27 67 177 6770',  // shown on the Impressum
 
   /* ── BOOKING ─────────────────────────────────────────────────────────
      Your Cal.com booking link. Find it in the Cal.com dashboard:
      Booking Links -> your event -> "Copy link"  (looks like
      https://cal.com/<your-username>/<event-slug> )                            */
   bookingUrl:   'https://cal.com/williamthomason/15-30-45-or-60-minute-sessions',
+  /* Cloudflare Worker that records the test signup in Brevo and emails the
+     result. Empty = the form says honestly that it is not set up yet. */
+  workerEndpoint: '',
 
   /* ── WHATSAPP ────────────────────────────────────────────────────────
      Your WhatsApp number in international format, digits only.
@@ -62,31 +65,47 @@ window.ARTICULATE = {
               for Swiss and EU clients (Paystack settles ZAR only).
    At least one payment key is needed to take live payments. Leave all
    empty for the honest on-request state.                                 */
-  paypalUrl:          '',
+  paypalUrl:          'https://paypal.me/ArticulateEnglish',
+  /* One PayPal.Me link per currency — a single link serves every deck and
+     every package in that currency, because the amount is appended to the
+     URL. Only needed if the links differ by currency. */
+  paypalUrls: {
+    usd: '', eur: '', chf: '', zar: ''
+  },
   paystackUrl:        '',
-  paystackPublicKey:  '',
+  paystackPublicKey:  'pk_test_8373ee5f0e47b5da3189e8bff1d9e1edd0859662',
   stripePublishableKey: '',
+
+  /* ── Bank transfer (Wise EUR account) ───────────────────────────────
+     Shown on the pricing page as a zero-fee alternative to PayPal.
+     Fill these from your Wise account → EUR → "Account details".       */
+  bankDetails: {
+    name:      'William Thomason',
+    iban:      'BE69 9673 0036 2078',
+    swift:     'TRWIBEB1XXX',
+    reference: 'Your invoice number and full name'
+  },
 
   /* ── Pricing (multi-currency for Swiss/EU/US) ──────────────────────
      Each currency has: symbol, ISO code, payment rail, and three tiers.
-     Cents = smallest unit (cents for USD/EUR/ZAR, Rappen for CHF).
-     Rail: 'paystack' = inline modal | 'stripe' = redirect Checkout
+     Cents = smallest unit (cents for USD/EUR, Rappen for CHF).
+     Rail: 'paystack' = inline modal | 'mor' = hosted checkout (Merchant of Record) | 'stripe' = redirect Checkout
      Currency auto-detects from browser locale; URL ?cur= overrides.        */
   prices: {
-    usd: { symbol: '$',   code: 'USD', rail: 'paystack', tiers: {
-      starter:      { label: 'Starter',      amount: 200,  cents: 20000,  sessions: 4,  note: '4 lessons per month' },
-      professional: { label: 'Professional', amount: 600,  cents: 60000,  sessions: 8,  note: '8 lessons per month' },
-      intensive:    { label: 'Intensive',    amount: 1600, cents: 160000, sessions: 16, note: 'accelerated progress' }
+    usd: { symbol: '$',   code: 'USD', rail: 'paypal',  tiers: {
+      starter:      { label: 'Starter',      amount: 120,  cents: 12000,  sessions: 4,  note: '4 lessons per month' },
+      professional: { label: 'Professional', amount: 312,  cents: 31200,  sessions: 8,  note: '8 lessons per month' },
+      intensive:    { label: 'Intensive',    amount: 768,  cents: 76800,  sessions: 16, note: 'accelerated progress' }
     }},
-    eur: { symbol: '€',   code: 'EUR', rail: 'stripe',  tiers: {
-      starter:      { label: 'Starter',      amount: 160,  cents: 16000,  sessions: 4,  note: '4 lessons per month' },
-      professional: { label: 'Professional', amount: 480,  cents: 48000,  sessions: 8,  note: '8 lessons per month' },
-      intensive:    { label: 'Intensive',    amount: 1040, cents: 104000, sessions: 16, note: 'accelerated progress' }
+    eur: { symbol: '€',   code: 'EUR', rail: 'mor',    tiers: {
+      starter:      { label: 'Starter',      amount: 120,  cents: 12000,  sessions: 4,  note: '4 lessons per month' },
+      professional: { label: 'Professional', amount: 312,  cents: 31200,  sessions: 8,  note: '8 lessons per month' },
+      intensive:    { label: 'Intensive',    amount: 768,  cents: 76800,  sessions: 16, note: 'accelerated progress' }
     }},
-    chf: { symbol: 'CHF', code: 'CHF', rail: 'stripe',  tiers: {
-      starter:      { label: 'Starter',      amount: 400,  cents: 40000,  sessions: 4,  note: '4 lessons per month' },
-      professional: { label: 'Professional', amount: 880,  cents: 88000,  sessions: 8,  note: '8 lessons per month' },
-      intensive:    { label: 'Intensive',    amount: 1650, cents: 165000, sessions: 16, note: 'accelerated progress' }
+    chf: { symbol: 'CHF', code: 'CHF', rail: 'mor',    tiers: {
+      starter:      { label: 'Starter',      amount: 168,  cents: 16800,  sessions: 4,  note: '4 lessons per month' },
+      professional: { label: 'Professional', amount: 432,  cents: 43200,  sessions: 8,  note: '8 lessons per month' },
+      intensive:    { label: 'Intensive',    amount: 1056, cents: 105600, sessions: 16, note: 'accelerated progress' }
     }},
     zar: { symbol: 'R',   code: 'ZAR', rail: 'paystack', tiers: {
       starter:      { label: 'Starter',      amount: 720,  cents: 72000,  sessions: 4,  note: '4 lessons per month' },
@@ -95,7 +114,21 @@ window.ARTICULATE = {
     }}
   },
 
-  /* ── Lock-in discount (12-month commitment) ────────────────────────
+  /* ── Hosted checkouts (Merchant of Record) ──────────────────────────
+     EUR and CHF are routed to a Merchant of Record so the platform is the
+     seller of record and handles EU/Swiss VAT. Paste one checkout URL per
+     tier per currency; empty string = honest "on request" fallback.
+
+     NOTE: most MoR platforms (Paddle, Lemon Squeezy, Polar, Creem, Dodo)
+     restrict sellers to software/digital products and do NOT accept 1:1
+     tutoring or coaching services. If yours rejects services, the realistic
+     routes are an EU/UK entity with Stripe, or invoicing EUR clients.
+     Wiring is here so either route works.                              */
+  hostedCheckouts: {
+    eur: { starter: '', professional: '', intensive: '' },
+    chf: { starter: '', professional: '', intensive: '' }
+  },
+     /* ── Lock-in discount (12-month commitment) ────────────────────────
      SaaS-norm: 2 months free (~16.7% off). Applied as a coupon code until
      Paystack/Stripe coupon wiring lands. Code is informational for now.     */
   lockInCoupon:   'LOCK12',
@@ -141,13 +174,24 @@ window.ARTICULATE = {
   };
 
   A.paypalLink = function (amount, note) {
-    if (!A.paypalUrl) return '';
+    // Currency-specific PayPal.Me link wins; the single paypalUrl is the
+    // fallback. One link per currency serves every deck and every package,
+    // because the amount is appended to the URL.
+    var url = '';
+    var cur = A.detectCurrency();
+    if (A.paypalUrls && A.paypalUrls[cur]) url = A.paypalUrls[cur];
+    else if (A.paypalUrl) url = A.paypalUrl;
+    if (!url) return '';
     // PayPal.Me links accept /<amount>; hosted buttons do not. Append only
     // when the URL is a paypal.me link and no amount is already present.
-    if (/\/paypal\.me\//i.test(A.paypalUrl) && amount && !/\d\.\d\d\/?$/.test(A.paypalUrl)) {
-      return A.paypalUrl.replace(/\/?$/, '/') + amount;
+    if (/\/paypal\.me\//i.test(url) && amount && !/\d([A-Z]{3})?\/?$/.test(url)) {
+      /* PayPal.Me accepts /<amount><currency>, e.g. /39EUR — so ONE link
+         serves every currency we quote, and the client is charged in their
+         own currency instead of a converted default. */
+      var cur=(A.detectCurrency()||'').toUpperCase();
+      return url.replace(/\/?$/, '/') + amount + cur;
     }
-    return A.paypalUrl;
+    return url;
   };
 
   A.paystackLink = function () { return A.paystackUrl || ''; };
@@ -155,18 +199,18 @@ window.ARTICULATE = {
   /* ── Multi-currency helpers (Swiss/EU/US) ─────────────────────────── */
 
   /* Currency auto-detection from browser locale.
-     Override with ?cur=usd|eur|chf|zar in the URL.                      */
+     Override with ?cur=usd|eur|chf in the URL.                           */
   A.detectCurrency = function () {
     var m = location.search.match(/(?:^|[?&])cur=([a-z]{3})/i);
     if (m && A.prices[m[1].toLowerCase()]) return m[1].toLowerCase();
     var loc = (navigator.language || 'en-US').toLowerCase();
     // de-CH, fr-CH, it-CH, rm-CH → Swiss franc
     if (loc.indexOf('-ch') > 0) return 'chf';
+    // South African locales → rand (Paystack SA rail)
+    if (loc.indexOf('-za') > 0) return 'zar';
     // EU locales → Euro
     var eu = ['-de','-at','-fr','-es','-it','-nl','-be','-pt','-fi','-ie','-sk','-si','-lv','-lt','-ee','-cy','-gr','-lu'];
     if (eu.some(function(e){ return loc.indexOf(e) > 0; })) return 'eur';
-    // South African locales -> Rand
-    if (loc.indexOf('-za') > 0) return 'zar';
     return 'usd';
   };
 
@@ -183,6 +227,7 @@ window.ARTICULATE = {
     var amount = (parts[1] === '00') ? parts[0] : parts.join('.');
     if (p.symbol === '$')    return '$' + amount;
     if (p.symbol === '€')    return amount + '€';
+    if (p.symbol === 'R')    return 'R ' + amount;
     return p.symbol + ' ' + amount;            // CHF 400
   };
 
@@ -191,11 +236,25 @@ window.ARTICULATE = {
     return A.currency().tiers[tierName] || null;
   };
 
+  /* Hosted checkout URL (Merchant of Record) for a currency + tier.      */
+  A.hostedCheckout = function (tierName) {
+    var cur = A.detectCurrency();
+    var map = A.hostedCheckouts || {};
+    return (map[cur] && map[cur][tierName]) || '';
+  };
+
   /* Determine which payment provider to use for the current currency.
-     Returns: 'paystack' | 'stripe' | 'paypal' | 'none'                */
+     Returns: 'paystack' | 'mor' | 'stripe' | 'paypal' | 'none'          */
   A.paymentRail = function () {
     var p = A.currency();
     if (p.rail === 'paystack' && A.paystackPublicKey) return 'paystack';
+    if (p.rail === 'mor') {
+      var any = ['starter', 'professional', 'intensive'].some(function (t) {
+        return !!A.hostedCheckout(t);
+      });
+      if (any)                                          return 'mor';
+      if (A.paypalUrl)                                  return 'paypal';
+    }
     if (p.rail === 'stripe') {
       if (A.paypalUrl)                              return 'paypal';
       if (A.stripePublishableKey)                   return 'stripe';
@@ -240,18 +299,24 @@ window.ARTICULATE = {
       if (!tier) return;
       var p = A.currency();
 
-      // Update the per-session price-amount span
-      var amountSpan = document.querySelector('[data-tier-amount="' + tierName + '"]');
-      if (amountSpan) {
+      // Update every per-session price-amount span (pricing cards + comparison table)
+      var amountSpans = document.querySelectorAll('[data-tier-amount="' + tierName + '"]');
+      Array.prototype.forEach.call(amountSpans, function (amountSpan) {
         var perSession = tier.sessions ? (tier.amount / tier.sessions) : tier.amount;
         amountSpan.textContent = perSession.toFixed(p.code === 'CHF' ? 0 : 2).replace(/\.00$/, '');
-      }
+      });
 
       // Update the currency symbol inside the price-amount .currency span
       var symSpan = document.querySelector('.price-card[data-tier-card="' + tierName + '"] .price-amount .currency');
       if (symSpan) {
         symSpan.textContent = p.symbol;
         if (p.symbol === 'CHF') symSpan.style.marginRight = '0.25em';
+      }
+      // Comparison-table currency symbol follows the selected currency too
+      var compSym = document.querySelector('.comp-currency');
+      if (compSym) {
+        compSym.textContent = p.symbol;
+        if (p.symbol === 'CHF') compSym.style.marginRight = '0.25em';
       }
 
       // Update the price total span inside the price-note
@@ -266,6 +331,39 @@ window.ARTICULATE = {
         btn.setAttribute('data-amount', tier.cents);
       }
     });
+
+    /* Render the "Ways to pay" block (PayPal + bank transfer) if present. */
+    var po = document.getElementById('pay-options-body');
+    if (po) {
+      var esc = function (s) {
+        return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      };
+      var email = A.email || '';
+      var html = '';
+      if (A.paypalUrl) {
+        html += '<div class="po"><div><h3>PayPal</h3><p>Card or PayPal balance — <a href="' +
+                esc(A.paypalUrl) + '" target="_blank" rel="noopener">open PayPal</a>.</p></div></div>';
+      } else {
+        html += '<div class="po"><div><h3>PayPal</h3><p>On request — email <a href="mailto:' +
+                esc(email) + '">' + esc(email) + '</a> and we will send a secure payment link.</p></div></div>';
+      }
+      var bd = A.bankDetails || {};
+      if (bd.iban) {
+        html += '<div class="po"><div><h3>Bank transfer (EUR, via Wise)</h3><p>' +
+                '<strong>' + esc(bd.name || 'Articulate English') + '</strong><br>' +
+                'IBAN: <code>' + esc(bd.iban) + '</code><br>' +
+                'SWIFT/BIC: <code>' + esc(bd.swift) + '</code>' +
+                (bd.reference ? '<br>Reference: <code>' + esc(bd.reference) + '</code>' : '') +
+                '<br><span style="opacity:.75">Send in EUR from an EU bank (SEPA) and put your invoice number in the reference. ' +
+                'Email <a href="mailto:' + esc(email) + '">' + esc(email) +
+                '</a> your transfer receipt and we will book your first lesson.</span></p></div></div>';
+      } else {
+        html += '<div class="po"><div><h3>Bank transfer (EUR, via Wise)</h3><p>On request — we will send our EUR account details by email.</p></div></div>';
+      }
+      po.innerHTML = html;
+    }
 
     /* Initialise currency selector in footer */
     var currSelect = document.getElementById('currencySelect');
@@ -284,16 +382,13 @@ window.ARTICULATE = {
         }
       });
     }
-    /* Corporate tiers. corpTiers was never declared, so this loop threw a
-       ReferenceError and the cards kept their static USD fallback. */
     var corpTiers = ['team', 'business', 'enterprise'];
     corpTiers.forEach(function (tierName) {
       var corp = (A.corporate && A.corporate[A.detectCurrency()] &&
                   A.corporate[A.detectCurrency()].tiers[tierName]);
       if (!corp) return;
-      /* Only the per-session span is rewritten so the "/session" label and the
-         monthly-minimum span survive (setting the wrapper's textContent wipes
-         its children). */
+      /* Only the per-session span is updated — writing textContent on the
+         container would wipe the "/session" label next to it. */
       var perEl = document.querySelector('[data-corp-per="' + tierName + '"]');
       if (perEl) {
         perEl.textContent = A.formatPrice(corp.cents);
