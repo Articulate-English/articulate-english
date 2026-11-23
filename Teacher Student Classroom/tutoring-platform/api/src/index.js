@@ -70,11 +70,19 @@ const livekit = new LiveKit.LiveKitClient(
 );
 
 // ── JWT Auth Middleware ────────────────────────────────────
+// Fail closed: without a real secret there is no secure signing key, so refuse
+// to boot instead of silently verifying against a hardcoded default.
+if (!process.env.JWT_SECRET || process.env.JWT_SECRET === 'jwt-secret-change-me') {
+  logger.error('JWT_SECRET is missing or unchanged; refusing to start.');
+  process.exit(1);
+}
+const JWT_SECRET = process.env.JWT_SECRET;
+
 function authenticate(req, res, next) {
   const token = req.headers.authorization?.replace('Bearer ', '');
   if (!token) return res.status(401).json({ error: 'No token' });
   try {
-    req.user = jwt.verify(token, process.env.JWT_SECRET || 'jwt-secret-change-me');
+    req.user = jwt.verify(token, JWT_SECRET);
     next();
   } catch {
     res.status(401).json({ error: 'Invalid token' });
@@ -86,7 +94,7 @@ io.use((socket, next) => {
   const token = socket.handshake.auth.token;
   if (!token) return next(new Error('No token'));
   try {
-    socket.user = jwt.verify(token, process.env.JWT_SECRET || 'jwt-secret-change-me');
+    socket.user = jwt.verify(token, JWT_SECRET);
     next();
   } catch {
     next(new Error('Invalid token'));
