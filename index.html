@@ -247,6 +247,32 @@ h2{font-size:clamp(1.4rem,2.8vw,2rem)}
 .corp-tier{padding:clamp(12px,2.5vw,14px)}
 .section{padding:clamp(48px,8vw,80px) clamp(20px,5vw,40px)}
 
+
+
+/* "Not sure which package fits?" — same defect: undefined --muted token + unstyled link */
+.pay-note{text-align:center;margin:0 0 24px;font-size:.9rem;color:var(--text-muted)}
+.pay-note-link{display:inline-flex;align-items:center;min-height:36px;padding:6px 14px;margin:0 2px;
+  border-radius:999px;border:1px solid var(--border);color:var(--accent);font-weight:600;
+  text-decoration:none;white-space:nowrap;transition:border-color .15s,background .15s}
+.pay-note-link:hover{border-color:var(--accent);background:var(--accent-dim)}
+
+/* "Not sure of your level?" — this was a bare <a> inside an inline-styled paragraph.
+   No rule matched it, so it rendered as the browser default link (blue, underlined,
+   ~14px tall) and its colour came from an undefined --muted token. */
+.hero-level{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;
+  margin:18px 0 0;font-size:.95rem}
+.hero-level-q{color:var(--text-muted)}
+.hero-level-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;
+  padding:10px 22px;border-radius:999px;border:1px solid var(--accent);color:var(--accent);
+  font-weight:700;text-decoration:none;white-space:nowrap;
+  transition:background .15s,color .15s,border-color .15s}
+.hero-level-btn:hover{background:var(--accent);color:var(--accent-text)}
+.hero-level-note{color:var(--text-dim);font-size:.85rem}
+@media(max-width:520px){
+  .hero-level{flex-direction:column;gap:6px}
+  .hero-level-btn{width:100%}
+}
+
 /* Mobile menu button */
 .nav-menu-btn{display:none;align-items:center;justify-content:center;width:44px;height:44px;
   border-radius:8px;background:var(--btn-bg,rgba(255,255,255,.08));
@@ -314,7 +340,11 @@ h2{font-size:clamp(1.4rem,2.8vw,2rem)}
     <a href="#pricing" class="hero-cta">Enquire Now</a>
     <a href="#pricing" class="hero-cta-outline">View Pricing</a>
   </div>
-  <p style="margin:16px 0 0;font-size:.9rem;color:var(--muted)">Not sure of your level? <a href="free-english-level-test.html">Take the free 10-minute test</a> — no sign-up, result on screen.</p>
+  <div class="hero-level">
+    <span class="hero-level-q">Not sure of your level?</span>
+    <a class="hero-level-btn" href="free-english-level-test.html">Take the free 10-minute test</a>
+    <span class="hero-level-note">No sign-up - result on screen</span>
+  </div>
 </div>
 
 <div class="section" id="offer">
@@ -521,8 +551,8 @@ h2{font-size:clamp(1.4rem,2.8vw,2rem)}
       <div id="pay-options-body"></div>
     </div>
 
-    <p style="text-align:center;margin:0 0 24px;font-size:.9rem;color:var(--muted)">
-      Not sure which package fits? <a href="advisor.html">Answer five questions and get a recommendation</a> — no sign-up, no payment.
+    <p class="pay-note">
+      Not sure which package fits? <a class="pay-note-link" href="advisor.html">Answer five questions and get a recommendation</a> - no sign-up, no payment.
     </p>
 
     <div class="corporate-box">
