@@ -43,13 +43,23 @@ const pg = new Pool({ connectionString: process.env.DATABASE_URL });
 const redis = createClient({ url: process.env.REDIS_URL });
 redis.connect().catch(err => logger.error('Redis connection error:', err));
 
+// ── Service credentials ────────────────────────────────────
+// Fail closed. The public defaults these services ship (minioadmin / devkey)
+// must never reach a deployed environment, so refuse to boot without real ones.
+for (const k of ['MINIO_ACCESS_KEY', 'MINIO_SECRET_KEY', 'LIVEKIT_API_KEY', 'LIVEKIT_API_SECRET']) {
+  if (!process.env[k]) {
+    logger.error(k + ' is not set; refusing to start.');
+    process.exit(1);
+  }
+}
+
 // ── MinIO Client ──────────────────────────────────────────
 const minio = new Minio.Client({
   endPoint: process.env.MINIO_ENDPOINT || 'minio',
   port: parseInt(process.env.MINIO_PORT || '9000'),
   useSSL: false,
-  accessKey: process.env.MINIO_ACCESS_KEY || 'minioadmin',
-  secretKey: process.env.MINIO_SECRET_KEY || 'minioadmin123'
+  accessKey: process.env.MINIO_ACCESS_KEY,
+  secretKey: process.env.MINIO_SECRET_KEY
 });
 
 // Ensure bucket exists
@@ -65,8 +75,8 @@ const minio = new Minio.Client({
 // ── LiveKit Client ────────────────────────────────────────
 const livekit = new LiveKit.LiveKitClient(
   process.env.LIVEKIT_API_URL || 'http://livekit:7880',
-  process.env.LIVEKIT_API_KEY || 'devkey',
-  process.env.LIVEKIT_API_SECRET || 'secret'
+  process.env.LIVEKIT_API_KEY,
+  process.env.LIVEKIT_API_SECRET
 );
 
 // ── JWT Auth Middleware ────────────────────────────────────
