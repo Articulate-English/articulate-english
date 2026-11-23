@@ -283,10 +283,10 @@ body {
       </ul>
     </nav>
     <div class="sidebar-user">
-      <div class="user-avatar">M</div>
+      <div class="user-avatar">-</div>
       <div class="user-info">
-        <div class="user-name">Maria Schmidt</div>
-        <div class="user-level">FL4 — Intermediate (B1)</div>
+        <div class="user-name">Not signed in</div>
+        <div class="user-level">Your name and level appear here after your first lesson</div>
       </div>
     </div>
   </aside>
@@ -298,7 +298,7 @@ body {
       <div style="display:flex; align-items:center; gap:16px;">
         <div>
           <div style="font-size:11px; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; display:flex; align-items:center; gap:6px;">
-            <span id="lesson-status-pulse" class="pulse-dot"></span> <span id="lesson-status-text">Lesson Pending</span>
+            <span id="lesson-status-pulse" class="pulse-dot"></span> <span id="lesson-status-text">Not signed in</span>
           </div>
           <h1 id="page-title" style="display:flex; align-items:center; gap:8px;">
             <span id="student-greeting">👋 Welcome</span>
@@ -320,14 +320,6 @@ body {
     100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
   }
 </style>
-<script>
-  // Simulate active lesson
-  setTimeout(() => {
-    document.getElementById('lesson-status-pulse').classList.add('live');
-    document.getElementById('lesson-status-text').textContent = 'LIVE LESSON IN PROGRESS';
-    document.getElementById('lesson-status-text').style.color = 'var(--emerald)';
-  }, 2000);
-</script>
       <div class="topbar-actions">
         <select class="lang-select" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-muted);padding:6px 10px;border-radius:6px;font-size:13px;">
           <option>🇬🇧 English</option>
@@ -346,14 +338,10 @@ body {
         <div class="voip-card">
           <div class="voip-header">
             <div>
-              <div class="voip-title">🎯 Next Lesson — Today at 14:00</div>
+              <div class="voip-title">🎯 No upcoming lesson scheduled</div>
               <div style="font-size:13px; color:var(--text-muted); margin-top:2px;">
-                FL4 Session 3/14 — Present Perfect vs Past Simple · 60 min · Teacher: William
+                When your teacher books a session it will appear here.
               </div>
-            </div>
-            <div class="voip-status">
-              <div class="dot"></div>
-              Starting in 23 min
             </div>
           </div>
 
@@ -377,51 +365,34 @@ body {
         <!-- Stats -->
         <div class="stats-grid">
           <div class="stat-box">
-            <div class="stat-num">12</div>
+            <div class="stat-num">—</div>
             <div class="stat-label">Lessons Done</div>
           </div>
           <div class="stat-box">
-            <div class="stat-num">3</div>
+            <div class="stat-num">—</div>
             <div class="stat-label">This Block</div>
           </div>
           <div class="stat-box">
-            <div class="stat-num">FL4</div>
+            <div class="stat-num">—</div>
             <div class="stat-label">Current Level</div>
           </div>
           <div class="stat-box">
-            <div class="stat-num">B1</div>
+            <div class="stat-num">—</div>
             <div class="stat-label">CEFR Level</div>
           </div>
         </div>
+        <p style="font-size:13px; color:var(--text-muted); margin:-12px 0 20px;">These figures fill in as your teacher records lessons — nothing is estimated or invented.</p>
 
-        <!-- Level Progress -->
+        <!-- Level Progress: nothing recorded yet -->
         <div class="card">
           <div class="card-header">
-            <div class="card-title">Level Progress — FL4 Intermediate</div>
-            <span class="badge badge-intermediate">3 / 14 sessions</span>
+            <div class="card-title">Level Progress</div>
+            <span class="badge badge-intermediate">No sessions yet</span>
           </div>
-          <div class="level-track">
-            <div class="level-dot completed"></div>
-            <div class="level-dot completed"></div>
-            <div class="level-dot completed"></div>
-            <div class="level-dot current"></div>
-            <div class="level-dot"></div>
-            <div class="level-dot"></div>
-            <div class="level-dot"></div>
-            <div class="level-dot"></div>
-            <div class="level-dot"></div>
-            <div class="level-dot"></div>
-            <div class="level-dot"></div>
-            <div class="level-dot"></div>
-            <div class="level-dot"></div>
-            <div class="level-dot"></div>
-          </div>
-          <div class="level-labels">
-            <span>Session 1</span>
-            <span>Session 14 → Assessment</span>
-          </div>
-          <div style="margin-top:16px; font-size:13px; color:var(--text-muted);">
-            <strong style="color:var(--text)">Next:</strong> Present Perfect vs Past Simple — with German translations for key grammar terms.
+<div style="text-align:center; padding:28px 16px; color:var(--text-muted);">
+            <div style="font-size:2rem; margin-bottom:8px;">📈</div>
+            <p style="font-size:14px; font-weight:600; margin-bottom:4px;">No sessions recorded yet</p>
+            <p style="font-size:13px;">Your level track appears here once your teacher logs your first lesson.</p>
           </div>
         </div>
 
@@ -429,40 +400,11 @@ body {
         <div class="card">
           <div class="card-header">
             <div class="card-title">Upcoming Lessons</div>
-            <a href="#" class="btn btn-secondary" style="padding:6px 12px; font-size:12px;">View All</a>
           </div>
-          <div class="lesson-item">
-            <div class="lesson-date">
-              <div class="day">21</div>
-              <div class="month">May</div>
-            </div>
-            <div class="lesson-info">
-              <div class="lesson-type">FL4 — Session 3: Present Perfect vs Past Simple</div>
-              <div class="lesson-meta">Today · 14:00-15:00 CET · William</div>
-            </div>
-            <span class="lesson-status status-today">TODAY</span>
-          </div>
-          <div class="lesson-item">
-            <div class="lesson-date">
-              <div class="day">23</div>
-              <div class="month">May</div>
-            </div>
-            <div class="lesson-info">
-              <div class="lesson-type">FL4 — Session 4: Adverbs (already, yet, just, still)</div>
-              <div class="lesson-meta">Thu · 14:00-15:00 CET · William</div>
-            </div>
-            <span class="lesson-status status-upcoming">UPCOMING</span>
-          </div>
-          <div class="lesson-item">
-            <div class="lesson-date">
-              <div class="day">26</div>
-              <div class="month">May</div>
-            </div>
-            <div class="lesson-info">
-              <div class="lesson-type">FL4 — Session 5: Relative Clauses</div>
-              <div class="lesson-meta">Mon · 14:00-15:00 CET · William</div>
-            </div>
-            <span class="lesson-status status-upcoming">UPCOMING</span>
+<div style="text-align:center; padding:28px 16px; color:var(--text-muted);">
+            <div style="font-size:2rem; margin-bottom:8px;">🗓️</div>
+            <p style="font-size:14px; font-weight:600; margin-bottom:4px;">No upcoming lessons</p>
+            <p style="font-size:13px;">Sessions your teacher books will appear here.</p>
           </div>
         </div>
 
@@ -471,19 +413,10 @@ body {
           <div class="card-header">
             <div class="card-title">Recent Recordings</div>
           </div>
-          <div class="lesson-item">
-            <div class="lesson-info">
-              <div class="lesson-type">FL4 — Session 2: Present Perfect Introduction</div>
-              <div class="lesson-meta">May 19 · 58 min · 🇩🇪 German translations used</div>
-            </div>
-            <a href="#" class="btn btn-secondary" style="padding:6px 12px; font-size:12px;">▶ Watch</a>
-          </div>
-          <div class="lesson-item">
-            <div class="lesson-info">
-              <div class="lesson-type">FL4 — Session 1: Review & Goal Setting</div>
-              <div class="lesson-meta">May 16 · 60 min · 🇩🇪 German translations used</div>
-            </div>
-            <a href="#" class="btn btn-secondary" style="padding:6px 12px; font-size:12px;">▶ Watch</a>
+<div style="text-align:center; padding:28px 16px; color:var(--text-muted);">
+            <div style="font-size:2rem; margin-bottom:8px;">🎬</div>
+            <p style="font-size:14px; font-weight:600; margin-bottom:4px;">No recordings yet</p>
+            <p style="font-size:13px;">Recordings of your lessons appear here once they are saved.</p>
           </div>
         </div>
       </div>
@@ -494,45 +427,10 @@ body {
           <div class="card-header">
             <div class="card-title">All Lessons</div>
           </div>
-          <div class="lesson-item">
-            <div class="lesson-date"><div class="day">21</div><div class="month">May</div></div>
-            <div class="lesson-info">
-              <div class="lesson-type">FL4 — Session 3: Present Perfect vs Past Simple</div>
-              <div class="lesson-meta">Today · 14:00-15:00 CET · William</div>
-            </div>
-            <span class="lesson-status status-today">TODAY</span>
-          </div>
-          <div class="lesson-item">
-            <div class="lesson-date"><div class="day">23</div><div class="month">May</div></div>
-            <div class="lesson-info">
-              <div class="lesson-type">FL4 — Session 4: Adverbs</div>
-              <div class="lesson-meta">Thu · 14:00-15:00 CET · William</div>
-            </div>
-            <span class="lesson-status status-upcoming">UPCOMING</span>
-          </div>
-          <div class="lesson-item">
-            <div class="lesson-date"><div class="day">19</div><div class="month">May</div></div>
-            <div class="lesson-info">
-              <div class="lesson-type">FL4 — Session 2: Present Perfect Introduction</div>
-              <div class="lesson-meta">May 19 · 58 min · Completed</div>
-            </div>
-            <span class="lesson-status status-completed">DONE</span>
-          </div>
-          <div class="lesson-item">
-            <div class="lesson-date"><div class="day">16</div><div class="month">May</div></div>
-            <div class="lesson-info">
-              <div class="lesson-type">FL4 — Session 1: Review & Goal Setting</div>
-              <div class="lesson-meta">May 16 · 60 min · Completed</div>
-            </div>
-            <span class="lesson-status status-completed">DONE</span>
-          </div>
-          <div class="lesson-item">
-            <div class="lesson-date"><div class="day">14</div><div class="month">May</div></div>
-            <div class="lesson-info">
-              <div class="lesson-type">Placement Test</div>
-              <div class="lesson-meta">May 14 · 30 min · Assigned FL4</div>
-            </div>
-            <span class="lesson-status status-completed">DONE</span>
+<div style="text-align:center; padding:28px 16px; color:var(--text-muted);">
+            <div style="font-size:2rem; margin-bottom:8px;">📚</div>
+            <p style="font-size:14px; font-weight:600; margin-bottom:4px;">No lessons recorded yet</p>
+            <p style="font-size:13px;">Your lesson history appears here after your first session.</p>
           </div>
         </div>
       </div>
@@ -602,30 +500,12 @@ body {
       <div id="page-materials" class="page" style="display:none;">
         <div class="card">
           <div class="card-header">
-            <div class="card-title">FL4 — Intermediate Materials</div>
-            <span class="badge badge-intermediate">Current Level</span>
+            <div class="card-title">Materials</div>
           </div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-            <div style="background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:16px;">
-              <div style="font-size:13px; font-weight:600; margin-bottom:4px;">📝 Session 3: Present Perfect</div>
-              <div style="font-size:12px; color:var(--text-muted);">Key terms + German translations</div>
-              <a href="#" style="font-size:12px; margin-top:8px; display:block;">Download PDF →</a>
-            </div>
-            <div style="background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:16px;">
-              <div style="font-size:13px; font-weight:600; margin-bottom:4px;">📝 Session 2: Present Perfect Intro</div>
-              <div style="font-size:12px; color:var(--text-muted);">Key terms + German translations</div>
-              <a href="#" style="font-size:12px; margin-top:8px; display:block;">Download PDF →</a>
-            </div>
-            <div style="background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:16px;">
-              <div style="font-size:13px; font-weight:600; margin-bottom:4px;">📚 FL4 Vocabulary List</div>
-              <div style="font-size:12px; color:var(--text-muted);">All key terms for this level</div>
-              <a href="#" style="font-size:12px; margin-top:8px; display:block;">Download PDF →</a>
-            </div>
-            <div style="background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:16px;">
-              <div style="font-size:13px; font-weight:600; margin-bottom:4px;">🎯 FL4 Assessment Prep</div>
-              <div style="font-size:12px; color:var(--text-muted);">Practice test for end of block</div>
-              <a href="#" style="font-size:12px; margin-top:8px; display:block;">Download PDF →</a>
-            </div>
+<div style="text-align:center; padding:28px 16px; color:var(--text-muted);">
+            <div style="font-size:2rem; margin-bottom:8px;">📄</div>
+            <p style="font-size:14px; font-weight:600; margin-bottom:4px;">No materials yet</p>
+            <p style="font-size:13px;">Worksheets and vocabulary lists your teacher assigns will appear here.</p>
           </div>
         </div>
       </div>
