@@ -13,7 +13,8 @@ const HTTP_PORT = process.env.HTTP_PORT || 8080;
 const HTTPS_PORT = process.env.HTTPS_PORT || 8443;
 const STATIC_DIR = process.env.STATIC_DIR || path.resolve(__dirname, '..');
 const CERT_DIR = path.resolve(__dirname, 'certs');
-const JWT_SECRET = process.env.JWT_SECRET || crypto.randomBytes(32).toString('hex');
+// Auth here is a DB-backed session token (see createToken below), not JWT,
+// so there is no JWT signing secret to configure in this server.
 const DB_PATH = path.join(__dirname, 'data.db');
 
 // STRIPE (guarded so the server still boots without a key set; the Checkout
@@ -113,17 +114,29 @@ db.exec(`
   );
 `);
 
-// Seed default accounts
+// Seed the two demo accounts. Passwords are never stored in the repo: set
+// SEED_TEACHER_PASSWORD / SEED_STUDENT_PASSWORD in .env, otherwise a random
+// password is generated at first boot and printed once, below.
 const seedUsers = [
-  { email: 'william@articulate.com', password: 'Pass123!', name: 'William', role: 'teacher' },
-  { email: 'maria@articulate.com', password: 'Pass123!', name: 'Maria', role: 'student' },
+  { email: 'william@articulate.com', env: 'SEED_TEACHER_PASSWORD', name: 'William', role: 'teacher' },
+  { email: 'maria@articulate.com', env: 'SEED_STUDENT_PASSWORD', name: 'Maria', role: 'student' }
 ];
+const generatedPasswords = [];
 for (const u of seedUsers) {
   const existing = db.prepare('SELECT id FROM users WHERE email = ?').get(u.email);
-  if (!existing) {
-    const hash = bcrypt.hashSync(u.password, 10);
-    db.prepare('INSERT INTO users (email, password_hash, name, role) VALUES (?, ?, ?, ?)').run(u.email, hash, u.name, u.role);
+  if (existing) continue;
+  let pw = process.env[u.env] || '';
+  if (pw.length < 8) {
+    pw = crypto.randomBytes(9).toString('base64url');
+    generatedPasswords.push(u.email + '  ' + pw);
   }
+  const hash = bcrypt.hashSync(pw, 10);
+  db.prepare('INSERT INTO users (email, password_hash, name, role) VALUES (?, ?, ?, ?)').run(u.email, hash, u.name, u.role);
+}
+if (generatedPasswords.length) {
+  console.log('[SEED] No password in .env for these demo accounts; one-time passwords:');
+  for (const line of generatedPasswords) console.log('        ' + line);
+  console.log('[SEED] Set SEED_TEACHER_PASSWORD / SEED_STUDENT_PASSWORD in .env to choose your own.');
 }
 console.log('[OK] Database ready');
 
