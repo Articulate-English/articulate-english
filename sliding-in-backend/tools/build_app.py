@@ -37,7 +37,7 @@ STUDENT_LINE = {
 MANIFEST = """{
   "name": "Sliding In __DECK__ — ESL Speaking Questions",
   "short_name": "Sliding In __DECK__",
-  "description": "Open-ended B1+ ESL speaking questions as art-directed slide decks.",
+  "description": "Open-ended B1+ ESL speaking questions as art-directed slide decks, with a one-tap UK/US English switch.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

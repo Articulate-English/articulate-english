@@ -32,8 +32,18 @@
      wrangler deploy
    ========================================================================== */
 
+const PATH_PREFIX = '/speak-easily-kids';
 const ALLOWED_ORIGIN = /^(https:\/\/articulate-english\.github\.io|http:\/\/(localhost|127\.0\.0\.1)(:\d+)?)$/;
 const DECKS = ['1', '2', '3', '4'];
+const KIDS_DECK = 'kids';
+function validDeck(d) { return DECKS.includes(d) || d === KIDS_DECK; }
+/* the crypto namespace and the app URL differ per product */
+function ns(deck) { return deck === KIDS_DECK ? 'speak-easily-kids' : 'sliding-in'; }
+function kvKey(deck) { return deck === KIDS_DECK ? 'kids' : 'deck' + deck; }
+function appBase(deck) {
+  if (deck === KIDS_DECK) return 'https://articulate-english.github.io/speak-easily-kids/';
+  return 'https://articulate-english.github.io/sliding-in' + (deck === '1' ? '' : '-' + deck) + '/';
+}
 const GRANT_TTL_SECONDS = 60 * 60 * 24 * 30; // 30 days
 
 /* the private portal tuning page, bundled at build time (wrangler ?raw import) */
@@ -131,7 +141,7 @@ async function hkdfFromString(secret, salt, info) {
 // Paid payloads live in KV, sealed under the master key. Returns the parsed deck.
 async function loadPaidPayload(env, deck) {
   if (!env.MASTER_KEY || !env.PAYLOADS) return null;
-  const raw = await env.PAYLOADS.get('deck' + deck);
+  const raw = await env.PAYLOADS.get(kvKey(deck));
   if (!raw) return null;
   const key = await crypto.subtle.importKey('raw', hexBytes(env.MASTER_KEY), { name: 'AES-GCM' }, false, ['decrypt']);
   const plain = await aesOpen(key, b64urlDecode(JSON.parse(raw).ciphertext));
@@ -155,7 +165,9 @@ async function aesOpen(key, bytes) {
 async function signGrant(env, obj) {
   const payload = b64urlEncode(new TextEncoder().encode(JSON.stringify(obj)));
   const key = await hmacKey(env.GRANT_SECRET);
-  const sig = b64urlEncode(await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(payload)));
+  // crypto.subtle.sign returns an ArrayBuffer, but b64urlEncode iterates .length
+  // (undefined on an ArrayBuffer) — without the wrap every signature came out empty.
+  const sig = b64urlEncode(new Uint8Array(await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(payload))));
   return payload + '.' + sig;
 }
 
@@ -183,10 +195,16 @@ async function payhipVerify(productKey, licenceKey, secrets) {
     'https://payhip.com/api/v2/license/verify?license_key=' + encodeURIComponent(licenceKey),
     { headers: { 'product-secret-key': secret } }
   );
-  if (res.status === 404) return { ok: false, error: 'invalid licence key' };
   const body = await res.json().catch(() => null);
   const data = body && body.data;
-  if (!data) return { ok: false, error: 'licence lookup failed' };
+  /* Payhip answers an unknown key with 400 + {"data":[],"error":true}.
+     An empty array is truthy in JS, so the old check accepted every bogus
+     key. Treat error flags, empty arrays and non-200 responses as invalid. */
+  if (res.status === 404 || (body && body.error === true) ||
+      !data || (Array.isArray(data) && data.length === 0)) {
+    return { ok: false, error: 'invalid licence key' };
+  }
+  if (res.status !== 200) return { ok: false, error: 'licence lookup failed' };
   if (data.enabled === false) return { ok: false, error: 'licence disabled (refunded or revoked)' };
   return { ok: true, data };
 }
@@ -197,6 +215,24 @@ function payhipSecrets(env) {
   } catch {
     return {};
   }
+}
+
+function teacherKeys(env) {
+  try { return JSON.parse(env.TEACHER_KEYS || '{}'); } catch { return {}; }
+}
+
+/* A teacher key is held by the owner and unlocks + enables sharing without a Payhip
+   product. Everything else is verified against Payhip. */
+async function resolveLicence(env, productKey, licenceKey) {
+  const tk = teacherKeys(env);
+  if (tk[licenceKey]) {
+    return {
+      ok: true, teacher: true,
+      allowedDecks: Array.isArray(tk[licenceKey].decks) ? tk[licenceKey].decks : null,
+      data: { product_name: tk[licenceKey].label || 'Teacher licence', variant_name: '', uses: 0, buyer_email: '' }
+    };
+  }
+  return payhipVerify(productKey, licenceKey, payhipSecrets(env));
 }
 
 async function authorized(request, env) {
@@ -220,7 +256,7 @@ async function handleVerify(request, env) {
     return json({ ok: false, error: 'licence_key and product_key are required' }, 400, request);
   }
 
-  const result = await payhipVerify(productKey, licenceKey, payhipSecrets(env));
+  const result = await resolveLicence(env, productKey, licenceKey);
   if (!result.ok) return json(result, 401, request);
 
   const d = result.data;
@@ -250,11 +286,14 @@ async function handleGrant(request, env) {
   const lesson = String(body.lesson || '').trim();
 
   if (!licenceKey || !productKey) return json({ ok: false, error: 'licence_key and product_key are required' }, 400, request);
-  if (!DECKS.includes(deck)) return json({ ok: false, error: 'deck must be 1, 2, 3 or 4' }, 400, request);
+  if (!validDeck(deck)) return json({ ok: false, error: 'unknown deck' }, 400, request);
   if (!lesson) return json({ ok: false, error: 'lesson is required' }, 400, request);
 
-  const result = await payhipVerify(productKey, licenceKey, payhipSecrets(env));
+  const result = await resolveLicence(env, productKey, licenceKey);
   if (!result.ok) return json(result, 401, request);
+  if (result.allowedDecks && !result.allowedDecks.includes(deck)) {
+    return json({ ok: false, error: 'this key is not valid for that product' }, 403, request);
+  }
 
   const nonce = randomHex(12);
   const exp = Math.floor(Date.now() / 1000) + GRANT_TTL_SECONDS;
@@ -266,7 +305,7 @@ async function handleGrant(request, env) {
     'INSERT INTO grants (nonce, deck, lesson, licence_key, created_at, expires_at, revoked) VALUES (?, ?, ?, ?, ?, ?, 0)'
   ).bind(nonce, deck, lesson, licenceKey, now, new Date(exp * 1000).toISOString()).run();
 
-  const base = 'https://articulate-english.github.io/sliding-in' + (deck === '1' ? '' : '-' + deck) + '/';
+  const base = appBase(deck);
   return json({ ok: true, url: base + '?lesson=' + encodeURIComponent(lesson) + '&grant=' + token, deck, lesson, expires: exp }, 200, request);
 }
 
@@ -278,7 +317,7 @@ async function handleRedeem(request, env) {
 
   const obj = await verifyGrant(env, grant);
   if (!obj) return json({ ok: false, error: 'invalid grant' }, 400, request);
-  if (!DECKS.includes(String(obj.deck))) return json({ ok: false, error: 'grant for an unknown deck' }, 400, request);
+  if (!validDeck(String(obj.deck))) return json({ ok: false, error: 'grant for an unknown deck' }, 400, request);
   if (obj.exp < Math.floor(Date.now() / 1000)) return json({ ok: false, error: 'grant expired' }, 410, request);
 
   const row = await env.DB.prepare('SELECT revoked FROM grants WHERE nonce = ?').bind(obj.nonce).first();
@@ -300,7 +339,7 @@ async function handleRedeem(request, env) {
       if (topics.length) matched.push({ category: cat.category, topics });
     }
     if (matched.length) {
-      const key = await hkdfFromString(obj.nonce, 'sliding-in/grant/' + obj.deck + '/' + obj.lesson, 'sliding-in/grant/v1');
+      const key = await hkdfFromString(obj.nonce, ns(obj.deck) + '/grant/' + obj.deck + '/' + obj.lesson, ns(obj.deck) + '/grant/v1');
       const sealed = await aesSeal(key, new TextEncoder().encode(JSON.stringify(matched)));
       payload = b64urlEncode(sealed);
     }
@@ -325,10 +364,13 @@ async function handlePayload(request, env) {
   if (!licenceKey || !productKey) {
     return json({ ok: false, error: 'licence_key and product_key are required' }, 400, request);
   }
-  if (!DECKS.includes(deck)) return json({ ok: false, error: 'deck must be 1, 2, 3 or 4' }, 400, request);
+  if (!validDeck(deck)) return json({ ok: false, error: 'unknown deck' }, 400, request);
 
-  const result = await payhipVerify(productKey, licenceKey, payhipSecrets(env));
+  const result = await resolveLicence(env, productKey, licenceKey);
   if (!result.ok) return json(result, 401, request);
+  if (result.allowedDecks && !result.allowedDecks.includes(deck)) {
+    return json({ ok: false, error: 'this key is not valid for that product' }, 403, request);
+  }
 
   const paid = await loadPaidPayload(env, deck);
   if (!paid) return json({ ok: false, error: 'payload not provisioned' }, 500, request);
@@ -336,7 +378,7 @@ async function handlePayload(request, env) {
   // Sealed for this licence only. The app derives the same key from the licence key,
   // so it can decrypt offline; the ciphertext itself is only obtainable here, after
   // Payhip has confirmed the purchase.
-  const key = await hkdfFromString(licenceKey, 'sliding-in/' + deck, 'sliding-in/payload/v1');
+  const key = await hkdfFromString(licenceKey, ns(deck) + '/' + deck, ns(deck) + '/payload/v1');
   const sealed = await aesSeal(key, new TextEncoder().encode(JSON.stringify(paid)));
 
   return json({
@@ -378,6 +420,11 @@ export default {
     if (path === '/sliding-in/redeem' && request.method === 'POST') return handleRedeem(request, env);
     if (path === '/sliding-in/payload' && request.method === 'POST') return handlePayload(request, env);
     if (path === '/sliding-in/admin/stats' && request.method === 'GET') return handleStats(request, env);
+    if (path === PATH_PREFIX + '/health') return handleHealth();
+    if (path === PATH_PREFIX + '/verify' && request.method === 'POST') return handleVerify(request, env);
+    if (path === PATH_PREFIX + '/grant' && request.method === 'POST') return handleGrant(request, env);
+    if (path === PATH_PREFIX + '/redeem' && request.method === 'POST') return handleRedeem(request, env);
+    if (path === PATH_PREFIX + '/payload' && request.method === 'POST') return handlePayload(request, env);
 
     /* ═══ PORTAL LAB (private tuning page) ═══
        The page is gated by a token. The tuning it writes is a public read — it is
