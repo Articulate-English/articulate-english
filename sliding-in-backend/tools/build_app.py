@@ -109,8 +109,8 @@ RUNTIME = r"""/* Sliding In __DECK__ — PWA runtime: install, per-lesson deep l
   "use strict";
   var DECK = "__DECK__";
   var WORKER = "https://ae-sliding-in.billiethomasonsound.workers.dev";
-  var PRODUCT_KEY = "";        /* Payhip product key — set when the product exists */
-  var BUY_URL = "";            /* Payhip checkout URL — empty keeps the honest "soon" state */
+  var PRODUCT_KEY = "__PRODUCT_KEY__";  /* Payhip product key — injected at build time */
+  var BUY_URL = "__BUY_URL__";          /* Payhip checkout URL — injected at build time */
   var FREE_SLUGS = __FREE_SLUGS__;
   var unlocked = false;
   var granted = {};
@@ -444,6 +444,21 @@ def patch_html(path, deck):
     open(path, "w", encoding="utf-8").write(html)
 
 
+def payhip_meta(deck):
+    """Public product key + checkout URL from the local secrets table.
+    Product secret keys stay out of the repos; only the Worker holds them. """
+    path = os.environ.get("PAYHIP_PRODUCTS_FILE") or os.path.expanduser(
+        "~/.hermes/secrets/payhip-products.json")
+    with open(path, encoding="utf-8") as fh:
+        products = json.load(fh)["products"]
+    name = "sliding-in-" + deck
+    p = products.get(name, {})
+    pk, url = p.get("product_key", ""), p.get("checkout_url", "")
+    if not pk or not url:
+        raise SystemExit("missing Payhip wiring for %s in %s" % (name, path))
+    return pk, url
+
+
 def main():
     deck = sys.argv[1]
     assert deck in REPO, "deck must be 1-4"
@@ -458,8 +473,11 @@ def main():
     sw = SERVICE_WORKER.replace("__DECK__", deck)
     open(os.path.join(repo, "sw.js"), "w", encoding="utf-8").write(sw)
 
+    pk, url = payhip_meta(deck)
     runtime = (RUNTIME.replace("__DECK__", deck)
-                     .replace("__FREE_SLUGS__", json.dumps(FREE_SLUGS[deck])))
+                     .replace("__FREE_SLUGS__", json.dumps(FREE_SLUGS[deck]))
+                     .replace("__PRODUCT_KEY__", pk)
+                     .replace("__BUY_URL__", url))
     open(os.path.join(repo, "app-runtime.js"), "w", encoding="utf-8").write(runtime)
 
     # shipped payload becomes the data loader the app reads
